@@ -55,3 +55,17 @@ shadowJar {
 remapJar {
     inputFile.set shadowJar.archiveFile
 }
+
+loom {
+    mods {
+        "bloom" {
+            sourceSet sourceSets.main
+        }
+    }
+
+    runs {
+        datagen {
+            inherit client
+        }
+    }
+}

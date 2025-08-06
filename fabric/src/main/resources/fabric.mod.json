@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.legacy.fabric.ExampleModFabric"
+      "net.legacy.fabric.BloomFabric"
     ],
     "client": [
-      "net.legacy.fabric.client.ExampleModFabricClient"
+      "net.legacy.fabric.client.BloomFabricClient"
     ]
   },
   "mixins": [
