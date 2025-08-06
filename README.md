@@ -1,7 +1,5 @@
-# Farmer's Knives
+# Bloom
 
-Farmer's Knives adds knife support for many other mods.
+Public repository for Bloom - a vanilla-friendly expansion to vanilla flora, with vanilla biome improvements, farming updates & all-new biomes.
 
-Available for both Fabric & Neoforge on versions above 1.21
-
-Licensed under MIT license.
+Licensed under Legacy License (Assets ARR, Code LGPL 3.0-Only)
