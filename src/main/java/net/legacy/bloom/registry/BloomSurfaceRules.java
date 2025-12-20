@@ -12,8 +12,11 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         return SurfaceRules.ifTrue(
                 SurfaceRules.isBiome(BloomBiomes.WARM_RIVER),
                 SurfaceRules.ifTrue(
-                        SurfaceRules.ON_FLOOR,
-                        FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
+                        SurfaceRules.waterBlockCheck(-1, 0),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.ON_FLOOR,
+                                FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
+                        )
                 )
         );
     }

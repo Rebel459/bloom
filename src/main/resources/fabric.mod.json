@@ -23,8 +23,11 @@
       ],
       "fabric-datagen": [
         "net.legacy.bloom.datagen.BloomDataGenerator"
+      ],
+      "frozenlib:events": [
+        "net.legacy.bloom.registry.BloomSurfaceRules"
       ]
-	},
+    },
 	"mixins": [
       "bloom.mixins.json"
 	],
