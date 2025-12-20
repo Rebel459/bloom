@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.13-SNAPSHOT'
+	id 'fabric-loom' version '1.14-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -31,6 +31,9 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 
+    include modApi("maven.modrinth:frozenlib:${project.frozenlib_version}")
+
+    include modImplementation("maven.modrinth:biolith:${project.biolith_version}")
 }
 
 loom {
@@ -63,4 +66,24 @@ jar {
 	from("LICENSE") {
 		rename { "${it}_${project.base.archivesName.get()}"}
 	}
+}
+
+// Datagen
+
+fabricApi {
+    configureDataGeneration()
+}
+
+loom {
+    mods {
+        "bloom" {
+            sourceSet sourceSets.main
+        }
+    }
+
+    runs {
+        datagen {
+            inherit client
+        }
+    }
 }

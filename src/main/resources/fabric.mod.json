@@ -16,11 +16,14 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.legacy.bloom.CombatReborn"
+			"net.legacy.bloom.Bloom"
 		],
-		"modmenu": [
-          "net.legacy.bloom.config.CRModMenuIntegration"
-		]
+      "modmenu": [
+        "net.legacy.bloom.config.BloomModMenuIntegration"
+      ],
+      "fabric-datagen": [
+        "net.legacy.bloom.datagen.BloomDataGenerator"
+      ]
 	},
 	"mixins": [
       "bloom.mixins.json"
