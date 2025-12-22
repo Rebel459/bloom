@@ -90,12 +90,9 @@ public final class WarmRiver extends FrozenBiome {
         OverworldBiomes.globalOverworldGeneration(features);
         BiomeDefaultFeatures.addDefaultOres(features);
         BiomeDefaultFeatures.addDefaultSoftDisks(features);
-        BiomeDefaultFeatures.addWaterTrees(features);
-        BiomeDefaultFeatures.addBushes(features);
-        BiomeDefaultFeatures.addDefaultFlowers(features);
-        BiomeDefaultFeatures.addDefaultGrass(features);
+        BiomeDefaultFeatures.addNearWaterVegetation(features);
+        BiomeDefaultFeatures.addDesertVegetation(features);
         BiomeDefaultFeatures.addDefaultMushrooms(features);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(features, true);
         features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
     }
 
