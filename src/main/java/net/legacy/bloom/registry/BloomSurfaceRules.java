@@ -9,11 +9,20 @@ import java.util.List;
 
 public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfaceRuleCallback, SurfaceRuleEvents.OverworldSurfaceRuleNoPrelimSurfaceCallback {
     public static SurfaceRules.RuleSource warmRivers() {
-        return SurfaceRules.ifTrue(
-                SurfaceRules.isBiome(BloomBiomes.WARM_RIVER),
+        return SurfaceRules.sequence(
                 SurfaceRules.ifTrue(
-                        SurfaceRules.ON_FLOOR,
-                        FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
+                        SurfaceRules.isBiome(BloomBiomes.WARM_RIVER),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.ON_FLOOR,
+                                FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
+                        )
+                ),
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(BloomBiomes.WARM_RIVER),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.UNDER_FLOOR,
+                                FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
+                        )
                 )
         );
     }
