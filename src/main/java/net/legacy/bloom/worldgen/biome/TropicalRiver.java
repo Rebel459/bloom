@@ -99,7 +99,7 @@ public final class TropicalRiver extends FrozenBiome {
         BiomeDefaultFeatures.addDefaultFlowers(features);
         BiomeDefaultFeatures.addDefaultGrass(features);
         BiomeDefaultFeatures.addDefaultMushrooms(features);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(features, true);
+        BiomeDefaultFeatures.addNearWaterVegetation(features);
         features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
     }
 

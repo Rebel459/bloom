@@ -82,7 +82,7 @@ public final class AridRiver extends FrozenBiome {
     @Override
     public void fillEnvironmentAttributes(EnvironmentAttributeMap.Builder builder) {
         builder.set(EnvironmentAttributes.SKY_COLOR, SKY_COLOR);
-        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_GAME, true));
+        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_BIOME_DESERT, true));
         builder.set(EnvironmentAttributes.SNOW_GOLEM_MELTS, true);
         builder.set(EnvironmentAttributes.WATER_FOG_COLOR, 270131);
     }

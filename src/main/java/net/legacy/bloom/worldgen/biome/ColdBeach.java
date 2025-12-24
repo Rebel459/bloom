@@ -22,15 +22,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public final class AridBeach extends FrozenBiome {
-    public static final float TEMP = 2.0F;
-    public static final float DOWNFALL = 0.0F;
-    public static final int WATER_COLOR = 176357;
-    public static final int FOLIAGE_COLOR = 5884220;
-    public static final int DRY_FOLIAGE_COLOR = 10581064;
-    public static final int GRASS_COLOR = 3193611;
+public final class ColdBeach extends FrozenBiome {
+    public static final float TEMP = 0.25F;
+    public static final float DOWNFALL = 0.8F;
+    public static final int WATER_COLOR = 2650242;
+    public static final int FOLIAGE_COLOR = 6857828;
+    public static final int DRY_FOLIAGE_COLOR = 10122831;
+    public static final int GRASS_COLOR = 8828803;
     public static final int SKY_COLOR = OverworldBiomes.calculateSkyColor(TEMP);
-    public static final AridBeach INSTANCE = new AridBeach();
+    public static final ColdBeach INSTANCE = new ColdBeach();
 
     public String modID() {
         return Bloom.MOD_ID;
@@ -38,7 +38,7 @@ public final class AridBeach extends FrozenBiome {
 
     @Override
     public String biomeID() {
-        return "arid_beach";
+        return "cold_beach";
     }
 
     @Override
@@ -53,7 +53,7 @@ public final class AridBeach extends FrozenBiome {
 
     @Override
     public boolean hasPrecipitation() {
-        return false;
+        return true;
     }
 
     @Override
@@ -82,9 +82,7 @@ public final class AridBeach extends FrozenBiome {
     @Override
     public void fillEnvironmentAttributes(EnvironmentAttributeMap.Builder builder) {
         builder.set(EnvironmentAttributes.SKY_COLOR, SKY_COLOR);
-        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_GAME, true));
-        builder.set(EnvironmentAttributes.SNOW_GOLEM_MELTS, true);
-        builder.set(EnvironmentAttributes.WATER_FOG_COLOR, 270131);
+        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_GAME, false));
     }
 
     @Override
@@ -92,16 +90,19 @@ public final class AridBeach extends FrozenBiome {
         OverworldBiomes.globalOverworldGeneration(features);
         BiomeDefaultFeatures.addDefaultOres(features);
         BiomeDefaultFeatures.addDefaultSoftDisks(features);
+        BiomeDefaultFeatures.addWaterTrees(features);
+        BiomeDefaultFeatures.addBushes(features);
         BiomeDefaultFeatures.addDefaultFlowers(features);
         BiomeDefaultFeatures.addDefaultGrass(features);
         BiomeDefaultFeatures.addDefaultMushrooms(features);
         BiomeDefaultFeatures.addDefaultExtraVegetation(features, true);
+        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
     }
 
     @Override
     public void addSpawns(MobSpawnSettings.Builder spawns) {
         spawns.addSpawn(MobCategory.CREATURE, 5, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
-        BiomeDefaultFeatures.desertSpawns(spawns);
+        BiomeDefaultFeatures.commonSpawns(spawns);
     }
 
     @Override

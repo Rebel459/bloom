@@ -1,3 +1,12 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Tags for minecraft:worldgen/biome
-a2b8745c0579c4820562492e5b82e2663ec85cc0 data/bloom/tags/worldgen/biome/modification/deserts.json
-79fd8e772b777110d8a9d1b1c282cf20d9010ca0 data/bloom/tags/worldgen/biome/modification/jungles.json
+8623ab007b8147a45e22c9bcfab51dfd36352be0 data/bloom/tags/worldgen/biome/is_coarse.json
+2f6344dd6d748b629c13126a0d9cf4e8010cd79e data/bloom/tags/worldgen/biome/is_gravelly.json
+021cb143064c174b808192eb80bb0e0130c29aea data/bloom/tags/worldgen/biome/is_sandy.json
+39ff2d794ddeac1a53913d7cc5bd3e194f7271e8 data/bloom/tags/worldgen/biome/modified/cold_biomes.json
+42d7f45693b54847c20b5f5ab083d343e1c0c14d data/bloom/tags/worldgen/biome/modified/deserts.json
+e22f75290a80a306ccdb324fbcc4b8a95617f404 data/bloom/tags/worldgen/biome/modified/frozen_biomes.json
+79fd8e772b777110d8a9d1b1c282cf20d9010ca0 data/bloom/tags/worldgen/biome/modified/jungles.json
+44178925c0876a7dac391dbcc1efff6b0f97bca3 data/minecraft/tags/worldgen/biome/is_beach.json
+839beb193ef152223a7b68890b9736a80539bbef data/minecraft/tags/worldgen/biome/is_river.json
+f572fcad777c92675f40c6522400aa6a9ce41c4a data/minecraft/tags/worldgen/biome/spawns_cold_variant_farm_animals.json
+8623ab007b8147a45e22c9bcfab51dfd36352be0 data/minecraft/tags/worldgen/biome/spawns_warm_variant_farm_animals.json

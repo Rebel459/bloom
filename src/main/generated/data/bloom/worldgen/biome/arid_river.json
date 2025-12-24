@@ -9,7 +9,7 @@
       "default": {
         "max_delay": 24000,
         "min_delay": 12000,
-        "sound": "minecraft:music.game"
+        "sound": "minecraft:music.overworld.desert"
       },
       "underwater": {
         "max_delay": 24000,

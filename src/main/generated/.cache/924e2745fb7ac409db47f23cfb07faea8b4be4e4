@@ -1,5 +1,7 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Bloom
-1e2879f130764a7eda3dfe5d367dbecb494301d6 data/bloom/worldgen/biome/arid_beach.json
-1d9207e073f31c3ebd73d4f6582389821d27d1c0 data/bloom/worldgen/biome/arid_river.json
-1e2879f130764a7eda3dfe5d367dbecb494301d6 data/bloom/worldgen/biome/tropical_beach.json
-1e2879f130764a7eda3dfe5d367dbecb494301d6 data/bloom/worldgen/biome/tropical_river.json
+9dd6018acaa3fe1cf91ec14970f2022ff8cf66a4 data/bloom/worldgen/biome/arid_river.json
+3cc1c7d2bc753c32ee5b7453629527e57f3e5c5e data/bloom/worldgen/biome/arid_shore.json
+92d099a63691c832e2b44363d99b3fc33c87b411 data/bloom/worldgen/biome/cold_beach.json
+e7406f0f18e64a9262e31f935f0cdae1ce645239 data/bloom/worldgen/biome/cold_river.json
+367d0d4280e0dea00f7cd9416a7e339df9c05936 data/bloom/worldgen/biome/tropical_beach.json
+a82dc152bcee6f902f7cae3ff579c1f011b041cc data/bloom/worldgen/biome/tropical_river.json

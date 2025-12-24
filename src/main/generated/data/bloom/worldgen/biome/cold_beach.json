@@ -9,20 +9,22 @@
       "default": {
         "max_delay": 24000,
         "min_delay": 12000,
-        "sound": "minecraft:music.overworld.jungle"
+        "sound": "minecraft:music.game"
       }
     },
-    "minecraft:gameplay/snow_golem_melts": true,
-    "minecraft:visual/sky_color": "#77a8ff"
+    "minecraft:visual/sky_color": "#7da3ff"
   },
   "carvers": [
     "minecraft:cave",
     "minecraft:cave_extra_underground",
     "minecraft:canyon"
   ],
-  "downfall": 0.9,
+  "downfall": 0.8,
   "effects": {
-    "water_color": "#1e8ae3"
+    "dry_foliage_color": "#9a764f",
+    "foliage_color": "#68a464",
+    "grass_color": "#86b783",
+    "water_color": "#287082"
   },
   "features": [
     [],
@@ -110,36 +112,6 @@
         "maxCount": 5,
         "minCount": 2,
         "weight": 5
-      },
-      {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 12
-      },
-      {
-        "type": "minecraft:pig",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:cow",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
       }
     ],
     "misc": [],
@@ -204,5 +176,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.95
+  "temperature": 0.25
 }
