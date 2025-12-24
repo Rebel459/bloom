@@ -8,20 +8,39 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import java.util.List;
 
 public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfaceRuleCallback, SurfaceRuleEvents.OverworldSurfaceRuleNoPrelimSurfaceCallback {
+
     public static SurfaceRules.RuleSource warmRivers() {
         return SurfaceRules.sequence(
                 SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(BloomBiomes.WARM_RIVER),
+                        SurfaceRules.isBiome(BloomBiomes.ARID_RIVER),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.ON_FLOOR,
                                 FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
                         )
                 ),
                 SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(BloomBiomes.WARM_RIVER),
+                        SurfaceRules.isBiome(BloomBiomes.ARID_RIVER),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.UNDER_FLOOR,
                                 FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
+                        )
+                )
+        );
+    }
+    public static SurfaceRules.RuleSource tropicalRivers() {
+        return SurfaceRules.sequence(
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(BloomBiomes.TROPICAL_RIVER),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.ON_FLOOR,
+                                FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+                        )
+                ),
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(BloomBiomes.TROPICAL_RIVER),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.UNDER_FLOOR,
+                                FrozenSurfaceRules.makeStateRule(Blocks.MUD)
                         )
                 )
         );
@@ -31,7 +50,8 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     public void addOverworldSurfaceRules(List<SurfaceRules.RuleSource> context) {
         context.add(
                 SurfaceRules.sequence(
-                        warmRivers()
+                        warmRivers(),
+                        tropicalRivers()
                 )
         );
     }

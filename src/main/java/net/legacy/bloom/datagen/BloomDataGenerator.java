@@ -2,6 +2,7 @@ package net.legacy.bloom.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.legacy.bloom.Bloom;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -25,5 +26,10 @@ public final class BloomDataGenerator implements DataGeneratorEntrypoint {
 
 	public void buildRegistry(RegistrySetBuilder registrySetBuilder) {
 		BloomRegistryProvider.buildRegistry(registrySetBuilder);
+	}
+
+	@Override
+	public String getEffectiveModId() {
+		return Bloom.MOD_ID;
 	}
 }
