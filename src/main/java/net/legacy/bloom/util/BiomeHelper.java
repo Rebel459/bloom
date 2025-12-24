@@ -1,9 +1,13 @@
 package net.legacy.bloom.util;
 
+import net.legacy.bloom.worldgen.BloomFeatures;
 import net.minecraft.core.Holder;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -55,5 +59,11 @@ public class BiomeHelper {
                     Optional.empty()
             );
         }
+    }
+
+    public static void addLessStrictDisks(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_SAND);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_CLAY);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_GRAVEL);
     }
 }
