@@ -23,8 +23,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
 public final class AridRiver extends FrozenBiome {
-    public static final float TEMP = 1.75F;
-    public static final float DOWNFALL = 0.05F;
+    public static final float TEMP = 2.0F;
+    public static final float DOWNFALL = 0.0F;
     public static final int WATER_COLOR = 176357;
     public static final int FOLIAGE_COLOR = 5884220;
     public static final int DRY_FOLIAGE_COLOR = 10581064;
@@ -53,7 +53,7 @@ public final class AridRiver extends FrozenBiome {
 
     @Override
     public boolean hasPrecipitation() {
-        return true;
+        return false;
     }
 
     @Override
@@ -63,16 +63,19 @@ public final class AridRiver extends FrozenBiome {
 
     @Override
     public @Nullable Integer foliageColorOverride() {
+        if (FOLIAGE_COLOR == -1) return null;
         return FOLIAGE_COLOR;
     }
 
     @Override
     public @Nullable Integer dryFoliageColorOverride() {
+        if (DRY_FOLIAGE_COLOR == -1) return null;
         return DRY_FOLIAGE_COLOR;
     }
 
     @Override
     public @Nullable Integer grassColorOverride() {
+        if (GRASS_COLOR == -1) return null;
         return GRASS_COLOR;
     }
 
@@ -97,11 +100,10 @@ public final class AridRiver extends FrozenBiome {
 
     @Override
     public void addSpawns(MobSpawnSettings.Builder spawns) {
-        MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder()
-                .addSpawn(MobCategory.WATER_CREATURE, 2, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4))
-                .addSpawn(MobCategory.WATER_AMBIENT, 5, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 1, 5));
-        BiomeDefaultFeatures.commonSpawns(builder);
-        builder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 1, 1));
+        spawns.addSpawn(MobCategory.WATER_CREATURE, 2, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4));
+        spawns.addSpawn(MobCategory.WATER_AMBIENT, 5, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 1, 5));
+        BiomeDefaultFeatures.desertSpawns(spawns);
+        spawns.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 1, 1));
     }
 
     @Override

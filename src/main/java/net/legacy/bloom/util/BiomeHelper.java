@@ -4,6 +4,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.attribute.BackgroundMusic;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 

@@ -8,9 +8,7 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.data.worldgen.placement.AquaticPlacements;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributeMap;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
@@ -22,18 +20,17 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
 import java.util.function.Consumer;
 
-public final class TropicalRiver extends FrozenBiome {
-    public static final float TEMP = 0.95F;
-    public static final float DOWNFALL = 0.9F;
-    public static final int WATER_COLOR = 2001635;
-    public static final int FOLIAGE_COLOR = -1;
-    public static final int DRY_FOLIAGE_COLOR = -1;
-    public static final int GRASS_COLOR = -1;
+public final class AridBeach extends FrozenBiome {
+    public static final float TEMP = 2.0F;
+    public static final float DOWNFALL = 0.0F;
+    public static final int WATER_COLOR = 176357;
+    public static final int FOLIAGE_COLOR = 5884220;
+    public static final int DRY_FOLIAGE_COLOR = 10581064;
+    public static final int GRASS_COLOR = 3193611;
     public static final int SKY_COLOR = OverworldBiomes.calculateSkyColor(TEMP);
-    public static final TropicalRiver INSTANCE = new TropicalRiver();
+    public static final AridBeach INSTANCE = new AridBeach();
 
     public String modID() {
         return Bloom.MOD_ID;
@@ -41,7 +38,7 @@ public final class TropicalRiver extends FrozenBiome {
 
     @Override
     public String biomeID() {
-        return "tropical_river";
+        return "arid_beach";
     }
 
     @Override
@@ -56,7 +53,7 @@ public final class TropicalRiver extends FrozenBiome {
 
     @Override
     public boolean hasPrecipitation() {
-        return true;
+        return false;
     }
 
     @Override
@@ -85,8 +82,9 @@ public final class TropicalRiver extends FrozenBiome {
     @Override
     public void fillEnvironmentAttributes(EnvironmentAttributeMap.Builder builder) {
         builder.set(EnvironmentAttributes.SKY_COLOR, SKY_COLOR);
-        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_BIOME_JUNGLE, true));
+        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_GAME, true));
         builder.set(EnvironmentAttributes.SNOW_GOLEM_MELTS, true);
+        builder.set(EnvironmentAttributes.WATER_FOG_COLOR, 270131);
     }
 
     @Override
@@ -94,21 +92,16 @@ public final class TropicalRiver extends FrozenBiome {
         OverworldBiomes.globalOverworldGeneration(features);
         BiomeDefaultFeatures.addDefaultOres(features);
         BiomeDefaultFeatures.addDefaultSoftDisks(features);
-        BiomeDefaultFeatures.addWaterTrees(features);
-        BiomeDefaultFeatures.addBushes(features);
         BiomeDefaultFeatures.addDefaultFlowers(features);
         BiomeDefaultFeatures.addDefaultGrass(features);
         BiomeDefaultFeatures.addDefaultMushrooms(features);
         BiomeDefaultFeatures.addDefaultExtraVegetation(features, true);
-        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
     }
 
     @Override
     public void addSpawns(MobSpawnSettings.Builder spawns) {
-        spawns.addSpawn(MobCategory.WATER_CREATURE, 2, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4));
-        spawns.addSpawn(MobCategory.WATER_AMBIENT, 5, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 1, 5));
-        BiomeDefaultFeatures.baseJungleSpawns(spawns);
-        spawns.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE, 5, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
+        BiomeDefaultFeatures.desertSpawns(spawns);
     }
 
     @Override

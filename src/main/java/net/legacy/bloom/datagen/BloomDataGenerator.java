@@ -17,6 +17,7 @@ public final class BloomDataGenerator implements DataGeneratorEntrypoint {
 
 		pack.addProvider(BloomModelProvider::new);
 		pack.addProvider(BloomItemTagProvider::new);
+		pack.addProvider(BloomBiomeTagProvider::new);
 		pack.addProvider(BloomBlockTagProvider::new);
 		pack.addProvider(BloomBlockLootProvider::new);
 		pack.addProvider(BloomRegistryProvider::new);
