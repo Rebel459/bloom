@@ -8,6 +8,7 @@ import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.worldgen.biome.AridRiver;
 import net.legacy.bloom.worldgen.biome.ColdRiver;
 import net.legacy.bloom.worldgen.biome.TropicalRiver;
+import net.legacy.bloom.worldgen.feature.BloomPlacedFeatures;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -35,9 +36,9 @@ public final class BloomBiomeModifications {
 					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
 					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
 					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
-					modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, BloomFeatures.DISK_CLAY);
-					modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_SAND);
-					modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_GRAVEL);
+					modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, BloomPlacedFeatures.DISK_CLAY.getKey());
+					modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomPlacedFeatures.DISK_SAND.getKey());
+					modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomPlacedFeatures.DISK_GRAVEL.getKey());
 				}
 		);
 		BiomeModifications.create(Bloom.id("modified_cold_biomes")).add(

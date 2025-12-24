@@ -7,9 +7,10 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.registry.BloomBiomes;
-import net.legacy.bloom.registry.BloomSurfaceRules;
 import net.legacy.bloom.worldgen.BloomBiomeModifications;
 import net.legacy.bloom.worldgen.BloomBiomePlacement;
+import net.legacy.bloom.worldgen.feature.BloomConfiguredFeatures;
+import net.legacy.bloom.worldgen.feature.BloomPlacedFeatures;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 

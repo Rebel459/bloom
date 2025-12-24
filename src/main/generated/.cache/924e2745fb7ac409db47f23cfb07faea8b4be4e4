@@ -1,7 +1,13 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Bloom
-9dd6018acaa3fe1cf91ec14970f2022ff8cf66a4 data/bloom/worldgen/biome/arid_river.json
-3cc1c7d2bc753c32ee5b7453629527e57f3e5c5e data/bloom/worldgen/biome/arid_shore.json
-92d099a63691c832e2b44363d99b3fc33c87b411 data/bloom/worldgen/biome/cold_beach.json
-e7406f0f18e64a9262e31f935f0cdae1ce645239 data/bloom/worldgen/biome/cold_river.json
+36daaeed4b44472eb76d30e3277be93dff74fc10 data/bloom/worldgen/biome/arid_river.json
+02a6929c2fff02383906eea4ccd80db4007e9b97 data/bloom/worldgen/biome/arid_shore.json
+acfe6935c5ec537e33b374c8c04daba2d1baac72 data/bloom/worldgen/biome/cold_beach.json
+12f416e5a6d085f123135ac04b8251616740cd1f data/bloom/worldgen/biome/cold_river.json
 367d0d4280e0dea00f7cd9416a7e339df9c05936 data/bloom/worldgen/biome/tropical_beach.json
 a82dc152bcee6f902f7cae3ff579c1f011b041cc data/bloom/worldgen/biome/tropical_river.json
+2823ec17296791d310080dbd309b18e93c3faa2b data/bloom/worldgen/configured_feature/disk_clay.json
+24ecaf6e3b3237575cbb5b5dc164b174615d4920 data/bloom/worldgen/configured_feature/disk_gravel.json
+16eb59b19170081152e51a0053306e45a1ff2186 data/bloom/worldgen/configured_feature/disk_sand.json
+abdd39aea0fceb57b121ce48567cd4f2b9ec93fc data/bloom/worldgen/placed_feature/disk_clay.json
+345d1308a243a0e26f73e4b20cc0b07844b74aff data/bloom/worldgen/placed_feature/disk_gravel.json
+cb03eb1519a61ae84a5ad8ce123e22d0e832272d data/bloom/worldgen/placed_feature/disk_sand.json

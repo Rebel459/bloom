@@ -2,15 +2,12 @@ package net.legacy.bloom.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
-import net.legacy.bloom.Bloom;
 import net.legacy.bloom.registry.BloomBiomes;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class BloomRegistryProvider extends FabricDynamicRegistryProvider {
@@ -19,11 +16,15 @@ public class BloomRegistryProvider extends FabricDynamicRegistryProvider {
     }
 
     public static void buildRegistry(RegistrySetBuilder registrySetBuilder) {
+        registrySetBuilder.add(Registries.CONFIGURED_FEATURE, BloomFeatureBootstrap::bootstrapConfigured);
+        registrySetBuilder.add(Registries.PLACED_FEATURE, BloomFeatureBootstrap::bootstrapPlaced);
         registrySetBuilder.add(Registries.BIOME, BloomBiomes::bootstrap);
     }
 
     @Override
     public void configure(HolderLookup.Provider registries, Entries entries) {
+        entries.addAll(asLookup(entries.getLookup(Registries.CONFIGURED_FEATURE)));
+        entries.addAll(asLookup(entries.placedFeatures()));
         entries.addAll(asLookup(entries.getLookup(Registries.BIOME)));
     }
 
