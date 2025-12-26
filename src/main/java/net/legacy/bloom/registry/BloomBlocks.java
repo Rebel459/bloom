@@ -55,7 +55,11 @@ public final class BloomBlocks {
 	);
 
 	public static final Block BELLFLOWER = register("bellflower",
-            TallFlowerBlock::new,
+			TallFlowerBlock::new,
+			BlockBehaviour.Properties.ofFullCopy(Blocks.ROSE_BUSH)
+	);
+	public static final Block HYDRANGEA = register("hydrangea",
+			TallFlowerBlock::new,
 			BlockBehaviour.Properties.ofFullCopy(Blocks.ROSE_BUSH)
 	);
 
@@ -76,6 +80,8 @@ public final class BloomBlocks {
 		CompostingChanceRegistry.INSTANCE.add(HELLEBORE, 0.65F);
 		CompostingChanceRegistry.INSTANCE.add(BROMELIAD, 0.65F);
 		CompostingChanceRegistry.INSTANCE.add(PINK_ORCHID, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(BELLFLOWER, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(HYDRANGEA, 0.65F);
 	}
 
 	private static void registerFlammability() {
@@ -83,6 +89,8 @@ public final class BloomBlocks {
 		flammableBlockRegistry.add(HELLEBORE, 60, 100);
 		flammableBlockRegistry.add(BROMELIAD, 60, 100);
 		flammableBlockRegistry.add(PINK_ORCHID, 60, 100);
+		flammableBlockRegistry.add(BELLFLOWER, 60, 100);
+		flammableBlockRegistry.add(HYDRANGEA, 60, 100);
 	}
 
 	private static void registerFuels() {

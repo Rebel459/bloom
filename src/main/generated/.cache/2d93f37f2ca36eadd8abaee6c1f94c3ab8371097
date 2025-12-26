@@ -7,6 +7,7 @@ dd1019faa6b177d33797ba5bd1d08137dd8598af data/bloom/tags/worldgen/biome/has_effe
 c4bcf51ceb73bf7eeb36e9b974ae2e838de44f77 data/bloom/tags/worldgen/biome/has_feature/flower_bellflower.json
 d6c8b42cadf8a36be92b0ccf9118294185ef9cc1 data/bloom/tags/worldgen/biome/has_feature/flower_bromeliad.json
 f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feature/flower_hellebore.json
+3ee08f1ca03a8796c3859d788db568b4103835b8 data/bloom/tags/worldgen/biome/has_feature/flower_hydrangea.json
 f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feature/flower_lily_of_the_valley.json
 8b3cb1f45d033b14d944da1c81bb39693a0196fc data/bloom/tags/worldgen/biome/has_feature/flower_pink_orchid.json
 3277ed3d03a23dce54022d8262d8ec1f03421047 data/bloom/tags/worldgen/biome/has_feature/internal/less_strict_disks.json

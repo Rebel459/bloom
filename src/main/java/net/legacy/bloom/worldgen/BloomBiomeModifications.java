@@ -106,5 +106,12 @@ public final class BloomBiomeModifications {
 					BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_LILY_OF_THE_VALLEY);
 				}
 		);
+		BiomeModifications.create(Bloom.id("has_hydrangea")).add(
+				ModificationPhase.REPLACEMENTS,
+				BiomeSelectors.tag(BloomBiomeTags.HAS_HYDRANGEA),
+				(selectionContext, modificationContext) -> {
+					BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_HYDRANGEA);
+				}
+		);
 	}
 }

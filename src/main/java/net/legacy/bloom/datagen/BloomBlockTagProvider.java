@@ -22,7 +22,8 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 				.add(BloomBlocks.BELLFLOWER)
 				.add(BloomBlocks.PINK_ORCHID)
 				.add(BloomBlocks.BROMELIAD)
-				.add(BloomBlocks.HELLEBORE);
+				.add(BloomBlocks.HELLEBORE)
+				.add(BloomBlocks.HYDRANGEA);
 		this.valueLookupBuilder(BlockTags.FLOWER_POTS)
 				.add(BloomBlocks.POTTED_PINK_ORCHID)
 				.add(BloomBlocks.POTTED_BROMELIAD)

@@ -28,6 +28,7 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_HELLEBORE = bind("has_feature/flower_hellebore");
     public static final TagKey<Biome> HAS_LILY_OF_THE_VALLEY = bind("has_feature/flower_lily_of_the_valley");
     public static final TagKey<Biome> HAS_BELLFLOWER = bind("has_feature/flower_bellflower");
+    public static final TagKey<Biome> HAS_HYDRANGEA = bind("has_feature/flower_hydrangea");
 
     @NotNull
     private static TagKey<Biome> bind(@NotNull String path) {

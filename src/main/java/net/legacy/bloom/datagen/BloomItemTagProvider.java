@@ -23,6 +23,7 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 				.add(BloomBlocks.BELLFLOWER.asItem())
 				.add(BloomBlocks.PINK_ORCHID.asItem())
 				.add(BloomBlocks.BROMELIAD.asItem())
-				.add(BloomBlocks.HELLEBORE.asItem());
+				.add(BloomBlocks.HELLEBORE.asItem())
+				.add(BloomBlocks.HYDRANGEA.asItem());
 	}
 }

@@ -37,6 +37,13 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(Biomes.OLD_GROWTH_PINE_TAIGA)
 				.add(Biomes.OLD_GROWTH_SPRUCE_TAIGA);
 
+		// Internal
+		this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
+				.add(BloomBiomes.ARID_RIVER)
+				.add(BloomBiomes.ARID_SHORE)
+				.add(BloomBiomes.COLD_RIVER)
+				.add(BloomBiomes.COLD_BEACH);
+
 		// Effects
 		this.builder(BloomBiomeTags.HAS_WARM_COLORS)
 				.add(Biomes.DESERT)
@@ -80,13 +87,6 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.HAS_UNDERWATER_MUD)
 				.addOptionalTag(BiomeTags.IS_JUNGLE);
 
-		// Feature Groups
-		this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
-				.add(BloomBiomes.ARID_RIVER)
-				.add(BloomBiomes.ARID_SHORE)
-				.add(BloomBiomes.COLD_RIVER)
-				.add(BloomBiomes.COLD_BEACH);
-
 		// Features
 		this.builder(BloomBiomeTags.HAS_BROMELIAD)
 				.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
@@ -105,6 +105,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 				.add(Biomes.DARK_FOREST)
 				.add(Biomes.FLOWER_FOREST);
+
+		this.builder(BloomBiomeTags.HAS_HYDRANGEA)
+				.add(Biomes.FOREST)
+				.add(Biomes.FLOWER_FOREST)
+				.add(Biomes.CHERRY_GROVE);
 
 		// Vanilla
 		this.builder(BiomeTags.IS_RIVER)
