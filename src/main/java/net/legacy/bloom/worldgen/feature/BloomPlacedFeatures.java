@@ -22,6 +22,9 @@ public final class BloomPlacedFeatures {
 	public static final FrozenLibPlacedFeature DISK_SAND = register("disk_sand");
 	public static final FrozenLibPlacedFeature DISK_GRAVEL = register("disk_gravel");
 
+	public static final FrozenLibPlacedFeature FLOWER_HELLEBORE = register("flower_hellebore");
+	public static final FrozenLibPlacedFeature FLOWER_LILY_OF_THE_VALLEY = register("flower_lily_of_the_valley");
+
 	public static void registerPlacedFeatures(@NotNull BootstrapContext<PlacedFeature> entries) {
 
 		var configuredFeatures = entries.lookup(Registries.CONFIGURED_FEATURE);

@@ -2,8 +2,10 @@ package net.legacy.bloom.worldgen.biome;
 
 import com.mojang.datafixers.util.Pair;
 import net.frozenblock.lib.worldgen.biome.api.FrozenBiome;
+import net.frozenblock.lib.worldgen.feature.api.FrozenLibFeatureUtils;
 import net.legacy.bloom.Bloom;
 import net.legacy.bloom.util.BiomeHelper;
+import net.legacy.bloom.worldgen.feature.BloomPlacedFeatures;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.data.worldgen.placement.AquaticPlacements;
@@ -96,8 +98,6 @@ public final class TropicalRiver extends FrozenBiome {
         BiomeDefaultFeatures.addDefaultSoftDisks(features);
         BiomeDefaultFeatures.addWaterTrees(features);
         BiomeDefaultFeatures.addBushes(features);
-        BiomeDefaultFeatures.addDefaultFlowers(features);
-        BiomeDefaultFeatures.addDefaultGrass(features);
         BiomeDefaultFeatures.addDefaultMushrooms(features);
         BiomeDefaultFeatures.addNearWaterVegetation(features);
         features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);

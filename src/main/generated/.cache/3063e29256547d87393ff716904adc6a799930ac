@@ -1,1 +1,7 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Model Definitions
+c6ed5aaf238a1c4cd09072db84873a6bd4f4d2e7 assets/bloom/blockstates/hellebore.json
+3f8ed5a6b25e0691b6b13775b4a74f44ae6ee379 assets/bloom/blockstates/potted_hellebore.json
+60d18e38427243ffad66abeb30bbbc029c18ada1 assets/bloom/items/hellebore.json
+1d151a47aea0ca8c8d96680f2268cc6d8e3bab5e assets/bloom/models/block/hellebore.json
+001699cc5b931eec7e80860e4df4ea3f5eeeecda assets/bloom/models/block/potted_hellebore.json
+5d21b6cdc166caca76929cf427ba579dcc0ec2b6 assets/bloom/models/item/hellebore.json

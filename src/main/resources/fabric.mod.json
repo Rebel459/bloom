@@ -18,21 +18,24 @@
 		"main": [
 			"net.legacy.bloom.Bloom"
 		],
-      "modmenu": [
-        "net.legacy.bloom.config.BloomModMenuIntegration"
-      ],
-      "fabric-datagen": [
-        "net.legacy.bloom.datagen.BloomDataGenerator"
-      ],
-      "frozenlib:events": [
-        "net.legacy.bloom.registry.BloomSurfaceRules"
-      ]
-    },
+		"client": [
+			"net.legacy.bloom.BloomClient"
+		],
+		"modmenu": [
+			"net.legacy.bloom.config.BloomModMenuIntegration"
+		],
+		"fabric-datagen": [
+			"net.legacy.bloom.datagen.BloomDataGenerator"
+		],
+		"frozenlib:events": [
+			"net.legacy.bloom.registry.BloomSurfaceRules"
+		]
+	},
 	"mixins": [
-      "bloom.mixins.json"
+		"bloom.mixins.json"
 	],
-  "accessWidener": "bloom.accesswidener",
-  "depends": {
+	"accessWidener": "bloom.accesswidener",
+	"depends": {
 		"minecraft": "1.21.11",
 		"fabric-api": "*",
 		"cloth-config": "*"

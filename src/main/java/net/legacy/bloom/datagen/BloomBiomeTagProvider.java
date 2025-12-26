@@ -64,6 +64,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(Biomes.FROZEN_OCEAN)
 				.add(Biomes.DEEP_FROZEN_OCEAN);
 
+		this.builder(BloomBiomeTags.MODIFIED_TAIGAS)
+				.add(Biomes.TAIGA)
+				.add(Biomes.OLD_GROWTH_PINE_TAIGA)
+				.add(Biomes.OLD_GROWTH_SPRUCE_TAIGA);
+
 		this.builder(BiomeTags.IS_RIVER)
 				.add(BloomBiomes.ARID_RIVER)
 				.add(BloomBiomes.TROPICAL_RIVER)

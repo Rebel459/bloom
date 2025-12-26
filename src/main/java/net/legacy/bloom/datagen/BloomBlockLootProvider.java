@@ -2,6 +2,7 @@ package net.legacy.bloom.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.legacy.bloom.registry.BloomBlocks;
 import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -25,7 +26,8 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 
 	@Override
 	public void generate() {
-		//this.dropSelf(ERBlocks.FORGOTTEN_REMAINS);
+		this.dropSelf(BloomBlocks.HELLEBORE);
+		this.dropPottedContents(BloomBlocks.POTTED_HELLEBORE);
 		//this.add(ERBlocks.CHORUS_MOSAIC_SLAB, this::createSlabItemTable);
 	}
 

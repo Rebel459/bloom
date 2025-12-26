@@ -7,6 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.registry.BloomBiomes;
+import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.worldgen.BloomBiomeModifications;
 import net.legacy.bloom.worldgen.BloomBiomePlacement;
 import net.legacy.bloom.worldgen.feature.BloomConfiguredFeatures;
@@ -19,12 +20,13 @@ import java.util.Optional;
 public class Bloom implements ModInitializer {
 
     public static boolean isWilderWildLoaded = false;
+    Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(Bloom.MOD_ID);
 
 	@Override
 	public void onInitialize() {
-        Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(MOD_ID);
 
 		BloomConfig.init();
+        BloomBlocks.init();
         BloomBiomes.init();
         BloomBiomePlacement.init();
         BloomBiomeModifications.init();

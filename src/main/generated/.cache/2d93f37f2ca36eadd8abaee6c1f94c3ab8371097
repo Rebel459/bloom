@@ -6,6 +6,7 @@
 42d7f45693b54847c20b5f5ab083d343e1c0c14d data/bloom/tags/worldgen/biome/modified/deserts.json
 e22f75290a80a306ccdb324fbcc4b8a95617f404 data/bloom/tags/worldgen/biome/modified/frozen_biomes.json
 79fd8e772b777110d8a9d1b1c282cf20d9010ca0 data/bloom/tags/worldgen/biome/modified/jungles.json
+075acc2eaddd40ae6e9d6223c2e6aed09dc6f830 data/bloom/tags/worldgen/biome/modified/taigas.json
 44178925c0876a7dac391dbcc1efff6b0f97bca3 data/minecraft/tags/worldgen/biome/is_beach.json
 839beb193ef152223a7b68890b9736a80539bbef data/minecraft/tags/worldgen/biome/is_river.json
 f572fcad777c92675f40c6522400aa6a9ce41c4a data/minecraft/tags/worldgen/biome/spawns_cold_variant_farm_animals.json

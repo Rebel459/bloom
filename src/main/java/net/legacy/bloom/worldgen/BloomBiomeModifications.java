@@ -22,10 +22,7 @@ public final class BloomBiomeModifications {
 				ModificationPhase.REPLACEMENTS,
 				BiomeSelectors.tag(BloomBiomeTags.MODIFIED_DESERTS),
 				(selectionContext, modificationContext) -> {
-					modificationContext.getEffects().setWaterColor(AridRiver.WATER_COLOR);
-					modificationContext.getEffects().setGrassColor(AridRiver.GRASS_COLOR);
-					modificationContext.getEffects().setFoliageColor(AridRiver.FOLIAGE_COLOR);
-					modificationContext.getEffects().setDryFoliageColor(AridRiver.DRY_FOLIAGE_COLOR);
+					modificationContext.getEffects().setWaterColor(AridRiver.WATER_COLOR);;
 				}
 		);
 		BiomeModifications.create(Bloom.id("modified_jungles")).add(
@@ -45,10 +42,7 @@ public final class BloomBiomeModifications {
 				ModificationPhase.REPLACEMENTS,
 				BiomeSelectors.tag(BloomBiomeTags.MODIFIED_COLD_BIOMES),
 				(selectionContext, modificationContext) -> {
-					modificationContext.getEffects().setWaterColor(ColdRiver.WATER_COLOR);
-					modificationContext.getEffects().setGrassColor(ColdRiver.GRASS_COLOR);
-					modificationContext.getEffects().setFoliageColor(ColdRiver.FOLIAGE_COLOR);
-					modificationContext.getEffects().setDryFoliageColor(ColdRiver.DRY_FOLIAGE_COLOR);
+					modificationContext.getEffects().setWaterColor(ColdRiver.WATER_COLOR);;
 				}
 		);
 		BiomeModifications.create(Bloom.id("modified_frozen_biomes")).add(
@@ -56,9 +50,14 @@ public final class BloomBiomeModifications {
 				BiomeSelectors.tag(BloomBiomeTags.MODIFIED_FROZEN_BIOMES),
 				(selectionContext, modificationContext) -> {
 					modificationContext.getEffects().setWaterColor(1594256);
-					modificationContext.getEffects().setGrassColor(8434839);
-					modificationContext.getEffects().setFoliageColor(6332795);
-					modificationContext.getEffects().setDryFoliageColor(10122831);
+				}
+		);
+		BiomeModifications.create(Bloom.id("modified_taigas")).add(
+				ModificationPhase.REPLACEMENTS,
+				BiomeSelectors.tag(BloomBiomeTags.MODIFIED_TAIGAS),
+				(selectionContext, modificationContext) -> {
+					modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BloomPlacedFeatures.FLOWER_HELLEBORE.getKey());
+					modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BloomPlacedFeatures.FLOWER_LILY_OF_THE_VALLEY.getKey());
 				}
 		);
 	}

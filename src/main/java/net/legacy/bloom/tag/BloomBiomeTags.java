@@ -15,6 +15,7 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> MODIFIED_JUNGLES = bind("modified/jungles");
     public static final TagKey<Biome> MODIFIED_COLD_BIOMES = bind("modified/cold_biomes");
     public static final TagKey<Biome> MODIFIED_FROZEN_BIOMES = bind("modified/frozen_biomes");
+    public static final TagKey<Biome> MODIFIED_TAIGAS = bind("modified/taigas");
 
     @NotNull
     private static TagKey<Biome> bind(@NotNull String path) {
