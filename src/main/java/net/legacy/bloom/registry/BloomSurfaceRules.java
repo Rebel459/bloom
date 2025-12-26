@@ -3,12 +3,8 @@ package net.legacy.bloom.registry;
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
 import net.legacy.bloom.tag.BloomBiomeTags;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -16,7 +12,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
     public static SurfaceRules.RuleSource aridRiversAndShores() {
         return SurfaceRules.ifTrue(
-                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.IS_COARSE),
+                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_COARSE_DIRT),
                 SurfaceRules.sequence(
                         SurfaceRules.ifTrue(
                                 SurfaceRules.ON_FLOOR,
@@ -50,7 +46,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     public static SurfaceRules.RuleSource modifiedJungles() {
         return SurfaceRules.sequence(
                 SurfaceRules.ifTrue(
-                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.MODIFIED_JUNGLES),
+                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_UNDERWATER_MUD),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.ON_FLOOR,
                                 SurfaceRules.ifTrue(
@@ -60,7 +56,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                         )
                 ),
                 SurfaceRules.ifTrue(
-                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.MODIFIED_JUNGLES),
+                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_UNDERWATER_MUD),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.UNDER_FLOOR,
                                 SurfaceRules.ifTrue(
@@ -109,13 +105,13 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     }
     public static SurfaceRules.RuleSource beaches() {
         return SurfaceRules.ifTrue(
-                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.IS_SANDY),
+                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_SAND),
                 sandyBiomeRules()
         );
     }
     public static SurfaceRules.RuleSource gravellyRiversAndBeaches() {
         return SurfaceRules.ifTrue(
-                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.IS_GRAVELLY),
+                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_GRAVEL),
                 SurfaceRules.sequence(
                         SurfaceRules.ifTrue(
                                 SurfaceRules.ON_FLOOR,

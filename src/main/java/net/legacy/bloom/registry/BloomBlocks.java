@@ -28,12 +28,35 @@ import java.util.function.Function;
 public final class BloomBlocks {
 
 	public static final Block HELLEBORE = register("hellebore",
-		properties -> new WiderFlowerBlock(MobEffects.RESISTANCE, 12, properties),
-		BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+			properties -> new WiderFlowerBlock(MobEffects.SATURATION, 0.35F, properties),
+			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
 	);
 	public static final Block POTTED_HELLEBORE = registerWithoutItem("potted_hellebore",
-		properties -> new FlowerPotBlock(HELLEBORE, properties),
-		Blocks.flowerPotProperties()
+			properties -> new FlowerPotBlock(HELLEBORE, properties),
+			Blocks.flowerPotProperties()
+	);
+
+	public static final Block BROMELIAD = register("bromeliad",
+			properties -> new WiderFlowerBlock(MobEffects.JUMP_BOOST, 5F, properties),
+			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final Block POTTED_BROMELIAD = registerWithoutItem("potted_bromeliad",
+			properties -> new FlowerPotBlock(HELLEBORE, properties),
+			Blocks.flowerPotProperties()
+	);
+
+	public static final Block PINK_ORCHID = register("pink_orchid",
+			properties -> new FlowerBlock(MobEffects.WEAKNESS, 7F, properties),
+			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final Block POTTED_PINK_ORCHID = registerWithoutItem("potted_pink_orchid",
+			properties -> new FlowerPotBlock(PINK_ORCHID, properties),
+			Blocks.flowerPotProperties()
+	);
+
+	public static final Block BELLFLOWER = register("bellflower",
+            TallFlowerBlock::new,
+			BlockBehaviour.Properties.ofFullCopy(Blocks.ROSE_BUSH)
 	);
 
 	public static void registerBlockProperties() {
@@ -51,11 +74,15 @@ public final class BloomBlocks {
 
 	private static void registerComposting() {
 		CompostingChanceRegistry.INSTANCE.add(HELLEBORE, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(BROMELIAD, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(PINK_ORCHID, 0.65F);
 	}
 
 	private static void registerFlammability() {
 		final var flammableBlockRegistry = FlammableBlockRegistry.getDefaultInstance();
 		flammableBlockRegistry.add(HELLEBORE, 60, 100);
+		flammableBlockRegistry.add(BROMELIAD, 60, 100);
+		flammableBlockRegistry.add(PINK_ORCHID, 60, 100);
 	}
 
 	private static void registerFuels() {

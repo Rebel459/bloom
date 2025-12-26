@@ -2,7 +2,9 @@ package net.legacy.bloom.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.legacy.bloom.registry.BloomBlocks;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,7 +17,12 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 
 	@Override
 	protected void addTags(@NotNull HolderLookup.Provider arg) {
-/*		this.valueLookupBuilder(ItemTags.TRAPDOORS)
-				.add(ERBlocks.CHORUS_TRAPDOOR.asItem());*/
+		this.valueLookupBuilder(ItemTags.SMALL_FLOWERS)
+				.add(BloomBlocks.PINK_ORCHID.asItem());
+		this.valueLookupBuilder(ItemTags.FLOWERS)
+				.add(BloomBlocks.BELLFLOWER.asItem())
+				.add(BloomBlocks.PINK_ORCHID.asItem())
+				.add(BloomBlocks.BROMELIAD.asItem())
+				.add(BloomBlocks.HELLEBORE.asItem());
 	}
 }

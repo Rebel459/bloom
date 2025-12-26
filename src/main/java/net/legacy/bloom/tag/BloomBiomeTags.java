@@ -7,15 +7,26 @@ import net.minecraft.world.level.biome.Biome;
 import org.jetbrains.annotations.NotNull;
 
 public class BloomBiomeTags {
-    public static final TagKey<Biome> IS_SANDY = bind("is_sandy");
-    public static final TagKey<Biome> IS_GRAVELLY = bind("is_gravelly");
-    public static final TagKey<Biome> IS_COARSE = bind("is_coarse");
+    public static final TagKey<Biome> IS_NON_BAMBOO_JUNGLE = bind("is_non_bamboo_jungle");
+    public static final TagKey<Biome> IS_NON_SNOWY_TAIGA = bind("is_non_snowy_taiga");
 
-    public static final TagKey<Biome> MODIFIED_DESERTS = bind("modified/deserts");
-    public static final TagKey<Biome> MODIFIED_JUNGLES = bind("modified/jungles");
-    public static final TagKey<Biome> MODIFIED_COLD_BIOMES = bind("modified/cold_biomes");
-    public static final TagKey<Biome> MODIFIED_FROZEN_BIOMES = bind("modified/frozen_biomes");
-    public static final TagKey<Biome> MODIFIED_TAIGAS = bind("modified/taigas");
+    public static final TagKey<Biome> HAS_WARM_COLORS = bind("has_effect/warm_colors");
+    public static final TagKey<Biome> HAS_TROPICAL_COLORS = bind("has_effect/has_tropical_colors");
+    public static final TagKey<Biome> HAS_COLD_COLORS = bind("has_effect/has_cold_colors");
+    public static final TagKey<Biome> HAS_FROZEN_COLORS = bind("has_effect/frozen_colors");
+
+    public static final TagKey<Biome> HAS_SURFACE_SAND = bind("has_rule/surface_sand");
+    public static final TagKey<Biome> HAS_SURFACE_GRAVEL = bind("has_rule/surface_gravel");
+    public static final TagKey<Biome> HAS_SURFACE_COARSE_DIRT = bind("has_rule/surface_coarse_dirt");
+    public static final TagKey<Biome> HAS_UNDERWATER_MUD = bind("has_rule/underwater_mud");
+
+    public static final TagKey<Biome> HAS_LESS_STRICT_DISKS = bind("has_feature/group/less_strict_disks");
+
+    public static final TagKey<Biome> HAS_BROMELIAD = bind("has_feature/flower_bromeliad");
+    public static final TagKey<Biome> HAS_PINK_ORCHID = bind("has_feature/flower_pink_orchid");
+    public static final TagKey<Biome> HAS_HELLEBORE = bind("has_feature/flower_hellebore");
+    public static final TagKey<Biome> HAS_LILY_OF_THE_VALLEY = bind("has_feature/flower_lily_of_the_valley");
+    public static final TagKey<Biome> HAS_BELLFLOWER = bind("has_feature/bellflower");
 
     @NotNull
     private static TagKey<Biome> bind(@NotNull String path) {

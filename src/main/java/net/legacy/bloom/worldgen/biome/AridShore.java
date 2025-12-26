@@ -89,7 +89,6 @@ public final class AridShore extends FrozenBiome {
     public void addFeatures(BiomeGenerationSettings.Builder features) {
         OverworldBiomes.globalOverworldGeneration(features);
         BiomeDefaultFeatures.addDefaultOres(features);
-        BiomeHelper.addLessStrictDisks(features);
         BiomeDefaultFeatures.addDesertVegetation(features);
         BiomeDefaultFeatures.addDefaultMushrooms(features);
         BiomeDefaultFeatures.addDefaultExtraVegetation(features, true);

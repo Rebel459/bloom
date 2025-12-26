@@ -67,10 +67,7 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "minecraft:underwater_magma",
-      "bloom:disk_sand",
-      "bloom:disk_clay",
-      "bloom:disk_gravel"
+      "minecraft:underwater_magma"
     ],
     [],
     [

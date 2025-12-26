@@ -28,6 +28,13 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 	public void generate() {
 		this.dropSelf(BloomBlocks.HELLEBORE);
 		this.dropPottedContents(BloomBlocks.POTTED_HELLEBORE);
+		this.dropSelf(BloomBlocks.BROMELIAD);
+		this.dropPottedContents(BloomBlocks.POTTED_BROMELIAD);
+		this.dropSelf(BloomBlocks.PINK_ORCHID);
+		this.dropPottedContents(BloomBlocks.POTTED_PINK_ORCHID);
+
+		this.dropSelf(BloomBlocks.BELLFLOWER);
+
 		//this.add(ERBlocks.CHORUS_MOSAIC_SLAB, this::createSlabItemTable);
 	}
 

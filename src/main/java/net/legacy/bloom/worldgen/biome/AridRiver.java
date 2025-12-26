@@ -91,7 +91,6 @@ public final class AridRiver extends FrozenBiome {
     public void addFeatures(BiomeGenerationSettings.Builder features) {
         OverworldBiomes.globalOverworldGeneration(features);
         BiomeDefaultFeatures.addDefaultOres(features);
-        BiomeHelper.addLessStrictDisks(features);
         BiomeDefaultFeatures.addNearWaterVegetation(features);
         BiomeDefaultFeatures.addDesertVegetation(features);
         BiomeDefaultFeatures.addDefaultMushrooms(features);

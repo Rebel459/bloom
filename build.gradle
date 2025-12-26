@@ -71,19 +71,8 @@ jar {
 // Datagen
 
 fabricApi {
-    configureDataGeneration()
-}
-
-loom {
-    mods {
-        "bloom" {
-            sourceSet sourceSets.main
-        }
-    }
-
-    runs {
-        datagen {
-            inherit client
-        }
-    }
+    configureDataGeneration() {
+		client = true;
+		modId = "bloom"
+	}
 }

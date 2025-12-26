@@ -1,5 +1,7 @@
 package net.legacy.bloom.datagen;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.legacy.bloom.registry.BloomBlocks;
@@ -8,6 +10,7 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
+@Environment(EnvType.CLIENT)
 public final class BloomModelProvider extends FabricModelProvider {
 
 	public BloomModelProvider(FabricDataOutput output) {
@@ -17,6 +20,9 @@ public final class BloomModelProvider extends FabricModelProvider {
 	@Override
 	public void generateBlockStateModels(@NotNull BlockModelGenerators generator) {
 		generator.createPlantWithDefaultItem(BloomBlocks.HELLEBORE, BloomBlocks.POTTED_HELLEBORE, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.BROMELIAD, BloomBlocks.POTTED_BROMELIAD, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.PINK_ORCHID, BloomBlocks.POTTED_PINK_ORCHID, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createDoublePlantWithDefaultItem(BloomBlocks.BELLFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
 /*		generator.createTrivialCube(ERBlocks.CRYSTALLINE_LAMP);
 		generator.createTrivialCube(ERBlocks.CRYSTALLINE_BLOCK);
 		generator.createTrivialCube(ERBlocks.END_IRON_ORE);

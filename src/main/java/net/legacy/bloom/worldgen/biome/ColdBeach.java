@@ -89,7 +89,6 @@ public final class ColdBeach extends FrozenBiome {
     public void addFeatures(BiomeGenerationSettings.Builder features) {
         OverworldBiomes.globalOverworldGeneration(features);
         BiomeDefaultFeatures.addDefaultOres(features);
-        BiomeHelper.addLessStrictDisks(features);
         BiomeDefaultFeatures.addWaterTrees(features);
         BiomeDefaultFeatures.addBushes(features);
         BiomeDefaultFeatures.addDefaultFlowers(features);

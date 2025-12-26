@@ -16,9 +16,16 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 
 	@Override
 	protected void addTags(@NotNull HolderLookup.Provider arg) {
+		this.valueLookupBuilder(BlockTags.SMALL_FLOWERS)
+				.add(BloomBlocks.PINK_ORCHID);
 		this.valueLookupBuilder(BlockTags.FLOWERS)
+				.add(BloomBlocks.BELLFLOWER)
+				.add(BloomBlocks.PINK_ORCHID)
+				.add(BloomBlocks.BROMELIAD)
 				.add(BloomBlocks.HELLEBORE);
 		this.valueLookupBuilder(BlockTags.FLOWER_POTS)
+				.add(BloomBlocks.POTTED_PINK_ORCHID)
+				.add(BloomBlocks.POTTED_BROMELIAD)
 				.add(BloomBlocks.POTTED_HELLEBORE);
 	}
 }

@@ -16,15 +16,11 @@ public class BloomRegistryProvider extends FabricDynamicRegistryProvider {
     }
 
     public static void buildRegistry(RegistrySetBuilder registrySetBuilder) {
-        registrySetBuilder.add(Registries.CONFIGURED_FEATURE, BloomFeatureBootstrap::bootstrapConfigured);
-        registrySetBuilder.add(Registries.PLACED_FEATURE, BloomFeatureBootstrap::bootstrapPlaced);
         registrySetBuilder.add(Registries.BIOME, BloomBiomes::bootstrap);
     }
 
     @Override
     public void configure(HolderLookup.Provider registries, Entries entries) {
-        entries.addAll(asLookup(entries.getLookup(Registries.CONFIGURED_FEATURE)));
-        entries.addAll(asLookup(entries.placedFeatures()));
         entries.addAll(asLookup(entries.getLookup(Registries.BIOME)));
     }
 

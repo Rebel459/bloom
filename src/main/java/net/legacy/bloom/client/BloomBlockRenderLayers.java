@@ -12,5 +12,11 @@ public final class BloomBlockRenderLayers {
 	public static void init() {
 		BlockRenderLayerMap.putBlock(BloomBlocks.HELLEBORE, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_HELLEBORE, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.BROMELIAD, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_BROMELIAD, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.PINK_ORCHID, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_PINK_ORCHID, ChunkSectionLayer.CUTOUT);
+
+		BlockRenderLayerMap.putBlock(BloomBlocks.BELLFLOWER, ChunkSectionLayer.CUTOUT);
 	}
 }
