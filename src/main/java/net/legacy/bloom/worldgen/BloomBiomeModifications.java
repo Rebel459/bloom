@@ -60,6 +60,7 @@ public final class BloomBiomeModifications {
 					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
 					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
 					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
+					BiomeHelper.addLessStrictDisks(modificationContext);
 				}
 		);
 		BiomeModifications.create(Bloom.id("has_less_strict_disks")).add(

@@ -76,7 +76,6 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		// Feature Groups
 		this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
-				.addTag(BloomBiomeTags.HAS_UNDERWATER_MUD)
 				.add(BloomBiomes.ARID_RIVER)
 				.add(BloomBiomes.ARID_SHORE)
 				.add(BloomBiomes.COLD_RIVER)
