@@ -16,8 +16,20 @@ public final class BloomBlockRenderLayers {
 		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_BROMELIAD, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(BloomBlocks.PINK_ORCHID, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_PINK_ORCHID, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.CALLA_LILY, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_CALLA_LILY, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.DIANTHUS, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_DIANTHUS, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.GOLDENROD, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_GOLDENROD, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.ORANGE_DAISY, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_ORANGE_DAISY, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.SCILLA, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_SCILLA, ChunkSectionLayer.CUTOUT);
 
 		BlockRenderLayerMap.putBlock(BloomBlocks.BELLFLOWER, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(BloomBlocks.HYDRANGEA, ChunkSectionLayer.CUTOUT);
+
+		BlockRenderLayerMap.putBlock(BloomBlocks.SUCCULENT, ChunkSectionLayer.CUTOUT);
 	}
 }

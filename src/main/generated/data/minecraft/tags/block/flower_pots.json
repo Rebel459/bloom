@@ -1,5 +1,10 @@
 {
   "values": [
+    "bloom:potted_dianthus",
+    "bloom:potted_goldenrod",
+    "bloom:potted_calla_lily",
+    "bloom:potted_orange_daisy",
+    "bloom:potted_scilla",
     "bloom:potted_pink_orchid",
     "bloom:potted_bromeliad",
     "bloom:potted_hellebore"

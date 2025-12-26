@@ -28,7 +28,7 @@ import java.util.function.Function;
 public final class BloomBlocks {
 
 	public static final Block HELLEBORE = register("hellebore",
-			properties -> new WiderFlowerBlock(MobEffects.SATURATION, 0.35F, properties),
+			properties -> new WiderFlowerBlock(MobEffects.SPEED, 5F, properties),
 			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
 	);
 	public static final Block POTTED_HELLEBORE = registerWithoutItem("potted_hellebore",
@@ -46,11 +46,56 @@ public final class BloomBlocks {
 	);
 
 	public static final Block PINK_ORCHID = register("pink_orchid",
-			properties -> new FlowerBlock(MobEffects.WEAKNESS, 7F, properties),
+			properties -> new FlowerBlock(MobEffects.SATURATION, 0.35F, properties),
 			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
 	);
 	public static final Block POTTED_PINK_ORCHID = registerWithoutItem("potted_pink_orchid",
 			properties -> new FlowerPotBlock(PINK_ORCHID, properties),
+			Blocks.flowerPotProperties()
+	);
+
+	public static final Block CALLA_LILY = register("calla_lily",
+			properties -> new FlowerBlock(MobEffects.POISON, 11F, properties),
+			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final Block POTTED_CALLA_LILY = registerWithoutItem("potted_calla_lily",
+			properties -> new FlowerPotBlock(CALLA_LILY, properties),
+			Blocks.flowerPotProperties()
+	);
+
+	public static final Block DIANTHUS = register("dianthus",
+			properties -> new WiderFlowerBlock(MobEffects.REGENERATION, 7F, properties),
+			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final Block POTTED_DIANTHUS = registerWithoutItem("potted_dianthus",
+			properties -> new FlowerPotBlock(DIANTHUS, properties),
+			Blocks.flowerPotProperties()
+	);
+
+	public static final Block GOLDENROD = register("goldenrod",
+			properties -> new FlowerBlock(MobEffects.FIRE_RESISTANCE, 3F, properties),
+			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final Block POTTED_GOLDENROD = registerWithoutItem("potted_goldenrod",
+			properties -> new FlowerPotBlock(GOLDENROD, properties),
+			Blocks.flowerPotProperties()
+	);
+
+	public static final Block ORANGE_DAISY = register("orange_daisy",
+			properties -> new FlowerBlock(MobEffects.REGENERATION, 7F, properties),
+			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final Block POTTED_ORANGE_DAISY = registerWithoutItem("potted_orange_daisy",
+			properties -> new FlowerPotBlock(ORANGE_DAISY, properties),
+			Blocks.flowerPotProperties()
+	);
+
+	public static final Block SCILLA = register("scilla",
+			properties -> new WiderFlowerBlock(MobEffects.BLINDNESS, 11F, properties),
+			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final Block POTTED_SCILLA = registerWithoutItem("potted_scilla",
+			properties -> new FlowerPotBlock(SCILLA, properties),
 			Blocks.flowerPotProperties()
 	);
 
@@ -61,6 +106,11 @@ public final class BloomBlocks {
 	public static final Block HYDRANGEA = register("hydrangea",
 			TallFlowerBlock::new,
 			BlockBehaviour.Properties.ofFullCopy(Blocks.ROSE_BUSH)
+	);
+
+	public static final Block SUCCULENT = register("succulent",
+			BushBlock::new,
+			BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH)
 	);
 
 	public static void registerBlockProperties() {
@@ -82,6 +132,12 @@ public final class BloomBlocks {
 		CompostingChanceRegistry.INSTANCE.add(PINK_ORCHID, 0.65F);
 		CompostingChanceRegistry.INSTANCE.add(BELLFLOWER, 0.65F);
 		CompostingChanceRegistry.INSTANCE.add(HYDRANGEA, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(CALLA_LILY, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(DIANTHUS, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(GOLDENROD, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(ORANGE_DAISY, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(SCILLA, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(SUCCULENT, 0.65F);
 	}
 
 	private static void registerFlammability() {
@@ -91,6 +147,12 @@ public final class BloomBlocks {
 		flammableBlockRegistry.add(PINK_ORCHID, 60, 100);
 		flammableBlockRegistry.add(BELLFLOWER, 60, 100);
 		flammableBlockRegistry.add(HYDRANGEA, 60, 100);
+		flammableBlockRegistry.add(CALLA_LILY, 60, 100);
+		flammableBlockRegistry.add(DIANTHUS, 60, 100);
+		flammableBlockRegistry.add(GOLDENROD, 60, 100);
+		flammableBlockRegistry.add(ORANGE_DAISY, 60, 100);
+		flammableBlockRegistry.add(SCILLA, 60, 100);
+		flammableBlockRegistry.add(SUCCULENT, 60, 100);
 	}
 
 	private static void registerFuels() {

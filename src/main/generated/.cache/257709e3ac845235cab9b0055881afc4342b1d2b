@@ -1,9 +1,20 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Block Loot Tables
 02a02f28dcaa05428b16b916a04a6409ca166c4f data/bloom/loot_table/blocks/bellflower.json
 9c8d74ee28a47eb345f4e0955ba89dd78fe48069 data/bloom/loot_table/blocks/bromeliad.json
+7f2d0ef8c709840afa98ffdc1757cec45952aea7 data/bloom/loot_table/blocks/calla_lily.json
+6f307e4b149cf35b4190565306ac4155c5701c35 data/bloom/loot_table/blocks/dianthus.json
+b0734895d43a9f68250ec3272af155f886c9f7ea data/bloom/loot_table/blocks/goldenrod.json
 ee38c54ed09cb92365f587e7e8f1b69c265d61fd data/bloom/loot_table/blocks/hellebore.json
 58d79fc684c9c98fb9840474af58c0a209def879 data/bloom/loot_table/blocks/hydrangea.json
+85d99686fd246fd1aa5d199954bdd5ab6c86188a data/bloom/loot_table/blocks/orange_daisy.json
 6ea2b8d39047c942d09e74bcf62d158edd7797ef data/bloom/loot_table/blocks/pink_orchid.json
-c9ce971e829314e81823fd0b783082a84a3670cf data/bloom/loot_table/blocks/potted_bromeliad.json
+568b52d26f6af3c4aaa2788f4adc7b013d5219b3 data/bloom/loot_table/blocks/potted_bromeliad.json
+a90aa1229f6a76f6bbd6b52bd970f7d834b16792 data/bloom/loot_table/blocks/potted_calla_lily.json
+980e8b5104d49b466ba7e7e8581847bfb57eaa42 data/bloom/loot_table/blocks/potted_dianthus.json
+70e0d0fb71b3fff5ba64421c3b8843fefbc58909 data/bloom/loot_table/blocks/potted_goldenrod.json
 c9ce971e829314e81823fd0b783082a84a3670cf data/bloom/loot_table/blocks/potted_hellebore.json
+7d2242ddb97b84882bdadcd863385f0a011c486c data/bloom/loot_table/blocks/potted_orange_daisy.json
 9c16261952c6dbc0ca2bd166b85bda0a77846ebd data/bloom/loot_table/blocks/potted_pink_orchid.json
+56521b84f7a3c4a48b3c4218c0be5b53bcca9c62 data/bloom/loot_table/blocks/potted_scilla.json
+384f17e37a52901b0f0bf74959bf4e70c7e11bc3 data/bloom/loot_table/blocks/scilla.json
+10867aa8d940a3499ca2148386ce221fb5c303fa data/bloom/loot_table/blocks/succulent.json

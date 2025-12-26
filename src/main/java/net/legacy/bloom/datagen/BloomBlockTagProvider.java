@@ -17,14 +17,27 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 	@Override
 	protected void addTags(@NotNull HolderLookup.Provider arg) {
 		this.valueLookupBuilder(BlockTags.SMALL_FLOWERS)
-				.add(BloomBlocks.PINK_ORCHID);
+				.add(BloomBlocks.PINK_ORCHID)
+				.add(BloomBlocks.GOLDENROD)
+				.add(BloomBlocks.CALLA_LILY)
+				.add(BloomBlocks.ORANGE_DAISY);
 		this.valueLookupBuilder(BlockTags.FLOWERS)
+				.add(BloomBlocks.DIANTHUS)
+				.add(BloomBlocks.GOLDENROD)
+				.add(BloomBlocks.CALLA_LILY)
+				.add(BloomBlocks.ORANGE_DAISY)
+				.add(BloomBlocks.SCILLA)
 				.add(BloomBlocks.BELLFLOWER)
 				.add(BloomBlocks.PINK_ORCHID)
 				.add(BloomBlocks.BROMELIAD)
 				.add(BloomBlocks.HELLEBORE)
 				.add(BloomBlocks.HYDRANGEA);
 		this.valueLookupBuilder(BlockTags.FLOWER_POTS)
+				.add(BloomBlocks.POTTED_DIANTHUS)
+				.add(BloomBlocks.POTTED_GOLDENROD)
+				.add(BloomBlocks.POTTED_CALLA_LILY)
+				.add(BloomBlocks.POTTED_ORANGE_DAISY)
+				.add(BloomBlocks.POTTED_SCILLA)
 				.add(BloomBlocks.POTTED_PINK_ORCHID)
 				.add(BloomBlocks.POTTED_BROMELIAD)
 				.add(BloomBlocks.POTTED_HELLEBORE);

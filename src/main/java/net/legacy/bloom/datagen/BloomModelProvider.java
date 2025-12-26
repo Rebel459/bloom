@@ -7,7 +7,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.MultiVariant;
+import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)
@@ -22,8 +27,14 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.createPlantWithDefaultItem(BloomBlocks.HELLEBORE, BloomBlocks.POTTED_HELLEBORE, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createPlantWithDefaultItem(BloomBlocks.BROMELIAD, BloomBlocks.POTTED_BROMELIAD, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createPlantWithDefaultItem(BloomBlocks.PINK_ORCHID, BloomBlocks.POTTED_PINK_ORCHID, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.CALLA_LILY, BloomBlocks.POTTED_CALLA_LILY, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.DIANTHUS, BloomBlocks.POTTED_DIANTHUS, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.GOLDENROD, BloomBlocks.POTTED_GOLDENROD, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.ORANGE_DAISY, BloomBlocks.POTTED_ORANGE_DAISY, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.SCILLA, BloomBlocks.POTTED_SCILLA, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createDoublePlantWithDefaultItem(BloomBlocks.BELLFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createDoublePlantWithDefaultItem(BloomBlocks.HYDRANGEA, BlockModelGenerators.PlantType.NOT_TINTED);
+		this.createSinglePlant(BloomBlocks.SUCCULENT, BlockModelGenerators.PlantType.NOT_TINTED, generator);
 /*		generator.createTrivialCube(ERBlocks.CRYSTALLINE_LAMP);
 		generator.createTrivialCube(ERBlocks.CRYSTALLINE_BLOCK);
 		generator.createTrivialCube(ERBlocks.END_IRON_ORE);
@@ -46,5 +57,14 @@ public final class BloomModelProvider extends FabricModelProvider {
 	public void generateItemModels(@NotNull ItemModelGenerators generator) {
 /*        generator.generateFlatItem(ERItems.CHORUS_RAFT, ModelTemplates.FLAT_ITEM);
 		generator.generateFlatItem(ERItems.CHORUS_CHEST_RAFT, ModelTemplates.FLAT_ITEM);*/
+	}
+
+	public void createSinglePlant(Block block, BlockModelGenerators.PlantType plantType, @NotNull BlockModelGenerators generator) {
+		generator.registerSimpleItemModel(block.asItem(), plantType.createItemModel(generator, block));
+		this.createPlant(block, plantType, generator);
+	}
+
+	public void createPlant(Block block, BlockModelGenerators.PlantType plantType, @NotNull BlockModelGenerators generator) {
+		generator.createCrossBlock(block, plantType);
 	}
 }
