@@ -20,6 +20,14 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 	protected void addTags(@NotNull HolderLookup.Provider arg) {
 
 		// Normal
+		this.builder(BloomBiomeTags.BLOOM_BIOMES)
+				.add(BloomBiomes.ARID_RIVER)
+				.add(BloomBiomes.ARID_SHORE)
+				.add(BloomBiomes.TROPICAL_RIVER)
+				.add(BloomBiomes.TROPICAL_BEACH)
+				.add(BloomBiomes.COLD_RIVER)
+				.add(BloomBiomes.COLD_BEACH);
+
 		this.builder(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 				.add(Biomes.JUNGLE)
 				.add(Biomes.SPARSE_JUNGLE);
@@ -32,9 +40,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		// Effects
 		this.builder(BloomBiomeTags.HAS_WARM_COLORS)
 				.add(Biomes.DESERT)
-				.add(Biomes.BADLANDS)
-				.add(Biomes.ERODED_BADLANDS)
-				.add(Biomes.WOODED_BADLANDS);
+				.addOptionalTag(BiomeTags.IS_BADLANDS);
 
 		this.builder(BloomBiomeTags.HAS_TROPICAL_COLORS)
 				.addOptionalTag(BiomeTags.IS_JUNGLE);
@@ -117,5 +123,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS)
 				.add(BloomBiomes.COLD_RIVER)
 				.add(BloomBiomes.COLD_BEACH);
+
+		this.builder(BiomeTags.HAS_MINESHAFT)
+				.addTag(BloomBiomeTags.BLOOM_BIOMES);
+
+		this.builder(BiomeTags.HAS_TRIAL_CHAMBERS)
+				.addTag(BloomBiomeTags.BLOOM_BIOMES);
 	}
 }

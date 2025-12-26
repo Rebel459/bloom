@@ -1,8 +1,9 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Tags for minecraft:worldgen/biome
+1ddad813424a59b4753bf4130dcbb094f6a65038 data/bloom/tags/worldgen/biome/bloom_biomes.json
 055315672f5a347dc3be385d6850769271b38549 data/bloom/tags/worldgen/biome/has_effect/cold_colors.json
 e22f75290a80a306ccdb324fbcc4b8a95617f404 data/bloom/tags/worldgen/biome/has_effect/frozen_colors.json
 611d1a275cea79cf9b367c51ed06e2487e8d8d68 data/bloom/tags/worldgen/biome/has_effect/tropical_colors.json
-42d7f45693b54847c20b5f5ab083d343e1c0c14d data/bloom/tags/worldgen/biome/has_effect/warm_colors.json
+dd1019faa6b177d33797ba5bd1d08137dd8598af data/bloom/tags/worldgen/biome/has_effect/warm_colors.json
 c4bcf51ceb73bf7eeb36e9b974ae2e838de44f77 data/bloom/tags/worldgen/biome/has_feature/flower_bellflower.json
 d6c8b42cadf8a36be92b0ccf9118294185ef9cc1 data/bloom/tags/worldgen/biome/has_feature/flower_bromeliad.json
 f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feature/flower_hellebore.json
@@ -15,6 +16,8 @@ f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feat
 611d1a275cea79cf9b367c51ed06e2487e8d8d68 data/bloom/tags/worldgen/biome/has_rule/underwater_mud.json
 a6c8f196eb7a0e02e4f8b5500fbd332a3c3dd5aa data/bloom/tags/worldgen/biome/is_non_bamboo_jungle.json
 075acc2eaddd40ae6e9d6223c2e6aed09dc6f830 data/bloom/tags/worldgen/biome/is_non_snowy_taiga.json
+c9113a76d2da44847f6f270add123dec5a854ac2 data/minecraft/tags/worldgen/biome/has_structure/mineshaft.json
+c9113a76d2da44847f6f270add123dec5a854ac2 data/minecraft/tags/worldgen/biome/has_structure/trial_chambers.json
 44178925c0876a7dac391dbcc1efff6b0f97bca3 data/minecraft/tags/worldgen/biome/is_beach.json
 839beb193ef152223a7b68890b9736a80539bbef data/minecraft/tags/worldgen/biome/is_river.json
 f572fcad777c92675f40c6522400aa6a9ce41c4a data/minecraft/tags/worldgen/biome/spawns_cold_variant_farm_animals.json

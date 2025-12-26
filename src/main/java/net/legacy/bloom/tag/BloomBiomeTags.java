@@ -7,6 +7,7 @@ import net.minecraft.world.level.biome.Biome;
 import org.jetbrains.annotations.NotNull;
 
 public class BloomBiomeTags {
+    public static final TagKey<Biome> BLOOM_BIOMES = bind("bloom_biomes");
     public static final TagKey<Biome> IS_NON_BAMBOO_JUNGLE = bind("is_non_bamboo_jungle");
     public static final TagKey<Biome> IS_NON_SNOWY_TAIGA = bind("is_non_snowy_taiga");
 

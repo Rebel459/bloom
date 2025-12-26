@@ -5,6 +5,10 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BloomBiomes {
 
     public static final ResourceKey<Biome> ARID_RIVER = AridRiver.INSTANCE.getKey();
