@@ -41,7 +41,7 @@ public final class BloomBlocks {
 			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
 	);
 	public static final Block POTTED_BROMELIAD = registerWithoutItem("potted_bromeliad",
-			properties -> new FlowerPotBlock(HELLEBORE, properties),
+			properties -> new FlowerPotBlock(BROMELIAD, properties),
 			Blocks.flowerPotProperties()
 	);
 
