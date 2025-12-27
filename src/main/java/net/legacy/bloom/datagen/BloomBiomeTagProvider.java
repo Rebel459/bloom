@@ -106,10 +106,34 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(Biomes.DARK_FOREST)
 				.add(Biomes.FLOWER_FOREST);
 
-		this.builder(BloomBiomeTags.HAS_HYDRANGEA)
-				.add(Biomes.FOREST)
-				.add(Biomes.FLOWER_FOREST)
-				.add(Biomes.CHERRY_GROVE);
+        this.builder(BloomBiomeTags.HAS_HYDRANGEA)
+                .add(Biomes.FOREST)
+                .add(Biomes.FLOWER_FOREST)
+                .add(Biomes.CHERRY_GROVE);
+
+        this.builder(BloomBiomeTags.HAS_CALLA_LILY)
+                .addOptionalTag(BiomeTags.IS_SAVANNA)
+                .add(Biomes.FLOWER_FOREST);
+
+        this.builder(BloomBiomeTags.HAS_DIANTHUS)
+                .add(Biomes.SNOWY_TAIGA)
+                .add(Biomes.SNOWY_PLAINS);
+
+        this.builder(BloomBiomeTags.HAS_GOLDENROD)
+                .add(Biomes.SUNFLOWER_PLAINS);
+
+        this.builder(BloomBiomeTags.HAS_ORANGE_DAISY)
+                .add(Biomes.OLD_GROWTH_BIRCH_FOREST);
+
+        this.builder(BloomBiomeTags.HAS_SCILLA)
+                .add(Biomes.SNOWY_TAIGA)
+                .add(Biomes.SNOWY_PLAINS)
+                .add(Biomes.WINDSWEPT_FOREST)
+                .add(Biomes.WINDSWEPT_HILLS)
+                .add(Biomes.WINDSWEPT_GRAVELLY_HILLS);
+
+        this.builder(BloomBiomeTags.HAS_SUCCULENT)
+                .addOptionalTag(BiomeTags.IS_BADLANDS);
 
 		// Vanilla
 		this.builder(BiomeTags.IS_RIVER)

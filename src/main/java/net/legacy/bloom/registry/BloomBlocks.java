@@ -5,7 +5,9 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.legacy.bloom.Bloom;
-import net.legacy.bloom.block.WiderFlowerBlock;
+import net.legacy.bloom.block.AridVegetationBlock;
+import net.legacy.bloom.block.LargeFlowerBlock;
+import net.legacy.bloom.block.WideFlowerBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -28,7 +30,7 @@ import java.util.function.Function;
 public final class BloomBlocks {
 
 	public static final Block HELLEBORE = register("hellebore",
-			properties -> new WiderFlowerBlock(MobEffects.SPEED, 5F, properties),
+			properties -> new WideFlowerBlock(MobEffects.SPEED, 5F, properties),
 			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
 	);
 	public static final Block POTTED_HELLEBORE = registerWithoutItem("potted_hellebore",
@@ -37,7 +39,7 @@ public final class BloomBlocks {
 	);
 
 	public static final Block BROMELIAD = register("bromeliad",
-			properties -> new WiderFlowerBlock(MobEffects.JUMP_BOOST, 5F, properties),
+			properties -> new LargeFlowerBlock(MobEffects.JUMP_BOOST, 5F, properties),
 			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
 	);
 	public static final Block POTTED_BROMELIAD = registerWithoutItem("potted_bromeliad",
@@ -64,7 +66,7 @@ public final class BloomBlocks {
 	);
 
 	public static final Block DIANTHUS = register("dianthus",
-			properties -> new WiderFlowerBlock(MobEffects.REGENERATION, 7F, properties),
+			properties -> new WideFlowerBlock(MobEffects.REGENERATION, 7F, properties),
 			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
 	);
 	public static final Block POTTED_DIANTHUS = registerWithoutItem("potted_dianthus",
@@ -91,7 +93,7 @@ public final class BloomBlocks {
 	);
 
 	public static final Block SCILLA = register("scilla",
-			properties -> new WiderFlowerBlock(MobEffects.BLINDNESS, 11F, properties),
+			properties -> new WideFlowerBlock(MobEffects.BLINDNESS, 11F, properties),
 			BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
 	);
 	public static final Block POTTED_SCILLA = registerWithoutItem("potted_scilla",
@@ -109,7 +111,7 @@ public final class BloomBlocks {
 	);
 
 	public static final Block SUCCULENT = register("succulent",
-			BushBlock::new,
+			AridVegetationBlock::new,
 			BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH)
 	);
 

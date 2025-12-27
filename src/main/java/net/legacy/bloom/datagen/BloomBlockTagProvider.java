@@ -3,8 +3,10 @@ package net.legacy.bloom.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.tag.BloomBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -16,6 +18,11 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 
 	@Override
 	protected void addTags(@NotNull HolderLookup.Provider arg) {
+        this.valueLookupBuilder(BloomBlockTags.ARID_VEGETATION_MAY_PLACE_ON)
+                .addOptionalTag(BlockTags.SAND)
+                .addOptionalTag(BlockTags.DIRT)
+                .add(Blocks.FARMLAND);
+
 		this.valueLookupBuilder(BlockTags.SMALL_FLOWERS)
 				.add(BloomBlocks.PINK_ORCHID)
 				.add(BloomBlocks.GOLDENROD)

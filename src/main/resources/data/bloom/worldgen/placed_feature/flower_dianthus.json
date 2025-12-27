@@ -1,9 +1,9 @@
 {
-  "feature": "bloom:flower_lily_of_the_valley",
+  "feature": "bloom:flower_dianthus",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 12
+      "chance": 10
     },
     {
       "type": "minecraft:in_square"

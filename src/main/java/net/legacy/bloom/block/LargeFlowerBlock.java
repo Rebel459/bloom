@@ -11,10 +11,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class WiderFlowerBlock extends FlowerBlock implements SuspiciousEffectHolder {
-    private static final VoxelShape SHAPE = Block.column(10.0, 0.0, 10.0);
+public class LargeFlowerBlock extends FlowerBlock implements SuspiciousEffectHolder {
+    private static final VoxelShape SHAPE = Block.column(10.0, 0.0, 14.0);
 
-    public WiderFlowerBlock(Holder<MobEffect> holder, float f, Properties properties) {
+    public LargeFlowerBlock(Holder<MobEffect> holder, float f, Properties properties) {
         super(holder, f, properties);
     }
 

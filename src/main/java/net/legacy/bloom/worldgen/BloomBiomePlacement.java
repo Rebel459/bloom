@@ -53,7 +53,7 @@ public class BloomBiomePlacement {
                 CriterionBuilder.allOf(
                         CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
                         CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5),
-                        CriterionBuilder.value(BiomeParameterTargets.EROSION, BiomeHelper.EROSION_3, BiomeHelper.EROSION_5)
+                        CriterionBuilder.value(BiomeParameterTargets.EROSION, BiomeHelper.EROSION_2, BiomeHelper.EROSION_5)
                 )
         );
         BiomePlacement.addSubOverworld(

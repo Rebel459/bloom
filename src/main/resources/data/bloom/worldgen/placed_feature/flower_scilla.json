@@ -1,9 +1,9 @@
 {
-  "feature": "bloom:flower_lily_of_the_valley",
+  "feature": "bloom:flower_scilla",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 12
+      "chance": 6
     },
     {
       "type": "minecraft:in_square"

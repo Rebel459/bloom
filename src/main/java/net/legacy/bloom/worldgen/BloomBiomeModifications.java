@@ -10,6 +10,8 @@ import net.legacy.bloom.worldgen.biome.AridRiver;
 import net.legacy.bloom.worldgen.biome.ColdRiver;
 import net.legacy.bloom.worldgen.biome.TropicalRiver;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
 public final class BloomBiomeModifications {
@@ -17,6 +19,14 @@ public final class BloomBiomeModifications {
 	//modificationContext.getAttributes().set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(Musics.createGameMusic(LaLSounds.SAVANNA_MUSIC)));
 
 	public static void init() {
+        BiomeModifications.create(Bloom.id("remove_desert_grass")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.includeByKey(Biomes.DESERT),
+                (selectionContext, modificationContext) -> {
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_BADLANDS);
+                }
+        );
+
 		BiomeModifications.create(Bloom.id("has_warm_colors")).add(
 				ModificationPhase.REPLACEMENTS,
 				BiomeSelectors.tag(BloomBiomeTags.HAS_WARM_COLORS),
@@ -28,14 +38,7 @@ public final class BloomBiomeModifications {
 				ModificationPhase.REPLACEMENTS,
 				BiomeSelectors.tag(BloomBiomeTags.HAS_TROPICAL_COLORS),
 				(selectionContext, modificationContext) -> {
-					var generation = modificationContext.getGenerationSettings();
 					modificationContext.getEffects().setWaterColor(TropicalRiver.WATER_COLOR);
-					generation.removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
-					generation.removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
-					generation.removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
-					generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_CLAY);
-					generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_SAND);
-					generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_GRAVEL);;
 				}
 		);
 		BiomeModifications.create(Bloom.id("has_cold_colors")).add(
@@ -106,12 +109,54 @@ public final class BloomBiomeModifications {
 					BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_LILY_OF_THE_VALLEY);
 				}
 		);
-		BiomeModifications.create(Bloom.id("has_hydrangea")).add(
-				ModificationPhase.REPLACEMENTS,
-				BiomeSelectors.tag(BloomBiomeTags.HAS_HYDRANGEA),
-				(selectionContext, modificationContext) -> {
-					BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_HYDRANGEA);
-				}
-		);
+        BiomeModifications.create(Bloom.id("has_hydrangea")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_HYDRANGEA),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_HYDRANGEA);
+                }
+        );
+        BiomeModifications.create(Bloom.id("has_calla_lily")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_CALLA_LILY),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_CALLA_LILY);
+                }
+        );
+        BiomeModifications.create(Bloom.id("has_dianthus")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_DIANTHUS),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_DIANTHUS);
+                }
+        );
+        BiomeModifications.create(Bloom.id("has_goldenrod")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_GOLDENROD),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_GOLDENROD);
+                }
+        );
+        BiomeModifications.create(Bloom.id("has_orange_daisy")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_ORANGE_DAISY),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_ORANGE_DAISY);
+                }
+        );
+        BiomeModifications.create(Bloom.id("has_scilla")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_SCILLA),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_SCILLA);
+                }
+        );
+        BiomeModifications.create(Bloom.id("has_succulent")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_SUCCULENT),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.PATCH_SUCCULENT);
+                }
+        );
 	}
 }
