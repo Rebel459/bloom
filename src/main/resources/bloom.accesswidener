@@ -1,3 +1,4 @@
 accessWidener v2 named
 
 accessible method net/minecraft/data/worldgen/biome/OverworldBiomes globalOverworldGeneration (Lnet/minecraft/world/level/biome/BiomeGenerationSettings$Builder;)V
+accessible method net/minecraft/data/worldgen/SurfaceRuleData surfaceNoiseAbove (D)Lnet/minecraft/world/level/levelgen/SurfaceRules$ConditionSource;

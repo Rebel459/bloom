@@ -66,13 +66,6 @@ public final class BloomBiomeModifications {
 					BiomeHelper.addLessStrictDisks(modificationContext);
 				}
 		);
-		BiomeModifications.create(Bloom.id("has_less_strict_disks")).add(
-				ModificationPhase.REPLACEMENTS,
-				BiomeSelectors.tag(BloomBiomeTags.HAS_LESS_STRICT_DISKS),
-				(selectionContext, modificationContext) -> {
-					BiomeHelper.addLessStrictDisks(modificationContext);
-				}
-		);
 
 		BiomeModifications.create(Bloom.id("has_bromeliad")).add(
 				ModificationPhase.REPLACEMENTS,

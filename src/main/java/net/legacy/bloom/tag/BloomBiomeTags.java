@@ -20,6 +20,11 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_SURFACE_GRAVEL = bind("has_rule/surface_gravel");
     public static final TagKey<Biome> HAS_SURFACE_COARSE_DIRT = bind("has_rule/surface_coarse_dirt");
     public static final TagKey<Biome> HAS_UNDERWATER_MUD = bind("has_rule/underwater_mud");
+    public static final TagKey<Biome> HAS_STRIP_COARSE_DIRT = bind("has_rule/strip_coarse_dirt");
+    public static final TagKey<Biome> HAS_HIGHER_STONE = bind("has_rule/depth_higher");
+    public static final TagKey<Biome> HAS_DEEPER_STONE = bind("has_rule/depth_deeper");
+    public static final TagKey<Biome> HAS_DEPTH_GRANITE = bind("has_rule/depth_granite");
+    public static final TagKey<Biome> HAS_DEPTH_STONE = bind("has_rule/depth_stone");
 
     public static final TagKey<Biome> HAS_LESS_STRICT_DISKS = bind("has_feature/internal/less_strict_disks");
 

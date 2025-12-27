@@ -17,6 +17,11 @@ f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feat
 20e96599f962ab17e92ca742059a15e0b55fd1b5 data/bloom/tags/worldgen/biome/has_feature/flower_scilla.json
 3277ed3d03a23dce54022d8262d8ec1f03421047 data/bloom/tags/worldgen/biome/has_feature/internal/less_strict_disks.json
 24192457dbc336972465d1e28399da894eb6301d data/bloom/tags/worldgen/biome/has_feature/patch_succulent.json
+3108b0ff3053cb8c05c05981dd781267ce5e2a1c data/bloom/tags/worldgen/biome/has_rule/depth_deeper.json
+562853abe345ceeddc3931331c8cdb3aa0fbe085 data/bloom/tags/worldgen/biome/has_rule/depth_granite.json
+e7a7e2b27c8aa61b4a0876e0ab6e81e6cd53a844 data/bloom/tags/worldgen/biome/has_rule/depth_higher.json
+a18b42d48e473c1416af02fa30d2722fbc057e77 data/bloom/tags/worldgen/biome/has_rule/depth_stone.json
+5d9519f191f21af13ae367c9c51f6bcff58c9fb3 data/bloom/tags/worldgen/biome/has_rule/strip_coarse_dirt.json
 8623ab007b8147a45e22c9bcfab51dfd36352be0 data/bloom/tags/worldgen/biome/has_rule/surface_coarse_dirt.json
 2f6344dd6d748b629c13126a0d9cf4e8010cd79e data/bloom/tags/worldgen/biome/has_rule/surface_gravel.json
 021cb143064c174b808192eb80bb0e0130c29aea data/bloom/tags/worldgen/biome/has_rule/surface_sand.json

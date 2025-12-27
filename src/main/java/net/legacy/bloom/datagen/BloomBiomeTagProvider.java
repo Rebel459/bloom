@@ -84,8 +84,27 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(BloomBiomes.ARID_RIVER)
 				.add(BloomBiomes.ARID_SHORE);
 
-		this.builder(BloomBiomeTags.HAS_UNDERWATER_MUD)
-				.addOptionalTag(BiomeTags.IS_JUNGLE);
+        this.builder(BloomBiomeTags.HAS_UNDERWATER_MUD)
+                .addOptionalTag(BiomeTags.IS_JUNGLE);
+
+        this.builder(BloomBiomeTags.HAS_STRIP_COARSE_DIRT)
+                .add(Biomes.SAVANNA)
+                .add(Biomes.SAVANNA_PLATEAU);
+
+        this.builder(BloomBiomeTags.HAS_DEPTH_GRANITE)
+                .add(Biomes.SAVANNA)
+                .add(Biomes.SAVANNA_PLATEAU)
+                .add(Biomes.WINDSWEPT_SAVANNA);
+
+        this.builder(BloomBiomeTags.HAS_DEPTH_STONE)
+                .add(Biomes.CHERRY_GROVE);
+
+        this.builder(BloomBiomeTags.HAS_HIGHER_STONE)
+                .addTag(BloomBiomeTags.HAS_DEPTH_STONE)
+                .add(Biomes.SAVANNA_PLATEAU);
+
+        this.builder(BloomBiomeTags.HAS_DEEPER_STONE)
+                .addTag(BloomBiomeTags.HAS_DEPTH_GRANITE);
 
 		// Features
 		this.builder(BloomBiomeTags.HAS_BROMELIAD)
