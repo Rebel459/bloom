@@ -1,6 +1,8 @@
 {
   "values": [
     "bloom:warm_river",
-    "bloom:arid_shore"
+    "bloom:arid_shore",
+    "bloom:lukewarm_river",
+    "bloom:lukewarm_beach"
   ]
 }

@@ -25,8 +25,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(BloomBiomes.ARID_SHORE)
 				.add(BloomBiomes.TROPICAL_RIVER)
 				.add(BloomBiomes.TROPICAL_BEACH)
-				.add(BloomBiomes.COLD_RIVER)
-				.add(BloomBiomes.COLD_BEACH);
+                .add(BloomBiomes.COLD_RIVER)
+                .add(BloomBiomes.COLD_BEACH)
+                .add(BloomBiomes.LUKEWARM_RIVER)
+                .add(BloomBiomes.LUKEWARM_BEACH)
+                .add(BloomBiomes.WINDSWEPT_JUNGLE);
 
 		this.builder(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 				.add(Biomes.JUNGLE)
@@ -82,7 +85,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(Biomes.FROZEN_RIVER);
 
 		this.builder(BloomBiomeTags.HAS_SURFACE_SAND)
-				.add(BloomBiomes.TROPICAL_BEACH);
+                .add(BloomBiomes.TROPICAL_BEACH)
+                .add(BloomBiomes.LUKEWARM_BEACH);
 
 		this.builder(BloomBiomeTags.HAS_SURFACE_COARSE_DIRT)
 				.add(BloomBiomes.WARM_RIVER)
@@ -164,15 +168,22 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BiomeTags.IS_RIVER)
 				.add(BloomBiomes.WARM_RIVER)
 				.add(BloomBiomes.TROPICAL_RIVER)
-				.add(BloomBiomes.COLD_RIVER);
+                .add(BloomBiomes.COLD_RIVER)
+                .add(BloomBiomes.LUKEWARM_RIVER);
 
-		this.builder(BiomeTags.IS_BEACH)
-				.add(BloomBiomes.TROPICAL_BEACH)
-				.add(BloomBiomes.COLD_BEACH);
+        this.builder(BiomeTags.IS_BEACH)
+                .add(BloomBiomes.TROPICAL_BEACH)
+                .add(BloomBiomes.COLD_BEACH)
+                .add(BloomBiomes.LUKEWARM_BEACH);
+
+        this.builder(BiomeTags.IS_JUNGLE)
+                .add(BloomBiomes.WINDSWEPT_JUNGLE);
 
 		this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS)
 				.add(BloomBiomes.WARM_RIVER)
-				.add(BloomBiomes.ARID_SHORE);
+                .add(BloomBiomes.ARID_SHORE)
+                .add(BloomBiomes.LUKEWARM_RIVER)
+                .add(BloomBiomes.LUKEWARM_BEACH);
 
 		this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS)
 				.add(BloomBiomes.COLD_RIVER)

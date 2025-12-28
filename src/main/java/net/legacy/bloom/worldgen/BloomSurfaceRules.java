@@ -158,8 +158,21 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                 SurfaceRules.ifTrue(
                         FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
                         SurfaceRules.sequence(
-                                SurfaceRules.ifTrue(SurfaceRuleData.surfaceNoiseAbove(1.75), FrozenSurfaceRules.makeStateRule(Blocks.GRANITE))
+                                SurfaceRules.ifTrue(
+                                        SurfaceRuleData.surfaceNoiseAbove(1.75),
+                                        FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
+                                )
                         )
+                )
+        );
+    }
+
+    public static SurfaceRules.RuleSource windsweptJungle() {
+        return SurfaceRules.ifTrue(
+                SurfaceRules.isBiome(BloomBiomes.WINDSWEPT_JUNGLE),
+                SurfaceRules.ifTrue(
+                        SurfaceRuleData.surfaceNoiseAbove(1.75),
+                        FrozenSurfaceRules.makeStateRule(Blocks.DIORITE)
                 )
         );
     }
@@ -212,6 +225,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                         beaches(),
                         gravellyRiversAndBeaches(),
                         coarseDirtStrips(),
+                        windsweptJungle(),
                         windsweptSavanna(),
                         depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
                         depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE)

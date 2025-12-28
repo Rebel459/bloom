@@ -1,5 +1,5 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Tags for minecraft:worldgen/biome
-7fc905ac7b2fcf6602026bc45fe0c5acc5153cec data/bloom/tags/worldgen/biome/bloom_biomes.json
+d87a0053a5006823cb4d98a42d9afa856d529fc3 data/bloom/tags/worldgen/biome/bloom_biomes.json
 055315672f5a347dc3be385d6850769271b38549 data/bloom/tags/worldgen/biome/has_effect/cold_colors.json
 e22f75290a80a306ccdb324fbcc4b8a95617f404 data/bloom/tags/worldgen/biome/has_effect/frozen_colors.json
 9e50b45a316fda6d28a6ba8d2473e94e57deb38e data/bloom/tags/worldgen/biome/has_effect/lukewarm_colors.json
@@ -25,13 +25,14 @@ e7a7e2b27c8aa61b4a0876e0ab6e81e6cd53a844 data/bloom/tags/worldgen/biome/has_rule
 5d9519f191f21af13ae367c9c51f6bcff58c9fb3 data/bloom/tags/worldgen/biome/has_rule/strip_coarse_dirt.json
 765a22f1a4a97fa6e99c16560cc19d6f5803ef9f data/bloom/tags/worldgen/biome/has_rule/surface_coarse_dirt.json
 2f6344dd6d748b629c13126a0d9cf4e8010cd79e data/bloom/tags/worldgen/biome/has_rule/surface_gravel.json
-021cb143064c174b808192eb80bb0e0130c29aea data/bloom/tags/worldgen/biome/has_rule/surface_sand.json
+decb904644205bfe38bf745aad43089e976e109c data/bloom/tags/worldgen/biome/has_rule/surface_sand.json
 611d1a275cea79cf9b367c51ed06e2487e8d8d68 data/bloom/tags/worldgen/biome/has_rule/underwater_mud.json
 a6c8f196eb7a0e02e4f8b5500fbd332a3c3dd5aa data/bloom/tags/worldgen/biome/is_non_bamboo_jungle.json
 075acc2eaddd40ae6e9d6223c2e6aed09dc6f830 data/bloom/tags/worldgen/biome/is_non_snowy_taiga.json
 c9113a76d2da44847f6f270add123dec5a854ac2 data/minecraft/tags/worldgen/biome/has_structure/mineshaft.json
 c9113a76d2da44847f6f270add123dec5a854ac2 data/minecraft/tags/worldgen/biome/has_structure/trial_chambers.json
-44178925c0876a7dac391dbcc1efff6b0f97bca3 data/minecraft/tags/worldgen/biome/is_beach.json
-0d7cd54853a1f47b84ed4518b0cadc0c4d54d76a data/minecraft/tags/worldgen/biome/is_river.json
+d47d13f86f9bdf11edc650821713bc61d8b2e552 data/minecraft/tags/worldgen/biome/is_beach.json
+ec939e0d4842f9914f2ab51e22171dc71e2cb93d data/minecraft/tags/worldgen/biome/is_jungle.json
+2f5b6763714803e40884bd952148ff1af2e7b8eb data/minecraft/tags/worldgen/biome/is_river.json
 f572fcad777c92675f40c6522400aa6a9ce41c4a data/minecraft/tags/worldgen/biome/spawns_cold_variant_farm_animals.json
-765a22f1a4a97fa6e99c16560cc19d6f5803ef9f data/minecraft/tags/worldgen/biome/spawns_warm_variant_farm_animals.json
+e609fe526934db4f434c318823802bb6c408da41 data/minecraft/tags/worldgen/biome/spawns_warm_variant_farm_animals.json

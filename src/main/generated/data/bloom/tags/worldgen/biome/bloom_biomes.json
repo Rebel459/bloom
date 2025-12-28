@@ -5,6 +5,9 @@
     "bloom:tropical_river",
     "bloom:tropical_beach",
     "bloom:cold_river",
-    "bloom:cold_beach"
+    "bloom:cold_beach",
+    "bloom:lukewarm_river",
+    "bloom:lukewarm_beach",
+    "bloom:windswept_jungle"
   ]
 }
