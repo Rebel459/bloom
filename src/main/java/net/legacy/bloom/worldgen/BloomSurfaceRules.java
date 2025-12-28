@@ -1,18 +1,15 @@
-package net.legacy.bloom.registry;
+package net.legacy.bloom.worldgen;
 
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
+import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.tag.BloomBiomeTags;
-import net.legacy.bloom.util.BiomeHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import org.jetbrains.annotations.NotNull;

@@ -21,7 +21,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		// Normal
 		this.builder(BloomBiomeTags.BLOOM_BIOMES)
-				.add(BloomBiomes.ARID_RIVER)
+				.add(BloomBiomes.WARM_RIVER)
 				.add(BloomBiomes.ARID_SHORE)
 				.add(BloomBiomes.TROPICAL_RIVER)
 				.add(BloomBiomes.TROPICAL_BEACH)
@@ -39,15 +39,19 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		// Internal
 		this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
-				.add(BloomBiomes.ARID_RIVER)
+				.add(BloomBiomes.WARM_RIVER)
 				.add(BloomBiomes.ARID_SHORE)
+                .add(BloomBiomes.TROPICAL_RIVER)
 				.add(BloomBiomes.COLD_RIVER)
-				.add(BloomBiomes.COLD_BEACH);
+                .add(BloomBiomes.COLD_BEACH);
 
 		// Effects
-		this.builder(BloomBiomeTags.HAS_WARM_COLORS)
-				.add(Biomes.DESERT)
-				.addOptionalTag(BiomeTags.IS_BADLANDS);
+        this.builder(BloomBiomeTags.HAS_WARM_COLORS)
+                .add(Biomes.DESERT)
+                .addOptionalTag(BiomeTags.IS_BADLANDS);
+
+        this.builder(BloomBiomeTags.HAS_LUKEWARM_COLORS)
+                .addOptionalTag(BiomeTags.IS_SAVANNA);
 
 		this.builder(BloomBiomeTags.HAS_TROPICAL_COLORS)
 				.addOptionalTag(BiomeTags.IS_JUNGLE);
@@ -81,7 +85,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(BloomBiomes.TROPICAL_BEACH);
 
 		this.builder(BloomBiomeTags.HAS_SURFACE_COARSE_DIRT)
-				.add(BloomBiomes.ARID_RIVER)
+				.add(BloomBiomes.WARM_RIVER)
 				.add(BloomBiomes.ARID_SHORE);
 
         this.builder(BloomBiomeTags.HAS_UNDERWATER_MUD)
@@ -94,10 +98,12 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BloomBiomeTags.HAS_DEPTH_GRANITE)
                 .add(Biomes.SAVANNA)
                 .add(Biomes.SAVANNA_PLATEAU)
-                .add(Biomes.WINDSWEPT_SAVANNA);
+                .add(Biomes.WINDSWEPT_SAVANNA)
+                .add(BloomBiomes.LUKEWARM_RIVER);
 
         this.builder(BloomBiomeTags.HAS_DEPTH_STONE)
-                .add(Biomes.CHERRY_GROVE);
+                .add(Biomes.CHERRY_GROVE)
+                .add(Biomes.MEADOW);
 
         this.builder(BloomBiomeTags.HAS_HIGHER_STONE)
                 .addTag(BloomBiomeTags.HAS_DEPTH_STONE)
@@ -109,7 +115,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		// Features
 		this.builder(BloomBiomeTags.HAS_BROMELIAD)
 				.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
-				.add(BloomBiomes.ARID_RIVER);
+				.add(BloomBiomes.WARM_RIVER);
 
 		this.builder(BloomBiomeTags.HAS_PINK_ORCHID)
 				.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE);
@@ -156,7 +162,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		// Vanilla
 		this.builder(BiomeTags.IS_RIVER)
-				.add(BloomBiomes.ARID_RIVER)
+				.add(BloomBiomes.WARM_RIVER)
 				.add(BloomBiomes.TROPICAL_RIVER)
 				.add(BloomBiomes.COLD_RIVER);
 
@@ -165,7 +171,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(BloomBiomes.COLD_BEACH);
 
 		this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS)
-				.add(BloomBiomes.ARID_RIVER)
+				.add(BloomBiomes.WARM_RIVER)
 				.add(BloomBiomes.ARID_SHORE);
 
 		this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS)

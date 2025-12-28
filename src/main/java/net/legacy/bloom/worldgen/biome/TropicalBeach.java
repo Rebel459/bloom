@@ -25,10 +25,7 @@ import java.util.function.Consumer;
 public final class TropicalBeach extends FrozenBiome {
     public static final float TEMP = 0.95F;
     public static final float DOWNFALL = 0.9F;
-    public static final int WATER_COLOR = 2001635;
-    public static final int FOLIAGE_COLOR = -1;
-    public static final int DRY_FOLIAGE_COLOR = -1;
-    public static final int GRASS_COLOR = -1;
+    public static final int WATER_COLOR = TropicalRiver.WATER_COLOR;
     public static final int SKY_COLOR = OverworldBiomes.calculateSkyColor(TEMP);
     public static final TropicalBeach INSTANCE = new TropicalBeach();
 
@@ -63,20 +60,17 @@ public final class TropicalBeach extends FrozenBiome {
 
     @Override
     public @Nullable Integer foliageColorOverride() {
-        if (FOLIAGE_COLOR == -1) return null;
-        return FOLIAGE_COLOR;
+        return null;
     }
 
     @Override
     public @Nullable Integer dryFoliageColorOverride() {
-        if (DRY_FOLIAGE_COLOR == -1) return null;
-        return DRY_FOLIAGE_COLOR;
+        return null;
     }
 
     @Override
     public @Nullable Integer grassColorOverride() {
-        if (GRASS_COLOR == -1) return null;
-        return GRASS_COLOR;
+        return null;
     }
 
     @Override

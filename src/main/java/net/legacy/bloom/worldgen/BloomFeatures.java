@@ -9,7 +9,6 @@ public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> DISK_CLAY = register("disk_clay");
 	public static final ResourceKey<PlacedFeature> DISK_SAND = register("disk_sand");
     public static final ResourceKey<PlacedFeature> DISK_GRAVEL = register("disk_gravel");
-    public static final ResourceKey<PlacedFeature> DISK_COARSE_DIRT = register("disk_coarse_dirt");
 
 	public static final ResourceKey<PlacedFeature> FLOWER_HELLEBORE = register("flower_hellebore");
 	public static final ResourceKey<PlacedFeature> FLOWER_LILY_OF_THE_VALLEY = register("flower_lily_of_the_valley");

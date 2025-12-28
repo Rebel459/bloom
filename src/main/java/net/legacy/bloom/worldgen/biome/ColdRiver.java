@@ -18,6 +18,7 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
@@ -62,20 +63,17 @@ public final class ColdRiver extends FrozenBiome {
     }
 
     @Override
-    public @Nullable Integer foliageColorOverride() {
-        if (FOLIAGE_COLOR == -1) return null;
+    public @NotNull Integer foliageColorOverride() {
         return FOLIAGE_COLOR;
     }
 
     @Override
-    public @Nullable Integer dryFoliageColorOverride() {
-        if (DRY_FOLIAGE_COLOR == -1) return null;
+    public @NotNull Integer dryFoliageColorOverride() {
         return DRY_FOLIAGE_COLOR;
     }
 
     @Override
-    public @Nullable Integer grassColorOverride() {
-        if (GRASS_COLOR == -1) return null;
+    public @NotNull Integer grassColorOverride() {
         return GRASS_COLOR;
     }
 

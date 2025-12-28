@@ -6,7 +6,8 @@ import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.legacy.bloom.Bloom;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
-import net.legacy.bloom.worldgen.biome.AridRiver;
+import net.legacy.bloom.worldgen.biome.LukewarmRiver;
+import net.legacy.bloom.worldgen.biome.WarmRiver;
 import net.legacy.bloom.worldgen.biome.ColdRiver;
 import net.legacy.bloom.worldgen.biome.TropicalRiver;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
@@ -27,13 +28,22 @@ public final class BloomBiomeModifications {
                 }
         );
 
-		BiomeModifications.create(Bloom.id("has_warm_colors")).add(
-				ModificationPhase.REPLACEMENTS,
-				BiomeSelectors.tag(BloomBiomeTags.HAS_WARM_COLORS),
-				(selectionContext, modificationContext) -> {
-					modificationContext.getEffects().setWaterColor(AridRiver.WATER_COLOR);;
-				}
-		);
+        BiomeModifications.create(Bloom.id("has_warm_colors")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_WARM_COLORS),
+                (selectionContext, modificationContext) -> {
+                    modificationContext.getEffects().setWaterColor(WarmRiver.WATER_COLOR);
+                }
+        );
+        BiomeModifications.create(Bloom.id("has_lukewarm_colors")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_LUKEWARM_COLORS),
+                (selectionContext, modificationContext) -> {
+                    modificationContext.getEffects().setWaterColor(LukewarmRiver.WATER_COLOR);
+                    modificationContext.getEffects().setFoliageColor(LukewarmRiver.FOLIAGE_COLOR);
+                    modificationContext.getEffects().setGrassColor(LukewarmRiver.GRASS_COLOR);
+                }
+        );
 		BiomeModifications.create(Bloom.id("has_tropical_colors")).add(
 				ModificationPhase.REPLACEMENTS,
 				BiomeSelectors.tag(BloomBiomeTags.HAS_TROPICAL_COLORS),
@@ -56,16 +66,24 @@ public final class BloomBiomeModifications {
 				}
 		);
 
-		BiomeModifications.create(Bloom.id("has_underwater_mud")).add(
-				ModificationPhase.REPLACEMENTS,
-				BiomeSelectors.tag(BloomBiomeTags.HAS_UNDERWATER_MUD),
-				(selectionContext, modificationContext) -> {
-					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
-					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
-					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
-					BiomeHelper.addLessStrictDisks(modificationContext);
-				}
-		);
+        BiomeModifications.create(Bloom.id("has_underwater_mud")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_UNDERWATER_MUD),
+                (selectionContext, modificationContext) -> {
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
+                    BiomeHelper.addLessStrictDisks(modificationContext);
+                }
+        );
+
+        BiomeModifications.create(Bloom.id("has_less_strict_disks")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_LESS_STRICT_DISKS),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addLessStrictDisks(modificationContext);
+                }
+        );
 
 		BiomeModifications.create(Bloom.id("has_bromeliad")).add(
 				ModificationPhase.REPLACEMENTS,

@@ -18,19 +18,20 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public final class AridRiver extends FrozenBiome {
+public final class WarmRiver extends FrozenBiome {
     public static final float TEMP = 2.0F;
     public static final float DOWNFALL = 0.0F;
-    public static final int WATER_COLOR = 176357;
+    public static final int WATER_COLOR = 3586498;
     public static final int FOLIAGE_COLOR = 5884220;
     public static final int DRY_FOLIAGE_COLOR = 10581064;
     public static final int GRASS_COLOR = 3193611;
     public static final int SKY_COLOR = OverworldBiomes.calculateSkyColor(TEMP);
-    public static final AridRiver INSTANCE = new AridRiver();
+    public static final WarmRiver INSTANCE = new WarmRiver();
 
     public String modID() {
         return Bloom.MOD_ID;
@@ -38,7 +39,7 @@ public final class AridRiver extends FrozenBiome {
 
     @Override
     public String biomeID() {
-        return "arid_river";
+        return "warm_river";
     }
 
     @Override
@@ -62,20 +63,17 @@ public final class AridRiver extends FrozenBiome {
     }
 
     @Override
-    public @Nullable Integer foliageColorOverride() {
-        if (FOLIAGE_COLOR == -1) return null;
+    public @NotNull Integer foliageColorOverride() {
         return FOLIAGE_COLOR;
     }
 
     @Override
-    public @Nullable Integer dryFoliageColorOverride() {
-        if (DRY_FOLIAGE_COLOR == -1) return null;
+    public @NotNull Integer dryFoliageColorOverride() {
         return DRY_FOLIAGE_COLOR;
     }
 
     @Override
-    public @Nullable Integer grassColorOverride() {
-        if (GRASS_COLOR == -1) return null;
+    public @NotNull Integer grassColorOverride() {
         return GRASS_COLOR;
     }
 

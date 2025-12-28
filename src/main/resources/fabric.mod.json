@@ -28,7 +28,7 @@
 			"net.legacy.bloom.datagen.BloomDataGenerator"
 		],
 		"frozenlib:events": [
-			"net.legacy.bloom.registry.BloomSurfaceRules"
+          "net.legacy.bloom.worldgen.BloomSurfaceRules"
 		]
 	},
 	"mixins": [

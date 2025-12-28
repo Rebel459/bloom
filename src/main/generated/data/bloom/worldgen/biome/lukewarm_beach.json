@@ -9,12 +9,10 @@
       "default": {
         "max_delay": 24000,
         "min_delay": 12000,
-        "sound": "minecraft:music.overworld.badlands"
+        "sound": "minecraft:music.game"
       }
     },
-    "minecraft:gameplay/snow_golem_melts": true,
-    "minecraft:visual/sky_color": "#6eb1ff",
-    "minecraft:visual/water_fog_color": "#041f33"
+    "minecraft:visual/sky_color": "#6eb1ff"
   },
   "carvers": [
     "minecraft:cave",
@@ -23,10 +21,9 @@
   ],
   "downfall": 0.0,
   "effects": {
-    "dry_foliage_color": "#a17448",
-    "foliage_color": "#59c93c",
-    "grass_color": "#30bb0b",
-    "water_color": "#36b9c2"
+    "foliage_color": "#a3ae2a",
+    "grass_color": "#bfac55",
+    "water_color": "#2c8b9c"
   },
   "features": [
     [],
@@ -69,7 +66,10 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "minecraft:underwater_magma"
+      "minecraft:underwater_magma",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
     ],
     [],
     [
@@ -78,20 +78,22 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_dry_grass_desert",
-      "minecraft:patch_dead_bush_2",
-      "minecraft:patch_dry_grass_badlands",
+      "minecraft:trees_water",
+      "minecraft:patch_bush",
+      "minecraft:flower_default",
+      "minecraft:patch_grass_badlands",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_pumpkin",
       "minecraft:patch_sugar_cane",
-      "minecraft:patch_firefly_bush_near_water"
+      "minecraft:patch_firefly_bush_near_water",
+      "minecraft:seagrass_river"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
-  "has_precipitation": false,
+  "has_precipitation": true,
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -109,18 +111,6 @@
         "maxCount": 5,
         "minCount": 2,
         "weight": 5
-      },
-      {
-        "type": "minecraft:rabbit",
-        "maxCount": 3,
-        "minCount": 2,
-        "weight": 12
-      },
-      {
-        "type": "minecraft:camel",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 1
       }
     ],
     "misc": [],
@@ -135,19 +125,19 @@
         "type": "minecraft:zombie",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 19
+        "weight": 95
       },
       {
         "type": "minecraft:zombie_villager",
         "maxCount": 1,
         "minCount": 1,
-        "weight": 1
+        "weight": 5
       },
       {
         "type": "minecraft:skeleton",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 50
+        "weight": 100
       },
       {
         "type": "minecraft:creeper",
@@ -172,18 +162,6 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
-      },
-      {
-        "type": "minecraft:husk",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 80
-      },
-      {
-        "type": "minecraft:parched",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 50
       }
     ],
     "underground_water_creature": [

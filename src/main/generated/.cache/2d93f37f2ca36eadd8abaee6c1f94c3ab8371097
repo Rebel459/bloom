@@ -1,11 +1,12 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Tags for minecraft:worldgen/biome
-1ddad813424a59b4753bf4130dcbb094f6a65038 data/bloom/tags/worldgen/biome/bloom_biomes.json
+7fc905ac7b2fcf6602026bc45fe0c5acc5153cec data/bloom/tags/worldgen/biome/bloom_biomes.json
 055315672f5a347dc3be385d6850769271b38549 data/bloom/tags/worldgen/biome/has_effect/cold_colors.json
 e22f75290a80a306ccdb324fbcc4b8a95617f404 data/bloom/tags/worldgen/biome/has_effect/frozen_colors.json
+9e50b45a316fda6d28a6ba8d2473e94e57deb38e data/bloom/tags/worldgen/biome/has_effect/lukewarm_colors.json
 611d1a275cea79cf9b367c51ed06e2487e8d8d68 data/bloom/tags/worldgen/biome/has_effect/tropical_colors.json
 dd1019faa6b177d33797ba5bd1d08137dd8598af data/bloom/tags/worldgen/biome/has_effect/warm_colors.json
 c4bcf51ceb73bf7eeb36e9b974ae2e838de44f77 data/bloom/tags/worldgen/biome/has_feature/flower_bellflower.json
-d6c8b42cadf8a36be92b0ccf9118294185ef9cc1 data/bloom/tags/worldgen/biome/has_feature/flower_bromeliad.json
+d3afd009b41318bc1342b86513c9eff1ed257ef5 data/bloom/tags/worldgen/biome/has_feature/flower_bromeliad.json
 23a181ff3596f21872c69788170ed3ab6208e5fe data/bloom/tags/worldgen/biome/has_feature/flower_calla_lily.json
 432f1a907920e4ca032b5bea2ef08c0cddcaa7ee data/bloom/tags/worldgen/biome/has_feature/flower_dianthus.json
 26bc2ef92bc6a9716a5a2836a13025e8202a3269 data/bloom/tags/worldgen/biome/has_feature/flower_goldenrod.json
@@ -15,14 +16,14 @@ f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feat
 6481e28398e6c2b52c711a1de3a995ce9dbad12b data/bloom/tags/worldgen/biome/has_feature/flower_orange_daisy.json
 8b3cb1f45d033b14d944da1c81bb39693a0196fc data/bloom/tags/worldgen/biome/has_feature/flower_pink_orchid.json
 20e96599f962ab17e92ca742059a15e0b55fd1b5 data/bloom/tags/worldgen/biome/has_feature/flower_scilla.json
-3277ed3d03a23dce54022d8262d8ec1f03421047 data/bloom/tags/worldgen/biome/has_feature/internal/less_strict_disks.json
+ec6e85c3a2323421031694facec72cb3d19b739d data/bloom/tags/worldgen/biome/has_feature/internal/less_strict_disks.json
 24192457dbc336972465d1e28399da894eb6301d data/bloom/tags/worldgen/biome/has_feature/patch_succulent.json
 3108b0ff3053cb8c05c05981dd781267ce5e2a1c data/bloom/tags/worldgen/biome/has_rule/depth_deeper.json
-562853abe345ceeddc3931331c8cdb3aa0fbe085 data/bloom/tags/worldgen/biome/has_rule/depth_granite.json
+b26124338b2a07cf6e0fc4b311633cbc15eb6bb9 data/bloom/tags/worldgen/biome/has_rule/depth_granite.json
 e7a7e2b27c8aa61b4a0876e0ab6e81e6cd53a844 data/bloom/tags/worldgen/biome/has_rule/depth_higher.json
-a18b42d48e473c1416af02fa30d2722fbc057e77 data/bloom/tags/worldgen/biome/has_rule/depth_stone.json
+0a110bf06759d2f5bbad2a86cc16393c14629085 data/bloom/tags/worldgen/biome/has_rule/depth_stone.json
 5d9519f191f21af13ae367c9c51f6bcff58c9fb3 data/bloom/tags/worldgen/biome/has_rule/strip_coarse_dirt.json
-8623ab007b8147a45e22c9bcfab51dfd36352be0 data/bloom/tags/worldgen/biome/has_rule/surface_coarse_dirt.json
+765a22f1a4a97fa6e99c16560cc19d6f5803ef9f data/bloom/tags/worldgen/biome/has_rule/surface_coarse_dirt.json
 2f6344dd6d748b629c13126a0d9cf4e8010cd79e data/bloom/tags/worldgen/biome/has_rule/surface_gravel.json
 021cb143064c174b808192eb80bb0e0130c29aea data/bloom/tags/worldgen/biome/has_rule/surface_sand.json
 611d1a275cea79cf9b367c51ed06e2487e8d8d68 data/bloom/tags/worldgen/biome/has_rule/underwater_mud.json
@@ -31,6 +32,6 @@ a6c8f196eb7a0e02e4f8b5500fbd332a3c3dd5aa data/bloom/tags/worldgen/biome/is_non_b
 c9113a76d2da44847f6f270add123dec5a854ac2 data/minecraft/tags/worldgen/biome/has_structure/mineshaft.json
 c9113a76d2da44847f6f270add123dec5a854ac2 data/minecraft/tags/worldgen/biome/has_structure/trial_chambers.json
 44178925c0876a7dac391dbcc1efff6b0f97bca3 data/minecraft/tags/worldgen/biome/is_beach.json
-839beb193ef152223a7b68890b9736a80539bbef data/minecraft/tags/worldgen/biome/is_river.json
+0d7cd54853a1f47b84ed4518b0cadc0c4d54d76a data/minecraft/tags/worldgen/biome/is_river.json
 f572fcad777c92675f40c6522400aa6a9ce41c4a data/minecraft/tags/worldgen/biome/spawns_cold_variant_farm_animals.json
-8623ab007b8147a45e22c9bcfab51dfd36352be0 data/minecraft/tags/worldgen/biome/spawns_warm_variant_farm_animals.json
+765a22f1a4a97fa6e99c16560cc19d6f5803ef9f data/minecraft/tags/worldgen/biome/spawns_warm_variant_farm_animals.json

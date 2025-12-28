@@ -18,16 +18,19 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public final class TropicalRiver extends FrozenBiome {
-    public static final float TEMP = 0.95F;
-    public static final float DOWNFALL = 0.9F;
-    public static final int WATER_COLOR = 2001635;
+public final class LukewarmBeach extends FrozenBiome {
+    public static final float TEMP = 2F;
+    public static final float DOWNFALL = 0F;
+    public static final int WATER_COLOR = -13857892;
+    public static final int FOLIAGE_COLOR = LukewarmRiver.FOLIAGE_COLOR;
+    public static final int GRASS_COLOR = LukewarmRiver.GRASS_COLOR;
     public static final int SKY_COLOR = OverworldBiomes.calculateSkyColor(TEMP);
-    public static final TropicalRiver INSTANCE = new TropicalRiver();
+    public static final LukewarmBeach INSTANCE = new LukewarmBeach();
 
     public String modID() {
         return Bloom.MOD_ID;
@@ -35,7 +38,7 @@ public final class TropicalRiver extends FrozenBiome {
 
     @Override
     public String biomeID() {
-        return "tropical_river";
+        return "lukewarm_beach";
     }
 
     @Override
@@ -59,8 +62,8 @@ public final class TropicalRiver extends FrozenBiome {
     }
 
     @Override
-    public @Nullable Integer foliageColorOverride() {
-        return null;
+    public @NotNull Integer foliageColorOverride() {
+        return FOLIAGE_COLOR;
     }
 
     @Override
@@ -69,15 +72,14 @@ public final class TropicalRiver extends FrozenBiome {
     }
 
     @Override
-    public @Nullable Integer grassColorOverride() {
-        return null;
+    public @NotNull Integer grassColorOverride() {
+        return GRASS_COLOR;
     }
 
     @Override
     public void fillEnvironmentAttributes(EnvironmentAttributeMap.Builder builder) {
         builder.set(EnvironmentAttributes.SKY_COLOR, SKY_COLOR);
-        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_BIOME_JUNGLE, true));
-        builder.set(EnvironmentAttributes.SNOW_GOLEM_MELTS, true);
+        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_GAME, false));
     }
 
     @Override
@@ -87,17 +89,17 @@ public final class TropicalRiver extends FrozenBiome {
         BiomeDefaultFeatures.addDefaultSoftDisks(features);
         BiomeDefaultFeatures.addWaterTrees(features);
         BiomeDefaultFeatures.addBushes(features);
+        BiomeDefaultFeatures.addDefaultFlowers(features);
+        BiomeDefaultFeatures.addDefaultGrass(features);
         BiomeDefaultFeatures.addDefaultMushrooms(features);
-        BiomeDefaultFeatures.addNearWaterVegetation(features);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(features, true);
         features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
     }
 
     @Override
     public void addSpawns(MobSpawnSettings.Builder spawns) {
-        spawns.addSpawn(MobCategory.WATER_CREATURE, 2, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4));
-        spawns.addSpawn(MobCategory.WATER_AMBIENT, 5, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 1, 5));
-        BiomeDefaultFeatures.baseJungleSpawns(spawns);
-        spawns.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE, 5, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
+        BiomeDefaultFeatures.commonSpawns(spawns);
     }
 
     @Override

@@ -6,6 +6,7 @@ import net.legacy.bloom.Bloom;
 import net.legacy.bloom.util.BiomeHelper;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.EnvironmentAttributeMap;
@@ -16,6 +17,8 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
@@ -23,10 +26,10 @@ import java.util.function.Consumer;
 public final class AridShore extends FrozenBiome {
     public static final float TEMP = 2.0F;
     public static final float DOWNFALL = 0.0F;
-    public static final int WATER_COLOR = 176357;
-    public static final int FOLIAGE_COLOR = 5884220;
-    public static final int DRY_FOLIAGE_COLOR = 10581064;
-    public static final int GRASS_COLOR = 3193611;
+    public static final int WATER_COLOR = WarmRiver.WATER_COLOR;
+    public static final int FOLIAGE_COLOR = WarmRiver.FOLIAGE_COLOR;
+    public static final int DRY_FOLIAGE_COLOR = WarmRiver.DRY_FOLIAGE_COLOR;
+    public static final int GRASS_COLOR = WarmRiver.GRASS_COLOR;
     public static final int SKY_COLOR = OverworldBiomes.calculateSkyColor(TEMP);
     public static final AridShore INSTANCE = new AridShore();
 
@@ -60,20 +63,17 @@ public final class AridShore extends FrozenBiome {
     }
 
     @Override
-    public @Nullable Integer foliageColorOverride() {
-        if (FOLIAGE_COLOR == -1) return null;
+    public @NotNull Integer foliageColorOverride() {
         return FOLIAGE_COLOR;
     }
 
     @Override
-    public @Nullable Integer dryFoliageColorOverride() {
-        if (DRY_FOLIAGE_COLOR == -1) return null;
+    public @NotNull Integer dryFoliageColorOverride() {
         return DRY_FOLIAGE_COLOR;
     }
 
     @Override
-    public @Nullable Integer grassColorOverride() {
-        if (GRASS_COLOR == -1) return null;
+    public @NotNull Integer grassColorOverride() {
         return GRASS_COLOR;
     }
 
@@ -90,6 +90,7 @@ public final class AridShore extends FrozenBiome {
         OverworldBiomes.globalOverworldGeneration(features);
         BiomeDefaultFeatures.addDefaultOres(features);
         BiomeDefaultFeatures.addDesertVegetation(features);
+        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DRY_GRASS_BADLANDS);
         BiomeDefaultFeatures.addDefaultMushrooms(features);
         BiomeDefaultFeatures.addDefaultExtraVegetation(features, true);
     }

@@ -12,6 +12,7 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> IS_NON_SNOWY_TAIGA = bind("is_non_snowy_taiga");
 
     public static final TagKey<Biome> HAS_WARM_COLORS = bind("has_effect/warm_colors");
+    public static final TagKey<Biome> HAS_LUKEWARM_COLORS = bind("has_effect/lukewarm_colors");
     public static final TagKey<Biome> HAS_TROPICAL_COLORS = bind("has_effect/tropical_colors");
     public static final TagKey<Biome> HAS_COLD_COLORS = bind("has_effect/cold_colors");
     public static final TagKey<Biome> HAS_FROZEN_COLORS = bind("has_effect/frozen_colors");
