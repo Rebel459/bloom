@@ -108,7 +108,8 @@ public class BiomeHelper {
     }
 
     public static void surfaceBiome(ResourceKey<@NotNull Biome> biome, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter weirdness, long offset) {
-        BiomePlacement.addOverworld(biome,
+        BiomePlacement.addOverworld(
+                biome,
                 new Climate.ParameterPoint(
                         temperature,
                         humidity,
@@ -118,7 +119,8 @@ public class BiomeHelper {
                         weirdness,
                         offset)
         );
-        BiomePlacement.addOverworld(biome,
+        BiomePlacement.addOverworld(
+                biome,
                 new Climate.ParameterPoint(
                         temperature,
                         humidity,
@@ -131,7 +133,8 @@ public class BiomeHelper {
     }
 
     public static void caveBiome(ResourceKey<@NotNull Biome> biome, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter depth, Climate.Parameter weirdness, long offset) {
-        BiomePlacement.addOverworld(biome,
+        BiomePlacement.addOverworld(
+                biome,
                 new Climate.ParameterPoint(
                         temperature,
                         humidity,

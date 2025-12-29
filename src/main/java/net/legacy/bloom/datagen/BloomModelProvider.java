@@ -9,6 +9,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.model.TextureMapping;
+import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -35,6 +36,16 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.createDoublePlantWithDefaultItem(BloomBlocks.BELLFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createDoublePlantWithDefaultItem(BloomBlocks.HYDRANGEA, BlockModelGenerators.PlantType.NOT_TINTED);
 		this.createSinglePlant(BloomBlocks.SUCCULENT, BlockModelGenerators.PlantType.NOT_TINTED, generator);
+
+        BlockModelGenerators.BlockFamilyProvider jacarandaFamily = generator.family(BloomBlocks.JACARANDA_PLANKS);
+        jacarandaFamily.generateFor(BloomBlocks.FAMILY_JACARANDA);
+        generator.woodProvider(BloomBlocks.JACARANDA_LOG).logWithHorizontal(BloomBlocks.JACARANDA_LOG).wood(BloomBlocks.JACARANDA_WOOD);
+        generator.woodProvider(BloomBlocks.STRIPPED_JACARANDA_LOG).logWithHorizontal(BloomBlocks.STRIPPED_JACARANDA_LOG).wood(BloomBlocks.STRIPPED_JACARANDA_WOOD);
+        generator.createHangingSign(BloomBlocks.STRIPPED_JACARANDA_LOG, BloomBlocks.JACARANDA_HANGING_SIGN, BloomBlocks.JACARANDA_WALL_HANGING_SIGN);
+        generator.createShelf(BloomBlocks.JACARANDA_SHELF, BloomBlocks.STRIPPED_JACARANDA_LOG);
+        generator.createPlantWithDefaultItem(BloomBlocks.JACARANDA_SAPLING, BloomBlocks.POTTED_JACARANDA_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        generator.createTrivialBlock(BloomBlocks.JACARANDA_LEAVES, TexturedModel.LEAVES);
+
 /*		generator.createTrivialCube(ERBlocks.CRYSTALLINE_LAMP);
 		generator.createTrivialCube(ERBlocks.CRYSTALLINE_BLOCK);
 		generator.createTrivialCube(ERBlocks.END_IRON_ORE);

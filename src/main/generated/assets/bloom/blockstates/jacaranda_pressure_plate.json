@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "bloom:block/jacaranda_pressure_plate"
+    },
+    "powered=true": {
+      "model": "bloom:block/jacaranda_pressure_plate_down"
+    }
+  }
+}

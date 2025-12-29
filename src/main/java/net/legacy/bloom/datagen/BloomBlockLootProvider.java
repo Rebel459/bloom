@@ -47,7 +47,26 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.dropSelf(BloomBlocks.HYDRANGEA);
 		this.dropSelf(BloomBlocks.SUCCULENT);
 
-		//this.add(ERBlocks.CHORUS_MOSAIC_SLAB, this::createSlabItemTable);
+        this.dropSelf(BloomBlocks.JACARANDA_LOG);
+        this.dropSelf(BloomBlocks.STRIPPED_JACARANDA_LOG);
+        this.dropSelf(BloomBlocks.JACARANDA_WOOD);
+        this.dropSelf(BloomBlocks.STRIPPED_JACARANDA_WOOD);
+        this.dropSelf(BloomBlocks.JACARANDA_PLANKS);
+        this.dropSelf(BloomBlocks.JACARANDA_BUTTON);
+        this.dropSelf(BloomBlocks.JACARANDA_PRESSURE_PLATE);
+        this.dropSelf(BloomBlocks.JACARANDA_TRAPDOOR);
+        this.dropSelf(BloomBlocks.JACARANDA_STAIRS);
+        this.add(BloomBlocks.JACARANDA_SLAB, this::createSlabItemTable);
+        this.dropSelf(BloomBlocks.JACARANDA_FENCE);
+        this.dropSelf(BloomBlocks.JACARANDA_FENCE_GATE);
+        this.add(BloomBlocks.JACARANDA_DOOR, this::createDoorTable);
+        this.dropSelf(BloomBlocks.JACARANDA_SIGN);
+        this.dropSelf(BloomBlocks.JACARANDA_HANGING_SIGN);
+        this.dropSelf(BloomBlocks.JACARANDA_SHELF);
+        this.dropSelf(BloomBlocks.JACARANDA_SAPLING);
+        this.add(BloomBlocks.JACARANDA_LEAVES, block -> this.createLeavesDrops(block, BloomBlocks.JACARANDA_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+
+        //this.add(ERBlocks.CHORUS_MOSAIC_SLAB, this::createSlabItemTable);
 	}
 
 	public LootTable.@NotNull Builder createMultifaceBlockDrops(Block drop) {

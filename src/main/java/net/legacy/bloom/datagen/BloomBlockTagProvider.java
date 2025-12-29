@@ -48,5 +48,63 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 				.add(BloomBlocks.POTTED_PINK_ORCHID)
 				.add(BloomBlocks.POTTED_BROMELIAD)
 				.add(BloomBlocks.POTTED_HELLEBORE);
+
+        this.valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
+                .add(BloomBlocks.JACARANDA_LOG);
+
+        this.valueLookupBuilder(BloomBlockTags.JACARANDA_LOGS)
+                .add(BloomBlocks.JACARANDA_LOG, BloomBlocks.STRIPPED_JACARANDA_LOG)
+                .add(BloomBlocks.JACARANDA_WOOD, BloomBlocks.STRIPPED_JACARANDA_WOOD);
+
+        this.valueLookupBuilder(BlockTags.LOGS)
+                .addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
+
+        this.valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
+                .addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
+
+        this.valueLookupBuilder(BlockTags.LEAVES)
+                .add(BloomBlocks.JACARANDA_LEAVES);
+
+        this.valueLookupBuilder(BlockTags.PLANKS)
+                .add(BloomBlocks.JACARANDA_PLANKS);
+
+        this.valueLookupBuilder(BlockTags.SAPLINGS)
+                .add(BloomBlocks.JACARANDA_SAPLING);
+
+        this.valueLookupBuilder(BlockTags.STANDING_SIGNS)
+                .add(BloomBlocks.JACARANDA_SIGN);
+
+        this.valueLookupBuilder(BlockTags.WALL_SIGNS)
+                .add(BloomBlocks.JACARANDA_WALL_SIGN);
+
+        this.valueLookupBuilder(BlockTags.CEILING_HANGING_SIGNS)
+                .add(BloomBlocks.JACARANDA_HANGING_SIGN);
+
+        this.valueLookupBuilder(BlockTags.WALL_HANGING_SIGNS)
+                .add(BloomBlocks.JACARANDA_WALL_HANGING_SIGN);
+
+        this.valueLookupBuilder(BlockTags.WOODEN_BUTTONS)
+                .add(BloomBlocks.JACARANDA_BUTTON);
+
+        this.valueLookupBuilder(BlockTags.WOODEN_DOORS)
+                .add(BloomBlocks.JACARANDA_DOOR);
+
+        this.valueLookupBuilder(BlockTags.WOODEN_FENCES)
+                .add(BloomBlocks.JACARANDA_FENCE);
+
+        this.valueLookupBuilder(BlockTags.FENCE_GATES)
+                .add(BloomBlocks.JACARANDA_FENCE_GATE);
+
+        this.valueLookupBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(BloomBlocks.JACARANDA_PRESSURE_PLATE);
+
+        this.valueLookupBuilder(BlockTags.WOODEN_SLABS)
+                .add(BloomBlocks.JACARANDA_SLAB);
+
+        this.valueLookupBuilder(BlockTags.WOODEN_STAIRS)
+                .add(BloomBlocks.JACARANDA_STAIRS);
+
+        this.valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
+                .add(BloomBlocks.JACARANDA_TRAPDOOR);
 	}
 }

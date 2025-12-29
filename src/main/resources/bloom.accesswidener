@@ -2,3 +2,11 @@ accessWidener v2 named
 
 accessible method net/minecraft/data/worldgen/biome/OverworldBiomes globalOverworldGeneration (Lnet/minecraft/world/level/biome/BiomeGenerationSettings$Builder;)V
 accessible method net/minecraft/data/worldgen/SurfaceRuleData surfaceNoiseAbove (D)Lnet/minecraft/world/level/levelgen/SurfaceRules$ConditionSource;
+extendable class net/minecraft/world/level/block/grower/TreeGrower
+extendable method net/minecraft/world/level/block/grower/TreeGrower getConfiguredFeature (Lnet/minecraft/util/RandomSource;Z)Lnet/minecraft/resources/ResourceKey;
+extendable method net/minecraft/world/level/block/grower/TreeGrower getConfiguredMegaFeature (Lnet/minecraft/util/RandomSource;)Lnet/minecraft/resources/ResourceKey;
+
+accessible class net/minecraft/client/particle/ParticleResources$MutableSpriteSet
+accessible class net/minecraft/client/particle/ParticleResources$SpriteParticleRegistration
+accessible method net/minecraft/client/particle/ParticleResources$SpriteParticleRegistration create (Lnet/minecraft/client/particle/SpriteSet;)Lnet/minecraft/client/particle/ParticleProvider;
+accessible method net/minecraft/client/particle/FallingLeavesParticle$CherryProvider <init> (Lnet/minecraft/client/particle/SpriteSet;)V

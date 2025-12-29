@@ -8,6 +8,7 @@ import net.fabricmc.loader.api.ModContainer;
 import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.worldgen.BloomBiomeModifications;
 import net.legacy.bloom.worldgen.BloomBiomePlacement;
 import net.minecraft.network.chat.Component;
@@ -25,6 +26,7 @@ public class Bloom implements ModInitializer {
 
 		BloomConfig.init();
         BloomBlocks.init();
+        BloomItems.init();
         BloomBiomes.init();
         BloomBiomePlacement.init();
         BloomBiomeModifications.init();
