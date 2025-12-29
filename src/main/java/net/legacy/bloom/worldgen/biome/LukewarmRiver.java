@@ -27,8 +27,8 @@ public final class LukewarmRiver extends FrozenBiome {
     public static final float TEMP = 2F;
     public static final float DOWNFALL = 0F;
     public static final int WATER_COLOR = -13857892;
-    public static final int FOLIAGE_COLOR = 10726954;
-    public static final int GRASS_COLOR = 12561493;
+    public static final int FOLIAGE_COLOR = 9743914;
+    public static final int GRASS_COLOR = 12885321;
     public static final int SKY_COLOR = OverworldBiomes.calculateSkyColor(TEMP);
     public static final LukewarmRiver INSTANCE = new LukewarmRiver();
 

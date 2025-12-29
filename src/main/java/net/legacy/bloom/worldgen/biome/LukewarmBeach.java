@@ -26,7 +26,7 @@ import java.util.function.Consumer;
 public final class LukewarmBeach extends FrozenBiome {
     public static final float TEMP = 2F;
     public static final float DOWNFALL = 0F;
-    public static final int WATER_COLOR = -13857892;
+    public static final int WATER_COLOR = LukewarmRiver.WATER_COLOR;
     public static final int FOLIAGE_COLOR = LukewarmRiver.FOLIAGE_COLOR;
     public static final int GRASS_COLOR = LukewarmRiver.GRASS_COLOR;
     public static final int SKY_COLOR = OverworldBiomes.calculateSkyColor(TEMP);

@@ -1,5 +1,6 @@
 {
   "values": [
-    "#bloom:has_rule/depth_granite"
+    "#bloom:has_rule/depth_granite",
+    "#bloom:has_rule/depth_diorite"
   ]
 }

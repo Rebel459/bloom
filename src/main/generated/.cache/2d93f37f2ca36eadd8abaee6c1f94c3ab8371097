@@ -19,7 +19,8 @@ f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feat
 ec6e85c3a2323421031694facec72cb3d19b739d data/bloom/tags/worldgen/biome/has_feature/internal/less_strict_disks.json
 ec939e0d4842f9914f2ab51e22171dc71e2cb93d data/bloom/tags/worldgen/biome/has_feature/internal/windswept_jungle_trees.json
 24192457dbc336972465d1e28399da894eb6301d data/bloom/tags/worldgen/biome/has_feature/patch_succulent.json
-3108b0ff3053cb8c05c05981dd781267ce5e2a1c data/bloom/tags/worldgen/biome/has_rule/depth_deeper.json
+d71c83230daa43f4aed54d3fcae987a576129637 data/bloom/tags/worldgen/biome/has_rule/depth_deeper.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/bloom/tags/worldgen/biome/has_rule/depth_diorite.json
 b26124338b2a07cf6e0fc4b311633cbc15eb6bb9 data/bloom/tags/worldgen/biome/has_rule/depth_granite.json
 e7a7e2b27c8aa61b4a0876e0ab6e81e6cd53a844 data/bloom/tags/worldgen/biome/has_rule/depth_higher.json
 0a110bf06759d2f5bbad2a86cc16393c14629085 data/bloom/tags/worldgen/biome/has_rule/depth_stone.json

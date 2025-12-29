@@ -152,6 +152,16 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
+    public static SurfaceRules.RuleSource windsweptJungle() {
+        return SurfaceRules.ifTrue(
+                SurfaceRules.isBiome(BloomBiomes.WINDSWEPT_JUNGLE),
+                SurfaceRules.ifTrue(
+                        SurfaceRuleData.surfaceNoiseAbove(2.5),
+                        FrozenSurfaceRules.makeStateRule(Blocks.DIORITE)
+                )
+        );
+    }
+
     public static SurfaceRules.RuleSource windsweptSavanna() {
         return SurfaceRules.ifTrue(
                 SurfaceRules.isBiome(Biomes.WINDSWEPT_SAVANNA),
@@ -163,16 +173,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                                         FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
                                 )
                         )
-                )
-        );
-    }
-
-    public static SurfaceRules.RuleSource windsweptJungle() {
-        return SurfaceRules.ifTrue(
-                SurfaceRules.isBiome(BloomBiomes.WINDSWEPT_JUNGLE),
-                SurfaceRules.ifTrue(
-                        SurfaceRuleData.surfaceNoiseAbove(2.5),
-                        FrozenSurfaceRules.makeStateRule(Blocks.DIORITE)
                 )
         );
     }
@@ -195,9 +195,15 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                                 ),
                                 SurfaceRules.ifTrue(
                                         SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
-                                        SurfaceRules.ifTrue(
-                                                SurfaceRules.DEEP_UNDER_FLOOR,
-                                                rule
+                                        SurfaceRules.sequence(
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+                                                        rule
+                                                ),
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.DEEP_UNDER_FLOOR,
+                                                        rule
+                                                )
                                         )
                                 ),
                                 SurfaceRules.ifTrue(
@@ -205,7 +211,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                                         SurfaceRules.ifTrue(
                                                 SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
                                                 SurfaceRules.ifTrue(
-                                                        SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+                                                        SurfaceRules.stoneDepthCheck(0, true, 60, CaveSurface.FLOOR),
                                                         rule
                                                 )
                                         )
@@ -228,7 +234,8 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                         windsweptJungle(),
                         windsweptSavanna(),
                         depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
-                        depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE)
+                        depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
+                        depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE)
                 )
         );
     }

@@ -108,6 +108,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
                 .add(Biomes.WINDSWEPT_SAVANNA)
                 .add(BloomBiomes.LUKEWARM_RIVER);
 
+        this.builder(BloomBiomeTags.HAS_DEPTH_DIORITE);
+
         this.builder(BloomBiomeTags.HAS_DEPTH_STONE)
                 .add(Biomes.CHERRY_GROVE)
                 .add(Biomes.MEADOW);
@@ -117,7 +119,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
                 .add(Biomes.SAVANNA_PLATEAU);
 
         this.builder(BloomBiomeTags.HAS_DEEPER_STONE)
-                .addTag(BloomBiomeTags.HAS_DEPTH_GRANITE);
+                .addTag(BloomBiomeTags.HAS_DEPTH_GRANITE)
+                .addTag(BloomBiomeTags.HAS_DEPTH_DIORITE);
 
 		// Features
 		this.builder(BloomBiomeTags.HAS_BROMELIAD)
