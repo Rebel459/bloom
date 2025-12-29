@@ -86,7 +86,6 @@ public final class WindsweptJungle extends FrozenBiome {
         BiomeDefaultFeatures.addDefaultOres(features);
         BiomeDefaultFeatures.addDefaultSoftDisks(features);
         BiomeDefaultFeatures.addLightBambooVegetation(features);
-        BiomeDefaultFeatures.addJungleTrees(features);
         BiomeDefaultFeatures.addWarmFlowers(features);
         BiomeDefaultFeatures.addJungleGrass(features);
         BiomeDefaultFeatures.addDefaultMushrooms(features);

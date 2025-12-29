@@ -29,6 +29,8 @@ public final class BloomFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_JACARANDA_TREE = registerConfigured("tree_jacaranda");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_JACARANDA_TREE_BEES = registerConfigured("tree_jacaranda_bees");
 
+    public static final ResourceKey<PlacedFeature> WINDSWEPT_JUNGLE_TREES = register("trees_windswept_jungle");
+
     public static ResourceKey<PlacedFeature> register(String string) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Bloom.id(string));
     }

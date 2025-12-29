@@ -72,7 +72,7 @@ jar {
 
 fabricApi {
     configureDataGeneration() {
-		client = true;
+		client = true
 		modId = "bloom"
 	}
 }

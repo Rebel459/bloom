@@ -41,12 +41,15 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(Biomes.OLD_GROWTH_SPRUCE_TAIGA);
 
 		// Internal
-		this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
-				.add(BloomBiomes.WARM_RIVER)
-				.add(BloomBiomes.ARID_SHORE)
+        this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
+                .add(BloomBiomes.WARM_RIVER)
+                .add(BloomBiomes.ARID_SHORE)
                 .add(BloomBiomes.TROPICAL_RIVER)
-				.add(BloomBiomes.COLD_RIVER)
+                .add(BloomBiomes.COLD_RIVER)
                 .add(BloomBiomes.COLD_BEACH);
+
+        this.builder(BloomBiomeTags.HAS_WINDSWEPT_JUNGLE_TREES)
+                .add(BloomBiomes.WINDSWEPT_JUNGLE);
 
 		// Effects
         this.builder(BloomBiomeTags.HAS_WARM_COLORS)

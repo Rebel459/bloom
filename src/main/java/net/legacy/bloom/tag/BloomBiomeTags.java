@@ -28,6 +28,7 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_DEPTH_STONE = bind("has_rule/depth_stone");
 
     public static final TagKey<Biome> HAS_LESS_STRICT_DISKS = bind("has_feature/internal/less_strict_disks");
+    public static final TagKey<Biome> HAS_WINDSWEPT_JUNGLE_TREES = bind("has_feature/internal/windswept_jungle_trees");
 
     public static final TagKey<Biome> HAS_BROMELIAD = bind("has_feature/flower_bromeliad");
     public static final TagKey<Biome> HAS_PINK_ORCHID = bind("has_feature/flower_pink_orchid");

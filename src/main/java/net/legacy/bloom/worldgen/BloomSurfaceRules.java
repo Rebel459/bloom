@@ -171,7 +171,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         return SurfaceRules.ifTrue(
                 SurfaceRules.isBiome(BloomBiomes.WINDSWEPT_JUNGLE),
                 SurfaceRules.ifTrue(
-                        SurfaceRuleData.surfaceNoiseAbove(1.75),
+                        SurfaceRuleData.surfaceNoiseAbove(2.5),
                         FrozenSurfaceRules.makeStateRule(Blocks.DIORITE)
                 )
         );

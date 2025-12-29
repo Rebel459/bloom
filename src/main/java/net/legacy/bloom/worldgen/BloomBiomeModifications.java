@@ -84,6 +84,13 @@ public final class BloomBiomeModifications {
                     BiomeHelper.addLessStrictDisks(modificationContext);
                 }
         );
+        BiomeModifications.create(Bloom.id("has_windswept_jungle_trees")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_WINDSWEPT_JUNGLE_TREES),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_TREES);
+                }
+        );
 
 		BiomeModifications.create(Bloom.id("has_bromeliad")).add(
 				ModificationPhase.REPLACEMENTS,

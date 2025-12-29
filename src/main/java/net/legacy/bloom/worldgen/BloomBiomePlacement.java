@@ -86,7 +86,7 @@ public class BloomBiomePlacement {
                 Climate.Parameter.span(BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5),
                 Climate.Parameter.span(BiomeHelper.CONTINENTALNESS_COAST, BiomeHelper.CONTINENTALNESS_MAX),
                 Climate.Parameter.span(BiomeHelper.EROSION_5, BiomeHelper.EROSION_6),
-                Climate.Parameter.span(BiomeHelper.WEIRDNESS_LOW_SLICE_VARIANT_ASCENDING, BiomeHelper.WEIRDNESS_MAX),
+                Climate.Parameter.span(BiomeHelper.WEIRDNESS_MID_SLICE_VARIANT_ASCENDING, BiomeHelper.WEIRDNESS_MAX),
                 0L
         );
         BiomeHelper.surfaceBiome(
@@ -95,16 +95,15 @@ public class BloomBiomePlacement {
                 Climate.Parameter.span(BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5),
                 Climate.Parameter.span(BiomeHelper.CONTINENTALNESS_COAST, BiomeHelper.CONTINENTALNESS_MAX),
                 Climate.Parameter.span(BiomeHelper.EROSION_5, BiomeHelper.EROSION_6),
-                Climate.Parameter.span(BiomeHelper.WEIRDNESS_MID_SLICE_NORMAL_ASCENDING, BiomeHelper.WEIRDNESS_MID_SLICE_NORMAL_DESCENDING),
+                Climate.Parameter.span(BiomeHelper.WEIRDNESS_HIGH_SLICE_NORMAL_ASCENDING, BiomeHelper.WEIRDNESS_HIGH_SLICE_NORMAL_DESCENDING),
                 0L
         );
         BiomePlacement.addSubOverworld(
                 Biomes.WINDSWEPT_SAVANNA,
                 BloomBiomes.WINDSWEPT_JUNGLE,
                 CriterionBuilder.allOf(
-                        CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, BiomeHelper.TEMPERATURE_2, BiomeHelper.TEMPERATURE_4),
-                        CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, BiomeHelper.HUMIDITY_2, BiomeHelper.HUMIDITY_4),
-                        CriterionBuilder.neighbor(BiomeTags.IS_JUNGLE)
+                        CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, BiomeHelper.TEMPERATURE_3, BiomeHelper.TEMPERATURE_4),
+                        CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_4)
                 )
         );
     }
