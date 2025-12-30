@@ -1,3 +1,8 @@
 {
-  "values": []
+  "values": [
+    "minecraft:snowy_plains",
+    "minecraft:snowy_taiga",
+    "minecraft:frozen_river",
+    "minecraft:ice_spikes"
+  ]
 }

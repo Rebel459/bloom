@@ -5,6 +5,7 @@ import net.frozenblock.lib.datagen.api.FrozenBiomeTagProvider;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 import org.jetbrains.annotations.NotNull;
@@ -121,6 +122,18 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
         this.builder(BloomBiomeTags.HAS_DEPTH_DIORITE);
 
+        this.builder(BloomBiomeTags.HAS_DEPTH_ANDESITE);
+
+        this.builder(BloomBiomeTags.HAS_DEPTH_DOLERITE)
+                .add(Biomes.SNOWY_PLAINS)
+                .add(Biomes.SNOWY_TAIGA)
+                .add(Biomes.FROZEN_RIVER)
+                .add(Biomes.ICE_SPIKES);
+
+        this.builder(BloomBiomeTags.HAS_DEPTH_SANDSTONE);
+
+        this.builder(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE);
+
         this.builder(BloomBiomeTags.HAS_DEPTH_STONE)
                 .add(Biomes.CHERRY_GROVE)
                 .add(Biomes.MEADOW);
@@ -131,7 +144,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
         this.builder(BloomBiomeTags.HAS_DEEPER_STONE)
                 .addTag(BloomBiomeTags.HAS_DEPTH_GRANITE)
-                .addTag(BloomBiomeTags.HAS_DEPTH_DIORITE);
+                .addTag(BloomBiomeTags.HAS_DEPTH_DIORITE)
+                .addTag(BloomBiomeTags.HAS_DEPTH_GRANITE)
+                .addTag(BloomBiomeTags.HAS_DEPTH_ANDESITE)
+                .addTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
+                .addTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE);
 
 		// Features
 		this.builder(BloomBiomeTags.HAS_BROMELIAD)
