@@ -119,13 +119,15 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
                 .add(BloomBlocks.JACARANDA_TRAPDOOR);
 
         this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .addAll(BloomBlocks.SANDSTONE_ORES.getOresMap().values());
+                .add(BloomBlocks.DOLERITE);
 
         tagOres(BloomBlocks.TUFF_ORES);
         tagOres(BloomBlocks.GRANITE_ORES);
         tagOres(BloomBlocks.ANDESITE_ORES);
         tagOres(BloomBlocks.DIORITE_ORES);
+        tagOres(BloomBlocks.DOLERITE_ORES);
         tagOres(BloomBlocks.SANDSTONE_ORES);
+        tagOres(BloomBlocks.RED_SANDSTONE_ORES);
 	}
 
     public void tagOres(StoneOresRegistry ores) {

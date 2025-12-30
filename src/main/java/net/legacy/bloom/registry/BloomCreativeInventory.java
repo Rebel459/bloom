@@ -12,6 +12,7 @@ public class BloomCreativeInventory {
             addOres(BloomBlocks.GRANITE_ORES, entries);
             addOres(BloomBlocks.DIORITE_ORES, entries);
             addOres(BloomBlocks.ANDESITE_ORES, entries);
+            addOres(BloomBlocks.RED_SANDSTONE_ORES, entries);
             addOres(BloomBlocks.SANDSTONE_ORES, entries);
         });
     }

@@ -49,11 +49,15 @@ public final class BloomModelProvider extends FabricModelProvider {
         generator.createPlantWithDefaultItem(BloomBlocks.JACARANDA_SAPLING, BloomBlocks.POTTED_JACARANDA_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         generator.createTrivialBlock(BloomBlocks.JACARANDA_LEAVES, TexturedModel.LEAVES);
 
+        generator.createTrivialCube(BloomBlocks.DOLERITE);
+
         oreModels(BloomBlocks.TUFF_ORES, generator);
         oreModels(BloomBlocks.GRANITE_ORES, generator);
         oreModels(BloomBlocks.ANDESITE_ORES, generator);
         oreModels(BloomBlocks.DIORITE_ORES, generator);
+        oreModels(BloomBlocks.DOLERITE_ORES, generator);
         oreModels(BloomBlocks.SANDSTONE_ORES, generator);
+        oreModels(BloomBlocks.RED_SANDSTONE_ORES, generator);
 
 /*		generator.createTrivialCube(ERBlocks.CRYSTALLINE_LAMP);
 		generator.createTrivialCube(ERBlocks.CRYSTALLINE_BLOCK);

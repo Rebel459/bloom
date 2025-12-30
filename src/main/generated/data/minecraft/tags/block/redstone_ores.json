@@ -4,6 +4,8 @@
     "bloom:granite_redstone_ore",
     "bloom:andesite_redstone_ore",
     "bloom:diorite_redstone_ore",
-    "bloom:sandstone_redstone_ore"
+    "bloom:dolerite_redstone_ore",
+    "bloom:sandstone_redstone_ore",
+    "bloom:red_sandstone_redstone_ore"
   ]
 }

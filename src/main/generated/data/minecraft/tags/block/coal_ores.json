@@ -4,6 +4,8 @@
     "bloom:granite_coal_ore",
     "bloom:andesite_coal_ore",
     "bloom:diorite_coal_ore",
-    "bloom:sandstone_coal_ore"
+    "bloom:dolerite_coal_ore",
+    "bloom:sandstone_coal_ore",
+    "bloom:red_sandstone_coal_ore"
   ]
 }

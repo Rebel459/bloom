@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "coal",
+  "ingredient": "bloom:andesite_coal_ore",
+  "result": {
+    "id": "minecraft:coal"
+  }
+}

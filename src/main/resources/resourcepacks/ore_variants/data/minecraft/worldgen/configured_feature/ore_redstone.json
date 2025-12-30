@@ -1,0 +1,96 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 8,
+    "targets": [
+      {
+        "state": {
+          "Name": "bloom:sandstone_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:sandstone"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:red_sandstone_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:red_sandstone"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:andesite_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:andesite"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:diorite_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:diorite"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:granite_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:granite"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:dolerite_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "bloom:dolerite"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:tuff_redstone_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:tuff"
+        }
+      },
+      {
+        "state": {
+          "Name": "minecraft:redstone_ore",
+          "Properties": {
+            "lit": "false"
+          }
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:stone"
+        }
+      },
+      {
+        "state": {
+          "Name": "minecraft:deepslate_redstone_ore",
+          "Properties": {
+            "lit": "false"
+          }
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:deepslate"
+        }
+      }
+    ]
+  }
+}

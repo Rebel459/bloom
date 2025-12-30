@@ -198,6 +198,15 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
+    public static SurfaceRules.RuleSource granite() {
+        return SurfaceRules.sequence(
+                SurfaceRules.ifTrue(
+                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
+                        FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
+                )
+        );
+    }
+
     @Override
     public void addOverworldSurfaceRules(List<SurfaceRules.RuleSource> context) {
         context.add(
@@ -219,5 +228,13 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     }
 
     @Override
-    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> list) {}
+    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> list) {
+        list.add(
+                SurfaceRules.sequence(
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE)
+                )
+        );
+    }
 }

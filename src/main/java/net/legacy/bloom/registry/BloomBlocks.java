@@ -267,11 +267,19 @@ public final class BloomBlocks {
                     .mapColor(MapColor.COLOR_PURPLE)
     );
 
+    public static final Block DOLERITE = register("dolerite",
+            Block::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+                    .strength(1.8F, 8.0F)
+    );
+
     public static final StoneOresRegistry TUFF_ORES = new StoneOresRegistry(Blocks.TUFF, true).build();
     public static final StoneOresRegistry GRANITE_ORES = new StoneOresRegistry(Blocks.GRANITE, false).build();
     public static final StoneOresRegistry ANDESITE_ORES = new StoneOresRegistry(Blocks.ANDESITE, false).build();
     public static final StoneOresRegistry DIORITE_ORES = new StoneOresRegistry(Blocks.DIORITE, false).build();
+    public static final StoneOresRegistry DOLERITE_ORES = new StoneOresRegistry(BloomBlocks.DOLERITE, false).build();
     public static final StoneOresRegistry SANDSTONE_ORES = new StoneOresRegistry(Blocks.SANDSTONE, false).build();
+    public static final StoneOresRegistry RED_SANDSTONE_ORES = new StoneOresRegistry(Blocks.RED_SANDSTONE, false).build();
 
 	public static void registerBlockProperties() {
         var sign = (FabricBlockEntityType) BlockEntityType.SIGN;

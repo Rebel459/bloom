@@ -36,8 +36,8 @@ public class Bloom implements ModInitializer {
         BloomCreativeInventory.init();
 
         ResourceManagerHelper.registerBuiltinResourcePack(
-                Bloom.id("template"), modContainer.get(),
-                Component.translatable("pack.bloom.template"),
+                Bloom.id("ore_variants"), modContainer.get(),
+                Component.translatable("pack.bloom.ore_variants"),
                 ResourcePackActivationType.ALWAYS_ENABLED
         );
 

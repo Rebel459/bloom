@@ -2,10 +2,13 @@
 	"schemaVersion": 1,
 	"id": "bloom",
 	"version": "${version}",
-	"name": "Combat Reborn",
-	"description": "A simple, thoughtful overhaul to many vanilla combat and hunger-related mechanics.",
+	"name": "Bloom",
+	"description": "An Overworld overhaul.",
 	"authors": [
-		"Rebel459"
+      "Rebel459",
+      "Sierra",
+      "Castiel",
+      "DigitalPear"
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/user/Rebel459",

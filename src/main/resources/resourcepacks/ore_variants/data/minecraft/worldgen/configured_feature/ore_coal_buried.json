@@ -1,0 +1,90 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.5,
+    "size": 17,
+    "targets": [
+      {
+        "state": {
+          "Name": "bloom:sandstone_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:sandstone"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:red_sandstone_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:red_sandstone"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:andesite_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:andesite"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:diorite_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:diorite"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:granite_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:granite"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:dolerite_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "bloom:dolerite"
+        }
+      },
+      {
+        "state": {
+          "Name": "bloom:tuff_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:tuff"
+        }
+      },
+      {
+        "state": {
+          "Name": "minecraft:coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:stone"
+        }
+      },
+      {
+        "state": {
+          "Name": "minecraft:deepslate_coal_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:deepslate"
+        }
+      }
+    ]
+  }
+}

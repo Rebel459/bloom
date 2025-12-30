@@ -4,6 +4,8 @@
     "bloom:granite_iron_ore",
     "bloom:andesite_iron_ore",
     "bloom:diorite_iron_ore",
-    "bloom:sandstone_iron_ore"
+    "bloom:dolerite_iron_ore",
+    "bloom:sandstone_iron_ore",
+    "bloom:red_sandstone_iron_ore"
   ]
 }

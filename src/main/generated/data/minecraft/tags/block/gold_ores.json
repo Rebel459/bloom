@@ -4,6 +4,8 @@
     "bloom:granite_gold_ore",
     "bloom:andesite_gold_ore",
     "bloom:diorite_gold_ore",
-    "bloom:sandstone_gold_ore"
+    "bloom:dolerite_gold_ore",
+    "bloom:sandstone_gold_ore",
+    "bloom:red_sandstone_gold_ore"
   ]
 }

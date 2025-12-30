@@ -2,14 +2,31 @@ package net.legacy.bloom.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.legacy.bloom.Bloom;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.data.StoneOresRegistry;
+import net.legacy.bloom.tag.BloomBlockTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public final class BloomRecipeProvider extends FabricRecipeProvider {
@@ -37,6 +54,13 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
                 this.oneToOneConversionRecipe(Items.YELLOW_DYE, BloomBlocks.GOLDENROD, "yellow_dye");
                 this.oneToOneConversionRecipe(Items.ORANGE_DYE, BloomBlocks.ORANGE_DAISY, "orange_dye");
 
+                oreRecipes(BloomBlocks.DOLERITE_ORES);
+                oreRecipes(BloomBlocks.DIORITE_ORES);
+                oreRecipes(BloomBlocks.GRANITE_ORES);
+                oreRecipes(BloomBlocks.ANDESITE_ORES);
+                oreRecipes(BloomBlocks.SANDSTONE_ORES);
+                oreRecipes(BloomBlocks.TUFF_ORES);
+
 /*                ERWoodRecipeProvider.buildRecipes(this, exporter);
 
                 this.shapeless(RecipeCategory.BUILDING_BLOCKS, ERBlocks.CHORUS_BLOCK)
@@ -55,6 +79,31 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
                 this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.PURPUR_STAIRS, ERBlocks.PURPUR);
                 this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.PURPUR_SLAB, ERBlocks.PURPUR, 2);
                 this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.PURPUR_PILLAR, ERBlocks.PURPUR);*/
+            }
+
+
+            public void oreRecipes(StoneOresRegistry ores) {
+                ores.getOresMap().forEach((oreType, block) -> {
+                    String name = oreType.name;
+                    if (Objects.equals(name, "coal")) this.smeltOre(block, Items.COAL, 0.1F, name);
+                    if (Objects.equals(name, "copper")) this.smeltOre(block, Items.COPPER_INGOT, 0.7F, name);
+                    if (Objects.equals(name, "iron")) this.smeltOre(block, Items.IRON_INGOT, 0.7F, name);
+                    if (Objects.equals(name, "redstone")) this.smeltOre(block, Items.REDSTONE, 0.7F, name);
+                    if (Objects.equals(name, "gold")) this.smeltOre(block, Items.GOLD_INGOT, 1F, name);
+                    if (Objects.equals(name, "diamond")) this.smeltOre(block, Items.DIAMOND, 1F, name);
+                    if (Objects.equals(name, "emerald")) this.smeltOre(block, Items.EMERALD, 1F, name);
+                    if (Objects.equals(name, "lapis")) this.smeltOre(block, Items.LAPIS_LAZULI, 0.2F, name);
+                    if (Objects.equals(name, "sapphire")) this.smeltOre(block, BuiltInRegistries.ITEM.getValue(Identifier.fromNamespaceAndPath("legacies_and_legends", "sapphire")).asItem(), 1F, name);
+                });
+            }
+
+            public void smeltOre(Block input, Item output, float experience, String material) {
+                String group = material;
+                String type = output.getName().getString().toLowerCase();
+                if (type.contains("lazuli")) group = group + "_lazuli";
+                if (type.contains("ingot")) group = group + "_ingot";
+                this.oreSmelting(List.of(input.asItem()), RecipeCategory.MISC, output, experience, 200, group);
+                this.oreBlasting(List.of(input.asItem()), RecipeCategory.MISC, output, experience, 100, group);
             }
         };
     }

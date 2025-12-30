@@ -4,6 +4,8 @@
     "bloom:granite_sapphire_ore",
     "bloom:andesite_sapphire_ore",
     "bloom:diorite_sapphire_ore",
-    "bloom:sandstone_sapphire_ore"
+    "bloom:dolerite_sapphire_ore",
+    "bloom:sandstone_sapphire_ore",
+    "bloom:red_sandstone_sapphire_ore"
   ]
 }

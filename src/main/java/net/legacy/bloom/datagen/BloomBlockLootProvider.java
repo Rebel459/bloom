@@ -71,11 +71,15 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
         this.dropSelf(BloomBlocks.JACARANDA_SAPLING);
         this.add(BloomBlocks.JACARANDA_LEAVES, block -> this.createLeavesDrops(block, BloomBlocks.JACARANDA_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
 
+        this.dropSelf(BloomBlocks.DOLERITE);
+
         this.oreDrops(BloomBlocks.TUFF_ORES);
         this.oreDrops(BloomBlocks.GRANITE_ORES);
         this.oreDrops(BloomBlocks.ANDESITE_ORES);
         this.oreDrops(BloomBlocks.DIORITE_ORES);
+        this.oreDrops(BloomBlocks.DOLERITE_ORES);
         this.oreDrops(BloomBlocks.SANDSTONE_ORES);
+        this.oreDrops(BloomBlocks.RED_SANDSTONE_ORES);
 
         //this.add(ERBlocks.CHORUS_MOSAIC_SLAB, this::createSlabItemTable);
 	}

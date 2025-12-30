@@ -5,6 +5,7 @@ accessible method net/minecraft/data/worldgen/SurfaceRuleData surfaceNoiseAbove 
 extendable class net/minecraft/world/level/block/grower/TreeGrower
 extendable method net/minecraft/world/level/block/grower/TreeGrower getConfiguredFeature (Lnet/minecraft/util/RandomSource;Z)Lnet/minecraft/resources/ResourceKey;
 extendable method net/minecraft/world/level/block/grower/TreeGrower getConfiguredMegaFeature (Lnet/minecraft/util/RandomSource;)Lnet/minecraft/resources/ResourceKey;
+accessible class net/minecraft/world/level/levelgen/SurfaceRules$YConditionSource
 
 accessible class net/minecraft/client/particle/ParticleResources$MutableSpriteSet
 accessible class net/minecraft/client/particle/ParticleResources$SpriteParticleRegistration

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bloom:block/red_sandstone_emerald_ore"
+    }
+  }
+}

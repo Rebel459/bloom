@@ -4,6 +4,8 @@
     "bloom:granite_lapis_ore",
     "bloom:andesite_lapis_ore",
     "bloom:diorite_lapis_ore",
-    "bloom:sandstone_lapis_ore"
+    "bloom:dolerite_lapis_ore",
+    "bloom:sandstone_lapis_ore",
+    "bloom:red_sandstone_lapis_ore"
   ]
 }
