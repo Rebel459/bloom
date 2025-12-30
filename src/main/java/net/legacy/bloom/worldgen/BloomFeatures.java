@@ -4,7 +4,7 @@ import net.legacy.bloom.Bloom;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> DISK_CLAY = register("disk_clay");

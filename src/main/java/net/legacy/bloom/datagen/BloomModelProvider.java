@@ -8,14 +8,8 @@ import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.data.StoneOresRegistry;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.MultiVariant;
-import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TexturedModel;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)
@@ -26,7 +20,7 @@ public final class BloomModelProvider extends FabricModelProvider {
 	}
 
 	@Override
-	public void generateBlockStateModels(@NotNull BlockModelGenerators generator) {
+	public void generateBlockStateModels(BlockModelGenerators generator) {
 		generator.createPlantWithDefaultItem(BloomBlocks.HELLEBORE, BloomBlocks.POTTED_HELLEBORE, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createPlantWithDefaultItem(BloomBlocks.BROMELIAD, BloomBlocks.POTTED_BROMELIAD, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createPlantWithDefaultItem(BloomBlocks.PINK_ORCHID, BloomBlocks.POTTED_PINK_ORCHID, BlockModelGenerators.PlantType.NOT_TINTED);
@@ -84,17 +78,17 @@ public final class BloomModelProvider extends FabricModelProvider {
     }
 
 	@Override
-	public void generateItemModels(@NotNull ItemModelGenerators generator) {
+	public void generateItemModels(ItemModelGenerators generator) {
 /*        generator.generateFlatItem(ERItems.CHORUS_RAFT, ModelTemplates.FLAT_ITEM);
 		generator.generateFlatItem(ERItems.CHORUS_CHEST_RAFT, ModelTemplates.FLAT_ITEM);*/
 	}
 
-	public void createSinglePlant(Block block, BlockModelGenerators.PlantType plantType, @NotNull BlockModelGenerators generator) {
-		generator.registerSimpleItemModel(block.asItem(), plantType.createItemModel(generator, block));
-		this.createPlant(block, plantType, generator);
+	public void createSinglePlant(Block block, BlockModelGenerators.PlantType type, BlockModelGenerators generator) {
+		generator.registerSimpleItemModel(block.asItem(), type.createItemModel(generator, block));
+		this.createPlant(block, type, generator);
 	}
 
-	public void createPlant(Block block, BlockModelGenerators.PlantType plantType, @NotNull BlockModelGenerators generator) {
-		generator.createCrossBlock(block, plantType);
+	public void createPlant(Block block, BlockModelGenerators.PlantType type, BlockModelGenerators generator) {
+		generator.createCrossBlock(block, type);
 	}
 }

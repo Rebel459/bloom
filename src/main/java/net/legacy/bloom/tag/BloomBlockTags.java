@@ -3,9 +3,7 @@ package net.legacy.bloom.tag;
 import net.legacy.bloom.Bloom;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,8 +15,7 @@ public class BloomBlockTags {
 
     public static final TagKey<Block> SAPPHIRE_ORES = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("legacies_and_legends", "sapphire_ores"));
 
-    @NotNull
-    private static TagKey<Block> bind(@NotNull String path) {
+    private static TagKey<Block> bind(String path) {
         return TagKey.create(Registries.BLOCK, Bloom.id(path));
     }
 }

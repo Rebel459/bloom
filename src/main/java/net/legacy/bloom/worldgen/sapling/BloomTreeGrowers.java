@@ -1,13 +1,12 @@
 package net.legacy.bloom.worldgen.sapling;
 
+import java.util.Optional;
 import net.legacy.bloom.Bloom;
 import net.legacy.bloom.worldgen.BloomFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-
-import java.util.Optional;
 
 public final class BloomTreeGrowers {
 

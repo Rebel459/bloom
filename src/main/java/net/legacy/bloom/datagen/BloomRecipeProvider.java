@@ -1,33 +1,23 @@
 package net.legacy.bloom.datagen;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.legacy.bloom.Bloom;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.data.StoneOresRegistry;
-import net.legacy.bloom.tag.BloomBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.Identifier;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
 
 public final class BloomRecipeProvider extends FabricRecipeProvider {
 
@@ -37,12 +27,12 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 
     @Contract("_, _ -> new")
     @Override
-    protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput exporter) {
+    protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput exporter) {
         return new RecipeProvider(registries, exporter) {
             @Override
             public void buildRecipes() {
 
-                this.oneToOneConversionRecipe(Items.PURPLE_DYE, BloomBlocks.BELLFLOWER, "purple_dye", 2);
+				this.oneToOneConversionRecipe(Items.PURPLE_DYE, BloomBlocks.BELLFLOWER, "purple_dye", 2);
                 this.oneToOneConversionRecipe(Items.WHITE_DYE, BloomBlocks.HYDRANGEA, "white_dye", 2);
 
                 this.oneToOneConversionRecipe(Items.RED_DYE, BloomBlocks.BROMELIAD, "red_dye");
@@ -109,7 +99,6 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    @NotNull
     public String getName() {
         return "Bloom Recipes";
     }

@@ -2,17 +2,14 @@ package net.legacy.bloom.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.frozenblock.lib.feature_flag.api.FeatureFlagApi;
 import net.legacy.bloom.Bloom;
-import net.legacy.bloom.registry.BloomBiomes;
 import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.Registries;
 import org.jetbrains.annotations.NotNull;
 
 public final class BloomDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
-	public void onInitializeDataGenerator(@NotNull FabricDataGenerator dataGenerator) {
+	public void onInitializeDataGenerator(FabricDataGenerator dataGenerator) {
 		final FabricDataGenerator.Pack pack = dataGenerator.createPack();
 
 		pack.addProvider(BloomModelProvider::new);
@@ -25,8 +22,9 @@ public final class BloomDataGenerator implements DataGeneratorEntrypoint {
 
 	}
 
-	public void buildRegistry(RegistrySetBuilder registrySetBuilder) {
-		BloomRegistryProvider.buildRegistry(registrySetBuilder);
+	@Override
+	public void buildRegistry(RegistrySetBuilder builder) {
+		BloomRegistryProvider.buildRegistry(builder);
 	}
 
 	@Override

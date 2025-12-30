@@ -1,5 +1,6 @@
 package net.legacy.bloom.datagen;
 
+import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.legacy.bloom.registry.BloomBiomes;
@@ -7,8 +8,6 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
-
-import java.util.concurrent.CompletableFuture;
 
 public class BloomRegistryProvider extends FabricDynamicRegistryProvider {
     protected BloomRegistryProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {

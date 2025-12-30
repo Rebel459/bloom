@@ -51,8 +51,7 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_SUCCULENT = bind("has_feature/patch_succulent");
     public static final TagKey<Biome> HAS_REEDS = bind("has_feature/patch_reeds");
 
-    @NotNull
-    private static TagKey<Biome> bind(@NotNull String path) {
+    private static TagKey<Biome> bind(String path) {
         return TagKey.create(Registries.BIOME, Bloom.id(path));
     }
 }

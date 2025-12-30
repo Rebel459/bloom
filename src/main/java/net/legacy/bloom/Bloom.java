@@ -1,8 +1,8 @@
 package net.legacy.bloom;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.legacy.bloom.config.BloomConfig;
@@ -16,16 +16,13 @@ import net.legacy.bloom.worldgen.BloomBiomePlacement;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
-import java.util.Optional;
-
 public class Bloom implements ModInitializer {
-
-    public static boolean isWilderWildLoaded = false;
-    Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(Bloom.MOD_ID);
+	public static final String MOD_ID = "bloom";
+    public static final boolean HAS_WILDERWILD = FabricLoader.getInstance().isModLoaded("wilderwild");
 
 	@Override
 	public void onInitialize() {
-
+		final ModContainer modContainer = FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow();
 		BloomConfig.init();
         BloomBlocks.init();
         BloomItems.init();
@@ -35,20 +32,15 @@ public class Bloom implements ModInitializer {
         BloomSounds.init();
         BloomCreativeInventory.init();
 
-        ResourceManagerHelper.registerBuiltinResourcePack(
-                Bloom.id("ore_variants"), modContainer.get(),
-                Component.translatable("pack.bloom.ore_variants"),
-                ResourcePackActivationType.ALWAYS_ENABLED
+		ResourceLoader.registerBuiltinPack(
+			Bloom.id("ore_variants"), modContainer,
+			Component.translatable("pack.bloom.ore_variants"),
+			PackActivationType.ALWAYS_ENABLED
         );
-
-        if (FabricLoader.getInstance().isModLoaded("wilderwild")) {
-            isWilderWildLoaded = true;
-        }
 	}
 
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
-	public static final String MOD_ID = "bloom";
 
 }

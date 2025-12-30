@@ -1,23 +1,23 @@
 package net.legacy.bloom.registry.data;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
 import net.fabricmc.loader.api.FabricLoader;
-import net.legacy.bloom.Bloom;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.RedStoneOreBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-
-import java.util.*;
-import java.util.function.BiFunction;
 
 public class StoneOresRegistry {
     private final Map<OreType, Block> oresMap = new HashMap<>();
@@ -35,9 +35,7 @@ public class StoneOresRegistry {
     }
     public StoneOresRegistry(Block baseStone, boolean deep){
         this(baseStone, deep, (type, properties) -> {
-            if (type == OreType.REDSTONE){
-                return new RedStoneOreBlock(properties);
-            }
+            if (type == OreType.REDSTONE) return new RedStoneOreBlock(properties);
             return new DropExperienceBlock(type.xpProvider, properties);
         });
     }
@@ -70,15 +68,22 @@ public class StoneOresRegistry {
     }
 
     public StoneOresRegistry build(){
-        for (OreType value : OreType.ORES) {
-            if (value.neededMods.isEmpty() || value.neededMods.stream().allMatch(s -> FabricLoader.getInstance().isModLoaded(s))){
-                BlockBehaviour.Properties finalProperties = manualOverrideFunction.apply(value, BlockBehaviour.Properties.ofFullCopy(baseStone).strength(baseStone.defaultDestroyTime() + getStrengthIncrease()).explosionResistance(getExplosionResistance()));
-                Block block = BloomBlocks.register(
-                        BuiltInRegistries.BLOCK.getKey(baseStone).getPath() + "_" + value.name + "_ore", properties -> normalFunction.apply(value, properties), finalProperties
-                );
-                oresMap.put(value, block);
-            }
+        for (OreType type : OreType.ORES) {
+            if (!type.modRequirements.isEmpty() && !type.modRequirements.stream().allMatch(s -> FabricLoader.getInstance().isModLoaded(s))) continue;
+
+			final BlockBehaviour.Properties finalProperties = manualOverrideFunction.apply(
+				type,
+				BlockBehaviour.Properties.ofFullCopy(baseStone)
+					.strength(baseStone.defaultDestroyTime() + getStrengthIncrease()).explosionResistance(getExplosionResistance())
+			);
+			final Block block = BloomBlocks.register(
+				BuiltInRegistries.BLOCK.getKey(baseStone).getPath() + "_" + type.name + "_ore",
+				properties -> normalFunction.apply(type, properties),
+				finalProperties
+			);
+			oresMap.put(type, block);
         }
+
         return this;
     }
 
@@ -93,13 +98,16 @@ public class StoneOresRegistry {
         public static final OreType DIAMOND = new OreType("diamond", Blocks.DIAMOND_ORE, UniformInt.of(3, 7));
         public static final OreType EMERALD = new OreType("emerald", Blocks.EMERALD_ORE, UniformInt.of(3, 7));
         public static final OreType LAPIS = new OreType("lapis", Blocks.LAPIS_ORE, UniformInt.of(2, 5));
-        public static final OreType SAPPHIRE = OreType.compatOreType("sapphire", Identifier.fromNamespaceAndPath("legacies_and_legends", "sapphire_ore"), UniformInt.of(2, 5)).addNeededMod("legacies_and_legends");
-
+        public static final OreType SAPPHIRE = OreType.compatOreType(
+			"sapphire",
+			Identifier.fromNamespaceAndPath("legacies_and_legends", "sapphire_ore"),
+			UniformInt.of(2, 5)
+		).addModRequirement("legacies_and_legends");
 
         public final String name;
         public final Block baseBlock;
         private final IntProvider xpProvider;
-        private final List<String> neededMods = new ArrayList<>();
+        private final List<String> modRequirements = new ArrayList<>();
 
         public OreType(String name, Block baseBlock, IntProvider xpProvider) {
             this.name = name;
@@ -107,10 +115,12 @@ public class StoneOresRegistry {
             this.xpProvider = xpProvider;
             ORES.add(this);
         }
-        public OreType addNeededMod(String... ids){
-            neededMods.addAll(Arrays.asList(ids));
+
+        public OreType addModRequirement(String... ids){
+            modRequirements.addAll(Arrays.asList(ids));
             return this;
         }
+
         public static OreType compatOreType(String name, Identifier baseBlock, IntProvider xpProvider){
             return new OreType(name, BuiltInRegistries.BLOCK.getValue(baseBlock), xpProvider);
         }

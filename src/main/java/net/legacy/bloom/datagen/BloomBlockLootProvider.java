@@ -1,6 +1,7 @@
 package net.legacy.bloom.datagen;
 
-import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.legacy.bloom.registry.BloomBlocks;
@@ -21,12 +22,9 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-
 public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 
-	public BloomBlockLootProvider(@NotNull FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registries) {
+	public BloomBlockLootProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registries) {
 		super(dataOutput, registries);
 	}
 
@@ -88,40 +86,13 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
         ores.getOresMap().forEach((type, block) -> {
             Block baseBlock = type.baseBlock;
             if (ores.deep) baseBlock = getDeepslateOre(type.name);
-            this.add(block, this.createSilkTouchDispatchTable(
-                    block,
-                    NestedLootTable.lootTableReference(baseBlock.getLootTable().get())
-            ));
+            this.add(block, this.createSilkTouchDispatchTable(block, NestedLootTable.lootTableReference(baseBlock.getLootTable().get())));
         });
     }
 
-    public static Block getDeepslateOre(String material){
+    public static Block getDeepslateOre(String material) {
         String id = "minecraft";
         if (Objects.equals(material, "sapphire")) id = "legacies_and_legends";
         return BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(id, "deepslate_" + material + "_ore"));
     }
-
-	public LootTable.@NotNull Builder createMultifaceBlockDrops(Block drop) {
-		return LootTable.lootTable()
-			.withPool(
-				LootPool.lootPool()
-					.add(
-						this.applyExplosionDecay(
-							drop,
-							LootItem.lootTableItem(drop)
-								.apply(
-									Direction.values(),
-									direction -> SetItemCountFunction.setCount(ConstantValue.exactly(1F), true)
-										.when(
-											LootItemBlockStatePropertyCondition.hasBlockStateProperties(drop)
-												.setProperties(
-													StatePropertiesPredicate.Builder.properties().hasProperty(MultifaceBlock.getFaceProperty(direction), true)
-												)
-										)
-								)
-								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(-1F), true))
-						)
-					)
-			);
-	}
 }

@@ -30,7 +30,7 @@ public class HoeItemMixin {
     }
 
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
-    private void harvestCropsWithHoe(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
+    private void harvestCropsWithHoe(UseOnContext context, CallbackInfoReturnable<InteractionResult> kirk) {
         Level level = context.getLevel();
 
         if (level.isClientSide() || !(level instanceof ServerLevel))
@@ -67,7 +67,7 @@ public class HoeItemMixin {
 
         if (harvested) {
             serverLevel.playSound(null, pos, SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-            cir.setReturnValue(InteractionResult.SUCCESS);
+            kirk.setReturnValue(InteractionResult.SUCCESS);
         }
     }
 }

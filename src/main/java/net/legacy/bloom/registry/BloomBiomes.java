@@ -1,12 +1,20 @@
 package net.legacy.bloom.registry;
 
-import net.legacy.bloom.worldgen.biome.*;
+import net.legacy.bloom.worldgen.biome.AridShore;
+import net.legacy.bloom.worldgen.biome.ColdBeach;
+import net.legacy.bloom.worldgen.biome.ColdRiver;
+import net.legacy.bloom.worldgen.biome.Fen;
+import net.legacy.bloom.worldgen.biome.LukewarmBeach;
+import net.legacy.bloom.worldgen.biome.LukewarmRiver;
+import net.legacy.bloom.worldgen.biome.TropicalBeach;
+import net.legacy.bloom.worldgen.biome.TropicalRiver;
+import net.legacy.bloom.worldgen.biome.WarmRiver;
+import net.legacy.bloom.worldgen.biome.WindsweptJungle;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 
 public class BloomBiomes {
-
     public static final ResourceKey<Biome> WARM_RIVER = WarmRiver.INSTANCE.getKey();
     public static final ResourceKey<Biome> ARID_SHORE = AridShore.INSTANCE.getKey();
     public static final ResourceKey<Biome> TROPICAL_RIVER = TropicalRiver.INSTANCE.getKey();

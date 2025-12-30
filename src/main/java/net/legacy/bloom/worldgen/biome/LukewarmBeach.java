@@ -1,6 +1,7 @@
 package net.legacy.bloom.worldgen.biome;
 
 import com.mojang.datafixers.util.Pair;
+import java.util.function.Consumer;
 import net.frozenblock.lib.worldgen.biome.api.FrozenBiome;
 import net.legacy.bloom.Bloom;
 import net.legacy.bloom.util.BiomeHelper;
@@ -20,8 +21,6 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.function.Consumer;
 
 public final class LukewarmBeach extends FrozenBiome {
     public static final float TEMP = 2F;

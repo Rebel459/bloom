@@ -2,8 +2,6 @@ package net.legacy.bloom.datagen;
 
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 
 public final class BloomWoodRecipeProvider {
     static void buildRecipes(RecipeProvider provider, RecipeOutput exporter) {

@@ -18,135 +18,135 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
     public static SurfaceRules.RuleSource aridRiversAndShores() {
         return SurfaceRules.ifTrue(
-                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_COARSE_DIRT),
-                SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.ON_FLOOR,
-                                FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
-                        ),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.UNDER_FLOOR,
-                                FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
-                        )
-                )
+			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_COARSE_DIRT),
+			SurfaceRules.sequence(
+				SurfaceRules.ifTrue(
+					SurfaceRules.ON_FLOOR,
+					FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
+				),
+				SurfaceRules.ifTrue(
+					SurfaceRules.UNDER_FLOOR,
+					FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
+				)
+			)
         );
     }
     public static SurfaceRules.RuleSource tropicalRivers() {
         return SurfaceRules.sequence(
-                SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(BloomBiomes.TROPICAL_RIVER),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.ON_FLOOR,
-                                FrozenSurfaceRules.makeStateRule(Blocks.MUD)
-                        )
-                ),
-                SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(BloomBiomes.TROPICAL_RIVER),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.UNDER_FLOOR,
-                                FrozenSurfaceRules.makeStateRule(Blocks.MUD)
-                        )
-                )
+			SurfaceRules.ifTrue(
+				SurfaceRules.isBiome(BloomBiomes.TROPICAL_RIVER),
+				SurfaceRules.ifTrue(
+					SurfaceRules.ON_FLOOR,
+					FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+				)
+			),
+			SurfaceRules.ifTrue(
+				SurfaceRules.isBiome(BloomBiomes.TROPICAL_RIVER),
+				SurfaceRules.ifTrue(
+					SurfaceRules.UNDER_FLOOR,
+					FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+				)
+			)
         );
     }
     public static SurfaceRules.RuleSource underwaterMud() {
         return SurfaceRules.sequence(
-                SurfaceRules.ifTrue(
-                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_UNDERWATER_MUD),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.ON_FLOOR,
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
-                                        FrozenSurfaceRules.makeStateRule(Blocks.MUD)
-                                )
-                        )
-                ),
-                SurfaceRules.ifTrue(
-                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_UNDERWATER_MUD),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.UNDER_FLOOR,
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
-                                        FrozenSurfaceRules.makeStateRule(Blocks.MUD)
-                                )
-                        )
-                )
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_UNDERWATER_MUD),
+				SurfaceRules.ifTrue(
+					SurfaceRules.ON_FLOOR,
+					SurfaceRules.ifTrue(
+						SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+						FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+					)
+				)
+			),
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_UNDERWATER_MUD),
+				SurfaceRules.ifTrue(
+					SurfaceRules.UNDER_FLOOR,
+					SurfaceRules.ifTrue(
+						SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+						FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+					)
+				)
+			)
         );
     }
     public static SurfaceRules.RuleSource sandyBiomeRules() {
         return SurfaceRules.sequence(
-                SurfaceRules.ifTrue(
-                        SurfaceRules.ON_FLOOR,
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.waterBlockCheck(-1, 0),
-                                SurfaceRules.sequence(
-                                        SurfaceRules.ifTrue(
-                                                SurfaceRules.ON_CEILING,
-                                                FrozenSurfaceRules.SANDSTONE
-                                        ),
-                                        FrozenSurfaceRules.SAND
-                                )
-                        )
-                ),
-                SurfaceRules.ifTrue(
-                        SurfaceRules.waterStartCheck(-6, -1),
-                        SurfaceRules.sequence(
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.UNDER_FLOOR,
-                                        SurfaceRules.sequence(
-                                                SurfaceRules.ifTrue(
-                                                        SurfaceRules.ON_CEILING,
-                                                        FrozenSurfaceRules.SANDSTONE
-                                                ),
-                                                FrozenSurfaceRules.SAND
-                                        )
-                                ),
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.VERY_DEEP_UNDER_FLOOR,
-                                        FrozenSurfaceRules.SANDSTONE
-                                )
-                        )
-                )
+			SurfaceRules.ifTrue(
+				SurfaceRules.ON_FLOOR,
+				SurfaceRules.ifTrue(
+					SurfaceRules.waterBlockCheck(-1, 0),
+					SurfaceRules.sequence(
+						SurfaceRules.ifTrue(
+							SurfaceRules.ON_CEILING,
+							FrozenSurfaceRules.SANDSTONE
+						),
+						FrozenSurfaceRules.SAND
+					)
+				)
+			),
+			SurfaceRules.ifTrue(
+				SurfaceRules.waterStartCheck(-6, -1),
+				SurfaceRules.sequence(
+					SurfaceRules.ifTrue(
+						SurfaceRules.UNDER_FLOOR,
+						SurfaceRules.sequence(
+							SurfaceRules.ifTrue(
+								SurfaceRules.ON_CEILING,
+								FrozenSurfaceRules.SANDSTONE
+							),
+							FrozenSurfaceRules.SAND
+						)
+					),
+					SurfaceRules.ifTrue(
+						SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+						FrozenSurfaceRules.SANDSTONE
+					)
+				)
+			)
         );
     }
     public static SurfaceRules.RuleSource beaches() {
         return SurfaceRules.ifTrue(
-                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_SAND),
-                sandyBiomeRules()
+			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_SAND),
+			sandyBiomeRules()
         );
     }
     public static SurfaceRules.RuleSource gravellyRiversAndBeaches() {
         return SurfaceRules.ifTrue(
-                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_GRAVEL),
-                SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.ON_FLOOR,
-                                FrozenSurfaceRules.makeStateRule(Blocks.GRAVEL)
-                        ),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.UNDER_FLOOR,
-                                FrozenSurfaceRules.makeStateRule(Blocks.GRAVEL)
-                        )
-                )
+			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_GRAVEL),
+			SurfaceRules.sequence(
+				SurfaceRules.ifTrue(
+					SurfaceRules.ON_FLOOR,
+					FrozenSurfaceRules.makeStateRule(Blocks.GRAVEL)
+				),
+				SurfaceRules.ifTrue(
+					SurfaceRules.UNDER_FLOOR,
+					FrozenSurfaceRules.makeStateRule(Blocks.GRAVEL)
+				)
+			)
         );
     }
     public static SurfaceRules.RuleSource coarseDirtStrips() {
-        var rule = SurfaceRules.ifTrue(
-                SurfaceRuleData.surfaceNoiseAbove(5.5),
-                FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
+        final SurfaceRules.RuleSource coarseDirtRule = SurfaceRules.ifTrue(
+			SurfaceRuleData.surfaceNoiseAbove(5.5),
+			FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
         );
         return SurfaceRules.ifTrue(
-                FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_STRIP_COARSE_DIRT),
-                SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.ON_FLOOR,
-                                rule
-                        ),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.UNDER_FLOOR,
-                                rule
-                        )
-                )
+			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_STRIP_COARSE_DIRT),
+			SurfaceRules.sequence(
+				SurfaceRules.ifTrue(
+					SurfaceRules.ON_FLOOR,
+					coarseDirtRule
+				),
+				SurfaceRules.ifTrue(
+					SurfaceRules.UNDER_FLOOR,
+					coarseDirtRule
+				)
+			)
         );
     }
 

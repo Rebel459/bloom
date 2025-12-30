@@ -12,14 +12,14 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class WideFlowerBlock extends FlowerBlock implements SuspiciousEffectHolder {
-    private static final VoxelShape SHAPE = Block.column(10.0, 0.0, 10.0);
+    private static final VoxelShape SHAPE = Block.column(10D, 0D, 10D);
 
-    public WideFlowerBlock(Holder<MobEffect> holder, float f, Properties properties) {
-        super(holder, f, properties);
+    public WideFlowerBlock(Holder<MobEffect> effect, float f, Properties properties) {
+        super(effect, f, properties);
     }
 
     @Override
-    protected VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        return SHAPE.move(blockState.getOffset(blockPos));
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE.move(state.getOffset(pos));
     }
 }

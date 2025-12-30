@@ -2,11 +2,7 @@ package net.legacy.bloom.registry;
 
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.legacy.bloom.Bloom;
-import net.minecraft.client.particle.ParticleResources;
 import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 
