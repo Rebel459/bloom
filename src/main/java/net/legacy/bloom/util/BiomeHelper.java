@@ -145,6 +145,10 @@ public class BiomeHelper {
         );
     }
 
+    public static final SurfaceRules.ConditionSource UNDER_FLOOR = SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR);
+    public static final SurfaceRules.ConditionSource DEEP_UNDER_FLOOR = SurfaceRules.stoneDepthCheck(0, false, 6, CaveSurface.FLOOR);
+    public static final SurfaceRules.ConditionSource VERY_DEEP_UNDER_FLOOR = SurfaceRules.stoneDepthCheck(0, false, 30, CaveSurface.FLOOR);
+
     public static SurfaceRules.RuleSource depthRule(TagKey<@NotNull Biome> biomes, Block block) {
         SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
         return SurfaceRules.ifTrue(
@@ -155,19 +159,19 @@ public class BiomeHelper {
                                 SurfaceRules.ifTrue(
                                         FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
                                         SurfaceRules.ifTrue(
-                                                SurfaceRules.UNDER_FLOOR,
+                                                UNDER_FLOOR,
                                                 rule
                                         )
                                 ),
                                 SurfaceRules.ifTrue(
-                                        SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
+                                        SurfaceRules.not(UNDER_FLOOR),
                                         SurfaceRules.sequence(
                                                 SurfaceRules.ifTrue(
-                                                        SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+                                                        VERY_DEEP_UNDER_FLOOR,
                                                         rule
                                                 ),
                                                 SurfaceRules.ifTrue(
-                                                        SurfaceRules.DEEP_UNDER_FLOOR,
+                                                        DEEP_UNDER_FLOOR,
                                                         rule
                                                 )
                                         )
@@ -177,7 +181,7 @@ public class BiomeHelper {
                                         SurfaceRules.ifTrue(
                                                 SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
                                                 SurfaceRules.ifTrue(
-                                                        SurfaceRules.stoneDepthCheck(0, true, 60, CaveSurface.FLOOR),
+                                                        SurfaceRules.stoneDepthCheck(0, false, 60, CaveSurface.FLOOR),
                                                         rule
                                                 )
                                         )
