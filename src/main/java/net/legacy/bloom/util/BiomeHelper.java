@@ -22,6 +22,10 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.jetbrains.annotations.NotNull;
 
 public class BiomeHelper {
+	public static final SurfaceRules.ConditionSource UNDER_FLOOR = SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR);
+	public static final SurfaceRules.ConditionSource DEEP_UNDER_FLOOR = SurfaceRules.stoneDepthCheck(0, false, 6, CaveSurface.FLOOR);
+	public static final SurfaceRules.ConditionSource VERY_DEEP_UNDER_FLOOR = SurfaceRules.stoneDepthCheck(0, false, 30, CaveSurface.FLOOR);
+
     public static final float TEMPERATURE_0 = -1F;
     public static final float TEMPERATURE_1 = -0.45F;
     public static final float TEMPERATURE_2 = -0.15F;
@@ -165,42 +169,42 @@ public class BiomeHelper {
     public static SurfaceRules.RuleSource depthRule(TagKey<Biome> biomes, Block block) {
         final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
         return SurfaceRules.ifTrue(
-                FrozenSurfaceRules.isBiomeTagOptimized(biomes),
-                SurfaceRules.ifTrue(
-					SurfaceRules.not(SurfaceRules.stoneDepthCheck(1, false, CaveSurface.FLOOR)),
-					SurfaceRules.sequence(
+			FrozenSurfaceRules.isBiomeTagOptimized(biomes),
+			SurfaceRules.ifTrue(
+				SurfaceRules.not(SurfaceRules.stoneDepthCheck(1, false, CaveSurface.FLOOR)),
+				SurfaceRules.sequence(
+					SurfaceRules.ifTrue(
+						FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
 						SurfaceRules.ifTrue(
-							FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
+							UNDER_FLOOR,
+							rule
+						)
+					),
+					SurfaceRules.ifTrue(
+						SurfaceRules.not(UNDER_FLOOR),
+						SurfaceRules.sequence(
 							SurfaceRules.ifTrue(
-								SurfaceRules.UNDER_FLOOR,
+								VERY_DEEP_UNDER_FLOOR,
+								rule
+							),
+							SurfaceRules.ifTrue(
+								DEEP_UNDER_FLOOR,
 								rule
 							)
-						),
+						)
+					),
+					SurfaceRules.ifTrue(
+						FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEEPER_STONE),
 						SurfaceRules.ifTrue(
-							SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
-							SurfaceRules.sequence(
-								SurfaceRules.ifTrue(
-									SurfaceRules.VERY_DEEP_UNDER_FLOOR,
-									rule
-								),
-								SurfaceRules.ifTrue(
-									SurfaceRules.DEEP_UNDER_FLOOR,
-									rule
-								)
-							)
-						),
-						SurfaceRules.ifTrue(
-							FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEEPER_STONE),
+							SurfaceRules.not(UNDER_FLOOR),
 							SurfaceRules.ifTrue(
-								SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
-								SurfaceRules.ifTrue(
-									SurfaceRules.stoneDepthCheck(0, true, 60, CaveSurface.FLOOR),
-									rule
-								)
+								SurfaceRules.stoneDepthCheck(0, false, 60, CaveSurface.FLOOR),
+								rule
 							)
 						)
 					)
 				)
+			)
         );
     }
 }

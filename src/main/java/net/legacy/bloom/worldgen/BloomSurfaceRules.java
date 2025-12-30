@@ -31,6 +31,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			)
         );
     }
+
     public static SurfaceRules.RuleSource tropicalRivers() {
         return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
@@ -49,6 +50,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			)
         );
     }
+
     public static SurfaceRules.RuleSource underwaterMud() {
         return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
@@ -73,6 +75,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			)
         );
     }
+
     public static SurfaceRules.RuleSource sandyBiomeRules() {
         return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
@@ -109,12 +112,14 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			)
         );
     }
+
     public static SurfaceRules.RuleSource beaches() {
         return SurfaceRules.ifTrue(
 			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_SAND),
 			sandyBiomeRules()
         );
     }
+
     public static SurfaceRules.RuleSource gravellyRiversAndBeaches() {
         return SurfaceRules.ifTrue(
 			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_GRAVEL),
@@ -130,6 +135,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			)
         );
     }
+
     public static SurfaceRules.RuleSource coarseDirtStrips() {
         final SurfaceRules.RuleSource coarseDirtRule = SurfaceRules.ifTrue(
 			SurfaceRuleData.surfaceNoiseAbove(5.5),
@@ -152,83 +158,83 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
     public static SurfaceRules.RuleSource windsweptJungle() {
         return SurfaceRules.ifTrue(
-                SurfaceRules.isBiome(BloomBiomes.WINDSWEPT_JUNGLE),
-                SurfaceRules.ifTrue(
-                        SurfaceRuleData.surfaceNoiseAbove(2.5),
-                        FrozenSurfaceRules.makeStateRule(Blocks.DIORITE)
-                )
+			SurfaceRules.isBiome(BloomBiomes.WINDSWEPT_JUNGLE),
+			SurfaceRules.ifTrue(
+				SurfaceRuleData.surfaceNoiseAbove(2.5),
+				FrozenSurfaceRules.makeStateRule(Blocks.DIORITE)
+			)
         );
     }
 
     public static SurfaceRules.RuleSource windsweptSavanna() {
         return SurfaceRules.ifTrue(
-                SurfaceRules.isBiome(Biomes.WINDSWEPT_SAVANNA),
-                SurfaceRules.ifTrue(
-                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
-                        SurfaceRules.sequence(
-                                SurfaceRules.ifTrue(
-                                        SurfaceRuleData.surfaceNoiseAbove(1.75),
-                                        FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
-                                )
-                        )
-                )
+			SurfaceRules.isBiome(Biomes.WINDSWEPT_SAVANNA),
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
+				SurfaceRules.sequence(
+					SurfaceRules.ifTrue(
+						SurfaceRuleData.surfaceNoiseAbove(1.75),
+						FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
+					)
+				)
+			)
         );
     }
 
     public static SurfaceRules.RuleSource swampMud() {
         return SurfaceRules.sequence(
-                SurfaceRules.ifTrue(
-                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SWAMP_MUD),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(64), 0)),
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.yStartCheck(VerticalAnchor.absolute(60), 0),
-                                        SurfaceRules.sequence(
-                                                SurfaceRules.ifTrue(
-                                                        SurfaceRules.ON_FLOOR,
-                                                        FrozenSurfaceRules.makeStateRule(Blocks.MUD)
-                                                ),
-                                                SurfaceRules.ifTrue(
-                                                        SurfaceRules.UNDER_FLOOR,
-                                                        FrozenSurfaceRules.makeStateRule(Blocks.MUD)
-                                                )
-                                        )
-                                )
-                        )
-                )
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SWAMP_MUD),
+				SurfaceRules.ifTrue(
+					SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(64), 0)),
+					SurfaceRules.ifTrue(
+						SurfaceRules.yStartCheck(VerticalAnchor.absolute(60), 0),
+						SurfaceRules.sequence(
+							SurfaceRules.ifTrue(
+								SurfaceRules.ON_FLOOR,
+								FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+							),
+							SurfaceRules.ifTrue(
+								SurfaceRules.UNDER_FLOOR,
+								FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+							)
+						)
+					)
+				)
+			)
         );
     }
 
     public static SurfaceRules.RuleSource granite() {
         return SurfaceRules.sequence(
-                SurfaceRules.ifTrue(
-                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
-                        FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
-                )
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
+				FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
+			)
         );
     }
 
     @Override
     public void addOverworldSurfaceRules(List<SurfaceRules.RuleSource> context) {
         context.add(
-                SurfaceRules.sequence(
-                        aridRiversAndShores(),
-                        tropicalRivers(),
-                        underwaterMud(),
-                        swampMud(),
-                        beaches(),
-                        gravellyRiversAndBeaches(),
-                        coarseDirtStrips(),
-                        windsweptJungle(),
-                        windsweptSavanna(),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DOLERITE, BloomBlocks.DOLERITE),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_ANDESITE, Blocks.ANDESITE),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_SANDSTONE, Blocks.SANDSTONE),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, Blocks.RED_SANDSTONE)
-                )
+			SurfaceRules.sequence(
+				aridRiversAndShores(),
+				tropicalRivers(),
+				underwaterMud(),
+				swampMud(),
+				beaches(),
+				gravellyRiversAndBeaches(),
+				coarseDirtStrips(),
+				windsweptJungle(),
+				windsweptSavanna(),
+				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
+				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
+				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE),
+				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DOLERITE, BloomBlocks.DOLERITE),
+				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_ANDESITE, Blocks.ANDESITE),
+				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_SANDSTONE, Blocks.SANDSTONE),
+				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, Blocks.RED_SANDSTONE)
+			)
         );
     }
 
