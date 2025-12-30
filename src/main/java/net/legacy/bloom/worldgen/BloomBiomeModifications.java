@@ -66,17 +66,7 @@ public final class BloomBiomeModifications {
 				}
 		);
 
-        BiomeModifications.create(Bloom.id("has_underwater_mud")).add(
-                ModificationPhase.REPLACEMENTS,
-                BiomeSelectors.tag(BloomBiomeTags.HAS_UNDERWATER_MUD),
-                (selectionContext, modificationContext) -> {
-                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
-                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
-                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
-                    BiomeHelper.addLessStrictDisks(modificationContext);
-                }
-        );
-        BiomeModifications.create(Bloom.id("has_water_and_below_mud")).add(
+        BiomeModifications.create(Bloom.id("has_swamp_mud")).add(
                 ModificationPhase.REPLACEMENTS,
                 BiomeSelectors.tag(BloomBiomeTags.HAS_SWAMP_MUD),
                 (selectionContext, modificationContext) -> {
@@ -92,6 +82,9 @@ public final class BloomBiomeModifications {
                 ModificationPhase.REPLACEMENTS,
                 BiomeSelectors.tag(BloomBiomeTags.HAS_LESS_STRICT_DISKS),
                 (selectionContext, modificationContext) -> {
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
                     BiomeHelper.addLessStrictDisks(modificationContext);
                 }
         );

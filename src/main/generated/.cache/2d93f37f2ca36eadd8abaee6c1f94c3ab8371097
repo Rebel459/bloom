@@ -17,7 +17,7 @@ f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feat
 8b3cb1f45d033b14d944da1c81bb39693a0196fc data/bloom/tags/worldgen/biome/has_feature/flower_pink_orchid.json
 20e96599f962ab17e92ca742059a15e0b55fd1b5 data/bloom/tags/worldgen/biome/has_feature/flower_scilla.json
 3a2d646416e721cecc0ff17f268e814781faffe8 data/bloom/tags/worldgen/biome/has_feature/internal/fen_features.json
-ec6e85c3a2323421031694facec72cb3d19b739d data/bloom/tags/worldgen/biome/has_feature/internal/less_strict_disks.json
+6215cfe3adc8a2d34cac7134d886b7435dd32575 data/bloom/tags/worldgen/biome/has_feature/internal/less_strict_disks.json
 ec939e0d4842f9914f2ab51e22171dc71e2cb93d data/bloom/tags/worldgen/biome/has_feature/internal/windswept_jungle_features.json
 3a2d646416e721cecc0ff17f268e814781faffe8 data/bloom/tags/worldgen/biome/has_feature/patch_reeds.json
 24192457dbc336972465d1e28399da894eb6301d data/bloom/tags/worldgen/biome/has_feature/patch_succulent.json

@@ -181,10 +181,16 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                         SurfaceRules.ifTrue(
                                 SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(64), 0)),
                                 SurfaceRules.ifTrue(
-                                        SurfaceRules.yStartCheck(VerticalAnchor.absolute(61), 0),
-                                        SurfaceRules.ifTrue(
-                                                SurfaceRules.ON_FLOOR,
-                                                FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+                                        SurfaceRules.yStartCheck(VerticalAnchor.absolute(60), 0),
+                                        SurfaceRules.sequence(
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.ON_FLOOR,
+                                                        FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+                                                ),
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.UNDER_FLOOR,
+                                                        FrozenSurfaceRules.makeStateRule(Blocks.MUD)
+                                                )
                                         )
                                 )
                         )
