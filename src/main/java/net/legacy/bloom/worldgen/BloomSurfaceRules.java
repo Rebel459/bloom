@@ -229,6 +229,20 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
+	public static SurfaceRules.RuleSource graniteTestLol() {
+		return SurfaceRules.ifTrue(
+			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
+			SurfaceRules.sequence(
+				SurfaceRules.ifTrue(
+					SurfaceRules.not(SurfaceRules.verticalGradient("granite", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8))),
+					FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
+				)
+			)
+		);
+	}
+
     @Override
-    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> list) {}
+    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
+		context.add(graniteTestLol());
+	}
 }
