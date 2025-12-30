@@ -217,7 +217,15 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				gravellyRiversAndBeaches(),
 				coarseDirtStrips(),
 				windsweptJungle(),
-				windsweptSavanna(),
+				windsweptSavanna()
+			)
+        );
+    }
+
+    @Override
+    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
+		context.add(
+			SurfaceRules.sequence(
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE),
@@ -226,23 +234,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_SANDSTONE, Blocks.SANDSTONE),
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, Blocks.RED_SANDSTONE)
 			)
-        );
-    }
-
-	public static SurfaceRules.RuleSource graniteTestLol() {
-		return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
-			SurfaceRules.sequence(
-				SurfaceRules.ifTrue(
-					SurfaceRules.not(SurfaceRules.verticalGradient("granite", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8))),
-					FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
-				)
-			)
 		);
-	}
-
-    @Override
-    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
-		context.add(graniteTestLol());
 	}
 }

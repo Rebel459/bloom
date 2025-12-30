@@ -15,16 +15,15 @@ import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.SurfaceRules;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.jetbrains.annotations.NotNull;
 
 public class BiomeHelper {
-	public static final SurfaceRules.ConditionSource UNDER_FLOOR = SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR);
-	public static final SurfaceRules.ConditionSource DEEP_UNDER_FLOOR = SurfaceRules.stoneDepthCheck(0, false, 6, CaveSurface.FLOOR);
-	public static final SurfaceRules.ConditionSource VERY_DEEP_UNDER_FLOOR = SurfaceRules.stoneDepthCheck(0, false, 30, CaveSurface.FLOOR);
 
     public static final float TEMPERATURE_0 = -1F;
     public static final float TEMPERATURE_1 = -0.45F;
@@ -176,19 +175,19 @@ public class BiomeHelper {
 					SurfaceRules.ifTrue(
 						FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
 						SurfaceRules.ifTrue(
-							UNDER_FLOOR,
+							SurfaceRules.UNDER_FLOOR,
 							rule
 						)
 					),
 					SurfaceRules.ifTrue(
-						SurfaceRules.not(UNDER_FLOOR),
+						SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
 						SurfaceRules.sequence(
 							SurfaceRules.ifTrue(
-								VERY_DEEP_UNDER_FLOOR,
+								SurfaceRules.VERY_DEEP_UNDER_FLOOR,
 								rule
 							),
 							SurfaceRules.ifTrue(
-								DEEP_UNDER_FLOOR,
+								SurfaceRules.DEEP_UNDER_FLOOR,
 								rule
 							)
 						)
@@ -196,9 +195,9 @@ public class BiomeHelper {
 					SurfaceRules.ifTrue(
 						FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEEPER_STONE),
 						SurfaceRules.ifTrue(
-							SurfaceRules.not(UNDER_FLOOR),
+							SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
 							SurfaceRules.ifTrue(
-								SurfaceRules.stoneDepthCheck(0, false, 60, CaveSurface.FLOOR),
+								SurfaceRules.not(SurfaceRules.verticalGradient("depth", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8))),
 								rule
 							)
 						)
