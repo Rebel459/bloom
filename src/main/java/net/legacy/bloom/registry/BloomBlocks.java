@@ -12,6 +12,7 @@ import net.legacy.bloom.block.AridVegetationBlock;
 import net.legacy.bloom.block.HalfSubmergedBlock;
 import net.legacy.bloom.block.LargeFlowerBlock;
 import net.legacy.bloom.block.WideFlowerBlock;
+import net.legacy.bloom.registry.data.StoneOresRegistry;
 import net.legacy.bloom.worldgen.sapling.BloomTreeGrowers;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
@@ -265,6 +266,8 @@ public final class BloomBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)
                     .mapColor(MapColor.COLOR_PURPLE)
     );
+
+    public static final StoneOresRegistry TUFF_ORES = new StoneOresRegistry(Blocks.TUFF).build();
 
 	public static void registerBlockProperties() {
         var sign = (FabricBlockEntityType) BlockEntityType.SIGN;
