@@ -14,6 +14,18 @@ repositories {
 	maven { url = "https://api.modrinth.com/maven" }
 	maven { url = 'https://maven.parchmentmc.org' }
 	maven { url = "https://maven.shedaniel.me/" }
+    maven { url = "https://maven.ladysnake.org/releases" }
+    flatDir {
+        dirs 'lib'
+    }
+}
+
+fabricApi {
+    configureDataGeneration() {
+        client = true
+        modId = "bloom"
+        createSourceSet = true
+    }
 }
 
 dependencies {
@@ -22,22 +34,24 @@ dependencies {
 		officialMojangMappings()
 	}
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    include modApi("maven.modrinth:frozenlib:${project.frozenlib_version}")
+    include modImplementation("maven.modrinth:biolith:${project.biolith_version}")
+
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
 
     modImplementation("maven.modrinth:modmenu:$modmenu_version")
 
-	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
+    modDatagenRuntimeOnly("maven.modrinth:legacies-and-legends:${project.lal_version}")
+    modDatagenRuntimeOnly("net.legacy.legacies_and_legends:TrimPatcher-1.0-pre2-mc1.21.11")
+    //modDatagenRuntimeOnly("maven.modrinth:trim-patcher:${project.patcher_version}")
+    modDatagenRuntimeOnly("maven.modrinth:trinkets-canary:${project.trinkets_version}")
+    modDatagenRuntimeOnly ("org.ladysnake.cardinal-components-api:cardinal-components-base:${project.cca_version}")
+    modDatagenRuntimeOnly ("org.ladysnake.cardinal-components-api:cardinal-components-entity:${project.cca_version}")
 
-    include modApi("maven.modrinth:frozenlib:${project.frozenlib_version}")
-
-    include modImplementation("maven.modrinth:biolith:${project.biolith_version}")
-}
-
-loom {
-    accessWidenerPath = file("src/main/resources/bloom.accesswidener")
 }
 
 processResources {
@@ -68,11 +82,6 @@ jar {
 	}
 }
 
-// Datagen
-
-fabricApi {
-    configureDataGeneration() {
-		client = true
-		modId = "bloom"
-	}
+loom {
+    accessWidenerPath = file("src/main/resources/bloom.accesswidener")
 }

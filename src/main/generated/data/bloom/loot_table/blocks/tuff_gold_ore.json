@@ -30,7 +30,7 @@
             },
             {
               "type": "minecraft:loot_table",
-              "value": "minecraft:blocks/gold_ore"
+              "value": "minecraft:blocks/deepslate_gold_ore"
             }
           ]
         }

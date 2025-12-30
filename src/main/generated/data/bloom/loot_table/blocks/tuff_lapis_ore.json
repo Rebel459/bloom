@@ -30,7 +30,7 @@
             },
             {
               "type": "minecraft:loot_table",
-              "value": "minecraft:blocks/lapis_ore"
+              "value": "minecraft:blocks/deepslate_lapis_ore"
             }
           ]
         }

@@ -267,12 +267,11 @@ public final class BloomBlocks {
                     .mapColor(MapColor.COLOR_PURPLE)
     );
 
-    public static final StoneOresRegistry TUFF_ORES = new StoneOresRegistry(Blocks.TUFF);
-
-    public static Block getVanillaOre(Block block, String material){
-        String path = block.getName().getString().substring(13 + material.length());
-        return BuiltInRegistries.BLOCK.getValue(Identifier.withDefaultNamespace(path));
-    }
+    public static final StoneOresRegistry TUFF_ORES = new StoneOresRegistry(Blocks.TUFF, true).build();
+    public static final StoneOresRegistry GRANITE_ORES = new StoneOresRegistry(Blocks.GRANITE, false).build();
+    public static final StoneOresRegistry ANDESITE_ORES = new StoneOresRegistry(Blocks.ANDESITE, false).build();
+    public static final StoneOresRegistry DIORITE_ORES = new StoneOresRegistry(Blocks.DIORITE, false).build();
+    public static final StoneOresRegistry SANDSTONE_ORES = new StoneOresRegistry(Blocks.SANDSTONE, false).build();
 
 	public static void registerBlockProperties() {
         var sign = (FabricBlockEntityType) BlockEntityType.SIGN;
@@ -372,7 +371,6 @@ public final class BloomBlocks {
 
 	public static void init() {
 		registerBlockProperties();
-        TUFF_ORES.build();
 	}
 
 	private static <T extends Block> T registerWithoutItem(String path, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties) {

@@ -8,6 +8,7 @@ import net.fabricmc.loader.api.ModContainer;
 import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.BloomCreativeInventory;
 import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.sound.BloomSounds;
 import net.legacy.bloom.worldgen.BloomBiomeModifications;
@@ -32,6 +33,7 @@ public class Bloom implements ModInitializer {
         BloomBiomePlacement.init();
         BloomBiomeModifications.init();
         BloomSounds.init();
+        BloomCreativeInventory.init();
 
         ResourceManagerHelper.registerBuiltinResourcePack(
                 Bloom.id("template"), modContainer.get(),

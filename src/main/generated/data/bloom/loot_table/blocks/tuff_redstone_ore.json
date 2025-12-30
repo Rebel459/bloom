@@ -30,7 +30,7 @@
             },
             {
               "type": "minecraft:loot_table",
-              "value": "minecraft:blocks/redstone_ore"
+              "value": "minecraft:blocks/deepslate_redstone_ore"
             }
           ]
         }

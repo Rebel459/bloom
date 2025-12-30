@@ -25,14 +25,16 @@ public class StoneOresRegistry {
     private float strengthIncrease = 1.5F;
     private float explosionResistance = 3.0F;
     private final Block baseStone;
+    public final boolean deep;
     private final BiFunction<OreType, BlockBehaviour.Properties, Block> normalFunction;
 
-    public StoneOresRegistry(Block baseStone, BiFunction<OreType, BlockBehaviour.Properties, Block> normalFunction){
+    public StoneOresRegistry(Block baseStone, boolean deep, BiFunction<OreType, BlockBehaviour.Properties, Block> normalFunction){
         this.baseStone = baseStone;
+        this.deep = deep;
         this.normalFunction = normalFunction;
     }
-    public StoneOresRegistry(Block baseStone){
-        this(baseStone, (type, properties) -> {
+    public StoneOresRegistry(Block baseStone, boolean deep){
+        this(baseStone, deep, (type, properties) -> {
             if (type == OreType.REDSTONE){
                 return new RedStoneOreBlock(properties);
             }
@@ -67,14 +69,6 @@ public class StoneOresRegistry {
         return oresMap;
     }
 
-    public void addToCreativeTab(){
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> {
-            for (OreType value : OreType.ORES) {
-                entries.addAfter(value.baseBlock.asItem(), getOresMap().get(value));
-            }
-        });
-    }
-
     public StoneOresRegistry build(){
         for (OreType value : OreType.ORES) {
             if (value.neededMods.isEmpty() || value.neededMods.stream().allMatch(s -> FabricLoader.getInstance().isModLoaded(s))){
@@ -90,7 +84,6 @@ public class StoneOresRegistry {
 
     public static class OreType {
         public static List<OreType> ORES = new ArrayList<>();
-
 
         public static final OreType COAL = new OreType("coal", Blocks.COAL_ORE, UniformInt.of(0, 2));
         public static final OreType COPPER = new OreType("copper", Blocks.COPPER_ORE, ConstantInt.of(0));
@@ -108,7 +101,7 @@ public class StoneOresRegistry {
         private final IntProvider xpProvider;
         private final List<String> neededMods = new ArrayList<>();
 
-        public OreType(String name, Block baseBlock, IntProvider xpProvider){
+        public OreType(String name, Block baseBlock, IntProvider xpProvider) {
             this.name = name;
             this.baseBlock = baseBlock;
             this.xpProvider = xpProvider;

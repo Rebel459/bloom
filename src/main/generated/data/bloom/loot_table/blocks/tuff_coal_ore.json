@@ -30,7 +30,7 @@
             },
             {
               "type": "minecraft:loot_table",
-              "value": "minecraft:blocks/coal_ore"
+              "value": "minecraft:blocks/deepslate_coal_ore"
             }
           ]
         }

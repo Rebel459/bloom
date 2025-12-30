@@ -30,7 +30,7 @@
             },
             {
               "type": "minecraft:loot_table",
-              "value": "minecraft:blocks/emerald_ore"
+              "value": "minecraft:blocks/deepslate_emerald_ore"
             }
           ]
         }

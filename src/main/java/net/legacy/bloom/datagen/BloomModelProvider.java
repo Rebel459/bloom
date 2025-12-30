@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.data.StoneOresRegistry;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
@@ -14,6 +15,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)
@@ -47,6 +49,12 @@ public final class BloomModelProvider extends FabricModelProvider {
         generator.createPlantWithDefaultItem(BloomBlocks.JACARANDA_SAPLING, BloomBlocks.POTTED_JACARANDA_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         generator.createTrivialBlock(BloomBlocks.JACARANDA_LEAVES, TexturedModel.LEAVES);
 
+        oreModels(BloomBlocks.TUFF_ORES, generator);
+        oreModels(BloomBlocks.GRANITE_ORES, generator);
+        oreModels(BloomBlocks.ANDESITE_ORES, generator);
+        oreModels(BloomBlocks.DIORITE_ORES, generator);
+        oreModels(BloomBlocks.SANDSTONE_ORES, generator);
+
 /*		generator.createTrivialCube(ERBlocks.CRYSTALLINE_LAMP);
 		generator.createTrivialCube(ERBlocks.CRYSTALLINE_BLOCK);
 		generator.createTrivialCube(ERBlocks.END_IRON_ORE);
@@ -64,6 +72,12 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.woodProvider(ERBlocks.STRIPPED_CHORUS_BLOCK).logWithHorizontal(ERBlocks.STRIPPED_CHORUS_BLOCK);
 		generator.createHangingSign(ERBlocks.STRIPPED_CHORUS_BLOCK, ERBlocks.CHORUS_HANGING_SIGN, ERBlocks.CHORUS_WALL_HANGING_SIGN);*/
 	}
+
+    public void oreModels(StoneOresRegistry ores, BlockModelGenerators generator) {
+        ores.getOresMap().forEach((type, block) -> {
+            generator.createTrivialCube(block);
+        });
+    }
 
 	@Override
 	public void generateItemModels(@NotNull ItemModelGenerators generator) {

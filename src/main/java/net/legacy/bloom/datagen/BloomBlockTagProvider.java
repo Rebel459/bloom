@@ -3,12 +3,17 @@ package net.legacy.bloom.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.data.StoneOresRegistry;
 import net.legacy.bloom.tag.BloomBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvider {
@@ -112,5 +117,45 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 
         this.valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
                 .add(BloomBlocks.JACARANDA_TRAPDOOR);
+
+        this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .addAll(BloomBlocks.SANDSTONE_ORES.getOresMap().values());
+
+        tagOres(BloomBlocks.TUFF_ORES);
+        tagOres(BloomBlocks.GRANITE_ORES);
+        tagOres(BloomBlocks.ANDESITE_ORES);
+        tagOres(BloomBlocks.DIORITE_ORES);
+        tagOres(BloomBlocks.SANDSTONE_ORES);
 	}
+
+    public void tagOres(StoneOresRegistry ores) {
+        ores.getOresMap().forEach((oreType, block) -> {
+            addTag(block, BlockTags.MINEABLE_WITH_PICKAXE);
+            String name = oreType.name;
+            if (Objects.equals(name, "coal")) addTag(block, BlockTags.COAL_ORES);
+            if (Objects.equals(name, "copper")) addTag(block, BlockTags.COPPER_ORES);
+            if (Objects.equals(name, "iron")) addTag(block, BlockTags.IRON_ORES);
+            if (Objects.equals(name, "redstone")) addTag(block, BlockTags.REDSTONE_ORES);
+            if (Objects.equals(name, "gold")) addTag(block, BlockTags.GOLD_ORES);
+            if (Objects.equals(name, "diamond")) addTag(block, BlockTags.DIAMOND_ORES);
+            if (Objects.equals(name, "emerald")) addTag(block, BlockTags.EMERALD_ORES);
+            if (Objects.equals(name, "lapis")) addTag(block, BlockTags.LAPIS_ORES);
+            if (Objects.equals(name, "sapphire")) addTag(block, BloomBlockTags.SAPPHIRE_ORES, true);
+        });
+    }
+
+    public void addTag(Block block, TagKey<Block> tag) {
+        addTag(block, tag, false);
+    }
+
+    public void addTag(Block block, TagKey<Block> tag, boolean optional) {
+        if (optional) {
+            this.valueLookupBuilder(tag)
+                    .addOptional(block);
+        }
+        else {
+            this.valueLookupBuilder(tag)
+                    .add(block);
+        }
+    }
 }

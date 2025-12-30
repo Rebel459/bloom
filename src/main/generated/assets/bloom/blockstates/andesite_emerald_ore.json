@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bloom:block/andesite_emerald_ore"
+    }
+  }
+}

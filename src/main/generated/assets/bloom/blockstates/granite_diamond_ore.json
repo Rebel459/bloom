@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bloom:block/granite_diamond_ore"
+    }
+  }
+}
