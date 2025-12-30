@@ -205,15 +205,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
-    public static SurfaceRules.RuleSource granite() {
-        return SurfaceRules.sequence(
-			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
-				FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
-			)
-        );
-    }
-
     @Override
     public void addOverworldSurfaceRules(List<SurfaceRules.RuleSource> context) {
         context.add(
