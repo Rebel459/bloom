@@ -44,6 +44,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		// Internal
         this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
+                .addOptionalTag(BiomeTags.IS_JUNGLE)
                 .add(BloomBiomes.WARM_RIVER)
                 .add(BloomBiomes.ARID_SHORE)
                 .add(BloomBiomes.TROPICAL_RIVER)

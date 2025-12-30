@@ -1,5 +1,9 @@
 {
   "values": [
+    {
+      "id": "#minecraft:is_jungle",
+      "required": false
+    },
     "bloom:warm_river",
     "bloom:arid_shore",
     "bloom:tropical_river",
