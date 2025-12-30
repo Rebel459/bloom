@@ -2,7 +2,6 @@ package net.legacy.bloom.block;
 
 import net.legacy.bloom.tag.BloomBlockTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.DryVegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;

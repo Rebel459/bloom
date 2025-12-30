@@ -3,6 +3,7 @@ package net.legacy.bloom.registry.data;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -81,7 +82,9 @@ public class StoneOresRegistry {
         IRON("iron", Blocks.IRON_ORE, ConstantInt.of(0)),
         REDSTONE("redstone", Blocks.REDSTONE_ORE, ConstantInt.of(0)),
         GOLD("gold", Blocks.GOLD_ORE, ConstantInt.of(0)),
-        DIAMOND("diamond", Blocks.DIAMOND_ORE, ConstantInt.of(0));
+        DIAMOND("diamond", Blocks.DIAMOND_ORE, ConstantInt.of(0)),
+        EMERALD("emerald", Blocks.EMERALD_ORE, ConstantInt.of(0)),
+        LAPIS("emerald", Blocks.LAPIS_ORE, ConstantInt.of(0));
 
         private final String name;
         private final Block baseBlock;
