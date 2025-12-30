@@ -28,9 +28,17 @@ bin/
 
 *.DS_Store
 
+# maven
+
+target/
+
 # fabric
 
 run/
+runclient/
+runserver/
+/remappedSrc/
+/src/main/generated/.cache
 
 # java
 
@@ -38,3 +46,9 @@ hs_err_*.log
 replay_*.log
 *.hprof
 *.jfr
+
+# kotlin
+.kotlin/
+
+# Git
+/FrozenLib/
