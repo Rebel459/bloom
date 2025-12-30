@@ -228,13 +228,5 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     }
 
     @Override
-    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> list) {
-        list.add(
-                SurfaceRules.sequence(
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE)
-                )
-        );
-    }
+    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> list) {}
 }

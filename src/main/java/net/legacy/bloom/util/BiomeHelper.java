@@ -148,9 +148,9 @@ public class BiomeHelper {
     public static SurfaceRules.RuleSource depthRule(TagKey<@NotNull Biome> biomes, Block block) {
         SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
         return SurfaceRules.ifTrue(
-                SurfaceRules.not(SurfaceRules.stoneDepthCheck(1, false, CaveSurface.FLOOR)),
+                FrozenSurfaceRules.isBiomeTagOptimized(biomes),
                 SurfaceRules.ifTrue(
-                        FrozenSurfaceRules.isBiomeTagOptimized(biomes),
+                        SurfaceRules.not(SurfaceRules.stoneDepthCheck(1, false, CaveSurface.FLOOR)),
                         SurfaceRules.sequence(
                                 SurfaceRules.ifTrue(
                                         FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
