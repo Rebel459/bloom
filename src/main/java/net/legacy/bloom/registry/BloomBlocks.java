@@ -267,7 +267,12 @@ public final class BloomBlocks {
                     .mapColor(MapColor.COLOR_PURPLE)
     );
 
-    public static final StoneOresRegistry TUFF_ORES = new StoneOresRegistry(Blocks.TUFF).build();
+    public static final StoneOresRegistry TUFF_ORES = new StoneOresRegistry(Blocks.TUFF);
+
+    public static Block getVanillaOre(Block block, String material){
+        String path = block.getName().getString().substring(13 + material.length());
+        return BuiltInRegistries.BLOCK.getValue(Identifier.withDefaultNamespace(path));
+    }
 
 	public static void registerBlockProperties() {
         var sign = (FabricBlockEntityType) BlockEntityType.SIGN;
@@ -367,6 +372,7 @@ public final class BloomBlocks {
 
 	public static void init() {
 		registerBlockProperties();
+        TUFF_ORES.build();
 	}
 
 	private static <T extends Block> T registerWithoutItem(String path, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties) {

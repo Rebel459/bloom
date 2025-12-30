@@ -1,16 +1,26 @@
 package net.legacy.bloom.datagen;
 
+import com.mojang.logging.LogUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.data.StoneOresRegistry;
 import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -41,8 +51,7 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.dropSelf(BloomBlocks.ORANGE_DAISY);
 		this.dropPottedContents(BloomBlocks.POTTED_ORANGE_DAISY);
 		this.dropSelf(BloomBlocks.SCILLA);
-		this.dropPottedContents(BloomBlocks.POTTED_SCILLA);
-
+        this.dropPottedContents(BloomBlocks.POTTED_SCILLA);
 		this.dropSelf(BloomBlocks.BELLFLOWER);
 		this.dropSelf(BloomBlocks.HYDRANGEA);
 		this.dropSelf(BloomBlocks.SUCCULENT);
@@ -66,8 +75,20 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
         this.dropSelf(BloomBlocks.JACARANDA_SAPLING);
         this.add(BloomBlocks.JACARANDA_LEAVES, block -> this.createLeavesDrops(block, BloomBlocks.JACARANDA_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
 
+        this.oreDrops(BloomBlocks.TUFF_ORES, "tuff");
+
         //this.add(ERBlocks.CHORUS_MOSAIC_SLAB, this::createSlabItemTable);
 	}
+
+    public void oreDrops(StoneOresRegistry ores, String material) {
+        ores.getOresMap().values().forEach(block -> {
+            Block oreBlock = BloomBlocks.getVanillaOre(block, material);
+            this.add(block, this.createSilkTouchDispatchTable(
+                    block,
+                    NestedLootTable.lootTableReference(oreBlock.getLootTable().get())
+            ));
+        });
+    }
 
 	public LootTable.@NotNull Builder createMultifaceBlockDrops(Block drop) {
 		return LootTable.lootTable()

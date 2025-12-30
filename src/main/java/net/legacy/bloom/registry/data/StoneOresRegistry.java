@@ -2,6 +2,7 @@ package net.legacy.bloom.registry.data;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
+import net.legacy.bloom.Bloom;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -21,8 +22,8 @@ import java.util.function.BiFunction;
 public class StoneOresRegistry {
     private final Map<OreType, Block> oresMap = new HashMap<>();
     private BiFunction<OreType, BlockBehaviour.Properties, BlockBehaviour.Properties> manualOverrideFunction = (oreType, properties) -> properties;
-    private float strengthIncrease = 1.5f;
-    private float explosionResistance = 3.0f;
+    private float strengthIncrease = 1.5F;
+    private float explosionResistance = 3.0F;
     private final Block baseStone;
     private final BiFunction<OreType, BlockBehaviour.Properties, Block> normalFunction;
 
@@ -94,16 +95,16 @@ public class StoneOresRegistry {
         public static final OreType COAL = new OreType("coal", Blocks.COAL_ORE, UniformInt.of(0, 2));
         public static final OreType COPPER = new OreType("copper", Blocks.COPPER_ORE, ConstantInt.of(0));
         public static final OreType IRON = new OreType("iron", Blocks.IRON_ORE, ConstantInt.of(0));
-        public static final OreType REDSTONE = new OreType("redstone", Blocks.REDSTONE_ORE, ConstantInt.of(0));
+        public static final OreType REDSTONE = new OreType("redstone", Blocks.REDSTONE_ORE, null);
         public static final OreType GOLD = new OreType("gold", Blocks.GOLD_ORE, ConstantInt.of(0));
-        public static final OreType DIAMOND = new OreType("diamond", Blocks.DIAMOND_ORE, ConstantInt.of(0));
-        public static final OreType EMERALD = new OreType("emerald", Blocks.EMERALD_ORE, ConstantInt.of(0));
-        public static final OreType LAPIS = new OreType("lapis", Blocks.LAPIS_ORE, ConstantInt.of(0));
-        public static final OreType SAPPHIRE = OreType.compatOreType("sapphire", Identifier.fromNamespaceAndPath("", ""), ConstantInt.of(0)).addNeededMod("legacies_and_legends");
+        public static final OreType DIAMOND = new OreType("diamond", Blocks.DIAMOND_ORE, UniformInt.of(3, 7));
+        public static final OreType EMERALD = new OreType("emerald", Blocks.EMERALD_ORE, UniformInt.of(3, 7));
+        public static final OreType LAPIS = new OreType("lapis", Blocks.LAPIS_ORE, UniformInt.of(2, 5));
+        public static final OreType SAPPHIRE = OreType.compatOreType("sapphire", Identifier.fromNamespaceAndPath("legacies_and_legends", "sapphire_ore"), UniformInt.of(2, 5)).addNeededMod("legacies_and_legends");
 
 
-        private final String name;
-        private final Block baseBlock;
+        public final String name;
+        public final Block baseBlock;
         private final IntProvider xpProvider;
         private final List<String> neededMods = new ArrayList<>();
 
