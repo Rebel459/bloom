@@ -2,16 +2,20 @@ package net.legacy.bloom.util;
 
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import net.fabricmc.fabric.api.biome.v1.BiomeModificationContext;
+import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.registry.BloomBiomes;
+import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.worldgen.BloomFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.Climate;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
@@ -21,13 +25,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 
 public class BiomeHelper {
-    public static final int STOCK_FOG_COLOR = 12638463;
-    public static final int COLD_WATER_COLOR = 4020182;
-    public static final int COLD_WATER_FOG_COLOR = 329011;
-    public static final int STOCK_WATER_COLOR = 4159204;
-    public static final int STOCK_WATER_FOG_COLOR = 329011;
-    public static final int WARM_WATER_COLOR = 4566514;
-    public static final int WARM_WATER_FOG_COLOR = 267827;
+
+    public static float waterFogMultiplier(float multiplier) {
+        return 96.0F * multiplier;
+    }
 
     public static float TEMPERATURE_0 = -1F;
     public static float TEMPERATURE_1 = -0.45F;
@@ -143,6 +144,48 @@ public class BiomeHelper {
                         depth,
                         weirdness,
                         offset)
+        );
+    }
+
+    public static SurfaceRules.RuleSource depthRule(TagKey<@NotNull Biome> biomes, Block block) {
+        SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
+        return SurfaceRules.ifTrue(
+                SurfaceRules.not(SurfaceRules.stoneDepthCheck(1, false, CaveSurface.FLOOR)),
+                SurfaceRules.ifTrue(
+                        FrozenSurfaceRules.isBiomeTagOptimized(biomes),
+                        SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(
+                                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.UNDER_FLOOR,
+                                                rule
+                                        )
+                                ),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
+                                        SurfaceRules.sequence(
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+                                                        rule
+                                                ),
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.DEEP_UNDER_FLOOR,
+                                                        rule
+                                                )
+                                        )
+                                ),
+                                SurfaceRules.ifTrue(
+                                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEEPER_STONE),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.stoneDepthCheck(0, true, 60, CaveSurface.FLOOR),
+                                                        rule
+                                                )
+                                        )
+                                )
+                        )
+                )
         );
     }
 }

@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.legacy.bloom.Bloom;
 import net.legacy.bloom.block.AridVegetationBlock;
+import net.legacy.bloom.block.HalfSubmergedBlock;
 import net.legacy.bloom.block.LargeFlowerBlock;
 import net.legacy.bloom.block.WideFlowerBlock;
 import net.legacy.bloom.worldgen.sapling.BloomTreeGrowers;
@@ -126,10 +127,15 @@ public final class BloomBlocks {
 			BlockBehaviour.Properties.ofFullCopy(Blocks.ROSE_BUSH)
 	);
 
-	public static final Block SUCCULENT = register("succulent",
-			AridVegetationBlock::new,
-			BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH)
-	);
+    public static final Block SUCCULENT = register("succulent",
+            AridVegetationBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH)
+    );
+
+    public static final Block REEDS = register("reeds",
+            HalfSubmergedBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_SEAGRASS)
+    );
     
     // Jacaranda
 

@@ -1,5 +1,5 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Tags for minecraft:worldgen/biome
-d87a0053a5006823cb4d98a42d9afa856d529fc3 data/bloom/tags/worldgen/biome/bloom_biomes.json
+e7f3fbfe7495cd816b8357e47125221106709425 data/bloom/tags/worldgen/biome/bloom_biomes.json
 055315672f5a347dc3be385d6850769271b38549 data/bloom/tags/worldgen/biome/has_effect/cold_colors.json
 e22f75290a80a306ccdb324fbcc4b8a95617f404 data/bloom/tags/worldgen/biome/has_effect/frozen_colors.json
 9e50b45a316fda6d28a6ba8d2473e94e57deb38e data/bloom/tags/worldgen/biome/has_effect/lukewarm_colors.json
@@ -16,8 +16,10 @@ f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feat
 6481e28398e6c2b52c711a1de3a995ce9dbad12b data/bloom/tags/worldgen/biome/has_feature/flower_orange_daisy.json
 8b3cb1f45d033b14d944da1c81bb39693a0196fc data/bloom/tags/worldgen/biome/has_feature/flower_pink_orchid.json
 20e96599f962ab17e92ca742059a15e0b55fd1b5 data/bloom/tags/worldgen/biome/has_feature/flower_scilla.json
+3a2d646416e721cecc0ff17f268e814781faffe8 data/bloom/tags/worldgen/biome/has_feature/internal/fen_features.json
 ec6e85c3a2323421031694facec72cb3d19b739d data/bloom/tags/worldgen/biome/has_feature/internal/less_strict_disks.json
-ec939e0d4842f9914f2ab51e22171dc71e2cb93d data/bloom/tags/worldgen/biome/has_feature/internal/windswept_jungle_trees.json
+ec939e0d4842f9914f2ab51e22171dc71e2cb93d data/bloom/tags/worldgen/biome/has_feature/internal/windswept_jungle_features.json
+3a2d646416e721cecc0ff17f268e814781faffe8 data/bloom/tags/worldgen/biome/has_feature/patch_reeds.json
 24192457dbc336972465d1e28399da894eb6301d data/bloom/tags/worldgen/biome/has_feature/patch_succulent.json
 d71c83230daa43f4aed54d3fcae987a576129637 data/bloom/tags/worldgen/biome/has_rule/depth_deeper.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/bloom/tags/worldgen/biome/has_rule/depth_diorite.json
@@ -28,13 +30,15 @@ e7a7e2b27c8aa61b4a0876e0ab6e81e6cd53a844 data/bloom/tags/worldgen/biome/has_rule
 765a22f1a4a97fa6e99c16560cc19d6f5803ef9f data/bloom/tags/worldgen/biome/has_rule/surface_coarse_dirt.json
 2f6344dd6d748b629c13126a0d9cf4e8010cd79e data/bloom/tags/worldgen/biome/has_rule/surface_gravel.json
 decb904644205bfe38bf745aad43089e976e109c data/bloom/tags/worldgen/biome/has_rule/surface_sand.json
-611d1a275cea79cf9b367c51ed06e2487e8d8d68 data/bloom/tags/worldgen/biome/has_rule/underwater_mud.json
-a6c8f196eb7a0e02e4f8b5500fbd332a3c3dd5aa data/bloom/tags/worldgen/biome/is_non_bamboo_jungle.json
+b60da28eed5927540db9c0c15e3b2f64e9e9ca82 data/bloom/tags/worldgen/biome/has_rule/swamp_mud.json
+570d0c0fbd03062b7d05c839af3eaf585ee0da57 data/bloom/tags/worldgen/biome/has_rule/underwater_mud.json
+288bf1462303f24b107f477b4f9fe690114c8116 data/bloom/tags/worldgen/biome/is_non_bamboo_jungle.json
 075acc2eaddd40ae6e9d6223c2e6aed09dc6f830 data/bloom/tags/worldgen/biome/is_non_snowy_taiga.json
 c9113a76d2da44847f6f270add123dec5a854ac2 data/minecraft/tags/worldgen/biome/has_structure/mineshaft.json
+3a2d646416e721cecc0ff17f268e814781faffe8 data/minecraft/tags/worldgen/biome/has_structure/swamp_hut.json
 c9113a76d2da44847f6f270add123dec5a854ac2 data/minecraft/tags/worldgen/biome/has_structure/trial_chambers.json
 d47d13f86f9bdf11edc650821713bc61d8b2e552 data/minecraft/tags/worldgen/biome/is_beach.json
 ec939e0d4842f9914f2ab51e22171dc71e2cb93d data/minecraft/tags/worldgen/biome/is_jungle.json
 2f5b6763714803e40884bd952148ff1af2e7b8eb data/minecraft/tags/worldgen/biome/is_river.json
-f572fcad777c92675f40c6522400aa6a9ce41c4a data/minecraft/tags/worldgen/biome/spawns_cold_variant_farm_animals.json
+dff2a36839ff7a0536197f769913b47938fb57c3 data/minecraft/tags/worldgen/biome/spawns_cold_variant_farm_animals.json
 e609fe526934db4f434c318823802bb6c408da41 data/minecraft/tags/worldgen/biome/spawns_warm_variant_farm_animals.json

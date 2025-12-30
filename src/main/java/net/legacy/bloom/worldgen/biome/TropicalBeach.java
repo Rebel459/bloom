@@ -77,7 +77,6 @@ public final class TropicalBeach extends FrozenBiome {
     public void fillEnvironmentAttributes(EnvironmentAttributeMap.Builder builder) {
         builder.set(EnvironmentAttributes.SKY_COLOR, SKY_COLOR);
         builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_BIOME_JUNGLE, false));
-        builder.set(EnvironmentAttributes.SNOW_GOLEM_MELTS, true);
     }
 
     @Override

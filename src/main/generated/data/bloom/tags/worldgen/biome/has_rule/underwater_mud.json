@@ -1,5 +1,6 @@
 {
   "values": [
+    "#bloom:has_rule/swamp_mud",
     {
       "id": "#minecraft:is_jungle",
       "required": false

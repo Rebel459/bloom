@@ -1,6 +1,7 @@
 // 1.21.11	-999999999-01-01T00:00:00	Combat Reborn/Tags for minecraft:block
 4f03f3a99e9edd458eae820b72bca238dbe6b66c data/bloom/tags/block/arid_vegetation_may_place_on.json
 12b564ef70b9e2997a1d24cf12b938b5c40a3528 data/bloom/tags/block/jacaranda_logs.json
+36641e2a0b7e79feae38e4d838efad1b3e3ac319 data/bloom/tags/block/submerged_vegetation_may_place_on.json
 3bf964c202264d2b0731ea56b13d26952a4fa4b6 data/minecraft/tags/block/ceiling_hanging_signs.json
 a32d86892b5eabde1085a8d34c67e9f26a820d3e data/minecraft/tags/block/fence_gates.json
 67ce7f2cf7d623288ef2fae092c62d2601d56d71 data/minecraft/tags/block/flower_pots.json

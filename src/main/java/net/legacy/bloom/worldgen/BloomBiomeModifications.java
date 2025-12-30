@@ -62,7 +62,7 @@ public final class BloomBiomeModifications {
 				ModificationPhase.REPLACEMENTS,
 				BiomeSelectors.tag(BloomBiomeTags.HAS_FROZEN_COLORS),
 				(selectionContext, modificationContext) -> {
-					modificationContext.getEffects().setWaterColor(1594256);
+					modificationContext.getEffects().setWaterColor(1596048);
 				}
 		);
 
@@ -76,6 +76,17 @@ public final class BloomBiomeModifications {
                     BiomeHelper.addLessStrictDisks(modificationContext);
                 }
         );
+        BiomeModifications.create(Bloom.id("has_water_and_below_mud")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_SWAMP_MUD),
+                (selectionContext, modificationContext) -> {
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
+                    modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
+                    modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_CLAY);
+                    modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_GRAVEL);
+                }
+        );
 
         BiomeModifications.create(Bloom.id("has_less_strict_disks")).add(
                 ModificationPhase.REPLACEMENTS,
@@ -84,11 +95,21 @@ public final class BloomBiomeModifications {
                     BiomeHelper.addLessStrictDisks(modificationContext);
                 }
         );
-        BiomeModifications.create(Bloom.id("has_windswept_jungle_trees")).add(
+        BiomeModifications.create(Bloom.id("has_windswept_jungle_features")).add(
                 ModificationPhase.REPLACEMENTS,
-                BiomeSelectors.tag(BloomBiomeTags.HAS_WINDSWEPT_JUNGLE_TREES),
+                BiomeSelectors.tag(BloomBiomeTags.HAS_WINDSWEPT_JUNGLE_FEATURES),
                 (selectionContext, modificationContext) -> {
                     BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_TREES);
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_FLOWERS);
+                }
+        );
+        BiomeModifications.create(Bloom.id("has_fen_features")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_FEN_FEATURES),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.FEN_FLOWERS);
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.FEN_TREES);
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.FEN_WILDFLOWERS);
                 }
         );
 
@@ -174,6 +195,13 @@ public final class BloomBiomeModifications {
                 BiomeSelectors.tag(BloomBiomeTags.HAS_SUCCULENT),
                 (selectionContext, modificationContext) -> {
                     BiomeHelper.addVegetation(modificationContext, BloomFeatures.PATCH_SUCCULENT);
+                }
+        );
+        BiomeModifications.create(Bloom.id("has_reeds")).add(
+                ModificationPhase.REPLACEMENTS,
+                BiomeSelectors.tag(BloomBiomeTags.HAS_REEDS),
+                (selectionContext, modificationContext) -> {
+                    BiomeHelper.addVegetation(modificationContext, BloomFeatures.PATCH_REEDS);
                 }
         );
 	}

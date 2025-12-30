@@ -23,6 +23,12 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
                 .addOptionalTag(BlockTags.DIRT)
                 .add(Blocks.FARMLAND);
 
+        this.valueLookupBuilder(BloomBlockTags.SUBMERGED_VEGETATION_MAY_PLACE_ON)
+                .addOptionalTag(BlockTags.SAND)
+                .addOptionalTag(BlockTags.DIRT)
+                .add(Blocks.FARMLAND)
+                .add(Blocks.CLAY);
+
 		this.valueLookupBuilder(BlockTags.SMALL_FLOWERS)
 				.add(BloomBlocks.PINK_ORCHID)
 				.add(BloomBlocks.GOLDENROD)

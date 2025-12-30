@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:flower",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "bloom:reeds"
+                },
+                "weight": 1
+              }
+            ]
+          }
+        }
+      },
+      "placement": []
+    },
+    "tries": 12,
+    "xz_spread": 5,
+    "y_spread": 3
+  }
+}

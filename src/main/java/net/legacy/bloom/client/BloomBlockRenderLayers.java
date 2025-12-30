@@ -28,7 +28,8 @@ public final class BloomBlockRenderLayers {
 		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_SCILLA, ChunkSectionLayer.CUTOUT);
 
 		BlockRenderLayerMap.putBlock(BloomBlocks.BELLFLOWER, ChunkSectionLayer.CUTOUT);
-		BlockRenderLayerMap.putBlock(BloomBlocks.HYDRANGEA, ChunkSectionLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(BloomBlocks.HYDRANGEA, ChunkSectionLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(BloomBlocks.REEDS, ChunkSectionLayer.CUTOUT);
 
         BlockRenderLayerMap.putBlock(BloomBlocks.SUCCULENT, ChunkSectionLayer.CUTOUT);
 

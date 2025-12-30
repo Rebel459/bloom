@@ -17,7 +17,6 @@
         "sound": "minecraft:music.under_water"
       }
     },
-    "minecraft:gameplay/snow_golem_melts": true,
     "minecraft:visual/sky_color": "#77a8ff"
   },
   "carvers": [

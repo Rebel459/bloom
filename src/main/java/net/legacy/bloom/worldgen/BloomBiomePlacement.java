@@ -95,7 +95,7 @@ public class BloomBiomePlacement {
                 Climate.Parameter.span(BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5),
                 Climate.Parameter.span(BiomeHelper.CONTINENTALNESS_COAST, BiomeHelper.CONTINENTALNESS_MAX),
                 Climate.Parameter.span(BiomeHelper.EROSION_5, BiomeHelper.EROSION_6),
-                Climate.Parameter.span(BiomeHelper.WEIRDNESS_HIGH_SLICE_NORMAL_ASCENDING, BiomeHelper.WEIRDNESS_HIGH_SLICE_NORMAL_DESCENDING),
+                Climate.Parameter.span(BiomeHelper.WEIRDNESS_PEAK_NORMAL, BiomeHelper.WEIRDNESS_MID_SLICE_NORMAL_DESCENDING),
                 0L
         );
         BiomePlacement.addSubOverworld(
@@ -104,6 +104,23 @@ public class BloomBiomePlacement {
                 CriterionBuilder.allOf(
                         CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, BiomeHelper.TEMPERATURE_3, BiomeHelper.TEMPERATURE_4),
                         CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_4)
+                )
+        );
+        BiomeHelper.surfaceBiome(
+                BloomBiomes.FEN,
+                Climate.Parameter.span(BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
+                Climate.Parameter.span(BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5),
+                Climate.Parameter.span(BiomeHelper.CONTINENTALNESS_COAST, BiomeHelper.CONTINENTALNESS_MAX),
+                Climate.Parameter.span(BiomeHelper.EROSION_6, BiomeHelper.EROSION_7),
+                Climate.Parameter.span(BiomeHelper.WEIRDNESS_MID_SLICE_NORMAL_DESCENDING, BiomeHelper.WEIRDNESS_HIGH_SLICE_VARIANT_ASCENDING),
+                0L
+        );
+        BiomePlacement.addSubOverworld(
+                Biomes.SWAMP,
+                BloomBiomes.FEN,
+                CriterionBuilder.allOf(
+                        CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
+                        CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
                 )
         );
     }

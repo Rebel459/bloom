@@ -29,11 +29,13 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
                 .add(BloomBiomes.COLD_BEACH)
                 .add(BloomBiomes.LUKEWARM_RIVER)
                 .add(BloomBiomes.LUKEWARM_BEACH)
-                .add(BloomBiomes.WINDSWEPT_JUNGLE);
+                .add(BloomBiomes.WINDSWEPT_JUNGLE)
+                .add(BloomBiomes.FEN);
 
 		this.builder(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 				.add(Biomes.JUNGLE)
-				.add(Biomes.SPARSE_JUNGLE);
+                .add(Biomes.SPARSE_JUNGLE)
+                .add(BloomBiomes.WINDSWEPT_JUNGLE);
 
 		this.builder(BloomBiomeTags.IS_NON_SNOWY_TAIGA)
 				.add(Biomes.TAIGA)
@@ -48,8 +50,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
                 .add(BloomBiomes.COLD_RIVER)
                 .add(BloomBiomes.COLD_BEACH);
 
-        this.builder(BloomBiomeTags.HAS_WINDSWEPT_JUNGLE_TREES)
+        this.builder(BloomBiomeTags.HAS_WINDSWEPT_JUNGLE_FEATURES)
                 .add(BloomBiomes.WINDSWEPT_JUNGLE);
+
+        this.builder(BloomBiomeTags.HAS_FEN_FEATURES)
+                .add(BloomBiomes.FEN);
 
 		// Effects
         this.builder(BloomBiomeTags.HAS_WARM_COLORS)
@@ -96,7 +101,12 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 				.add(BloomBiomes.ARID_SHORE);
 
         this.builder(BloomBiomeTags.HAS_UNDERWATER_MUD)
+                .addTag(BloomBiomeTags.HAS_SWAMP_MUD)
                 .addOptionalTag(BiomeTags.IS_JUNGLE);
+
+        this.builder(BloomBiomeTags.HAS_SWAMP_MUD)
+                .add(BloomBiomes.FEN)
+                .add(Biomes.SWAMP);
 
         this.builder(BloomBiomeTags.HAS_STRIP_COARSE_DIRT)
                 .add(Biomes.SAVANNA)
@@ -170,6 +180,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BloomBiomeTags.HAS_SUCCULENT)
                 .addOptionalTag(BiomeTags.IS_BADLANDS);
 
+        this.builder(BloomBiomeTags.HAS_REEDS)
+                .add(BloomBiomes.FEN);
+
 		// Vanilla
 		this.builder(BiomeTags.IS_RIVER)
 				.add(BloomBiomes.WARM_RIVER)
@@ -185,6 +198,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BiomeTags.IS_JUNGLE)
                 .add(BloomBiomes.WINDSWEPT_JUNGLE);
 
+        this.builder(BiomeTags.HAS_SWAMP_HUT)
+                .add(BloomBiomes.FEN);
+
 		this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS)
 				.add(BloomBiomes.WARM_RIVER)
                 .add(BloomBiomes.ARID_SHORE)
@@ -193,7 +209,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS)
 				.add(BloomBiomes.COLD_RIVER)
-				.add(BloomBiomes.COLD_BEACH);
+                .add(BloomBiomes.COLD_BEACH)
+                .add(BloomBiomes.FEN);
 
 		this.builder(BiomeTags.HAS_MINESHAFT)
 				.addTag(BloomBiomeTags.BLOOM_BIOMES);

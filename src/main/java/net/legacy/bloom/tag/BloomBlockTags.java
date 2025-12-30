@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class BloomBlockTags {
     public static final TagKey<Block> ARID_VEGETATION_MAY_PLACE_ON = bind("arid_vegetation_may_place_on");
+    public static final TagKey<Block> SUBMERGED_VEGETATION_MAY_PLACE_ON = bind("submerged_vegetation_may_place_on");
 
     public static final TagKey<Block> JACARANDA_LOGS = bind("jacaranda_logs");
 

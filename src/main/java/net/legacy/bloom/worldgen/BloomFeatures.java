@@ -21,15 +21,21 @@ public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> FLOWER_DIANTHUS = register("flower_dianthus");
 	public static final ResourceKey<PlacedFeature> FLOWER_GOLDENROD = register("flower_goldenrod");
 	public static final ResourceKey<PlacedFeature> FLOWER_ORANGE_DAISY = register("flower_orange_daisy");
-	public static final ResourceKey<PlacedFeature> FLOWER_SCILLA = register("flower_scilla");
+    public static final ResourceKey<PlacedFeature> FLOWER_SCILLA = register("flower_scilla");
 
     public static final ResourceKey<PlacedFeature> PATCH_SUCCULENT = register("patch_succulent");
+    public static final ResourceKey<PlacedFeature> PATCH_REEDS = register("patch_reeds");
 
     public static final ResourceKey<PlacedFeature> JACARANDA_TREE = register("tree_jacaranda");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_JACARANDA_TREE = registerConfigured("tree_jacaranda");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_JACARANDA_TREE_BEES = registerConfigured("tree_jacaranda_bees");
 
     public static final ResourceKey<PlacedFeature> WINDSWEPT_JUNGLE_TREES = register("trees_windswept_jungle");
+    public static final ResourceKey<PlacedFeature> WINDSWEPT_JUNGLE_FLOWERS = register("flowers_windswept_jungle");
+
+    public static final ResourceKey<PlacedFeature> FEN_FLOWERS = register("flowers_fen");
+    public static final ResourceKey<PlacedFeature> FEN_TREES = register("trees_fen");
+    public static final ResourceKey<PlacedFeature> FEN_WILDFLOWERS = register("wildflowers_fen");
 
     public static ResourceKey<PlacedFeature> register(String string) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Bloom.id(string));

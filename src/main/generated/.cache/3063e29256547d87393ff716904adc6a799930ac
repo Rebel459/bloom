@@ -35,6 +35,7 @@ ae23c5ab9a8f768384f4e2bc5c443dccfb5e2222 assets/bloom/blockstates/potted_dianthu
 e5b2686b7ca05a010131e9f45e4d32401432a445 assets/bloom/blockstates/potted_orange_daisy.json
 1c33658f5bc301e63201e51f36819b804a4c5e92 assets/bloom/blockstates/potted_pink_orchid.json
 653f51d03a9129f28a7b7f03f03163cacd23bc94 assets/bloom/blockstates/potted_scilla.json
+c9a236c2495476d62a9217a9775b10167f8f02cb assets/bloom/blockstates/reeds.json
 5ae0cdd920ec2ebabbf2e00d5a7ed125c9976f53 assets/bloom/blockstates/scilla.json
 3ecfa5838182f3f963e2de900c65115d5b682f83 assets/bloom/blockstates/stripped_jacaranda_log.json
 0a6bb4d42e14bc7264504fbc17eedf7ea38d755f assets/bloom/blockstates/stripped_jacaranda_wood.json
@@ -64,6 +65,7 @@ a90db03e25ec2ca2aa813f7bee3386078870b229 assets/bloom/items/jacaranda_leaves.jso
 1ad2ae8df29dbcce4b96da9a7df82ec2edc37a3d assets/bloom/items/jacaranda_wood.json
 15ec30861c911d248212fe5269990e1bb39c373e assets/bloom/items/orange_daisy.json
 ae9777c069d5e3279c2c19976a82c136bda8ee0b assets/bloom/items/pink_orchid.json
+929e5ba47c51a040fae3be1873ac9c3ef9a37cb8 assets/bloom/items/reeds.json
 2b512666291480bd77bb604db9c81ec72f31e116 assets/bloom/items/scilla.json
 576d91d3b411b0e998c1d1bdca5d19e6c15c173f assets/bloom/items/stripped_jacaranda_log.json
 89f2b8979401a72596913f60d631389f82a1e6d4 assets/bloom/items/stripped_jacaranda_wood.json
@@ -131,6 +133,8 @@ b0a151726ed8a38f1d46717415214da0fc9bce4b assets/bloom/models/block/potted_calla_
 2bcb7e4d5f098a5da3327bb40f82552ddeab3824 assets/bloom/models/block/potted_orange_daisy.json
 c8b4033f31350d249d4a0e4e178101eebf73269e assets/bloom/models/block/potted_pink_orchid.json
 79d6e887e78613c0f941e2236bb9c5bf5e767743 assets/bloom/models/block/potted_scilla.json
+41ba75d1aff53976e4adca0fa02d2a212e6e15d1 assets/bloom/models/block/reeds_bottom.json
+dab93b4230c7221daba652092b977e860edf31b3 assets/bloom/models/block/reeds_top.json
 3fd384fe13d1bec4290cb42b9e6489aa72f65e75 assets/bloom/models/block/scilla.json
 f1f3d44730e72252805b2551a695a5da12629a50 assets/bloom/models/block/stripped_jacaranda_log.json
 7b97de4aa3fc57aacf209fecdea4f949bf70afa9 assets/bloom/models/block/stripped_jacaranda_log_horizontal.json
@@ -149,5 +153,6 @@ ec7ec2857e274032e9aa286be545a601b0f1fba7 assets/bloom/models/item/jacaranda_door
 74d1762ea9135f65eac8374195574d782dfde552 assets/bloom/models/item/jacaranda_sign.json
 abe4d9f0f244199236855da865ee1a30d20160ff assets/bloom/models/item/orange_daisy.json
 488394760935d992b8fbb10dd19ca9d0fad85b03 assets/bloom/models/item/pink_orchid.json
+cdd1048e1cfabb5acebae17188500207123f96cf assets/bloom/models/item/reeds.json
 7e98887412a96e5f32c0b60b01e1f71471c730ab assets/bloom/models/item/scilla.json
 a678b41b52f7bdf1e48ce7b80c66683e9fb84110 assets/bloom/models/item/succulent.json

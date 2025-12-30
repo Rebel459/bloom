@@ -21,6 +21,7 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_SURFACE_GRAVEL = bind("has_rule/surface_gravel");
     public static final TagKey<Biome> HAS_SURFACE_COARSE_DIRT = bind("has_rule/surface_coarse_dirt");
     public static final TagKey<Biome> HAS_UNDERWATER_MUD = bind("has_rule/underwater_mud");
+    public static final TagKey<Biome> HAS_SWAMP_MUD = bind("has_rule/swamp_mud");
     public static final TagKey<Biome> HAS_STRIP_COARSE_DIRT = bind("has_rule/strip_coarse_dirt");
     public static final TagKey<Biome> HAS_HIGHER_STONE = bind("has_rule/depth_higher");
     public static final TagKey<Biome> HAS_DEEPER_STONE = bind("has_rule/depth_deeper");
@@ -29,7 +30,8 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_DEPTH_STONE = bind("has_rule/depth_stone");
 
     public static final TagKey<Biome> HAS_LESS_STRICT_DISKS = bind("has_feature/internal/less_strict_disks");
-    public static final TagKey<Biome> HAS_WINDSWEPT_JUNGLE_TREES = bind("has_feature/internal/windswept_jungle_trees");
+    public static final TagKey<Biome> HAS_WINDSWEPT_JUNGLE_FEATURES = bind("has_feature/internal/windswept_jungle_features");
+    public static final TagKey<Biome> HAS_FEN_FEATURES = bind("has_feature/internal/fen_features");
 
     public static final TagKey<Biome> HAS_BROMELIAD = bind("has_feature/flower_bromeliad");
     public static final TagKey<Biome> HAS_PINK_ORCHID = bind("has_feature/flower_pink_orchid");
@@ -43,6 +45,7 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_ORANGE_DAISY = bind("has_feature/flower_orange_daisy");
     public static final TagKey<Biome> HAS_SCILLA = bind("has_feature/flower_scilla");
     public static final TagKey<Biome> HAS_SUCCULENT = bind("has_feature/patch_succulent");
+    public static final TagKey<Biome> HAS_REEDS = bind("has_feature/patch_reeds");
 
     @NotNull
     private static TagKey<Biome> bind(@NotNull String path) {

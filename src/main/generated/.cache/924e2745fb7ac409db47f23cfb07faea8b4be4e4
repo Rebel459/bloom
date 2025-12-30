@@ -2,9 +2,10 @@
 82ef6c861c73d339e230de8801d978202a6621b1 data/bloom/worldgen/biome/arid_shore.json
 ce5c15e863c2aaad040a9f2c0eaf4d430fd9f1a8 data/bloom/worldgen/biome/cold_beach.json
 420a003a6b11a62a586807223011d9b628c37bee data/bloom/worldgen/biome/cold_river.json
-351eafc4263c8f3a8c78dfa99232bf780871268a data/bloom/worldgen/biome/lukewarm_beach.json
-b37e9de79cce561cb70e3a36b5c01f238cd1e6a2 data/bloom/worldgen/biome/lukewarm_river.json
-367d0d4280e0dea00f7cd9416a7e339df9c05936 data/bloom/worldgen/biome/tropical_beach.json
-4eebcc072aac59d6606411213470862f5ea92954 data/bloom/worldgen/biome/tropical_river.json
+9c999f9fe9aeab06f62dc1fa3fa1b42215caef55 data/bloom/worldgen/biome/fen.json
+72719f0e3867828733b008556a77279c89e1e64e data/bloom/worldgen/biome/lukewarm_beach.json
+24544890a4589e1312a085cbc802ef3c572f74ff data/bloom/worldgen/biome/lukewarm_river.json
+a4930604f413d55581eb968feb896a3959a39e71 data/bloom/worldgen/biome/tropical_beach.json
+08d1edb6b5e94e98f36a0cfdbc1c0586732cbd64 data/bloom/worldgen/biome/tropical_river.json
 a2f169a7a8ed5be1a555722752990fedcedc6909 data/bloom/worldgen/biome/warm_river.json
-7c31f590c61550c09d91b84b12e6893596bc72e2 data/bloom/worldgen/biome/windswept_jungle.json
+19d4d2d23605e719718738eef93dce48f3816b7e data/bloom/worldgen/biome/windswept_jungle.json

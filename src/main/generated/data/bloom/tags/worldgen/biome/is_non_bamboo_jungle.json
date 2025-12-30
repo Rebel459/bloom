@@ -1,6 +1,7 @@
 {
   "values": [
     "minecraft:jungle",
-    "minecraft:sparse_jungle"
+    "minecraft:sparse_jungle",
+    "bloom:windswept_jungle"
   ]
 }

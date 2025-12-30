@@ -10,14 +10,8 @@
         "max_delay": 24000,
         "min_delay": 12000,
         "sound": "minecraft:music.overworld.jungle"
-      },
-      "underwater": {
-        "max_delay": 24000,
-        "min_delay": 12000,
-        "sound": "minecraft:music.under_water"
       }
     },
-    "minecraft:gameplay/snow_golem_melts": true,
     "minecraft:visual/sky_color": "#77a8ff"
   },
   "carvers": [

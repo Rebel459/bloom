@@ -4,15 +4,12 @@ import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.tag.BloomBiomeTags;
+import net.legacy.bloom.util.BiomeHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.placement.CaveSurface;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 import java.util.List;
 
@@ -51,7 +48,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                 )
         );
     }
-    public static SurfaceRules.RuleSource modifiedJungles() {
+    public static SurfaceRules.RuleSource underwaterMud() {
         return SurfaceRules.sequence(
                 SurfaceRules.ifTrue(
                         FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_UNDERWATER_MUD),
@@ -177,43 +174,17 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
-    // Presets
-
-    public static SurfaceRules.RuleSource depthRule(TagKey<@NotNull Biome> biomes, Block block) {
-        SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
-        return SurfaceRules.ifTrue(
-                SurfaceRules.not(SurfaceRules.stoneDepthCheck(1, false, CaveSurface.FLOOR)),
+    public static SurfaceRules.RuleSource swampMud() {
+        return SurfaceRules.sequence(
                 SurfaceRules.ifTrue(
-                        FrozenSurfaceRules.isBiomeTagOptimized(biomes),
-                        SurfaceRules.sequence(
+                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SWAMP_MUD),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(64), 0)),
                                 SurfaceRules.ifTrue(
-                                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
+                                        SurfaceRules.yStartCheck(VerticalAnchor.absolute(61), 0),
                                         SurfaceRules.ifTrue(
-                                                SurfaceRules.UNDER_FLOOR,
-                                                rule
-                                        )
-                                ),
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
-                                        SurfaceRules.sequence(
-                                                SurfaceRules.ifTrue(
-                                                        SurfaceRules.VERY_DEEP_UNDER_FLOOR,
-                                                        rule
-                                                ),
-                                                SurfaceRules.ifTrue(
-                                                        SurfaceRules.DEEP_UNDER_FLOOR,
-                                                        rule
-                                                )
-                                        )
-                                ),
-                                SurfaceRules.ifTrue(
-                                        FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEEPER_STONE),
-                                        SurfaceRules.ifTrue(
-                                                SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
-                                                SurfaceRules.ifTrue(
-                                                        SurfaceRules.stoneDepthCheck(0, true, 60, CaveSurface.FLOOR),
-                                                        rule
-                                                )
+                                                SurfaceRules.ON_FLOOR,
+                                                FrozenSurfaceRules.makeStateRule(Blocks.MUD)
                                         )
                                 )
                         )
@@ -227,15 +198,16 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                 SurfaceRules.sequence(
                         aridRiversAndShores(),
                         tropicalRivers(),
-                        modifiedJungles(),
+                        underwaterMud(),
+                        swampMud(),
                         beaches(),
                         gravellyRiversAndBeaches(),
                         coarseDirtStrips(),
                         windsweptJungle(),
                         windsweptSavanna(),
-                        depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
-                        depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
-                        depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE)
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE)
                 )
         );
     }

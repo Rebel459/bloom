@@ -12,7 +12,6 @@
         "sound": "minecraft:music.overworld.jungle"
       }
     },
-    "minecraft:gameplay/snow_golem_melts": true,
     "minecraft:visual/sky_color": "#77a8ff"
   },
   "carvers": [

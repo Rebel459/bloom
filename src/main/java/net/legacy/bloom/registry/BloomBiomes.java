@@ -16,6 +16,7 @@ public class BloomBiomes {
     public static final ResourceKey<Biome> LUKEWARM_RIVER = LukewarmRiver.INSTANCE.getKey();
     public static final ResourceKey<Biome> LUKEWARM_BEACH = LukewarmBeach.INSTANCE.getKey();
     public static final ResourceKey<Biome> WINDSWEPT_JUNGLE = WindsweptJungle.INSTANCE.getKey();
+    public static final ResourceKey<Biome> FEN = Fen.INSTANCE.getKey();
 
     public static void init() {}
 
@@ -29,6 +30,7 @@ public class BloomBiomes {
         register(context, LUKEWARM_RIVER, LukewarmRiver.INSTANCE.create(context));
         register(context, LUKEWARM_BEACH, LukewarmBeach.INSTANCE.create(context));
         register(context, WINDSWEPT_JUNGLE, WindsweptJungle.INSTANCE.create(context));
+        register(context, FEN, Fen.INSTANCE.create(context));
     }
 
     private static void register(BootstrapContext<Biome> entries, ResourceKey<Biome> key, Biome biome) {
