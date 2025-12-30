@@ -12,6 +12,7 @@ import net.legacy.bloom.block.AridVegetationBlock;
 import net.legacy.bloom.block.HalfSubmergedBlock;
 import net.legacy.bloom.block.LargeFlowerBlock;
 import net.legacy.bloom.block.WideFlowerBlock;
+import net.legacy.bloom.registry.data.StoneOresRegistry;
 import net.legacy.bloom.worldgen.sapling.BloomTreeGrowers;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
@@ -268,6 +269,8 @@ public final class BloomBlocks {
                     .mapColor(MapColor.COLOR_PURPLE)
     );
 
+    public static final StoneOresRegistry TEST_REGISTRY = new StoneOresRegistry(Blocks.TUFF);
+
 	public static void registerBlockProperties() {
         var sign = (FabricBlockEntityType) BlockEntityType.SIGN;
         sign.addSupportedBlock(JACARANDA_SIGN);
@@ -343,7 +346,7 @@ public final class BloomBlocks {
 
 	private static void registerFuels() {
 		FuelRegistryEvents.BUILD.register((builder, context) -> {
-            
+
             //builder.add(BloomItems.JACARANDA_BOAT, 1200);
             //builder.add(BloomItems.JACARANDA_CHEST_BOAT, 1200);
             builder.add(JACARANDA_LOG.asItem(), 300);
@@ -373,7 +376,7 @@ public final class BloomBlocks {
 		return doRegister(id, makeBlock(block, properties, id));
 	}
 
-	private static <T extends Block> T register(String path, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties) {
+	public static <T extends Block> T register(String path, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties) {
 		T registered = registerWithoutItem(path, block, properties);
 		registerBlockItem(registered);
 		return registered;
