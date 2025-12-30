@@ -205,15 +205,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
-    public static SurfaceRules.RuleSource granite() {
-        return SurfaceRules.sequence(
-			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
-				FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
-			)
-        );
-    }
-
     @Override
     public void addOverworldSurfaceRules(List<SurfaceRules.RuleSource> context) {
         context.add(
@@ -226,7 +217,15 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				gravellyRiversAndBeaches(),
 				coarseDirtStrips(),
 				windsweptJungle(),
-				windsweptSavanna(),
+				windsweptSavanna()
+			)
+        );
+    }
+
+    @Override
+    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
+		context.add(
+			SurfaceRules.sequence(
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE),
@@ -237,48 +236,5 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			)
         );
     }
-
-	public static SurfaceRules.RuleSource belowGrassAndDirtRule(SurfaceRules.RuleSource rule) {
-		return SurfaceRules.sequence(
-			SurfaceRules.ifTrue(
-				SurfaceRules.ON_FLOOR,
-				SurfaceRules.ifTrue(
-					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-					rule
-				)
-			),
-			SurfaceRules.ifTrue(
-				SurfaceRules.waterBlockCheck(-1, 0),
-				SurfaceRules.ifTrue(
-					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-					rule
-				)
-			),
-			SurfaceRules.ifTrue(
-				SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-				rule
-			)
-		);
-	}
-
-	// Once you make more of these rules, its better to bundle them into a sequence with *one* below grass and dirt condition.
-	public static SurfaceRules.RuleSource graniteTestLol() {
-		return belowGrassAndDirtRule(
-			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
-				SurfaceRules.sequence(
-					SurfaceRules.ifTrue(
-						// Name must be "deepslate", as the noise seed is based off the name.
-						SurfaceRules.not(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8))),
-						FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
-					)
-				)
-			)
-		);
-	}
-
-    @Override
-    public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
-		context.add(graniteTestLol());
-	}
+	
 }
