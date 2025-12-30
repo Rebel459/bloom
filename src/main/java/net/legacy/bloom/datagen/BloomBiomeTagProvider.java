@@ -122,7 +122,10 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
         this.builder(BloomBiomeTags.HAS_DEPTH_DIORITE);
 
-        this.builder(BloomBiomeTags.HAS_DEPTH_ANDESITE);
+        this.builder(BloomBiomeTags.HAS_DEPTH_ANDESITE)
+                .addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA)
+                .add(BloomBiomes.FEN)
+                .add(BloomBiomes.COLD_RIVER);
 
         this.builder(BloomBiomeTags.HAS_DEPTH_DOLERITE)
                 .add(Biomes.SNOWY_PLAINS)
@@ -145,6 +148,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BloomBiomeTags.HAS_DEEPER_STONE)
                 .addTag(BloomBiomeTags.HAS_DEPTH_GRANITE)
                 .addTag(BloomBiomeTags.HAS_DEPTH_DIORITE)
+                .addTag(BloomBiomeTags.HAS_DEPTH_DOLERITE)
                 .addTag(BloomBiomeTags.HAS_DEPTH_GRANITE)
                 .addTag(BloomBiomeTags.HAS_DEPTH_ANDESITE)
                 .addTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE)

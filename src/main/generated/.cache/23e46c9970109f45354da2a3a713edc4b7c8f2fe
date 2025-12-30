@@ -21,10 +21,14 @@ f0240c1ad4e859ee2ea98bc5b990e5b5dbd0ed4d data/bloom/tags/worldgen/biome/has_feat
 ec939e0d4842f9914f2ab51e22171dc71e2cb93d data/bloom/tags/worldgen/biome/has_feature/internal/windswept_jungle_features.json
 3a2d646416e721cecc0ff17f268e814781faffe8 data/bloom/tags/worldgen/biome/has_feature/patch_reeds.json
 24192457dbc336972465d1e28399da894eb6301d data/bloom/tags/worldgen/biome/has_feature/patch_succulent.json
-fec2bd1a1effb634bdb44a5fe9c3dae8fca42481 data/bloom/tags/worldgen/biome/has_rule/depth_deeper.json
-5d09accf6b05e35e6c5ec1160739c880949c3efb data/bloom/tags/worldgen/biome/has_rule/depth_diorite.json
+e148ba38141c5ea691226150aa87be9f8fa57c75 data/bloom/tags/worldgen/biome/has_rule/depth_andesite.json
+d37ddb1a869323ca08397fac87382cc19ea4e21f data/bloom/tags/worldgen/biome/has_rule/depth_deeper.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/bloom/tags/worldgen/biome/has_rule/depth_diorite.json
+5d09accf6b05e35e6c5ec1160739c880949c3efb data/bloom/tags/worldgen/biome/has_rule/depth_dolerite.json
 b26124338b2a07cf6e0fc4b311633cbc15eb6bb9 data/bloom/tags/worldgen/biome/has_rule/depth_granite.json
 e7a7e2b27c8aa61b4a0876e0ab6e81e6cd53a844 data/bloom/tags/worldgen/biome/has_rule/depth_higher.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/bloom/tags/worldgen/biome/has_rule/depth_red_sandstone.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/bloom/tags/worldgen/biome/has_rule/depth_sandstone.json
 0a110bf06759d2f5bbad2a86cc16393c14629085 data/bloom/tags/worldgen/biome/has_rule/depth_stone.json
 5d9519f191f21af13ae367c9c51f6bcff58c9fb3 data/bloom/tags/worldgen/biome/has_rule/strip_coarse_dirt.json
 765a22f1a4a97fa6e99c16560cc19d6f5803ef9f data/bloom/tags/worldgen/biome/has_rule/surface_coarse_dirt.json

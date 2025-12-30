@@ -3,6 +3,7 @@ package net.legacy.bloom.worldgen;
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
 import net.legacy.bloom.registry.BloomBiomes;
+import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
@@ -222,7 +223,11 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
                         windsweptSavanna(),
                         BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_STONE, Blocks.STONE),
                         BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
-                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE)
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE),
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DOLERITE, BloomBlocks.DOLERITE),
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_ANDESITE, Blocks.ANDESITE),
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_SANDSTONE, Blocks.SANDSTONE),
+                        BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, Blocks.RED_SANDSTONE)
                 )
         );
     }

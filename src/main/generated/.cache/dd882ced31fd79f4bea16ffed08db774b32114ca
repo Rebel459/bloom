@@ -17,7 +17,7 @@ a0e0afb35a3bf306874e4763fd575b8aab35b2ae data/minecraft/tags/block/iron_ores.jso
 c11a31cf42c7d67131ead770483843e22af8e131 data/minecraft/tags/block/leaves.json
 a72c6df1db855db3dcaf13c46a852dd3bff7597a data/minecraft/tags/block/logs.json
 a72c6df1db855db3dcaf13c46a852dd3bff7597a data/minecraft/tags/block/logs_that_burn.json
-60e645c12edd98c8965b793d7b44841c2717b4b7 data/minecraft/tags/block/mineable/pickaxe.json
+c8881405425c771adc80f688c8872f5bcd3c117b data/minecraft/tags/block/mineable/pickaxe.json
 cd50f876812ae2de8033909f531a9bba1fb799d0 data/minecraft/tags/block/overworld_natural_logs.json
 51cbdbc44ea44701c747d7eb8ca7bc25062f1004 data/minecraft/tags/block/planks.json
 ffb37245b6f89bb13e781af08b21452593c19300 data/minecraft/tags/block/redstone_ores.json
