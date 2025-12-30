@@ -238,13 +238,40 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
-	public static SurfaceRules.RuleSource graniteTestLol() {
-		return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
-			SurfaceRules.sequence(
+	public static SurfaceRules.RuleSource belowGrassAndDirtRule(SurfaceRules.RuleSource rule) {
+		return SurfaceRules.sequence(
+			SurfaceRules.ifTrue(
+				SurfaceRules.ON_FLOOR,
 				SurfaceRules.ifTrue(
-					SurfaceRules.not(SurfaceRules.verticalGradient("granite", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8))),
-					FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
+					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+					rule
+				)
+			),
+			SurfaceRules.ifTrue(
+				SurfaceRules.waterBlockCheck(-1, 0),
+				SurfaceRules.ifTrue(
+					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+					rule
+				)
+			),
+			SurfaceRules.ifTrue(
+				SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+				rule
+			)
+		);
+	}
+
+	// Once you make more of these rules, its better to bundle them into a sequence with *one* below grass and dirt condition.
+	public static SurfaceRules.RuleSource graniteTestLol() {
+		return belowGrassAndDirtRule(
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
+				SurfaceRules.sequence(
+					SurfaceRules.ifTrue(
+						// Name must be "deepslate", as the noise seed is based off the name.
+						SurfaceRules.not(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8))),
+						FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
+					)
 				)
 			)
 		);
