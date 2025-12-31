@@ -2,8 +2,8 @@ package net.legacy.bloom.util;
 
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
-import net.legacy.bloom.util.rules.DownfallRules;
-import net.legacy.bloom.util.rules.TemperatureRules;
+import net.legacy.bloom.util.rules.DownfallRule;
+import net.legacy.bloom.util.rules.TemperatureRule;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -141,9 +141,9 @@ public class SurfaceRuleHelper {
 		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
 		return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
-				TemperatureRules.temperature(tempMin, tempMax),
+				TemperatureRule.temperature(tempMin, tempMax),
 				SurfaceRules.ifTrue(
-					DownfallRules.downfall(downMin, downMax),
+					DownfallRule.downfall(downMin, downMax),
 					SurfaceRules.sequence(
 						SurfaceRules.ifTrue(
 							SurfaceRules.not(SurfaceRules.ON_FLOOR),
