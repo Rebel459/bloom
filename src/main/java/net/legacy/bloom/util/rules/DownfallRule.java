@@ -14,11 +14,13 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
 public class DownfallRule implements SurfaceRules.ConditionSource {
-	public static final MapCodec<DownfallRule> CODEC = RecordCodecBuilder.mapCodec(instance ->
-		instance.group(
-			Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
-			Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
-		).apply(instance, DownfallRule::new)
+	public static final KeyDispatchDataCodec<DownfallRule> CODEC = KeyDispatchDataCodec.of(
+		RecordCodecBuilder.mapCodec(instance ->
+			instance.group(
+				Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
+				Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
+			).apply(instance, DownfallRule::new)
+		)
 	);
 
 	private final float min;
@@ -74,6 +76,6 @@ public class DownfallRule implements SurfaceRules.ConditionSource {
 
 	@Override
 	public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
-		return KeyDispatchDataCodec.of(CODEC);
+		return CODEC;
 	}
 }
