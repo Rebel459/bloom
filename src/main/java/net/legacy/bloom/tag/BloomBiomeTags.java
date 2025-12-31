@@ -4,7 +4,6 @@ import net.legacy.bloom.Bloom;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
-import org.jetbrains.annotations.NotNull;
 
 public class BloomBiomeTags {
     public static final TagKey<Biome> BLOOM_BIOMES = bind("bloom_biomes");
@@ -23,15 +22,15 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_UNDERWATER_MUD = bind("has_rule/underwater_mud");
     public static final TagKey<Biome> HAS_SWAMP_MUD = bind("has_rule/swamp_mud");
     public static final TagKey<Biome> HAS_STRIP_COARSE_DIRT = bind("has_rule/strip_coarse_dirt");
-    public static final TagKey<Biome> HAS_HIGHER_STONE = bind("has_rule/depth_higher");
-    public static final TagKey<Biome> HAS_DEEPER_STONE = bind("has_rule/depth_deeper");
+    public static final TagKey<Biome> HAS_HIGHER_DEPTH = bind("has_rule/higher_depth");
     public static final TagKey<Biome> HAS_DEPTH_GRANITE = bind("has_rule/depth_granite");
     public static final TagKey<Biome> HAS_DEPTH_DIORITE = bind("has_rule/depth_diorite");
     public static final TagKey<Biome> HAS_DEPTH_ANDESITE = bind("has_rule/depth_andesite");
     public static final TagKey<Biome> HAS_DEPTH_SANDSTONE = bind("has_rule/depth_sandstone");
     public static final TagKey<Biome> HAS_DEPTH_RED_SANDSTONE = bind("has_rule/depth_red_sandstone");
     public static final TagKey<Biome> HAS_DEPTH_DOLERITE = bind("has_rule/depth_dolerite");
-    public static final TagKey<Biome> HAS_DEPTH_STONE = bind("has_rule/depth_stone");
+	public static final TagKey<Biome> HAS_HIGHER_STONE = bind("has_rule/higher_stone");
+	public static final TagKey<Biome> HAS_MODIFIED_STONE_TYPE = bind("has_rule/internal/modified_stone_type");
 
     public static final TagKey<Biome> HAS_LESS_STRICT_DISKS = bind("has_feature/internal/less_strict_disks");
     public static final TagKey<Biome> HAS_WINDSWEPT_JUNGLE_FEATURES = bind("has_feature/internal/windswept_jungle_features");

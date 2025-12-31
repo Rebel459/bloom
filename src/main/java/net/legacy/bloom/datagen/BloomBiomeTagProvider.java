@@ -8,7 +8,6 @@ import net.legacy.bloom.tag.BloomBiomeTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
-import org.jetbrains.annotations.NotNull;
 
 public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
@@ -131,19 +130,21 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.FROZEN_RIVER)
 			.add(Biomes.ICE_SPIKES);
 
-        this.builder(BloomBiomeTags.HAS_DEPTH_SANDSTONE);
+        this.builder(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
+			.add(Biomes.DESERT);
 
-        this.builder(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE);
+        this.builder(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE)
+			.addOptionalTag(BiomeTags.IS_BADLANDS);
 
-        this.builder(BloomBiomeTags.HAS_DEPTH_STONE)
+        this.builder(BloomBiomeTags.HAS_HIGHER_STONE)
 			.add(Biomes.CHERRY_GROVE)
 			.add(Biomes.MEADOW);
 
-        this.builder(BloomBiomeTags.HAS_HIGHER_STONE)
-			.addTag(BloomBiomeTags.HAS_DEPTH_STONE)
+        this.builder(BloomBiomeTags.HAS_HIGHER_DEPTH)
+			.addTag(BloomBiomeTags.HAS_HIGHER_STONE)
 			.add(Biomes.SAVANNA_PLATEAU);
 
-        this.builder(BloomBiomeTags.HAS_DEEPER_STONE)
+		this.builder(BloomBiomeTags.HAS_MODIFIED_STONE_TYPE)
 			.addTag(BloomBiomeTags.HAS_DEPTH_GRANITE)
 			.addTag(BloomBiomeTags.HAS_DEPTH_DIORITE)
 			.addTag(BloomBiomeTags.HAS_DEPTH_DOLERITE)
