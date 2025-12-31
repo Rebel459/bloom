@@ -13,19 +13,20 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
-public class DownfallRules implements SurfaceRules.ConditionSource {
-
-	public static final MapCodec<DownfallRules> CODEC = RecordCodecBuilder.mapCodec(instance ->
-		instance.group(
-			Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
-			Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
-		).apply(instance, DownfallRules::new)
+public class DownfallRule implements SurfaceRules.ConditionSource {
+	public static final KeyDispatchDataCodec<DownfallRule> CODEC = KeyDispatchDataCodec.of(
+		RecordCodecBuilder.mapCodec(instance ->
+			instance.group(
+				Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
+				Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
+			).apply(instance, DownfallRule::new)
+		)
 	);
 
 	private final float min;
 	private final float max;
 
-	public DownfallRules(float min, float max) {
+	public DownfallRule(float min, float max) {
 		this.min = min;
 		this.max = max;
 	}
@@ -38,12 +39,12 @@ public class DownfallRules implements SurfaceRules.ConditionSource {
 			@Override
 			public boolean test() {
 				var accessor = (SurfaceRulesContextAccessor) (Object) context;
-				pos.set(accessor.getBlockX(), accessor.getBlockY(), accessor.getBlockZ());
+				this.pos.set(accessor.getBlockX(), accessor.getBlockY(), accessor.getBlockZ());
 
-				Holder<Biome> biomeSupplier = accessor.getBiomeAtPos().apply(pos);
+				Holder<Biome> biomeSupplier = accessor.getBiomeAtPos().apply(this.pos);
 				if (biomeSupplier.is(ConventionalBiomeTags.IS_CAVE)) {
-					pos.set(pos.getX(), accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, pos.getX(), pos.getZ()), pos.getZ());
-					biomeSupplier = accessor.getBiomeAtPos().apply(pos);
+					this.pos.setY(accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, this.pos.getX(), this.pos.getZ()));
+					biomeSupplier = accessor.getBiomeAtPos().apply(this.pos);
 				}
 				Biome biome = biomeSupplier.value();
 
@@ -51,30 +52,30 @@ public class DownfallRules implements SurfaceRules.ConditionSource {
 
 				float downfall = climate.downfall();
 
-				return downfall >= min && downfall <= max;
+				return downfall >= DownfallRule.this.min && downfall <= DownfallRule.this.max;
 			}
 		}
 		return new Condition();
 	}
 
 	public static SurfaceRules.ConditionSource downfall(float point) {
-		return new TemperatureRules(point - 0.0001F, point + 0.0001F);
+		return new TemperatureRule(point - 0.0001F, point + 0.0001F);
 	}
 
 	public static SurfaceRules.ConditionSource downfall(float min, float max) {
-		return new TemperatureRules(min, max);
+		return new TemperatureRule(min, max);
 	}
 
 	public static SurfaceRules.ConditionSource downfallBelow(float threshold) {
-		return new TemperatureRules(Float.NEGATIVE_INFINITY, threshold);
+		return new TemperatureRule(Float.NEGATIVE_INFINITY, threshold);
 	}
 
 	public static SurfaceRules.ConditionSource downfallAbove(float threshold) {
-		return new TemperatureRules(threshold, Float.POSITIVE_INFINITY);
+		return new TemperatureRule(threshold, Float.POSITIVE_INFINITY);
 	}
 
 	@Override
 	public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
-		return KeyDispatchDataCodec.of(CODEC);
+		return CODEC;
 	}
 }
