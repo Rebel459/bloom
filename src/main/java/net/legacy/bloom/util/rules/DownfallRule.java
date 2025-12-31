@@ -1,5 +1,8 @@
 package net.legacy.bloom.util.rules;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.legacy.bloom.mixin.worldgen.BiomeAccessor;
 import net.legacy.bloom.mixin.worldgen.SurfaceRulesContextAccessor;
@@ -11,6 +14,13 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
 public class DownfallRule implements SurfaceRules.ConditionSource {
+
+	public static final MapCodec<DownfallRules> CODEC = RecordCodecBuilder.mapCodec(instance ->
+		instance.group(
+			Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
+			Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
+		).apply(instance, DownfallRules::new)
+	);
 
 	private final float min;
 	private final float max;
@@ -65,6 +75,6 @@ public class DownfallRule implements SurfaceRules.ConditionSource {
 
 	@Override
 	public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
-		return null;
+		return KeyDispatchDataCodec.of(CODEC);
 	}
 }
