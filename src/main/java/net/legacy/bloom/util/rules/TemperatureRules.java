@@ -36,7 +36,7 @@ public class TemperatureRules implements SurfaceRules.ConditionSource {
 				}
 				Biome biome = biomeSupplier.value();
 
-				float adjustedTemp = biome.getTemperature(accessor.getBlockPos(), context.getSeaLevel());
+				float adjustedTemp = biome.getTemperature(pos, context.getSeaLevel());
 
 				return adjustedTemp >= min && adjustedTemp <= max;
 			}
