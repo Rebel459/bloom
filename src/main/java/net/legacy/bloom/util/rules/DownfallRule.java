@@ -14,12 +14,11 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
 public class DownfallRule implements SurfaceRules.ConditionSource {
-
-	public static final MapCodec<DownfallRules> CODEC = RecordCodecBuilder.mapCodec(instance ->
+	public static final MapCodec<DownfallRule> CODEC = RecordCodecBuilder.mapCodec(instance ->
 		instance.group(
 			Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
 			Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
-		).apply(instance, DownfallRules::new)
+		).apply(instance, DownfallRule::new)
 	);
 
 	private final float min;
