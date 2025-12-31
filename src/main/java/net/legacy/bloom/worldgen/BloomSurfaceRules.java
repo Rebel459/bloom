@@ -234,6 +234,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				BiomeHelper.sandstoneDepthRule(BloomBiomeTags.HAS_DEPTH_SANDSTONE, Blocks.SANDSTONE, 0),
 				BiomeHelper.sandstoneDepthRule(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, Blocks.RED_SANDSTONE, 0)
 			)
-		);
-	}
+        );
+    }
+	
 }

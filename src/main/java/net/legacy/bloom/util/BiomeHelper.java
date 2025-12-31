@@ -329,47 +329,4 @@ public class BiomeHelper {
 			)
 		);
 	}
-
-	@Deprecated
-	public static SurfaceRules.RuleSource legacyDepthRule(TagKey<Biome> biomes, Block block) {
-		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
-		return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(biomes),
-			SurfaceRules.ifTrue(
-				SurfaceRules.not(SurfaceRules.stoneDepthCheck(1, false, CaveSurface.FLOOR)),
-				SurfaceRules.sequence(
-					SurfaceRules.ifTrue(
-						FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
-						SurfaceRules.ifTrue(
-							SurfaceRules.UNDER_FLOOR,
-							rule
-						)
-					),
-					SurfaceRules.ifTrue(
-						SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
-						SurfaceRules.sequence(
-							SurfaceRules.ifTrue(
-								SurfaceRules.VERY_DEEP_UNDER_FLOOR,
-								rule
-							),
-							SurfaceRules.ifTrue(
-								SurfaceRules.DEEP_UNDER_FLOOR,
-								rule
-							)
-						)
-					),
-					SurfaceRules.ifTrue(
-						FrozenSurfaceRules.isBiomeTagOptimized(biomes),
-						SurfaceRules.ifTrue(
-							SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
-							SurfaceRules.ifTrue(
-								SurfaceRules.not(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8))),
-								rule
-							)
-						)
-					)
-				)
-			)
-		);
-	}
 }
