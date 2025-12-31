@@ -8,7 +8,9 @@ import net.minecraft.world.level.biome.Biome;
 public class BloomBiomeTags {
     public static final TagKey<Biome> BLOOM_BIOMES = bind("bloom_biomes");
     public static final TagKey<Biome> IS_NON_BAMBOO_JUNGLE = bind("is_non_bamboo_jungle");
-    public static final TagKey<Biome> IS_NON_SNOWY_TAIGA = bind("is_non_snowy_taiga");
+	public static final TagKey<Biome> IS_NON_SNOWY_TAIGA = bind("is_non_snowy_taiga");
+	public static final TagKey<Biome> INTERNAL_STEEP = bind("internal/steep");
+	public static final TagKey<Biome> INTERNAL_MOUNTAIN = bind("internal/mountain");
 
     public static final TagKey<Biome> HAS_WARM_COLORS = bind("has_effect/warm_colors");
     public static final TagKey<Biome> HAS_LUKEWARM_COLORS = bind("has_effect/lukewarm_colors");

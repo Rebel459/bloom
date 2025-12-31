@@ -9,7 +9,6 @@
   "mixins": [
     "item.HoeItemMixin",
     "worldgen.BiomeAccessor",
-    "worldgen.SurfaceRuleDataMixin",
     "worldgen.SurfaceRulesContextAccessor"
   ]
 }

@@ -41,6 +41,15 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.OLD_GROWTH_SPRUCE_TAIGA);
 
 		// Internal
+
+		this.builder(BloomBiomeTags.INTERNAL_STEEP) // Used to replace stone where applicable
+			.add(Biomes.JAGGED_PEAKS);
+
+		this.builder(BloomBiomeTags.INTERNAL_MOUNTAIN) // Used to replace stone where applicable
+			.addTag(BloomBiomeTags.INTERNAL_STEEP)
+			.add(Biomes.SNOWY_SLOPES)
+			.add(Biomes.FROZEN_PEAKS);
+
         this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
 			.addOptionalTag(BiomeTags.IS_JUNGLE)
 			.add(BloomBiomes.WARM_RIVER)
