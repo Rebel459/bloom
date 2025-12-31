@@ -119,7 +119,10 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
         this.valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
 			.add(BloomBlocks.JACARANDA_TRAPDOOR);
 
-        this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+			.add(BloomBlocks.DOLERITE);
+
+		this.valueLookupBuilder(BlockTags.STONE_ORE_REPLACEABLES)
 			.add(BloomBlocks.DOLERITE);
 
         tagOres(BloomBlocks.TUFF_ORES);

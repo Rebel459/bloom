@@ -6,8 +6,8 @@ extendable class net/minecraft/world/level/block/grower/TreeGrower
 extendable method net/minecraft/world/level/block/grower/TreeGrower getConfiguredFeature (Lnet/minecraft/util/RandomSource;Z)Lnet/minecraft/resources/ResourceKey;
 extendable method net/minecraft/world/level/block/grower/TreeGrower getConfiguredMegaFeature (Lnet/minecraft/util/RandomSource;)Lnet/minecraft/resources/ResourceKey;
 accessible class net/minecraft/world/level/levelgen/SurfaceRules$YConditionSource
-
-accessible field net/minecraft/data/worldgen/SurfaceRuleData STONE Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
+accessible method net/minecraft/world/level/biome/Biome getTemperature (Lnet/minecraft/core/BlockPos;I)F
+accessible class net/minecraft/world/level/biome/Biome$ClimateSettings
 
 accessible class net/minecraft/client/particle/ParticleResources$MutableSpriteSet
 accessible class net/minecraft/client/particle/ParticleResources$SpriteParticleRegistration

@@ -7,6 +7,8 @@
   },
   "client": [],
   "mixins": [
-    "item.HoeItemMixin"
+    "item.HoeItemMixin",
+    "worldgen.BiomeAccessor",
+    "worldgen.SurfaceRulesContextAccessor"
   ]
 }
