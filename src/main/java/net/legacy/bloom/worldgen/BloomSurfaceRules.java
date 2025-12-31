@@ -7,6 +7,7 @@ import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -205,6 +206,29 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
+	public static SurfaceRules.RuleSource badlandsDepth() {
+		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(Blocks.RED_SANDSTONE);
+		int startY = 0;
+		int transitionBlocks = 8;
+		return SurfaceRules.sequence(
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE),
+				SurfaceRules.ifTrue(
+					FrozenSurfaceRules.isBiomeTagOptimized(BiomeTags.IS_BADLANDS),
+					SurfaceRules.sequence(
+						SurfaceRules.ifTrue(
+							SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+							SurfaceRules.ifTrue(
+								SurfaceRules.not(SurfaceRules.verticalGradient(BiomeHelper.getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks))),
+								rule
+							)
+						)
+					)
+				)
+			)
+		);
+	}
+
     @Override
     public void addOverworldSurfaceRules(List<SurfaceRules.RuleSource> context) {
         context.add(
@@ -226,13 +250,13 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
 		context.add(
 			SurfaceRules.sequence(
+				badlandsDepth(),
 				BiomeHelper.higherStoneRule(BloomBiomeTags.HAS_HIGHER_STONE),
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE),
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DOLERITE, BloomBlocks.DOLERITE),
 				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_ANDESITE, Blocks.ANDESITE),
-				BiomeHelper.sandstoneDepthRule(BloomBiomeTags.HAS_DEPTH_SANDSTONE, Blocks.SANDSTONE, 0),
-				BiomeHelper.sandstoneDepthRule(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, Blocks.RED_SANDSTONE, 0)
+				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_SANDSTONE, Blocks.SANDSTONE, 0)
 			)
         );
     }

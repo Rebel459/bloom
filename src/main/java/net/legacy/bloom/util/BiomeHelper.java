@@ -11,6 +11,7 @@ import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.level.biome.Biome;
@@ -212,12 +213,7 @@ public class BiomeHelper {
 	}
 
 	public static String getKey(int startY, int transitionBlocks) {
-		return getKey(startY, transitionBlocks, false);
-	}
-
-	public static String getKey(int startY, int transitionBlocks, boolean sandstone) {
 		if (startY == 0 && transitionBlocks == 8) return "deepslate";
-		else if (sandstone) return "sandstone_depth";
 		else return "depth";
 	}
 
@@ -259,74 +255,6 @@ public class BiomeHelper {
 				)
 			),
 			higherStoneRule(biomes, block)
-		);
-	}
-
-	public static SurfaceRules.RuleSource sandstoneDepthRule(TagKey<Biome> biomes, Block block, int startY) {
-		SurfaceRules.ConditionSource conditionSource2 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(256), 0);
-		SurfaceRules.ConditionSource conditionSource3 = SurfaceRules.yStartCheck(VerticalAnchor.absolute(63), -1);
-		SurfaceRules.ConditionSource conditionSource4 = SurfaceRules.yStartCheck(VerticalAnchor.absolute(74), 1);
-		SurfaceRules.ConditionSource conditionSource7 = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(63), 0);
-		SurfaceRules.ConditionSource conditionSource8 = SurfaceRules.waterBlockCheck(-1, 0);
-		SurfaceRules.ConditionSource conditionSource10 = SurfaceRules.waterStartCheck(-6, -1);
-		SurfaceRules.ConditionSource conditionSource11 = SurfaceRules.hole();
-		SurfaceRules.ConditionSource conditionSource16 = SurfaceRules.noiseCondition(Noises.SURFACE, -0.909, -0.5454);
-		SurfaceRules.ConditionSource conditionSource17 = SurfaceRules.noiseCondition(Noises.SURFACE, -0.1818, 0.1818);
-		SurfaceRules.ConditionSource conditionSource18 = SurfaceRules.noiseCondition(Noises.SURFACE, 0.5454, 0.909);
-
-		int transitionBlocks = 8;
-
-		SurfaceRules.RuleSource rule = depthRule(biomes, block, getKey(startY, transitionBlocks, true), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(transitionBlocks));
-
-		return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(biomes),
-			SurfaceRules.sequence(
-				SurfaceRules.ifTrue(
-					SurfaceRules.ON_FLOOR,
-					SurfaceRules.ifTrue(
-						SurfaceRules.not(conditionSource2),
-						SurfaceRules.ifTrue(
-							SurfaceRules.not(conditionSource4),
-							SurfaceRules.ifTrue(
-								SurfaceRules.not(conditionSource8),
-								SurfaceRules.ifTrue(
-									SurfaceRules.not(conditionSource10),
-									SurfaceRules.ifTrue(
-										SurfaceRules.not(conditionSource11),
-										SurfaceRules.ifTrue(
-											SurfaceRules.not(conditionSource16),
-											SurfaceRules.ifTrue(
-												SurfaceRules.not(conditionSource17),
-												SurfaceRules.ifTrue(
-													SurfaceRules.not(conditionSource18),
-													rule
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					)
-				),
-				SurfaceRules.ifTrue(
-					SurfaceRules.not(conditionSource3),
-					SurfaceRules.ifTrue(
-						SurfaceRules.not(conditionSource7),
-						SurfaceRules.ifTrue(
-							SurfaceRules.not(conditionSource4),
-							rule
-						)
-					)
-				),
-				SurfaceRules.ifTrue(
-					SurfaceRules.UNDER_FLOOR,
-					SurfaceRules.ifTrue(
-						SurfaceRules.not(conditionSource10),
-						rule
-					)
-				)
-			)
 		);
 	}
 }
