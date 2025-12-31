@@ -27,7 +27,6 @@ public class SurfaceRuleHelper {
 			ruleSource
 		);
 	}
-
 	public static SurfaceRules.RuleSource excludeTag(TagKey<Biome> biomes, SurfaceRules.RuleSource ruleSource) {
 		return SurfaceRules.ifTrue(
 			SurfaceRules.not(FrozenSurfaceRules.isBiomeTagOptimized(biomes)),
