@@ -236,5 +236,4 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			)
         );
     }
-	
 }
