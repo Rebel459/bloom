@@ -125,7 +125,14 @@ public class SurfaceRuleHelper {
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float tempMin, float tempMax, float downMin, float downMax) {
 		int startY = 0;
 		int transitionBlocks = 8;
-		return climateDepthRule(block, tempMin, tempMax, downMin, downMax, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks));
+		return climateDepthRule(
+			block,
+			tempMin, tempMax,
+			downMin, downMax,
+			getKey(startY, transitionBlocks),
+			VerticalAnchor.absolute(startY),
+			VerticalAnchor.absolute(startY + transitionBlocks)
+		);
 	}
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float tempMin, float tempMax, float downMin, float downMax, int startY) {
@@ -134,10 +141,24 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float tempMin, float tempMax, float downMin, float downMax, int startY, int transitionBlocks) {
-		return climateDepthRule(block, tempMin, tempMax, downMin, downMax, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks));
+		return climateDepthRule(
+			block,
+			tempMin, tempMax,
+			downMin, downMax,
+			getKey(startY, transitionBlocks),
+			VerticalAnchor.absolute(startY),
+			VerticalAnchor.absolute(startY + transitionBlocks)
+		);
 	}
 
-	public static SurfaceRules.RuleSource climateDepthRule(Block block, float tempMin, float tempMax, float downMin, float downMax, String key, VerticalAnchor startAnchor, VerticalAnchor transitionAnchor) {
+	public static SurfaceRules.RuleSource climateDepthRule(
+		Block block,
+		float tempMin, float tempMax,
+		float downMin, float downMax,
+		String key,
+		VerticalAnchor startAnchor,
+		VerticalAnchor transitionAnchor
+	) {
 		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
 		return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
