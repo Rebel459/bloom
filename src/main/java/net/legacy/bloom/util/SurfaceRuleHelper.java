@@ -4,6 +4,7 @@ import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.rules.DownfallRules;
 import net.legacy.bloom.util.rules.TemperatureRules;
+import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -11,8 +12,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SurfaceRuleHelper {
+
+	public static SurfaceRules.RuleSource STONE_REPLACEMENT_RULES;
 
 	public static String getKey(int startY, int transitionBlocks) {
 		if (startY == 0 && transitionBlocks == 8) return "deepslate";
@@ -77,6 +82,12 @@ public class SurfaceRuleHelper {
 
 	public static SurfaceRules.RuleSource depthRule(TagKey<Biome> biomes, Block block, String key, VerticalAnchor startAnchor, VerticalAnchor transitionAnchor) {
 		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
+		STONE_REPLACEMENT_RULES = SurfaceRules.sequence(
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(biomes),
+				rule
+			)
+		);
 		return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
 				FrozenSurfaceRules.isBiomeTagOptimized(biomes),
@@ -139,6 +150,16 @@ public class SurfaceRuleHelper {
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float tempMin, float tempMax, float downMin, float downMax, String key, VerticalAnchor startAnchor, VerticalAnchor transitionAnchor) {
 		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
+		STONE_REPLACEMENT_RULES = SurfaceRules.sequence(
+			STONE_REPLACEMENT_RULES,
+			SurfaceRules.ifTrue(
+				TemperatureRules.temperature(tempMin, tempMax),
+				SurfaceRules.ifTrue(
+					DownfallRules.downfall(downMin, downMax),
+					rule
+				)
+			)
+		);
 		return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
 				TemperatureRules.temperature(tempMin, tempMax),

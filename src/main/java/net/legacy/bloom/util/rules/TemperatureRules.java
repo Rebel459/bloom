@@ -37,7 +37,7 @@ public class TemperatureRules implements SurfaceRules.ConditionSource {
 			@Override
 			public boolean test() {
 				var accessor = (SurfaceRulesContextAccessor) (Object) context;
-				pos.set(accessor.getBlockX(), Math.max(accessor.getBlockY(), accessor.getBlockX()), accessor.getBlockZ());
+				pos.set(accessor.getBlockX(), accessor.getBlockY(), accessor.getBlockZ());
 
 				Holder<Biome> biomeSupplier = accessor.getBiomeAtPos().apply(pos);
 				if (biomeSupplier.is(ConventionalBiomeTags.IS_CAVE)) {
