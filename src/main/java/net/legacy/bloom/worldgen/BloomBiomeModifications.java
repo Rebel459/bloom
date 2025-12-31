@@ -106,6 +106,14 @@ public final class BloomBiomeModifications {
 			}
         );
 
+		BiomeModifications.create(Bloom.id("has_stone_blobs")).add(
+			ModificationPhase.REPLACEMENTS,
+			BiomeSelectors.tag(BloomBiomeTags.HAS_STONE_BLOBS),
+			(selectionContext, modificationContext) -> {
+				modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.ORE_STONE);
+			}
+		);
+
 		BiomeModifications.create(Bloom.id("has_bromeliad")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_BROMELIAD),

@@ -41,12 +41,11 @@ public class TemperatureRule implements SurfaceRules.ConditionSource {
 
 				Holder<Biome> biomeSupplier = accessor.getBiomeAtPos().apply(this.pos);
 				if (biomeSupplier.is(ConventionalBiomeTags.IS_CAVE)) {
-					this.pos.setY(accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, this.pos.getX(), this.pos.getZ()));
-					biomeSupplier = accessor.getBiomeAtPos().apply(this.pos);
+					biomeSupplier = accessor.getBiomeAtPos().apply(new BlockPos(this.pos.getX(), accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, this.pos.getX(), this.pos.getZ()), this.pos.getZ()));
 				}
 				Biome biome = biomeSupplier.value();
 
-				float adjustedTemp = biome.getTemperature(pos, context.getSeaLevel());
+				float adjustedTemp = biome.getTemperature(this.pos, context.getSeaLevel());
 
 				return adjustedTemp >= TemperatureRule.this.min && adjustedTemp <= TemperatureRule.this.max;
 			}

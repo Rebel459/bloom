@@ -85,5 +85,8 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 
 		this.valueLookupBuilder(ItemTags.WOODEN_TRAPDOORS)
 			.add(BloomBlocks.JACARANDA_TRAPDOOR.asItem());
+
+		this.valueLookupBuilder(ItemTags.STONE_TOOL_MATERIALS)
+			.add(BloomBlocks.DOLERITE.asItem());
 	}
 }

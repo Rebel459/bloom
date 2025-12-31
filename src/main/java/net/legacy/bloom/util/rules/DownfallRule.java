@@ -43,8 +43,7 @@ public class DownfallRule implements SurfaceRules.ConditionSource {
 
 				Holder<Biome> biomeSupplier = accessor.getBiomeAtPos().apply(this.pos);
 				if (biomeSupplier.is(ConventionalBiomeTags.IS_CAVE)) {
-					this.pos.setY(accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, this.pos.getX(), this.pos.getZ()));
-					biomeSupplier = accessor.getBiomeAtPos().apply(this.pos);
+					biomeSupplier = accessor.getBiomeAtPos().apply(new BlockPos(this.pos.getX(), accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, this.pos.getX(), this.pos.getZ()), this.pos.getZ()));
 				}
 				Biome biome = biomeSupplier.value();
 
@@ -59,19 +58,19 @@ public class DownfallRule implements SurfaceRules.ConditionSource {
 	}
 
 	public static SurfaceRules.ConditionSource downfall(float point) {
-		return new TemperatureRule(point - 0.001F, point + 0.001F);
+		return new DownfallRule(point - 0.001F, point + 0.001F);
 	}
 
 	public static SurfaceRules.ConditionSource downfall(float min, float max) {
-		return new TemperatureRule(min, max);
+		return new DownfallRule(min, max);
 	}
 
 	public static SurfaceRules.ConditionSource downfallBelow(float threshold) {
-		return new TemperatureRule(Float.NEGATIVE_INFINITY, threshold);
+		return new DownfallRule(Float.NEGATIVE_INFINITY, threshold);
 	}
 
 	public static SurfaceRules.ConditionSource downfallAbove(float threshold) {
-		return new TemperatureRule(threshold, Float.POSITIVE_INFINITY);
+		return new DownfallRule(threshold, Float.POSITIVE_INFINITY);
 	}
 
 	@Override

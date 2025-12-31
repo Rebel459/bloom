@@ -28,7 +28,7 @@ public class StoneOresRegistry {
     public final boolean deep;
     private final BiFunction<OreType, BlockBehaviour.Properties, Block> normalFunction;
 
-    public StoneOresRegistry(Block baseStone, boolean deep, BiFunction<OreType, BlockBehaviour.Properties, Block> normalFunction){
+    public StoneOresRegistry(Block baseStone, boolean deep, BiFunction<OreType, BlockBehaviour.Properties, Block> normalFunction) {
         this.baseStone = baseStone;
         this.deep = deep;
         this.normalFunction = normalFunction;
