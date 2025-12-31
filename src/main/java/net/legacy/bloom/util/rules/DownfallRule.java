@@ -59,7 +59,7 @@ public class DownfallRule implements SurfaceRules.ConditionSource {
 	}
 
 	public static SurfaceRules.ConditionSource downfall(float point) {
-		return new TemperatureRule(point - 0.0001F, point + 0.0001F);
+		return new TemperatureRule(point - 0.001F, point + 0.001F);
 	}
 
 	public static SurfaceRules.ConditionSource downfall(float min, float max) {

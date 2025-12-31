@@ -55,7 +55,7 @@ public class TemperatureRule implements SurfaceRules.ConditionSource {
 	}
 
 	public static SurfaceRules.ConditionSource temperature(float point) {
-		return new TemperatureRule(point - 0.0001F, point + 0.0001F);
+		return new TemperatureRule(point - 0.001F, point + 0.001F);
 	}
 
 	public static SurfaceRules.ConditionSource temperature(float min, float max) {

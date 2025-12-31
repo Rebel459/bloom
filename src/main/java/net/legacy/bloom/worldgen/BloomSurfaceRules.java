@@ -11,6 +11,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -209,7 +211,12 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
-	public static SurfaceRules.RuleSource badlandsDepth(int startY) {
+	public static SurfaceRules.RuleSource higherStoneRule() {
+		return SurfaceRuleHelper.higherStoneRule(Blocks.STONE, BloomBiomeTags.HAS_HIGHER_STONE);
+	}
+
+	public static SurfaceRules.RuleSource badlandsDepth() {
+		int startY = 16;
 		int transitionBlocks = 8;
 		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(Blocks.RED_SANDSTONE);
 		return SurfaceRules.sequence(
@@ -252,14 +259,13 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
 		context.add(
 			SurfaceRules.sequence(
-				SurfaceRuleHelper.temperatureDepthRule(BloomBlocks.DOLERITE, -1F, 0F)
-/*				BiomeHelper.higherStoneRule(BloomBiomeTags.HAS_HIGHER_STONE),
-				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_GRANITE, Blocks.GRANITE),
-				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DIORITE, Blocks.DIORITE),
-				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_DOLERITE, BloomBlocks.DOLERITE),
-				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_ANDESITE, Blocks.ANDESITE),
-				BiomeHelper.depthRule(BloomBiomeTags.HAS_DEPTH_SANDSTONE, Blocks.SANDSTONE, 16),
-				badlandsDepth(16)*/
+				higherStoneRule(),
+				SurfaceRuleHelper.depthRule(Blocks.GRANITE, BloomBiomeTags.HAS_DEPTH_GRANITE),
+				SurfaceRuleHelper.depthRule(Blocks.DIORITE, BloomBiomeTags.HAS_DEPTH_DIORITE),
+				SurfaceRuleHelper.temperatureDepthRule(BloomBlocks.DOLERITE, -1F, 0F),
+				SurfaceRuleHelper.depthRule(Blocks.ANDESITE, BloomBiomeTags.HAS_DEPTH_ANDESITE),
+				SurfaceRuleHelper.depthRule(Blocks.SANDSTONE, BloomBiomeTags.HAS_DEPTH_SANDSTONE, 16),
+				badlandsDepth()
 			)
         );
     }
