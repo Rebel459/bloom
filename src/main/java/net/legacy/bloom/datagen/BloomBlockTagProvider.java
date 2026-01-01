@@ -5,14 +5,13 @@ import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.legacy.bloom.registry.BloomBlocks;
-import net.legacy.bloom.registry.data.StoneOresRegistry;
+import net.legacy.bloom.util.StoneOresRegistry;
 import net.legacy.bloom.tag.BloomBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import org.jetbrains.annotations.NotNull;
 
 public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 

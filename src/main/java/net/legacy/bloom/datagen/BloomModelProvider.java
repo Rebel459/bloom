@@ -4,13 +4,15 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.legacy.bloom.Bloom;
 import net.legacy.bloom.registry.BloomBlocks;
-import net.legacy.bloom.registry.data.StoneOresRegistry;
+import net.legacy.bloom.util.StoneOresRegistry;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
-import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)
 public final class BloomModelProvider extends FabricModelProvider {
@@ -72,8 +74,11 @@ public final class BloomModelProvider extends FabricModelProvider {
 	}
 
     public void oreModels(StoneOresRegistry ores, BlockModelGenerators generator) {
-        ores.getOresMap().forEach((type, block) -> {
-            generator.createTrivialCube(block);
+        ores.getOresMap().forEach((type, ore) -> {
+            StoneOresRegistry.STONE_MODELS_MAP.getOrDefault(ores.getBaseStone(), (generators, b) -> {
+                generators.createTrivialCube(ore);
+                return true;
+            }).apply(generator, ore);
         });
     }
 

@@ -6,7 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.legacy.bloom.registry.BloomBlocks;
-import net.legacy.bloom.registry.data.StoneOresRegistry;
+import net.legacy.bloom.util.StoneOresRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -17,7 +17,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 public final class BloomRecipeProvider extends FabricRecipeProvider {
 
@@ -44,12 +43,15 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
                 this.oneToOneConversionRecipe(Items.YELLOW_DYE, BloomBlocks.GOLDENROD, "yellow_dye");
                 this.oneToOneConversionRecipe(Items.ORANGE_DYE, BloomBlocks.ORANGE_DAISY, "orange_dye");
 
-                oreRecipes(BloomBlocks.DOLERITE_ORES);
-                oreRecipes(BloomBlocks.DIORITE_ORES);
-                oreRecipes(BloomBlocks.GRANITE_ORES);
-                oreRecipes(BloomBlocks.ANDESITE_ORES);
-                oreRecipes(BloomBlocks.SANDSTONE_ORES);
-                oreRecipes(BloomBlocks.TUFF_ORES);
+				for (StoneOresRegistry registry : StoneOresRegistry.ALL_REGISTRIES) {
+					oreRecipes(registry);
+				}
+//                oreRecipes(BloomBlocks.DOLERITE_ORES);
+//                oreRecipes(BloomBlocks.DIORITE_ORES);
+//                oreRecipes(BloomBlocks.GRANITE_ORES);
+//                oreRecipes(BloomBlocks.ANDESITE_ORES);
+//                oreRecipes(BloomBlocks.SANDSTONE_ORES);
+//                oreRecipes(BloomBlocks.TUFF_ORES);
 
 /*                ERWoodRecipeProvider.buildRecipes(this, exporter);
 
