@@ -261,13 +261,23 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 		// remember that climate rules run last for lowest priority
 		context.add(
 			SurfaceRules.sequence(
-				SurfaceRuleHelper.biomeDepthRule(Blocks.SANDSTONE, BloomBiomeTags.HAS_DEPTH_SANDSTONE, 16),
+				SurfaceRuleHelper.LegacyRules.biomeDepthRule(Blocks.SANDSTONE, BloomBiomeTags.HAS_DEPTH_SANDSTONE, 16),
 				badlandsDepth(),
 				higherStoneRule(),
-				SurfaceRuleHelper.climateDepthRule(Blocks.GRANITE, 1.8F, SurfaceRuleHelper.MAX, 0F),
-				SurfaceRuleHelper.climateDepthRule(Blocks.DIORITE, 0.8F, 0.92F, 0.9F),
-				SurfaceRuleHelper.temperatureDepthRule(Blocks.ANDESITE, SurfaceRuleHelper.greaterThan(0F), 0.3F),
-				SurfaceRuleHelper.temperatureDepthRule(BloomBlocks.DOLERITE, SurfaceRuleHelper.MIN, 0F)
+				SurfaceRuleHelper.LegacyRules.climateDepthRule(Blocks.GRANITE, 1.8F, SurfaceRuleHelper.MAX, 0F),
+				SurfaceRuleHelper.LegacyRules.climateDepthRule(Blocks.DIORITE, 0.8F, 0.92F, 0.9F),
+				SurfaceRuleHelper.depthRule(
+					Blocks.DIORITE,
+					List.of(
+						SurfaceRuleHelper.temperature(0.8F, 0.92F),
+						SurfaceRuleHelper.downfall(0.8F, 1F)
+					),
+					List.of(
+						Triple.of(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
+					)
+				),
+				SurfaceRuleHelper.LegacyRules.temperatureDepthRule(Blocks.ANDESITE, SurfaceRuleHelper.greaterThan(0F), 0.3F),
+				SurfaceRuleHelper.LegacyRules.temperatureDepthRule(BloomBlocks.DOLERITE, SurfaceRuleHelper.MIN, 0F)
 			)
         );
     }

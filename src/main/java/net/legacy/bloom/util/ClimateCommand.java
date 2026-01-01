@@ -41,15 +41,15 @@ public class ClimateCommand {
 		ResourceKey<Biome> biomeKey = world.getBiome(pos).unwrapKey().get();
 
 		source.sendSuccess(() -> Component.literal("")
-			.append(Component.literal("Climate at " + pos + ":\n")
+			.append(Component.literal("Climate at " + pos + "\n")
 				.withStyle(ChatFormatting.WHITE))
 			.append(Component.literal("  Biome: " + biomeKey.identifier() + "\n")
 				.withStyle(ChatFormatting.GRAY))
-			.append(Component.literal(String.format("  Local Temperature:     %.3f\n", adjustedTemp))
+			.append(Component.literal(String.format("  Local Temperature: %.3f\n", adjustedTemp))
 				.withStyle(ChatFormatting.AQUA))
 			.append(Component.literal(String.format("  Biome Temperature: %.3f\n", baseTemp))
 				.withStyle(ChatFormatting.GREEN))
-			.append(Component.literal(String.format("  Biome Downfall:               %.3f", downfall))
+			.append(Component.literal(String.format("  Biome Downfall:    %.3f", downfall))
 				.withStyle(ChatFormatting.LIGHT_PURPLE)), false);
 		return 1;
 	}

@@ -2,10 +2,14 @@ package net.legacy.bloom.util;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.legacy.bloom.mixin.worldgen.SurfaceRulesContextAccessor;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.util.KeyDispatchDataCodec;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.DensityFunction;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
 public class NoiseRules {
@@ -15,8 +19,9 @@ public class NoiseRules {
 		CONTINENTALNESS,
 		TEMPERATURE,
 		EROSION,
+		WEIRDNESS,
 		DEPTH,
-		WEIRDNESS
+		HEIGHTMAP_DEPTH
 	}
 
 	public static class Temperature implements SurfaceRules.ConditionSource {
@@ -509,6 +514,96 @@ public class NoiseRules {
 				});
 
 				return noise >= NoiseRules.Depth.this.min && noise <= NoiseRules.Depth.this.max;
+			}
+		}
+
+		public static SurfaceRules.ConditionSource point(float point) {
+			return new NoiseRules.Depth(point - 0.001F, point + 0.001F);
+		}
+
+		public static SurfaceRules.ConditionSource range(float min, float max) {
+			return new NoiseRules.Depth(min, max);
+		}
+
+		public static SurfaceRules.ConditionSource above(float above) {
+			return new NoiseRules.Depth(above, Float.MAX_VALUE);
+		}
+
+		public static SurfaceRules.ConditionSource below(float below) {
+			return new NoiseRules.Depth(Float.MIN_VALUE, below);
+		}
+
+		@Override
+		public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
+			return CODEC;
+		}
+	}
+
+	public static class HeightmapDepth implements SurfaceRules.ConditionSource {
+
+		public static final KeyDispatchDataCodec<NoiseRules.HeightmapDepth> CODEC = KeyDispatchDataCodec.of(
+			RecordCodecBuilder.mapCodec(instance ->
+				instance.group(
+					Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
+					Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
+				).apply(instance, NoiseRules.HeightmapDepth::new)
+			)
+		);
+
+		private final float min;
+		private final float max;
+
+		public HeightmapDepth(float min, float max) {
+			this.min = min;
+			this.max = max;
+		}
+
+		@Override
+		public SurfaceRules.Condition apply(SurfaceRules.Context context) {
+			return new Condition(context);
+		}
+
+		private final class Condition implements SurfaceRules.Condition {
+			private final SurfaceRulesContextAccessor accessor;
+
+			private double cachedNoise;
+
+			private int cachedX = Integer.MIN_VALUE;
+			private int cachedZ = Integer.MIN_VALUE;
+
+			Condition(SurfaceRules.Context context) {
+				this.accessor = (SurfaceRulesContextAccessor) (Object) context;
+			}
+
+			@Override
+			public boolean test() {
+				int x = accessor.getBlockX();
+				int z = accessor.getBlockZ();
+
+				// Handle caching
+				if (x != cachedX || z != cachedZ) {
+					cachedX = x;
+					cachedZ = z;
+
+					cachedNoise = accessor.getRandomState().router().depth().compute(new DensityFunction.FunctionContext() {
+						@Override
+						public int blockX() {
+							return x;
+						}
+
+						@Override
+						public int blockY() {
+							return accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
+						}
+
+						@Override
+						public int blockZ() {
+							return z;
+						}
+					});
+				}
+
+				return cachedNoise >= NoiseRules.HeightmapDepth.this.min && cachedNoise <= NoiseRules.HeightmapDepth.this.max;
 			}
 		}
 
