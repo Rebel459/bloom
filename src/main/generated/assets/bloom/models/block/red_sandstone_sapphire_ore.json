@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "bloom:block/red_sandstone_sapphire_ore",
+    "side": "bloom:block/red_sandstone_sapphire_ore",
+    "top": "minecraft:block/red_sandstone_top"
+  }
+}
