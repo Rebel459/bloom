@@ -56,7 +56,8 @@ public class BloomBiomePlacement {
 			BloomBiomes.COLD_BEACH,
 			CriterionBuilder.allOf(
 				CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
-				CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
+				CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5),
+				CriterionBuilder.not(CriterionBuilder.value(BiomeParameterTargets.EROSION, BiomeHelper.EROSION_6, BiomeHelper.EROSION_7))
 			)
         );
         BiomePlacement.addSubOverworld(
@@ -110,13 +111,22 @@ public class BloomBiomePlacement {
 			Climate.Parameter.span(BiomeHelper.WEIRDNESS_MID_SLICE_NORMAL_DESCENDING, BiomeHelper.WEIRDNESS_HIGH_SLICE_VARIANT_ASCENDING),
 			0L
         );
-        BiomePlacement.addSubOverworld(
+		BiomePlacement.addSubOverworld(
 			Biomes.SWAMP,
 			BloomBiomes.FEN,
 			CriterionBuilder.allOf(
 				CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
 				CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
 			)
-        );
+		);
+		BiomePlacement.addSubOverworld(
+			Biomes.BEACH,
+			BloomBiomes.FEN,
+			CriterionBuilder.allOf(
+				CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
+				CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5),
+				CriterionBuilder.value(BiomeParameterTargets.EROSION, BiomeHelper.EROSION_6, BiomeHelper.EROSION_7)
+			)
+		);
     }
 }

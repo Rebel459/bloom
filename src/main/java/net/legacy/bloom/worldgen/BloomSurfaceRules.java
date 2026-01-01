@@ -161,16 +161,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
-    public static SurfaceRules.RuleSource windsweptJungle() {
-        return SurfaceRules.ifTrue(
-			SurfaceRules.isBiome(BloomBiomes.WINDSWEPT_JUNGLE),
-			SurfaceRules.ifTrue(
-				SurfaceRuleData.surfaceNoiseAbove(2.5),
-				FrozenSurfaceRules.makeStateRule(Blocks.DIORITE)
-			)
-        );
-    }
-
     public static SurfaceRules.RuleSource windsweptSavanna() {
         return SurfaceRules.ifTrue(
 			SurfaceRules.isBiome(Biomes.WINDSWEPT_SAVANNA),
@@ -263,7 +253,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				badlandsDepth(),
 				higherStoneRule(),
 				SurfaceRuleHelper.LegacyRules.climateDepthRule(Blocks.GRANITE, 1.8F, SurfaceRuleHelper.MAX, 0F),
-				SurfaceRuleHelper.LegacyRules.climateDepthRule(Blocks.DIORITE, 0.8F, 0.925F, 0.9F),
 				SurfaceRuleHelper.depthRule(
 					Blocks.DIORITE,
 					List.of(
@@ -271,10 +260,18 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 						SurfaceRuleHelper.downfall(0.8F, 1F)
 					),
 					List.of(
+						Triple.of(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_2, BiomeHelper.TEMPERATURE_5),
 						Triple.of(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
 					)
 				),
-				SurfaceRuleHelper.LegacyRules.temperatureDepthRule(Blocks.ANDESITE, SurfaceRuleHelper.greaterThan(0F), 0.3F),
+				SurfaceRuleHelper.depthRule(
+					Blocks.ANDESITE,
+					List.of(),
+					List.of(
+						Triple.of(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
+						Triple.of(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
+					)
+				),
 				SurfaceRuleHelper.LegacyRules.temperatureDepthRule(BloomBlocks.DOLERITE, SurfaceRuleHelper.MIN, 0F)
 			)
         );
