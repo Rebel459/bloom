@@ -2,17 +2,17 @@ package net.legacy.bloom.util;
 
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
-import net.legacy.bloom.util.rules.DownfallRule;
-import net.legacy.bloom.util.rules.TemperatureRule;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
+import net.legacy.bloom.util.rules.ClimateRules;
+import net.legacy.bloom.util.rules.NoiseRules;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
+import org.apache.commons.lang3.tuple.Triple;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class SurfaceRuleHelper {
 
@@ -21,6 +21,49 @@ public class SurfaceRuleHelper {
 
 	public static final float MIN = -10F;
 	public static final float MAX = 10F;
+
+	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float point) {
+		return switch (type) {
+			case TEMPERATURE -> NoiseRules.Temperature.point(point);
+			case HUMIDITY -> NoiseRules.Humidity.point(point);
+			case EROSION -> NoiseRules.Erosion.point(point);
+			case CONTINENTALNESS -> NoiseRules.Continentalness.point(point);
+			case WEIRDNESS -> NoiseRules.Weirdness.point(point);
+			case DEPTH -> NoiseRules.Depth.point(point);
+		};
+	}
+
+	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float min, float max) {
+		return switch (type) {
+			case TEMPERATURE -> NoiseRules.Temperature.range(min, max);
+			case HUMIDITY -> NoiseRules.Humidity.range(min, max);
+			case EROSION -> NoiseRules.Erosion.range(min, max);
+			case CONTINENTALNESS -> NoiseRules.Continentalness.range(min, max);
+			case WEIRDNESS -> NoiseRules.Weirdness.range(min, max);
+			case DEPTH -> NoiseRules.Depth.range(min, max);
+		};
+	}
+
+	public static SurfaceRules.RuleSource noises(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions) {
+		if (conditions.isEmpty()) {
+			return SurfaceRules.sequence();
+		}
+
+		SurfaceRules.RuleSource[] rules = new SurfaceRules.RuleSource[conditions.size()];
+
+		for (int i = 0; i < conditions.size(); i++) {
+			Triple<NoiseRules.Type, Float, Float> triple = conditions.get(i);
+			NoiseRules.Type type = triple.getLeft();
+			float min = triple.getMiddle();
+			float max = triple.getRight();
+
+			SurfaceRules.ConditionSource noiseCondition = noise(type, min, max);
+
+			rules[i] = SurfaceRules.ifTrue(noiseCondition, FrozenSurfaceRules.makeStateRule(block));
+		}
+
+		return SurfaceRules.sequence(rules);
+	}
 
 	public static SurfaceRules.RuleSource configuredRule(SurfaceRules.RuleSource ruleSource, boolean config) {
 		if (config) return ruleSource;
@@ -256,15 +299,59 @@ public class SurfaceRuleHelper {
 		SurfaceRules.RuleSource ruleSource = configuredRule(
 			SurfaceRules.sequence(
 				SurfaceRules.ifTrue(
-					TemperatureRule.temperature(temperatureMin, temperatureMax),
+					ClimateRules.Temperature.range(temperatureMin, temperatureMax),
 					SurfaceRules.ifTrue(
-						DownfallRule.downfall(downfallMin, downfallMax),
+						ClimateRules.Downfall.range(downfallMin, downfallMax),
 						internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, key, startAnchor, transitionAnchor)
 					)
 				)
 			),
 			config
 		);
+		if (aboveDeepslate) {
+			return SurfaceRules.ifTrue(
+				SurfaceRules.not(verticalGradient),
+				ruleSource
+			);
+		}
+		else return ruleSource;
+	}
+
+	public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max, boolean config) {
+		return noiseDepthRule(block, type, min, max, defaultStartY, config);
+	}
+
+	public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max, int startY, boolean config) {
+		return noiseDepthRule(block, type, min, max, startY, defaultTransitionBlocks, config);
+	}
+
+	public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max, int startY, int transitionBlocks, boolean config) {
+		return noiseDepthRule(block, List.of(Triple.of(type, min, max)), getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
+	}
+
+	public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, boolean config) {
+		return noiseDepthRule(block, conditions, defaultStartY, config);
+	}
+
+	public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, int startY, boolean config) {
+		return noiseDepthRule(block, conditions, startY, defaultTransitionBlocks, config);
+	}
+
+	public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, int startY, int transitionBlocks, boolean config) {
+		return noiseDepthRule(block, conditions, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
+	}
+
+	public static SurfaceRules.RuleSource noiseDepthRule(
+		Block block,
+		List<Triple<NoiseRules.Type, Float, Float>> conditions,
+		String key,
+		VerticalAnchor startAnchor,
+		VerticalAnchor transitionAnchor,
+		boolean aboveDeepslate,
+		boolean config
+	) {
+		SurfaceRules.ConditionSource verticalGradient = SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor);
+		SurfaceRules.RuleSource ruleSource = configuredRule(internalDepthRule(noises(block, conditions), verticalGradient, key, startAnchor, transitionAnchor), config);
 		if (aboveDeepslate) {
 			return SurfaceRules.ifTrue(
 				SurfaceRules.not(verticalGradient),

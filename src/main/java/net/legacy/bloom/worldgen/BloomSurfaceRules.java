@@ -7,6 +7,7 @@ import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
 import net.legacy.bloom.util.SurfaceRuleHelper;
+import net.legacy.bloom.util.rules.NoiseRules;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.SurfaceRuleData;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.List;
 
@@ -266,6 +268,12 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				SurfaceRuleHelper.climateDepthRule(Blocks.DIORITE, 0.8F, 0.92F, 0.9F),
 				SurfaceRuleHelper.temperatureDepthRule(Blocks.ANDESITE, SurfaceRuleHelper.greaterThan(0F), 0.3F),
 				SurfaceRuleHelper.temperatureDepthRule(BloomBlocks.DOLERITE, SurfaceRuleHelper.MIN, 0F)
+/*				SurfaceRuleHelper.noiseDepthRule(BloomBlocks.DOLERITE,
+					List.of(
+						Triple.of(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_0, BiomeHelper.TEMPERATURE_1),
+						Triple.of(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_0, BiomeHelper.HUMIDITY_1)),
+					true
+				)*/
 			)
         );
     }

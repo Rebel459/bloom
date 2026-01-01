@@ -1,0 +1,285 @@
+package net.legacy.bloom.util.rules;
+
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
+import net.legacy.bloom.mixin.worldgen.BiomeAccessor;
+import net.legacy.bloom.mixin.worldgen.SurfaceRulesContextAccessor;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.util.KeyDispatchDataCodec;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.SurfaceRules;
+
+public class ClimateRules {
+	public static class Temperature implements SurfaceRules.ConditionSource {
+		public static final KeyDispatchDataCodec<Temperature> CODEC = KeyDispatchDataCodec.of(
+			RecordCodecBuilder.mapCodec(instance ->
+				instance.group(
+					Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
+					Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
+				).apply(instance, ClimateRules.Temperature::new)
+			)
+		);
+
+		private final float min;
+		private final float max;
+
+		public Temperature(float min, float max) {
+			this.min = min;
+			this.max = max;
+		}
+
+		@Override
+		public SurfaceRules.Condition apply(SurfaceRules.Context context) {
+			return new Condition(context);
+		}
+
+		private final class Condition implements SurfaceRules.Condition {
+			private final SurfaceRulesContextAccessor accessor;
+			private final int seaLevel;
+
+			private final BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos();
+			private final BlockPos.MutableBlockPos surfacePos = new BlockPos.MutableBlockPos();
+
+			private Holder<Biome> cachedHeightmapBiome = null;
+			private boolean isCachedMountain = false;
+			private int cachedX = Integer.MIN_VALUE;
+			private int cachedZ = Integer.MIN_VALUE;
+
+			Condition(SurfaceRules.Context context) {
+				this.accessor = (SurfaceRulesContextAccessor) (Object) context;
+				this.seaLevel = accessor.getSystem().getSeaLevel();
+			}
+
+			@Override
+			public boolean test() {
+				int x = accessor.getBlockX();
+				int y = accessor.getBlockY();
+				int z = accessor.getBlockZ();
+				currentPos.set(x, y, z);
+
+				// Handle caching
+				if (x != cachedX || z != cachedZ) {
+					cachedX = x;
+					cachedZ = z;
+
+					int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
+					surfacePos.set(x, surfaceY, z);
+					cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
+
+					isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
+				}
+
+				Holder<Biome> biomeToUse;
+
+				if (isCachedMountain) {
+					biomeToUse = accessor.getBiomeAtPos().apply(currentPos);
+					if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE) && y >= 0) biomeToUse = cachedHeightmapBiome;
+				} else {
+					biomeToUse = cachedHeightmapBiome;
+				}
+
+				Biome biome = biomeToUse.value();
+				float adjustedTemp = biome.getTemperature(currentPos, seaLevel);
+
+				return adjustedTemp >= ClimateRules.Temperature.this.min && adjustedTemp <= ClimateRules.Temperature.this.max;
+			}
+		}
+
+		public static SurfaceRules.ConditionSource point(float point) {
+			return new ClimateRules.Temperature(point - 0.001F, point + 0.001F);
+		}
+
+		public static SurfaceRules.ConditionSource range(float min, float max) {
+			return new ClimateRules.Temperature(min, max);
+		}
+
+		@Override
+		public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
+			return CODEC;
+		}
+	}
+	public static class TemperatureOffset implements SurfaceRules.ConditionSource {
+		public static final KeyDispatchDataCodec<TemperatureOffset> CODEC = KeyDispatchDataCodec.of(
+			RecordCodecBuilder.mapCodec(instance ->
+				instance.group(
+					Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
+					Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
+				).apply(instance, ClimateRules.TemperatureOffset::new)
+			)
+		);
+
+		private final float min;
+		private final float max;
+
+		public TemperatureOffset(float min, float max) {
+			this.min = min;
+			this.max = max;
+		}
+
+		@Override
+		public SurfaceRules.Condition apply(SurfaceRules.Context context) {
+			return new Condition(context);
+		}
+
+		private final class Condition implements SurfaceRules.Condition {
+			private final SurfaceRulesContextAccessor accessor;
+			private final int seaLevel;
+
+			private final BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos();
+			private final BlockPos.MutableBlockPos surfacePos = new BlockPos.MutableBlockPos();
+
+			private Holder<Biome> cachedHeightmapBiome = null;
+			private boolean isCachedMountain = false;
+			private int cachedX = Integer.MIN_VALUE;
+			private int cachedZ = Integer.MIN_VALUE;
+
+			Condition(SurfaceRules.Context context) {
+				this.accessor = (SurfaceRulesContextAccessor) (Object) context;
+				this.seaLevel = accessor.getSystem().getSeaLevel();
+			}
+
+			@Override
+			public boolean test() {
+				int x = accessor.getBlockX();
+				int y = accessor.getBlockY();
+				int z = accessor.getBlockZ();
+				currentPos.set(x, y, z);
+
+				// Handle caching
+				if (x != cachedX || z != cachedZ) {
+					cachedX = x;
+					cachedZ = z;
+
+					int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
+					surfacePos.set(x, surfaceY, z);
+					cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
+
+					isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
+				}
+
+				Holder<Biome> biomeToUse;
+
+				if (isCachedMountain) {
+					biomeToUse = accessor.getBiomeAtPos().apply(currentPos);
+					if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE) && y >= 0) biomeToUse = cachedHeightmapBiome;
+				} else {
+					biomeToUse = cachedHeightmapBiome;
+				}
+
+				Biome biome = biomeToUse.value();
+				float tempOffset = biome.getTemperature(currentPos, seaLevel) - biome.getBaseTemperature();
+
+				return tempOffset >= ClimateRules.TemperatureOffset.this.min && tempOffset <= ClimateRules.TemperatureOffset.this.max;
+			}
+		}
+
+		public static SurfaceRules.ConditionSource above(float point) {
+			return new ClimateRules.TemperatureOffset(point, Float.MAX_VALUE);
+		}
+
+		public static SurfaceRules.ConditionSource below(float point) {
+			return new ClimateRules.TemperatureOffset(Float.MIN_VALUE, point);
+		}
+
+		public static SurfaceRules.ConditionSource range(float min, float max) {
+			return new ClimateRules.TemperatureOffset(min, max);
+		}
+
+		@Override
+		public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
+			return CODEC;
+		}
+	}
+
+	public static class Downfall implements SurfaceRules.ConditionSource {
+
+		public static final KeyDispatchDataCodec<ClimateRules.Downfall> CODEC = KeyDispatchDataCodec.of(
+			RecordCodecBuilder.mapCodec(instance ->
+				instance.group(
+					Codec.FLOAT.fieldOf("min").forGetter(r -> r.min),
+					Codec.FLOAT.fieldOf("max").forGetter(r -> r.max)
+				).apply(instance, ClimateRules.Downfall::new)
+			)
+		);
+
+		private final float min;
+		private final float max;
+
+		public Downfall(float min, float max) {
+			this.min = min;
+			this.max = max;
+		}
+
+		@Override
+		public SurfaceRules.Condition apply(SurfaceRules.Context context) {
+			return new Downfall.Condition(context);
+		}
+
+		private final class Condition implements SurfaceRules.Condition {
+			private final SurfaceRulesContextAccessor accessor;
+
+			private final BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos();
+			private final BlockPos.MutableBlockPos surfacePos = new BlockPos.MutableBlockPos();
+
+			private Holder<Biome> cachedHeightmapBiome = null;
+			private boolean isCachedMountain = false;
+			private int cachedX = Integer.MIN_VALUE;
+			private int cachedZ = Integer.MIN_VALUE;
+
+			Condition(SurfaceRules.Context context) {
+				this.accessor = (SurfaceRulesContextAccessor) (Object) context;
+			}
+
+			@Override
+			public boolean test() {
+				int x = accessor.getBlockX();
+				int y = accessor.getBlockY();
+				int z = accessor.getBlockZ();
+				currentPos.set(x, y, z);
+
+				// Handle caching
+				if (x != cachedX || z != cachedZ) {
+					cachedX = x;
+					cachedZ = z;
+
+					int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
+					surfacePos.set(x, surfaceY, z);
+					cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
+
+					isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
+				}
+
+				Holder<Biome> biomeToUse;
+
+				if (isCachedMountain) {
+					biomeToUse = accessor.getBiomeAtPos().apply(currentPos);
+					if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE) && y >= 0) biomeToUse = cachedHeightmapBiome;
+				} else {
+					biomeToUse = cachedHeightmapBiome;
+				}
+
+				Biome biome = biomeToUse.value();
+				Biome.ClimateSettings climate = ((BiomeAccessor) (Object) biome).getClimate();
+				float downfall = climate.downfall();
+
+				return downfall >= ClimateRules.Downfall.this.min && downfall <= ClimateRules.Downfall.this.max;
+			}
+		}
+
+		public static SurfaceRules.ConditionSource point(float point) {
+			return new ClimateRules.Downfall(point - 0.001F, point + 0.001F);
+		}
+
+		public static SurfaceRules.ConditionSource range(float min, float max) {
+			return new ClimateRules.Downfall(min, max);
+		}
+
+		@Override
+		public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
+			return CODEC;
+		}
+	}
+}

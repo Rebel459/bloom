@@ -5,6 +5,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.SurfaceSystem;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,4 +31,6 @@ public interface SurfaceRulesContextAccessor {
 	int getBlockZ();
 	@Accessor("system")
 	SurfaceSystem getSystem();
+	@Accessor("randomState")
+	RandomState getRandomState();
 }
