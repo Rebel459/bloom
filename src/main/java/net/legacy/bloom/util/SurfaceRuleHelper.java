@@ -19,12 +19,18 @@ public class SurfaceRuleHelper {
 	public static final float MIN = -10F;
 	public static final float MAX = 10F;
 
-
 	public static SurfaceRules.ConditionSource temperature(float point) {
 		return ClimateRules.Temperature.point(point);
 	}
 	public static SurfaceRules.ConditionSource temperature(float min, float max) {
 		return ClimateRules.Temperature.range(min, max);
+	}
+
+	public static SurfaceRules.ConditionSource downfall(float point) {
+		return ClimateRules.Downfall.point(point);
+	}
+	public static SurfaceRules.ConditionSource downfall(float min, float max) {
+		return ClimateRules.Downfall.range(min, max);
 	}
 
 	public static SurfaceRules.ConditionSource temperatureOffset(float min, float max) {
@@ -37,11 +43,14 @@ public class SurfaceRuleHelper {
 		return ClimateRules.TemperatureOffset.above(point);
 	}
 
-	public static SurfaceRules.ConditionSource downfall(float point) {
-		return ClimateRules.Downfall.point(point);
+	public static SurfaceRules.ConditionSource heightmapDepth(float min, float max) {
+		return NoiseRules.HeightmapDepth.range(min, max);
 	}
-	public static SurfaceRules.ConditionSource downfall(float min, float max) {
-		return ClimateRules.Downfall.range(min, max);
+	public static SurfaceRules.ConditionSource heightmapDepthBelow(float point) {
+		return NoiseRules.HeightmapDepth.below(point);
+	}
+	public static SurfaceRules.ConditionSource heightmapDepthAbove(float point) {
+		return NoiseRules.HeightmapDepth.above(point);
 	}
 
 	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float point) {
@@ -292,7 +301,7 @@ public class SurfaceRuleHelper {
 		);
 	}
 
-	public class LegacyRules {
+	public static class LegacyRules {
 		public static SurfaceRules.RuleSource biomeDepthRule(Block block, TagKey<Biome> biomes) {
 			return biomeDepthRule(block, biomes, defaultStartY);
 		}
