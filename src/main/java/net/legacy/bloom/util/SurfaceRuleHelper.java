@@ -82,9 +82,9 @@ public class SurfaceRuleHelper {
 			return rule;
 		}
 
-		SurfaceRules.RuleSource[] rules = new SurfaceRules.RuleSource[conditions.size()];
+		SurfaceRules.RuleSource rules = SurfaceRules.ifTrue(noise(conditions.getFirst().getLeft(), conditions.getFirst().getMiddle(), conditions.getFirst().getRight()), rule);
 
-		for (int i = 0; i < conditions.size(); i++) {
+		for (int i = 1; i < conditions.size(); i++) {
 			Triple<NoiseRules.Type, Float, Float> triple = conditions.get(i);
 			NoiseRules.Type type = triple.getLeft();
 			float min = triple.getMiddle();
@@ -92,24 +92,24 @@ public class SurfaceRuleHelper {
 
 			SurfaceRules.ConditionSource noiseCondition = noise(type, min, max);
 
-			rules[i] = SurfaceRules.ifTrue(noiseCondition, rule);
+			rules = SurfaceRules.ifTrue(noiseCondition, rules);
 		}
 
-		return SurfaceRules.sequence(rules);
+		return rules;
 	}
+
 	public static SurfaceRules.RuleSource conditions(SurfaceRules.RuleSource rule, List<SurfaceRules.ConditionSource> conditions) {
 		if (conditions.isEmpty()) {
 			return rule;
 		}
 
-		SurfaceRules.RuleSource[] rules = new SurfaceRules.RuleSource[conditions.size()];
+		SurfaceRules.RuleSource rules = SurfaceRules.ifTrue(conditions.getFirst(), rule);
 
-		for (int i = 0; i < conditions.size(); i++) {
-			SurfaceRules.ConditionSource condition = conditions.get(i);
-			rules[i] = SurfaceRules.ifTrue(condition, rule);
+		for (int i = 1; i < conditions.size(); i++) {
+			rules = SurfaceRules.ifTrue(conditions.get(i), rules);
 		}
 
-		return SurfaceRules.sequence(rules);
+		return rules;
 	}
 
 	public static SurfaceRules.RuleSource configuredRule(SurfaceRules.RuleSource ruleSource, boolean config) {
@@ -140,29 +140,6 @@ public class SurfaceRuleHelper {
 	public static String getKey(int startY, int transitionBlocks) {
 		if (startY == 0 && transitionBlocks == 8) return "deepslate";
 		else return "depth";
-	}
-
-	public static SurfaceRules.RuleSource belowGrassAndDirtRule(SurfaceRules.RuleSource rule) {
-		return SurfaceRules.sequence(
-			SurfaceRules.ifTrue(
-				SurfaceRules.ON_FLOOR,
-				SurfaceRules.ifTrue(
-					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-					rule
-				)
-			),
-			SurfaceRules.ifTrue(
-				SurfaceRules.waterBlockCheck(-1, 0),
-				SurfaceRules.ifTrue(
-					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-					rule
-				)
-			),
-			SurfaceRules.ifTrue(
-				SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-				rule
-			)
-		);
 	}
 
 	public static SurfaceRules.RuleSource higherStoneRule(Block block) {
@@ -302,6 +279,29 @@ public class SurfaceRuleHelper {
 	}
 
 	public static class LegacyRules {
+		public static SurfaceRules.RuleSource belowGrassAndDirtRule(SurfaceRules.RuleSource rule) {
+			return SurfaceRules.sequence(
+				SurfaceRules.ifTrue(
+					SurfaceRules.ON_FLOOR,
+					SurfaceRules.ifTrue(
+						SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+						rule
+					)
+				),
+				SurfaceRules.ifTrue(
+					SurfaceRules.waterBlockCheck(-1, 0),
+					SurfaceRules.ifTrue(
+						SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+						rule
+					)
+				),
+				SurfaceRules.ifTrue(
+					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+					rule
+				)
+			);
+		}
+
 		public static SurfaceRules.RuleSource biomeDepthRule(Block block, TagKey<Biome> biomes) {
 			return biomeDepthRule(block, biomes, defaultStartY);
 		}

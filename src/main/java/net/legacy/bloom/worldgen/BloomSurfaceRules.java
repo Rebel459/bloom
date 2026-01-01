@@ -257,15 +257,13 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
     @Override
     public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
-
-		// remember that climate rules run last for lowest priority
 		context.add(
 			SurfaceRules.sequence(
 				SurfaceRuleHelper.LegacyRules.biomeDepthRule(Blocks.SANDSTONE, BloomBiomeTags.HAS_DEPTH_SANDSTONE, 16),
 				badlandsDepth(),
 				higherStoneRule(),
 				SurfaceRuleHelper.LegacyRules.climateDepthRule(Blocks.GRANITE, 1.8F, SurfaceRuleHelper.MAX, 0F),
-				SurfaceRuleHelper.LegacyRules.climateDepthRule(Blocks.DIORITE, 0.8F, 0.92F, 0.9F),
+				SurfaceRuleHelper.LegacyRules.climateDepthRule(Blocks.DIORITE, 0.8F, 0.925F, 0.9F),
 				SurfaceRuleHelper.depthRule(
 					Blocks.DIORITE,
 					List.of(
