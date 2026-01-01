@@ -2,7 +2,7 @@ package net.legacy.bloom.registry;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.legacy.bloom.registry.data.StoneOresRegistry;
+import net.legacy.bloom.util.StoneOresRegistry;
 import net.minecraft.world.item.CreativeModeTabs;
 
 public class BloomCreativeInventory {

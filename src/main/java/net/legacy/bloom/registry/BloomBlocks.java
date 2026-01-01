@@ -2,7 +2,7 @@ package net.legacy.bloom.registry;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityType;
+
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -14,7 +14,7 @@ import net.legacy.bloom.block.AridVegetationBlock;
 import net.legacy.bloom.block.HalfSubmergedBlock;
 import net.legacy.bloom.block.LargeFlowerBlock;
 import net.legacy.bloom.block.WideFlowerBlock;
-import net.legacy.bloom.registry.data.StoneOresRegistry;
+import net.legacy.bloom.util.StoneOresRegistry;
 import net.legacy.bloom.worldgen.sapling.BloomTreeGrowers;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
