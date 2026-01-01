@@ -317,6 +317,10 @@ public class SurfaceRuleHelper {
 		else return ruleSource;
 	}
 
+	public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max) {
+		return noiseDepthRule(block, type, min, max, true);
+	}
+
 	public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max, boolean config) {
 		return noiseDepthRule(block, type, min, max, defaultStartY, config);
 	}
@@ -327,6 +331,10 @@ public class SurfaceRuleHelper {
 
 	public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max, int startY, int transitionBlocks, boolean config) {
 		return noiseDepthRule(block, List.of(Triple.of(type, min, max)), getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
+	}
+
+	public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions) {
+		return noiseDepthRule(block, conditions, true);
 	}
 
 	public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, boolean config) {
