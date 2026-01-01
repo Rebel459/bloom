@@ -5,20 +5,13 @@ import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.tag.BloomBiomeTags;
-import net.legacy.bloom.util.BiomeHelper;
 import net.legacy.bloom.util.SurfaceRuleHelper;
-import net.legacy.bloom.util.rules.NoiseRules;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.List;
 

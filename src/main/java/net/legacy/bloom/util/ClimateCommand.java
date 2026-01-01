@@ -6,9 +6,7 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.legacy.bloom.mixin.worldgen.BiomeAccessor;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -21,29 +19,12 @@ public class ClimateCommand {
 	public static void register() {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 			dispatcher.register(Commands.literal("climate")
-				.executes(ctx -> executeGet(ctx, ctx.getSource().getPlayerOrException()))
-
-				.then(Commands.literal("get")
-					.executes(ctx -> executeGet(ctx, ctx.getSource().getPlayerOrException()))
-					.then(Commands.argument("target", EntityArgument.player())
-						.executes(ctx -> executeGet(ctx, EntityArgument.getPlayer(ctx, "target")))
-					)
-				)
-				.then(Commands.literal("help")
-					.executes(ctx -> {
-						ctx.getSource().sendSuccess(() -> Component.literal(
-							"Usage:\n" +
-								"  /climate - Show climate at your position\n" +
-								"  /climate get - Show climate at your position\n" +
-								"  /climate get <player> - Show climate at another player's position"
-						), false);
-						return 1;
-					}))
+				.executes(ctx -> climateCommand(ctx, ctx.getSource().getPlayerOrException()))
 			);
 		});
 	}
 
-	private static int executeGet(CommandContext<CommandSourceStack> ctx, ServerPlayer player) throws CommandSyntaxException {
+	private static int climateCommand(CommandContext<CommandSourceStack> ctx, ServerPlayer player) throws CommandSyntaxException {
 		CommandSourceStack source = ctx.getSource();
 		ServerLevel world = player.level();
 		BlockPos pos = player.blockPosition();
@@ -70,7 +51,6 @@ public class ClimateCommand {
 				.withStyle(ChatFormatting.AQUA))
 			.append(Component.literal(String.format("  Downfall:               %.3f", downfall))
 				.withStyle(ChatFormatting.LIGHT_PURPLE)), false);
-
 		return 1;
 	}
 }

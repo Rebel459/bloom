@@ -1,4 +1,4 @@
-package net.legacy.bloom.util.rules;
+package net.legacy.bloom.util;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

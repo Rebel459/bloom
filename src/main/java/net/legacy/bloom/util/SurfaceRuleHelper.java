@@ -2,8 +2,6 @@ package net.legacy.bloom.util;
 
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
-import net.legacy.bloom.util.rules.ClimateRules;
-import net.legacy.bloom.util.rules.NoiseRules;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -12,7 +10,6 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import org.apache.commons.lang3.tuple.Triple;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class SurfaceRuleHelper {
 
