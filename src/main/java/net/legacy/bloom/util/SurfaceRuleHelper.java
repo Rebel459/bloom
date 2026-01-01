@@ -4,6 +4,7 @@ import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -270,6 +271,19 @@ public class SurfaceRuleHelper {
 					SurfaceRules.not(SurfaceRules.ON_FLOOR),
 					SurfaceRules.ifTrue(
 						SurfaceRules.UNDER_FLOOR,
+						rule
+					)
+				)
+			),
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_STONY),
+				SurfaceRules.sequence(
+					SurfaceRules.ifTrue(
+						SurfaceRules.UNDER_FLOOR,
+						rule
+					),
+					SurfaceRules.ifTrue(
+						SurfaceRules.ON_FLOOR,
 						rule
 					)
 				)

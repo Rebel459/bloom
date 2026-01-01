@@ -1,7 +1,6 @@
 {
   "values": [
     "#bloom:internal/steep",
-    "minecraft:snowy_slopes",
     "minecraft:frozen_peaks"
   ]
 }
