@@ -11,6 +11,7 @@ import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.BloomCreativeInventory;
 import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.sound.BloomSounds;
+import net.legacy.bloom.util.ClimateCommand;
 import net.legacy.bloom.worldgen.BloomBiomeModifications;
 import net.legacy.bloom.worldgen.BloomBiomePlacement;
 import net.minecraft.network.chat.Component;
@@ -31,6 +32,7 @@ public class Bloom implements ModInitializer {
         BloomBiomeModifications.init();
         BloomSounds.init();
         BloomCreativeInventory.init();
+		ClimateCommand.register();
 
 		ResourceLoader.registerBuiltinPack(
 			Bloom.id("ore_variants"), modContainer,

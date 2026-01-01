@@ -16,6 +16,12 @@ import net.minecraft.world.level.levelgen.placement.CaveSurface;
 
 public class SurfaceRuleHelper {
 
+	private static final int defaultStartY = 0;
+	private static final int defaultTransitionBlocks = 8;
+
+	public static final float MIN = -10F;
+	public static final float MAX = 10F;
+
 	public static SurfaceRules.RuleSource configuredRule(SurfaceRules.RuleSource ruleSource, boolean config) {
 		if (config) return ruleSource;
 		else return SurfaceRules.sequence();
@@ -32,6 +38,13 @@ public class SurfaceRuleHelper {
 			SurfaceRules.not(FrozenSurfaceRules.isBiomeTagOptimized(biomes)),
 			ruleSource
 		);
+	}
+
+	public static float greaterThan(float value) {
+		return value + 0.01F;
+	}
+	public static float lessThan(float value) {
+		return value - 0.01F;
 	}
 
 	public static String getKey(int startY, int transitionBlocks) {
@@ -80,11 +93,11 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource depthRule(Block block, TagKey<Biome> biomes) {
-		return depthRule(block, biomes, 0);
+		return depthRule(block, biomes, defaultStartY);
 	}
 
 	public static SurfaceRules.RuleSource depthRule(Block block, TagKey<Biome> biomes, boolean config) {
-		return depthRule(block, biomes, 0, config);
+		return depthRule(block, biomes, defaultStartY, config);
 	}
 
 	public static SurfaceRules.RuleSource depthRule(Block block, TagKey<Biome> biomes, int startY) {
@@ -100,39 +113,28 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource depthRule(Block block, TagKey<Biome> biomes, int startY, int transitionBlocks, boolean config) {
-		return depthRule(block, biomes, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), config);
+		return depthRule(block, biomes, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
 	}
 
-	public static SurfaceRules.RuleSource depthRule(Block block, TagKey<Biome> biomes, String key, VerticalAnchor startAnchor, VerticalAnchor transitionAnchor, boolean config) {
-		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
-		return configuredRule(
+	public static SurfaceRules.RuleSource depthRule(Block block, TagKey<Biome> biomes, String key, VerticalAnchor startAnchor, VerticalAnchor transitionAnchor, boolean aboveDeepslate, boolean config) {
+		SurfaceRules.ConditionSource verticalGradient = SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor);
+		SurfaceRules.RuleSource ruleSource = configuredRule(
 			SurfaceRules.sequence(
 				SurfaceRules.ifTrue(
 					FrozenSurfaceRules.isBiomeTagOptimized(biomes),
-					SurfaceRules.sequence(
-						SurfaceRules.ifTrue(
-							SurfaceRules.not(SurfaceRules.ON_FLOOR),
-							SurfaceRules.ifTrue(
-								SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
-								SurfaceRules.ifTrue(
-									SurfaceRules.not(SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor)),
-									rule
-								)
-							)
-						),
-						SurfaceRules.ifTrue(
-							SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-							SurfaceRules.ifTrue(
-								SurfaceRules.not(SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor)),
-								rule
-							)
-						)
-					)
+					internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, key, startAnchor, transitionAnchor)
 				),
 				higherStoneRule(block, biomes)
 			),
 			config
 		);
+		if (aboveDeepslate) {
+			return SurfaceRules.ifTrue(
+				SurfaceRules.not(verticalGradient),
+				ruleSource
+			);
+		}
+		else return ruleSource;
 	}
 
 	public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float point) {
@@ -140,7 +142,7 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float point, boolean config) {
-		return temperatureDepthRule(block, point - 0.001F, point + 0.001F, config);
+		return temperatureDepthRule(block, lessThan(point), greaterThan(point), config);
 	}
 
 	public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float min, float max) {
@@ -148,16 +150,15 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float min, float max, boolean config) {
-		int startY = 0;
-		return temperatureDepthRule(block, min, max, startY, config);
+		return temperatureDepthRule(block, min, max, defaultStartY, config);
 	}
 
 	public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float min, float max, int startY) {
-		return climateDepthRule(block, min, max, -10F, 10F, startY);
+		return climateDepthRule(block, min, max, MIN, MAX, startY);
 	}
 
 	public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float min, float max, int startY, boolean config) {
-		return climateDepthRule(block, min, max, -10F, 10F, startY, config);
+		return climateDepthRule(block, min, max, MIN, MAX, startY, config);
 	}
 
 	public static SurfaceRules.RuleSource downfallDepthRule(Block block, float point) {
@@ -165,7 +166,7 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource downfallDepthRule(Block block, float point, boolean config) {
-		return downfallDepthRule(block, point - 0.001F, point + 0.001F, config);
+		return downfallDepthRule(block, lessThan(point), greaterThan(point), config);
 	}
 
 	public static SurfaceRules.RuleSource downfallDepthRule(Block block, float min, float max) {
@@ -173,16 +174,15 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource downfallDepthRule(Block block, float min, float max, boolean config) {
-		int startY = 0;
-		return downfallDepthRule(block, min, max, startY, config);
+		return downfallDepthRule(block, min, max, defaultStartY, config);
 	}
 
 	public static SurfaceRules.RuleSource downfallDepthRule(Block block, float min, float max, int startY) {
-		return climateDepthRule(block, -10F, 10F, min, max, startY);
+		return climateDepthRule(block, MIN, MAX, min, max, startY);
 	}
 
 	public static SurfaceRules.RuleSource downfallDepthRule(Block block, float min, float max, int startY, boolean config) {
-		return climateDepthRule(block, -10F, 10F, min, max, startY, config);
+		return climateDepthRule(block, MIN, MAX, min, max, startY, config);
 	}
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperaturePoint, float downfallPoint) {
@@ -190,7 +190,7 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperaturePoint, float downfallPoint, boolean config) {
-		return climateDepthRule(block, temperaturePoint - 0.001F, temperaturePoint + 0.001F, downfallPoint - 0.001F, downfallPoint + 0.001F, 0, config);
+		return climateDepthRule(block, lessThan(temperaturePoint), greaterThan(temperaturePoint), lessThan(downfallPoint), greaterThan(downfallPoint), 0, config);
 	}
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallPoint) {
@@ -198,16 +198,15 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallPoint, boolean config) {
-		return climateDepthRule(block, temperatureMin, temperatureMax, downfallPoint - 0.001F, downfallPoint + 0.001F, 0, config);
+		return climateDepthRule(block, temperatureMin, temperatureMax, lessThan(downfallPoint), greaterThan(downfallPoint), 0, config);
 	}
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallMin, float downfallMax) {
-		int startY = 0;
 		return climateDepthRule(
 			block,
 			temperatureMin, temperatureMax,
 			downfallMin, downfallMax,
-			startY
+			defaultStartY
 		);
 	}
 
@@ -216,8 +215,7 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallMin, float downfallMax, int startY, boolean config) {
-		int transitionBlocks = 8;
-		return climateDepthRule(block, temperatureMin, temperatureMax, downfallMin, downfallMax, startY, transitionBlocks, config);
+		return climateDepthRule(block, temperatureMin, temperatureMax, downfallMin, downfallMax, startY, defaultTransitionBlocks, config);
 	}
 
 	public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallMin, float downfallMax, int startY, int transitionBlocks) {
@@ -225,9 +223,8 @@ public class SurfaceRuleHelper {
 			block,
 			temperatureMin, temperatureMax,
 			downfallMin, downfallMax,
-			getKey(startY, transitionBlocks),
-			VerticalAnchor.absolute(startY),
-			VerticalAnchor.absolute(startY + transitionBlocks),
+			startY,
+			transitionBlocks,
 			true
 		);
 	}
@@ -240,6 +237,7 @@ public class SurfaceRuleHelper {
 			getKey(startY, transitionBlocks),
 			VerticalAnchor.absolute(startY),
 			VerticalAnchor.absolute(startY + transitionBlocks),
+			startY >= 0,
 			config
 		);
 	}
@@ -251,64 +249,76 @@ public class SurfaceRuleHelper {
 		String key,
 		VerticalAnchor startAnchor,
 		VerticalAnchor transitionAnchor,
+		boolean aboveDeepslate,
 		boolean config
 	) {
-		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
-		return configuredRule(
+		SurfaceRules.ConditionSource verticalGradient = SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor);
+		SurfaceRules.RuleSource ruleSource = configuredRule(
 			SurfaceRules.sequence(
 				SurfaceRules.ifTrue(
 					TemperatureRule.temperature(temperatureMin, temperatureMax),
 					SurfaceRules.ifTrue(
 						DownfallRule.downfall(downfallMin, downfallMax),
-						SurfaceRules.sequence(
-							SurfaceRules.ifTrue(
-								SurfaceRules.not(SurfaceRules.ON_FLOOR),
-								SurfaceRules.ifTrue(
-									SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
-									SurfaceRules.ifTrue(
-										SurfaceRules.not(SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor)),
-										rule
-									)
-								)
-							),
-							SurfaceRules.ifTrue(
-								SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-								SurfaceRules.ifTrue(
-									SurfaceRules.not(SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor)),
-									rule
-								)
-							),
-							SurfaceRules.ifTrue(
-								FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_STEEP),
-								SurfaceRules.sequence(
-									SurfaceRules.ifTrue(
-										SurfaceRules.steep(),
-										rule
-									),
-									SurfaceRules.ifTrue(
-										SurfaceRules.not(SurfaceRules.ON_FLOOR),
-										SurfaceRules.ifTrue(
-											SurfaceRules.stoneDepthCheck(-1, false, CaveSurface.FLOOR),
-											rule
-										)
-									)
-								)
-							),
-							SurfaceRules.ifTrue(
-								FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_MOUNTAIN),
-								SurfaceRules.ifTrue(
-									SurfaceRules.not(SurfaceRules.ON_FLOOR),
-									SurfaceRules.ifTrue(
-										SurfaceRules.UNDER_FLOOR,
-										rule
-									)
-								)
-							)
-						)
+						internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, key, startAnchor, transitionAnchor)
 					)
 				)
 			),
 			config
+		);
+		if (aboveDeepslate) {
+			return SurfaceRules.ifTrue(
+				SurfaceRules.not(verticalGradient),
+				ruleSource
+			);
+		}
+		else return ruleSource;
+	}
+
+	private static SurfaceRules.RuleSource internalDepthRule(SurfaceRules.RuleSource rule, SurfaceRules.ConditionSource verticalGradient, String key, VerticalAnchor startAnchor, VerticalAnchor transitionAnchor) {
+		return SurfaceRules.sequence(
+			SurfaceRules.ifTrue(
+				SurfaceRules.not(SurfaceRules.ON_FLOOR),
+				SurfaceRules.ifTrue(
+					SurfaceRules.not(SurfaceRules.UNDER_FLOOR),
+					SurfaceRules.ifTrue(
+						SurfaceRules.not(verticalGradient),
+						rule
+					)
+				)
+			),
+			SurfaceRules.ifTrue(
+				SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+				SurfaceRules.ifTrue(
+					SurfaceRules.not(verticalGradient),
+					rule
+				)
+			),
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_STEEP),
+				SurfaceRules.sequence(
+					SurfaceRules.ifTrue(
+						SurfaceRules.steep(),
+						rule
+					),
+					SurfaceRules.ifTrue(
+						SurfaceRules.not(SurfaceRules.ON_FLOOR),
+						SurfaceRules.ifTrue(
+							SurfaceRules.stoneDepthCheck(-1, false, CaveSurface.FLOOR),
+							rule
+						)
+					)
+				)
+			),
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_MOUNTAIN),
+				SurfaceRules.ifTrue(
+					SurfaceRules.not(SurfaceRules.ON_FLOOR),
+					SurfaceRules.ifTrue(
+						SurfaceRules.UNDER_FLOOR,
+						rule
+					)
+				)
+			)
 		);
 	}
 }

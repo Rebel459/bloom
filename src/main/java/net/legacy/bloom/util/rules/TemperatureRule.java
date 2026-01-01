@@ -31,26 +31,59 @@ public class TemperatureRule implements SurfaceRules.ConditionSource {
 
 	@Override
 	public SurfaceRules.Condition apply(SurfaceRules.Context context) {
-		class Condition implements SurfaceRules.Condition {
-			private final BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+		return new Condition(context);
+	}
 
-			@Override
-			public boolean test() {
-				final var accessor = (SurfaceRulesContextAccessor) (Object) context;
-				this.pos.set(accessor.getBlockX(), accessor.getBlockY(), accessor.getBlockZ());
+	private final class Condition implements SurfaceRules.Condition {
+		private final SurfaceRulesContextAccessor accessor;
+		private final int seaLevel;
 
-				Holder<Biome> biomeSupplier = accessor.getBiomeAtPos().apply(this.pos);
-				if (biomeSupplier.is(ConventionalBiomeTags.IS_CAVE)) {
-					biomeSupplier = accessor.getBiomeAtPos().apply(new BlockPos(this.pos.getX(), accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, this.pos.getX(), this.pos.getZ()), this.pos.getZ()));
-				}
-				Biome biome = biomeSupplier.value();
+		private final BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos();
+		private final BlockPos.MutableBlockPos surfacePos = new BlockPos.MutableBlockPos();
 
-				float adjustedTemp = biome.getTemperature(this.pos, context.getSeaLevel());
+		private Holder<Biome> cachedHeightmapBiome = null;
+		private boolean isCachedMountain = false;
+		private int cachedX = Integer.MIN_VALUE;
+		private int cachedZ = Integer.MIN_VALUE;
 
-				return adjustedTemp >= TemperatureRule.this.min && adjustedTemp <= TemperatureRule.this.max;
-			}
+		Condition(SurfaceRules.Context context) {
+			this.accessor = (SurfaceRulesContextAccessor) (Object) context;
+			this.seaLevel = accessor.getSystem().getSeaLevel();
 		}
-		return new Condition();
+
+		@Override
+		public boolean test() {
+			int x = accessor.getBlockX();
+			int y = accessor.getBlockY();
+			int z = accessor.getBlockZ();
+			currentPos.set(x, y, z);
+
+			// Handle caching
+			if (x != cachedX || z != cachedZ) {
+				cachedX = x;
+				cachedZ = z;
+
+				int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
+				surfacePos.set(x, surfaceY, z);
+				cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
+
+				isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
+			}
+
+			Holder<Biome> biomeToUse;
+
+			if (isCachedMountain) {
+				biomeToUse = accessor.getBiomeAtPos().apply(currentPos);
+				if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE)) biomeToUse = cachedHeightmapBiome;
+			} else {
+				biomeToUse = cachedHeightmapBiome;
+			}
+
+			Biome biome = biomeToUse.value();
+			float adjustedTemp = biome.getTemperature(currentPos, seaLevel);
+
+			return adjustedTemp >= TemperatureRule.this.min && adjustedTemp <= TemperatureRule.this.max;
+		}
 	}
 
 	public static SurfaceRules.ConditionSource temperature(float point) {

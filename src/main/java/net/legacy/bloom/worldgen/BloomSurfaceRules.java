@@ -218,7 +218,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 	public static SurfaceRules.RuleSource badlandsDepth() {
 		int startY = 16;
 		int transitionBlocks = 8;
-		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(Blocks.RED_SANDSTONE);
 		return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
 				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE),
@@ -229,7 +228,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 							SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
 							SurfaceRules.ifTrue(
 								SurfaceRules.not(SurfaceRules.verticalGradient(SurfaceRuleHelper.getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks))),
-								rule
+								FrozenSurfaceRules.makeStateRule(Blocks.RED_SANDSTONE)
 							)
 						)
 					)
@@ -249,7 +248,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				beaches(),
 				gravellyRiversAndBeaches(),
 				coarseDirtStrips(),
-				windsweptJungle(),
 				windsweptSavanna()
 			)
         );
@@ -257,16 +255,17 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
     @Override
     public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
+
 		// remember that climate rules run last for lowest priority
 		context.add(
 			SurfaceRules.sequence(
 				SurfaceRuleHelper.depthRule(Blocks.SANDSTONE, BloomBiomeTags.HAS_DEPTH_SANDSTONE, 16),
 				badlandsDepth(),
 				higherStoneRule(),
-				SurfaceRuleHelper.depthRule(Blocks.DIORITE, BloomBiomeTags.HAS_DEPTH_DIORITE),
-				SurfaceRuleHelper.depthRule(Blocks.ANDESITE, BloomBiomeTags.HAS_DEPTH_ANDESITE),
-				SurfaceRuleHelper.climateDepthRule(Blocks.GRANITE, 1.8F, 2F, 0F),
-				SurfaceRuleHelper.temperatureDepthRule(BloomBlocks.DOLERITE, -1F, 0F)
+				SurfaceRuleHelper.climateDepthRule(Blocks.GRANITE, 1.8F, SurfaceRuleHelper.MAX, 0F),
+				SurfaceRuleHelper.climateDepthRule(Blocks.DIORITE, 0.8F, 0.92F, 0.9F),
+				SurfaceRuleHelper.temperatureDepthRule(Blocks.ANDESITE, SurfaceRuleHelper.greaterThan(0F), 0.3F),
+				SurfaceRuleHelper.temperatureDepthRule(BloomBlocks.DOLERITE, SurfaceRuleHelper.MIN, 0F)
 			)
         );
     }

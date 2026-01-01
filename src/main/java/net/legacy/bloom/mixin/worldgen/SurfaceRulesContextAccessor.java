@@ -6,6 +6,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.levelgen.SurfaceRules;
+import net.minecraft.world.level.levelgen.SurfaceSystem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 import java.util.function.Function;
@@ -27,4 +28,6 @@ public interface SurfaceRulesContextAccessor {
 	int getBlockY();
 	@Accessor("blockZ")
 	int getBlockZ();
+	@Accessor("system")
+	SurfaceSystem getSystem();
 }
