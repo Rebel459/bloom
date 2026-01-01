@@ -213,13 +213,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 	public static SurfaceRules.RuleSource higherStoneRule() {
 		return SurfaceRules.ifTrue(
 			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
-			SurfaceRules.ifTrue(
-				SurfaceRules.not(SurfaceRules.stoneDepthCheck(1, false, CaveSurface.FLOOR)),
-				SurfaceRules.ifTrue(
-					SurfaceRules.UNDER_FLOOR,
-					FrozenSurfaceRules.STONE
-				)
-			)
+			SurfaceRuleHelper.higherStoneRule(Blocks.STONE)
 		);
 	}
 
