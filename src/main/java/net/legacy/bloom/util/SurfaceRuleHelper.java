@@ -355,9 +355,8 @@ public class SurfaceRuleHelper {
 		boolean aboveDeepslate,
 		boolean config
 	) {
-		SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
 		SurfaceRules.ConditionSource verticalGradient = SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor);
-		SurfaceRules.RuleSource ruleSource = configuredRule(noises(internalDepthRule(rule, verticalGradient, key, startAnchor, transitionAnchor), conditions), config);
+		SurfaceRules.RuleSource ruleSource = configuredRule(noises(internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, key, startAnchor, transitionAnchor), conditions), config);
 		if (aboveDeepslate) {
 			return SurfaceRules.ifTrue(
 				SurfaceRules.not(verticalGradient),
