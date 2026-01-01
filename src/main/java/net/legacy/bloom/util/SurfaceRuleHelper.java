@@ -41,7 +41,7 @@ public class SurfaceRuleHelper {
 		};
 	}
 
-	public static SurfaceRules.RuleSource noises(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions) {
+	public static SurfaceRules.RuleSource noises(SurfaceRules.RuleSource rule, List<Triple<NoiseRules.Type, Float, Float>> conditions) {
 		if (conditions.isEmpty()) {
 			return SurfaceRules.sequence();
 		}
@@ -56,7 +56,7 @@ public class SurfaceRuleHelper {
 
 			SurfaceRules.ConditionSource noiseCondition = noise(type, min, max);
 
-			rules[i] = SurfaceRules.ifTrue(noiseCondition, FrozenSurfaceRules.makeStateRule(block));
+			rules[i] = SurfaceRules.ifTrue(noiseCondition, rule);
 		}
 
 		return SurfaceRules.sequence(rules);
@@ -355,8 +355,9 @@ public class SurfaceRuleHelper {
 		boolean aboveDeepslate,
 		boolean config
 	) {
+		SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
 		SurfaceRules.ConditionSource verticalGradient = SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor);
-		SurfaceRules.RuleSource ruleSource = configuredRule(internalDepthRule(noises(block, conditions), verticalGradient, key, startAnchor, transitionAnchor), config);
+		SurfaceRules.RuleSource ruleSource = configuredRule(noises(internalDepthRule(rule, verticalGradient, key, startAnchor, transitionAnchor), conditions), config);
 		if (aboveDeepslate) {
 			return SurfaceRules.ifTrue(
 				SurfaceRules.not(verticalGradient),
