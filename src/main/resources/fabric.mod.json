@@ -1,46 +1,46 @@
 {
-	"schemaVersion": 1,
-	"id": "bloom",
-	"version": "${version}",
-	"name": "Bloom",
-	"description": "An Overworld overhaul.",
-	"authors": [
-      "Rebel459",
-      "Sierra",
-      "Castiel",
-      "DigitalPear"
-	],
-	"contact": {
-		"homepage": "https://modrinth.com/user/Rebel459",
-		"sources": "https://github.com/Rebel459/bloom"
-	},
-	"license": "Legacy License",
-	"icon": "assets/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"net.legacy.bloom.Bloom"
-		],
-		"client": [
-			"net.legacy.bloom.BloomClient"
-		],
-		"modmenu": [
-			"net.legacy.bloom.config.BloomModMenuIntegration"
-		],
-		"fabric-datagen": [
-			"net.legacy.bloom.datagen.BloomDataGenerator"
-		],
-		"frozenlib:events": [
-          "net.legacy.bloom.worldgen.BloomSurfaceRules"
-		]
-	},
-	"mixins": [
-		"bloom.mixins.json"
-	],
-	"accessWidener": "bloom.accesswidener",
-	"depends": {
-		"minecraft": "1.21.11",
-		"fabric-api": "*",
-		"cloth-config": "*"
-	}
+  "schemaVersion": 1,
+  "id": "bloom",
+  "version": "${version}",
+  "name": "Bloom",
+  "description": "An Overworld overhaul.",
+  "authors": [
+    "Rebel459",
+    "DigitalPear",
+    "Sierra",
+    "Castiel"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/user/Rebel459",
+    "sources": "https://github.com/Rebel459/bloom"
+  },
+  "license": "Legacy License",
+  "icon": "assets/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.legacy.bloom.Bloom"
+    ],
+    "client": [
+      "net.legacy.bloom.BloomClient"
+    ],
+    "modmenu": [
+      "net.legacy.bloom.config.BloomModMenuIntegration"
+    ],
+    "fabric-datagen": [
+      "net.legacy.bloom.datagen.BloomDataGenerator"
+    ],
+    "frozenlib:events": [
+      "net.legacy.bloom.worldgen.BloomSurfaceRules"
+    ]
+  },
+  "mixins": [
+    "bloom.mixins.json"
+  ],
+  "accessWidener": "bloom.accesswidener",
+  "depends": {
+    "minecraft": "1.21.11",
+    "fabric-api": "*",
+    "cloth-config": "*"
+  }
 }

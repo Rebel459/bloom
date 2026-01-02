@@ -11,6 +11,7 @@ import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
 import net.legacy.bloom.util.NoiseRule;
 import net.legacy.bloom.util.NoiseRules;
+import net.legacy.bloom.util.Parameters;
 import net.legacy.bloom.util.SurfaceRuleHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.tags.BiomeTags;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import org.apache.commons.lang3.tuple.Triple;
 
+import java.lang.reflect.Parameter;
 import java.util.List;
 
 public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfaceRuleCallback, SurfaceRuleEvents.OverworldSurfaceRuleNoPrelimSurfaceCallback {
@@ -257,16 +259,16 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 						SurfaceRuleHelper.downfall(0.8F, 1F)
 					),
 					NoiseRules.of(
-						NoiseRule.create(NoiseRule.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_2, BiomeHelper.TEMPERATURE_5),
-						NoiseRule.create(NoiseRule.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
+						NoiseRule.create(NoiseRule.Type.TEMPERATURE, Parameters.TEMPERATURE_2, Parameters.TEMPERATURE_5),
+						NoiseRule.create(NoiseRule.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
 					)
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.ANDESITE,
 					SurfaceRuleHelper.temperature(0.15F, SurfaceRuleHelper.MAX),
 					NoiseRules.of(
-						NoiseRule.create(NoiseRule.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
-						NoiseRule.create(NoiseRule.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
+						NoiseRule.create(NoiseRule.Type.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+						NoiseRule.create(NoiseRule.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
 					)
 				)
 			)
