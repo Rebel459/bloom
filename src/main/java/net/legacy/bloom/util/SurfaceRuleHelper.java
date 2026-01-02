@@ -87,10 +87,6 @@ public class SurfaceRuleHelper {
 		};
 	}
 
-	public static SurfaceRules.ConditionSource noise(NoiseRule rule) {
-		return noise(rule.getType(), rule.getMin(), rule.getMax());
-	}
-
 	public static SurfaceRules.ConditionSource noise(NoiseRule.Type type, float min, float max) {
 		return switch (type) {
 			case TEMPERATURE -> NoiseRules.Temperature.range(min, max);
@@ -101,6 +97,10 @@ public class SurfaceRuleHelper {
 			case DEPTH -> NoiseRules.Depth.range(min, max);
 			case HEIGHTMAP_DEPTH -> NoiseRules.HeightmapDepth.range(min, max);
 		};
+	}
+	
+	public static SurfaceRules.ConditionSource noise(NoiseRule rule) {
+		return noise(rule.getType(), rule.getMin(), rule.getMax());
 	}
 
 	public static SurfaceRules.RuleSource noises(SurfaceRules.RuleSource rule, NoiseRules conditions) {
