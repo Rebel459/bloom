@@ -175,6 +175,30 @@ public class SurfaceRuleHelper {
 		);
 	}
 
+	public static SurfaceRules.RuleSource simpleDepthRule(Block block) {
+		return simpleDepthRule(block, true);
+	}
+
+	public static SurfaceRules.RuleSource simpleDepthRule(Block block, boolean config) {
+		return simpleDepthRule(block, defaultStartY, config);
+	}
+
+	public static SurfaceRules.RuleSource simpleDepthRule(Block block, int startY) {
+		return simpleDepthRule(block, startY, true);
+	}
+
+	public static SurfaceRules.RuleSource simpleDepthRule(Block block, int startY, boolean config) {
+		return simpleDepthRule(block, startY, defaultTransitionBlocks);
+	}
+
+	public static SurfaceRules.RuleSource simpleDepthRule(Block block, int startY, int transitionBlocks) {
+		return simpleDepthRule(block, startY, transitionBlocks, true);
+	}
+
+	public static SurfaceRules.RuleSource simpleDepthRule(Block block, int startY, int transitionBlocks, boolean config) {
+		return depthRule(block, List.of(), startY, transitionBlocks, config);
+	}
+
 	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition) {
 		return depthRule(block, List.of(condition), defaultStartY);
 	}
@@ -221,30 +245,6 @@ public class SurfaceRuleHelper {
 
 	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, int startY, int transitionBlocks, boolean config) {
 		return depthRule(block, conditions, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
-	}
-
-	public static SurfaceRules.RuleSource depthRule(Block block) {
-		return depthRule(block, true);
-	}
-
-	public static SurfaceRules.RuleSource depthRule(Block block, boolean config) {
-		return depthRule(block, defaultStartY, config);
-	}
-
-	public static SurfaceRules.RuleSource depthRule(Block block, int startY) {
-		return depthRule(block, startY, true);
-	}
-
-	public static SurfaceRules.RuleSource depthRule(Block block, int startY, boolean config) {
-		return depthRule(block, startY, defaultTransitionBlocks);
-	}
-
-	public static SurfaceRules.RuleSource depthRule(Block block, int startY, int transitionBlocks) {
-		return depthRule(block, startY, transitionBlocks, true);
-	}
-
-	public static SurfaceRules.RuleSource depthRule(Block block, int startY, int transitionBlocks, boolean config) {
-		return depthRule(block, List.of(), startY, transitionBlocks, config);
 	}
 
 	public static SurfaceRules.RuleSource depthRule(
