@@ -2,10 +2,12 @@ package net.legacy.bloom.util;
 
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
@@ -66,6 +68,10 @@ public class SurfaceRuleHelper {
 		};
 	}
 
+	public static SurfaceRules.ConditionSource noise(NoiseRule rule) {
+		return noise(rule.getType(), rule.getMin(), rule.getMax());
+	}
+
 	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float min, float max) {
 		return switch (type) {
 			case TEMPERATURE -> NoiseRules.Temperature.range(min, max);
@@ -78,20 +84,18 @@ public class SurfaceRuleHelper {
 		};
 	}
 
-	public static SurfaceRules.RuleSource noises(SurfaceRules.RuleSource rule, List<Triple<NoiseRules.Type, Float, Float>> conditions) {
-		if (conditions.isEmpty()) {
+	public static SurfaceRules.RuleSource noises(SurfaceRules.RuleSource rule, NoiseRules conditions) {
+		if (conditions.rules().isEmpty()) {
 			return rule;
 		}
 
-		SurfaceRules.RuleSource rules = SurfaceRules.ifTrue(noise(conditions.getFirst().getLeft(), conditions.getFirst().getMiddle(), conditions.getFirst().getRight()), rule);
+		List<NoiseRule> list = conditions.rules();
+		SurfaceRules.RuleSource rules = SurfaceRules.ifTrue(noise(list.getFirst().getType(), list.getFirst().getMin(), list.getFirst().getMax()), rule);
 
-		for (int i = 1; i < conditions.size(); i++) {
-			Triple<NoiseRules.Type, Float, Float> triple = conditions.get(i);
-			NoiseRules.Type type = triple.getLeft();
-			float min = triple.getMiddle();
-			float max = triple.getRight();
+		for (int i = 1; i < list.size(); i++) {
+			NoiseRule noiseRule = list.get(i);
 
-			SurfaceRules.ConditionSource noiseCondition = noise(type, min, max);
+			SurfaceRules.ConditionSource noiseCondition = noise(noiseRule.getType(), noiseRule.getMin(), noiseRule.getMax());
 
 			rules = SurfaceRules.ifTrue(noiseCondition, rules);
 		}
@@ -157,62 +161,170 @@ public class SurfaceRuleHelper {
 		);
 	}
 
-	public static SurfaceRules.RuleSource noiseRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions) {
-		return depthRule(block, List.of(), conditions);
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRule noiseRule) {
+		return depthRule(block, List.of(), NoiseRules.of(noiseRule), defaultStartY);
 	}
 
-	public static SurfaceRules.RuleSource noiseRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, boolean config) {
-		return depthRule(block, List.of(), conditions, config);
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRule noiseRule, boolean config) {
+		return depthRule(block, List.of(), NoiseRules.of(noiseRule), defaultStartY, config);
 	}
 
-	public static SurfaceRules.RuleSource noiseRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, int startY) {
-		return depthRule(block, List.of(), conditions, startY);
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRule noiseRule, int startY) {
+		return depthRule(block, List.of(), NoiseRules.of(noiseRule), startY, true);
 	}
 
-	public static SurfaceRules.RuleSource noiseRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, int startY, boolean config) {
-		return depthRule(block, List.of(), conditions, startY, config);
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRule noiseRule, int startY, boolean config) {
+		return depthRule(block, List.of(), NoiseRules.of(noiseRule), startY, defaultTransitionBlocks, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRule noiseRule, int startY, int transitionBlocks, boolean config) {
+		return depthRule(block, List.of(), NoiseRules.of(noiseRule), getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition) {
+		return depthRule(block, List.of(condition), NoiseRules.of(), defaultStartY);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, boolean config) {
+		return depthRule(block, List.of(condition), NoiseRules.of(), defaultStartY, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, int startY) {
+		return depthRule(block, List.of(condition), NoiseRules.of(), startY, true);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, int startY, boolean config) {
+		return depthRule(block, List.of(condition), NoiseRules.of(), startY, defaultTransitionBlocks, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, int startY, int transitionBlocks, boolean config) {
+		return depthRule(block, List.of(condition), NoiseRules.of(), getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRules noiseRules) {
+		return depthRule(block, List.of(condition), noiseRules, defaultStartY);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRules noiseRules, boolean config) {
+		return depthRule(block, List.of(condition), noiseRules, defaultStartY, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRules noiseRules, int startY) {
+		return depthRule(block, List.of(condition), noiseRules, startY, true);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRules noiseRules, int startY, boolean config) {
+		return depthRule(block, List.of(condition), noiseRules, startY, defaultTransitionBlocks, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRules noiseRules, int startY, int transitionBlocks, boolean config) {
+		return depthRule(block, List.of(condition), noiseRules, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRule noiseRule) {
+		return depthRule(block, conditions, NoiseRules.of(noiseRule), defaultStartY);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRule noiseRule, boolean config) {
+		return depthRule(block, conditions, NoiseRules.of(noiseRule), defaultStartY, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRule noiseRule, int startY) {
+		return depthRule(block, conditions, NoiseRules.of(noiseRule), startY, true);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRule noiseRule, int startY, boolean config) {
+		return depthRule(block, conditions, NoiseRules.of(noiseRule), startY, defaultTransitionBlocks, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRule noiseRule, int startY, int transitionBlocks, boolean config) {
+		return depthRule(block, conditions, NoiseRules.of(noiseRule), getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRule noiseRule) {
+		return depthRule(block, List.of(condition), NoiseRules.of(noiseRule), defaultStartY);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRule noiseRule, boolean config) {
+		return depthRule(block, List.of(condition), NoiseRules.of(noiseRule), defaultStartY, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRule noiseRule, int startY) {
+		return depthRule(block, List.of(condition), NoiseRules.of(noiseRule), startY, true);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRule noiseRule, int startY, boolean config) {
+		return depthRule(block, List.of(condition), NoiseRules.of(noiseRule), startY, defaultTransitionBlocks, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, SurfaceRules.ConditionSource condition, NoiseRule noiseRule, int startY, int transitionBlocks, boolean config) {
+		return depthRule(block, List.of(condition), NoiseRules.of(noiseRule), getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRules noiseRules) {
+		return depthRule(block, List.of(), noiseRules, defaultStartY);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRules noiseRules, boolean config) {
+		return depthRule(block, List.of(), noiseRules, defaultStartY, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRules noiseRules, int startY) {
+		return depthRule(block, List.of(), noiseRules, startY, true);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRules noiseRules, int startY, boolean config) {
+		return depthRule(block, List.of(), noiseRules, startY, defaultTransitionBlocks, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, NoiseRules noiseRules, int startY, int transitionBlocks, boolean config) {
+		return depthRule(block, List.of(), noiseRules, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
 	}
 
 	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions) {
-		return depthRule(block, conditions, List.of());
+		return depthRule(block, conditions, NoiseRules.of(), defaultStartY);
 	}
 
 	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, boolean config) {
-		return depthRule(block, conditions, List.of(), config);
+		return depthRule(block, conditions, NoiseRules.of(), defaultStartY, config);
 	}
 
 	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, int startY) {
-		return depthRule(block, conditions, List.of(), startY);
+		return depthRule(block, conditions, NoiseRules.of(), startY, true);
 	}
 
 	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, int startY, boolean config) {
-		return depthRule(block, conditions, List.of(), startY, config);
+		return depthRule(block, conditions, NoiseRules.of(), startY, defaultTransitionBlocks, config);
 	}
 
-	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, List<Triple<NoiseRules.Type, Float, Float>> noiseConditions) {
-		return depthRule(block, conditions, noiseConditions, defaultStartY);
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, int startY, int transitionBlocks, boolean config) {
+		return depthRule(block, conditions, NoiseRules.of(), getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
 	}
 
-	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, List<Triple<NoiseRules.Type, Float, Float>> noiseConditions, boolean config) {
-		return depthRule(block, conditions, noiseConditions, defaultStartY, config);
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRules noiseRules) {
+		return depthRule(block, conditions, noiseRules, defaultStartY);
 	}
 
-	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, List<Triple<NoiseRules.Type, Float, Float>> noiseConditions, int startY) {
-		return depthRule(block, conditions, noiseConditions, startY, true);
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRules noiseRules, boolean config) {
+		return depthRule(block, conditions, noiseRules, defaultStartY, config);
 	}
 
-	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, List<Triple<NoiseRules.Type, Float, Float>> noiseConditions, int startY, boolean config) {
-		return depthRule(block, conditions, noiseConditions, startY, defaultTransitionBlocks, config);
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRules noiseRules, int startY) {
+		return depthRule(block, conditions, noiseRules, startY, true);
 	}
 
-	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, List<Triple<NoiseRules.Type, Float, Float>> noiseConditions, int startY, int transitionBlocks, boolean config) {
-		return depthRule(block, conditions, noiseConditions, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRules noiseRules, int startY, boolean config) {
+		return depthRule(block, conditions, noiseRules, startY, defaultTransitionBlocks, config);
+	}
+
+	public static SurfaceRules.RuleSource depthRule(Block block, List<SurfaceRules.ConditionSource> conditions, NoiseRules noiseRules, int startY, int transitionBlocks, boolean config) {
+		return depthRule(block, conditions, noiseRules, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
 	}
 
 	public static SurfaceRules.RuleSource depthRule(
 		Block block,
 		List<SurfaceRules.ConditionSource> conditions,
-		List<Triple<NoiseRules.Type, Float, Float>> noiseConditions,
+		NoiseRules noiseRules,
 		String key,
 		VerticalAnchor startAnchor,
 		VerticalAnchor transitionAnchor,
@@ -220,7 +332,7 @@ public class SurfaceRuleHelper {
 		boolean config
 	) {
 		SurfaceRules.ConditionSource verticalGradient = SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor);
-		SurfaceRules.RuleSource ruleSource = configuredRule(conditions(noises(internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, block), noiseConditions), conditions), config);
+		SurfaceRules.RuleSource ruleSource = configuredRule(conditions(noises(internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, block), noiseRules), conditions), config);
 		if (aboveDeepslate) {
 			return SurfaceRules.ifTrue(
 				SurfaceRules.not(verticalGradient),
@@ -231,7 +343,7 @@ public class SurfaceRuleHelper {
 	}
 
 	private static SurfaceRules.RuleSource internalDepthRule(SurfaceRules.RuleSource rule, SurfaceRules.ConditionSource verticalGradient, Block block) {
-		return SurfaceRules.sequence(
+		SurfaceRules.RuleSource finalRule = SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
 				SurfaceRules.not(SurfaceRules.ON_FLOOR),
 				SurfaceRules.ifTrue(
@@ -290,226 +402,18 @@ public class SurfaceRuleHelper {
 			),
 			higherStoneRule(block)
 		);
-	}
-
-	public static class LegacyRules {
-		public static SurfaceRules.RuleSource belowGrassAndDirtRule(SurfaceRules.RuleSource rule) {
-			return SurfaceRules.sequence(
-				SurfaceRules.ifTrue(
-					SurfaceRules.ON_FLOOR,
-					SurfaceRules.ifTrue(
-						SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-						rule
-					)
-				),
-				SurfaceRules.ifTrue(
-					SurfaceRules.waterBlockCheck(-1, 0),
-					SurfaceRules.ifTrue(
-						SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-						rule
-					)
-				),
+		return SurfaceRules.sequence(
+			SurfaceRules.ifTrue(
+				SurfaceRules.not(FrozenSurfaceRules.isBiomeTagOptimized(BiomeTags.IS_BADLANDS)),
+				finalRule
+			),
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BiomeTags.IS_BADLANDS),
 				SurfaceRules.ifTrue(
 					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-					rule
+					finalRule
 				)
-			);
-		}
-
-		public static SurfaceRules.RuleSource biomeDepthRule(Block block, TagKey<Biome> biomes) {
-			return biomeDepthRule(block, biomes, defaultStartY);
-		}
-
-		public static SurfaceRules.RuleSource biomeDepthRule(Block block, TagKey<Biome> biomes, boolean config) {
-			return biomeDepthRule(block, biomes, defaultStartY, config);
-		}
-
-		public static SurfaceRules.RuleSource biomeDepthRule(Block block, TagKey<Biome> biomes, int startY) {
-			return biomeDepthRule(block, biomes, startY, true);
-		}
-
-		public static SurfaceRules.RuleSource biomeDepthRule(Block block, TagKey<Biome> biomes, int startY, boolean config) {
-			return biomeDepthRule(block, biomes, startY, 8, config);
-		}
-
-		public static SurfaceRules.RuleSource biomeDepthRule(Block block, TagKey<Biome> biomes, int startY, int transitionBlocks) {
-			return biomeDepthRule(block, biomes, startY, transitionBlocks, true);
-		}
-
-		public static SurfaceRules.RuleSource biomeDepthRule(Block block, TagKey<Biome> biomes, int startY, int transitionBlocks, boolean config) {
-			return biomeDepthRule(block, biomes, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
-		}
-
-		public static SurfaceRules.RuleSource biomeDepthRule(Block block, TagKey<Biome> biomes, String key, VerticalAnchor startAnchor, VerticalAnchor transitionAnchor, boolean aboveDeepslate, boolean config) {
-			SurfaceRules.ConditionSource verticalGradient = SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor);
-			SurfaceRules.RuleSource ruleSource = configuredRule(
-				SurfaceRules.ifTrue(
-					FrozenSurfaceRules.isBiomeTagOptimized(biomes),
-					SurfaceRules.sequence(
-						internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, block)
-					)
-				),
-				config
-			);
-			if (aboveDeepslate) {
-				return SurfaceRules.ifTrue(
-					SurfaceRules.not(verticalGradient),
-					ruleSource
-				);
-			}
-			else return ruleSource;
-		}
-
-		public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float point) {
-			return temperatureDepthRule(block, point, true);
-		}
-
-		public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float point, boolean config) {
-			return temperatureDepthRule(block, lessThan(point), greaterThan(point), config);
-		}
-
-		public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float min, float max) {
-			return temperatureDepthRule(block, min, max, true);
-		}
-
-		public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float min, float max, boolean config) {
-			return temperatureDepthRule(block, min, max, defaultStartY, config);
-		}
-
-		public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float min, float max, int startY) {
-			return climateDepthRule(block, min, max, MIN, MAX, startY);
-		}
-
-		public static SurfaceRules.RuleSource temperatureDepthRule(Block block, float min, float max, int startY, boolean config) {
-			return climateDepthRule(block, min, max, MIN, MAX, startY, config);
-		}
-
-		public static SurfaceRules.RuleSource downfallDepthRule(Block block, float point) {
-			return downfallDepthRule(block, point, true);
-		}
-
-		public static SurfaceRules.RuleSource downfallDepthRule(Block block, float point, boolean config) {
-			return downfallDepthRule(block, lessThan(point), greaterThan(point), config);
-		}
-
-		public static SurfaceRules.RuleSource downfallDepthRule(Block block, float min, float max) {
-			return downfallDepthRule(block, min, max, true);
-		}
-
-		public static SurfaceRules.RuleSource downfallDepthRule(Block block, float min, float max, boolean config) {
-			return downfallDepthRule(block, min, max, defaultStartY, config);
-		}
-
-		public static SurfaceRules.RuleSource downfallDepthRule(Block block, float min, float max, int startY) {
-			return climateDepthRule(block, MIN, MAX, min, max, startY);
-		}
-
-		public static SurfaceRules.RuleSource downfallDepthRule(Block block, float min, float max, int startY, boolean config) {
-			return climateDepthRule(block, MIN, MAX, min, max, startY, config);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperaturePoint, float downfallPoint) {
-			return climateDepthRule(block, temperaturePoint, downfallPoint, true);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperaturePoint, float downfallPoint, boolean config) {
-			return climateDepthRule(block, lessThan(temperaturePoint), greaterThan(temperaturePoint), lessThan(downfallPoint), greaterThan(downfallPoint), 0, config);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallPoint) {
-			return climateDepthRule(block, temperatureMin, temperatureMax, downfallPoint, true);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallPoint, boolean config) {
-			return climateDepthRule(block, temperatureMin, temperatureMax, lessThan(downfallPoint), greaterThan(downfallPoint), 0, config);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallMin, float downfallMax) {
-			return climateDepthRule(block, temperatureMin, temperatureMax, downfallMin, downfallMax, defaultStartY);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallMin, float downfallMax, int startY) {
-			return climateDepthRule(block, temperatureMin, temperatureMax, downfallMin, downfallMax, startY, true);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallMin, float downfallMax, int startY, boolean config) {
-			return climateDepthRule(block, temperatureMin, temperatureMax, downfallMin, downfallMax, startY, defaultTransitionBlocks, config);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallMin, float downfallMax, int startY, int transitionBlocks) {
-			return climateDepthRule(block, temperatureMin, temperatureMax, downfallMin, downfallMax, startY, transitionBlocks, true);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(Block block, float temperatureMin, float temperatureMax, float downfallMin, float downfallMax, int startY, int transitionBlocks, boolean config) {
-			return climateDepthRule(block, temperatureMin, temperatureMax, downfallMin, downfallMax, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
-		}
-
-		public static SurfaceRules.RuleSource climateDepthRule(
-			Block block,
-			float temperatureMin, float temperatureMax,
-			float downfallMin, float downfallMax,
-			String key,
-			VerticalAnchor startAnchor,
-			VerticalAnchor transitionAnchor,
-			boolean aboveDeepslate,
-			boolean config
-		) {
-			SurfaceRules.ConditionSource verticalGradient = SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor);
-			SurfaceRules.RuleSource ruleSource = configuredRule(
-				SurfaceRules.sequence(
-					SurfaceRules.ifTrue(
-						ClimateRules.Temperature.range(temperatureMin, temperatureMax),
-						SurfaceRules.ifTrue(
-							ClimateRules.Downfall.range(downfallMin, downfallMax),
-							internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, block)
-						)
-					)
-				),
-				config
-			);
-			if (aboveDeepslate) {
-				return SurfaceRules.ifTrue(
-					SurfaceRules.not(verticalGradient),
-					ruleSource
-				);
-			}
-			else return ruleSource;
-		}
-
-		public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max) {
-			return noiseDepthRule(block, type, min, max, true);
-		}
-
-		public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max, boolean config) {
-			return noiseDepthRule(block, type, min, max, defaultStartY, config);
-		}
-
-		public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max, int startY, boolean config) {
-			return noiseDepthRule(block, type, min, max, startY, defaultTransitionBlocks, config);
-		}
-
-		public static SurfaceRules.RuleSource noiseDepthRule(Block block, NoiseRules.Type type, float min, float max, int startY, int transitionBlocks, boolean config) {
-			return noiseDepthRule(block, List.of(Triple.of(type, min, max)), getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
-		}
-
-		public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions) {
-			return noiseDepthRule(block, conditions, true);
-		}
-
-		public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, boolean config) {
-			return noiseDepthRule(block, conditions, defaultStartY, config);
-		}
-
-		public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, int startY, boolean config) {
-			return noiseDepthRule(block, conditions, startY, defaultTransitionBlocks, config);
-		}
-
-		public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, int startY, int transitionBlocks, boolean config) {
-			return noiseDepthRule(block, conditions, getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks), startY >= 0, config);
-		}
-
-		public static SurfaceRules.RuleSource noiseDepthRule(Block block, List<Triple<NoiseRules.Type, Float, Float>> conditions, String key, VerticalAnchor startAnchor, VerticalAnchor transitionAnchor, boolean aboveDeepslate, boolean config) {
-			return depthRule(block, List.of(), conditions, key, startAnchor, transitionAnchor, aboveDeepslate, config);
-		}
+			)
+		);
 	}
 }

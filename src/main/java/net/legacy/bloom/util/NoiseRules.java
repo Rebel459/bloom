@@ -2,17 +2,15 @@ package net.legacy.bloom.util;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
+import java.util.List;
 import net.legacy.bloom.mixin.worldgen.SurfaceRulesContextAccessor;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.util.KeyDispatchDataCodec;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
-public class NoiseRules {
+public record NoiseRules(List<NoiseRule> rules)  {
 
 	public enum Type {
 		HUMIDITY,
@@ -22,6 +20,14 @@ public class NoiseRules {
 		WEIRDNESS,
 		DEPTH,
 		HEIGHTMAP_DEPTH
+	}
+
+	public static NoiseRules of(NoiseRule rule) {
+		return new NoiseRules(List.of(rule));
+	}
+
+	public static NoiseRules of(NoiseRule... rules) {
+		return new NoiseRules(List.of(rules));
 	}
 
 	public static class Temperature implements SurfaceRules.ConditionSource {

@@ -1,11 +1,15 @@
 package net.legacy.bloom.worldgen;
 
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
+import net.frozenblock.lib.worldgen.biome.api.parameters.Humidity;
+import net.frozenblock.lib.worldgen.biome.api.parameters.Temperature;
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
+import net.legacy.bloom.util.NoiseRule;
 import net.legacy.bloom.util.NoiseRules;
 import net.legacy.bloom.util.SurfaceRuleHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
@@ -207,28 +211,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 		);
 	}
 
-	public static SurfaceRules.RuleSource badlandsDepth() {
-		int startY = 16;
-		int transitionBlocks = 8;
-		return SurfaceRules.sequence(
-			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE),
-				SurfaceRules.ifTrue(
-					FrozenSurfaceRules.isBiomeTagOptimized(BiomeTags.IS_BADLANDS),
-					SurfaceRules.sequence(
-						SurfaceRules.ifTrue(
-							SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-							SurfaceRules.ifTrue(
-								SurfaceRules.not(SurfaceRules.verticalGradient(SurfaceRuleHelper.getKey(startY, transitionBlocks), VerticalAnchor.absolute(startY), VerticalAnchor.absolute(startY + transitionBlocks))),
-								FrozenSurfaceRules.makeStateRule(Blocks.RED_SANDSTONE)
-							)
-						)
-					)
-				)
-			)
-		);
-	}
-
     @Override
     public void addOverworldSurfaceRules(List<SurfaceRules.RuleSource> context) {
         context.add(
@@ -249,30 +231,43 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
 		context.add(
 			SurfaceRules.sequence(
-				SurfaceRuleHelper.LegacyRules.biomeDepthRule(Blocks.SANDSTONE, BloomBiomeTags.HAS_DEPTH_SANDSTONE, 16),
-				badlandsDepth(),
 				higherStoneRule(),
-				SurfaceRuleHelper.LegacyRules.climateDepthRule(Blocks.GRANITE, 1.8F, SurfaceRuleHelper.MAX, 0F),
+				SurfaceRuleHelper.depthRule(
+					Blocks.RED_SANDSTONE,
+					FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE),
+					16
+				),
+				SurfaceRuleHelper.depthRule(
+					Blocks.SANDSTONE,
+					FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_SANDSTONE),
+					16
+				),
+				SurfaceRuleHelper.depthRule(
+					Blocks.GRANITE,
+					SurfaceRuleHelper.temperature(1.8F, SurfaceRuleHelper.MAX)
+				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.DIORITE,
 					List.of(
 						SurfaceRuleHelper.temperature(0.8F, 0.92F),
 						SurfaceRuleHelper.downfall(0.8F, 1F)
 					),
-					List.of(
-						Triple.of(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_2, BiomeHelper.TEMPERATURE_5),
-						Triple.of(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
+					NoiseRules.of(
+						NoiseRule.create(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_2, BiomeHelper.TEMPERATURE_5),
+						NoiseRule.create(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
 					)
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.ANDESITE,
-					List.of(),
-					List.of(
-						Triple.of(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
-						Triple.of(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
+					NoiseRules.of(
+						NoiseRule.create(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
+						NoiseRule.create(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
 					)
 				),
-				SurfaceRuleHelper.LegacyRules.temperatureDepthRule(BloomBlocks.DOLERITE, SurfaceRuleHelper.MIN, 0F)
+				SurfaceRuleHelper.depthRule(
+					BloomBlocks.DOLERITE,
+					SurfaceRuleHelper.temperature(SurfaceRuleHelper.MIN, 0F)
+				)
 			)
         );
     }
