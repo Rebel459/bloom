@@ -259,6 +259,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.ANDESITE,
+					SurfaceRuleHelper.temperature(0.15F, SurfaceRuleHelper.MAX),
 					NoiseRules.of(
 						NoiseRule.create(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
 						NoiseRule.create(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
@@ -266,7 +267,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				),
 				SurfaceRuleHelper.depthRule(
 					BloomBlocks.DOLERITE,
-					SurfaceRuleHelper.temperature(SurfaceRuleHelper.MIN, 0F)
+					SurfaceRuleHelper.isFreezing()
 				)
 			)
         );

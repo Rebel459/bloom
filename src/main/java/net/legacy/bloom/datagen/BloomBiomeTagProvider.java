@@ -44,7 +44,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		this.builder(BloomBiomeTags.INTERNAL_STEEP)
 			.add(Biomes.JAGGED_PEAKS)
-			.add(Biomes.SNOWY_SLOPES);
+			.add(Biomes.SNOWY_SLOPES)
+			.add(Biomes.WINDSWEPT_HILLS);
 
 		this.builder(BloomBiomeTags.INTERNAL_MOUNTAIN)
 			.addTag(BloomBiomeTags.INTERNAL_STEEP)
@@ -53,6 +54,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.INTERNAL_STONY)
 			.add(Biomes.STONY_PEAKS)
 			.add(Biomes.STONY_SHORE);
+
+		this.builder(BloomBiomeTags.INTERNAL_BADLANDS)
+			.addOptionalTag(BiomeTags.IS_BADLANDS);
 
         this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
 			.addOptionalTag(BiomeTags.IS_JUNGLE)

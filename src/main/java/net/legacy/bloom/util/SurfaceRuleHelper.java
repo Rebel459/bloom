@@ -22,11 +22,21 @@ public class SurfaceRuleHelper {
 	public static final float MIN = -10F;
 	public static final float MAX = 10F;
 
+	public static SurfaceRules.ConditionSource isFreezing() {
+		return temperature(MIN, 0.15F);
+	}
+
 	public static SurfaceRules.ConditionSource temperature(float point) {
 		return ClimateRules.Temperature.point(point);
 	}
 	public static SurfaceRules.ConditionSource temperature(float min, float max) {
 		return ClimateRules.Temperature.range(min, max);
+	}
+	public static SurfaceRules.ConditionSource temperatureAbove(float point) {
+		return ClimateRules.Temperature.above(point);
+	}
+	public static SurfaceRules.ConditionSource temperatureBelow(float point) {
+		return ClimateRules.Temperature.below(point);
 	}
 
 	public static SurfaceRules.ConditionSource downfall(float point) {
@@ -35,25 +45,31 @@ public class SurfaceRuleHelper {
 	public static SurfaceRules.ConditionSource downfall(float min, float max) {
 		return ClimateRules.Downfall.range(min, max);
 	}
+	public static SurfaceRules.ConditionSource downfallAbove(float point) {
+		return ClimateRules.Downfall.above(point);
+	}
+	public static SurfaceRules.ConditionSource downfallBelow(float point) {
+		return ClimateRules.Downfall.below(point);
+	}
 
 	public static SurfaceRules.ConditionSource temperatureOffset(float min, float max) {
 		return ClimateRules.TemperatureOffset.range(min, max);
 	}
-	public static SurfaceRules.ConditionSource temperatureOffsetBelow(float point) {
-		return ClimateRules.TemperatureOffset.below(point);
-	}
 	public static SurfaceRules.ConditionSource temperatureOffsetAbove(float point) {
 		return ClimateRules.TemperatureOffset.above(point);
+	}
+	public static SurfaceRules.ConditionSource temperatureOffsetBelow(float point) {
+		return ClimateRules.TemperatureOffset.below(point);
 	}
 
 	public static SurfaceRules.ConditionSource heightmapDepth(float min, float max) {
 		return NoiseRules.HeightmapDepth.range(min, max);
 	}
-	public static SurfaceRules.ConditionSource heightmapDepthBelow(float point) {
-		return NoiseRules.HeightmapDepth.below(point);
-	}
 	public static SurfaceRules.ConditionSource heightmapDepthAbove(float point) {
 		return NoiseRules.HeightmapDepth.above(point);
+	}
+	public static SurfaceRules.ConditionSource heightmapDepthBelow(float point) {
+		return NoiseRules.HeightmapDepth.below(point);
 	}
 
 	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float point) {
@@ -404,11 +420,11 @@ public class SurfaceRuleHelper {
 		);
 		return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
-				SurfaceRules.not(FrozenSurfaceRules.isBiomeTagOptimized(BiomeTags.IS_BADLANDS)),
+				SurfaceRules.not(FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_BADLANDS)),
 				finalRule
 			),
 			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BiomeTags.IS_BADLANDS),
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_BADLANDS),
 				SurfaceRules.ifTrue(
 					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
 					finalRule

@@ -96,6 +96,14 @@ public class ClimateRules {
 			return new ClimateRules.Temperature(min, max);
 		}
 
+		public static SurfaceRules.ConditionSource above(float point) {
+			return new ClimateRules.Temperature(point, Float.MAX_VALUE);
+		}
+
+		public static SurfaceRules.ConditionSource below(float point) {
+			return new ClimateRules.Temperature(Float.MIN_VALUE, point);
+		}
+
 		@Override
 		public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
 			return CODEC;
@@ -176,16 +184,16 @@ public class ClimateRules {
 			}
 		}
 
+		public static SurfaceRules.ConditionSource range(float min, float max) {
+			return new ClimateRules.TemperatureOffset(min, max);
+		}
+
 		public static SurfaceRules.ConditionSource above(float point) {
 			return new ClimateRules.TemperatureOffset(point, Float.MAX_VALUE);
 		}
 
 		public static SurfaceRules.ConditionSource below(float point) {
 			return new ClimateRules.TemperatureOffset(Float.MIN_VALUE, point);
-		}
-
-		public static SurfaceRules.ConditionSource range(float min, float max) {
-			return new ClimateRules.TemperatureOffset(min, max);
 		}
 
 		@Override
@@ -275,6 +283,14 @@ public class ClimateRules {
 
 		public static SurfaceRules.ConditionSource range(float min, float max) {
 			return new ClimateRules.Downfall(min, max);
+		}
+
+		public static SurfaceRules.ConditionSource above(float point) {
+			return new ClimateRules.Downfall(point, Float.MAX_VALUE);
+		}
+
+		public static SurfaceRules.ConditionSource below(float point) {
+			return new ClimateRules.Downfall(Float.MIN_VALUE, point);
 		}
 
 		@Override
