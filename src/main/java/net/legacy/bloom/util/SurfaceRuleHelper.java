@@ -2,6 +2,7 @@ package net.legacy.bloom.util;
 
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
+import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
@@ -23,7 +24,7 @@ public class SurfaceRuleHelper {
 	public static final float MAX = 10F;
 
 	public static SurfaceRules.ConditionSource isFreezing() {
-		return temperature(MIN, 0.15F);
+		return temperature(MIN, greaterThan(0.15F));
 	}
 
 	public static SurfaceRules.ConditionSource temperature(float point) {
@@ -414,6 +415,13 @@ public class SurfaceRuleHelper {
 						SurfaceRules.ON_FLOOR,
 						rule
 					)
+				)
+			),
+			SurfaceRules.ifTrue(
+				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_WINDSWEPT_HILL),
+				SurfaceRules.ifTrue(
+					SurfaceRuleData.surfaceNoiseAbove(1.0),
+					rule
 				)
 			),
 			higherStoneRule(block)

@@ -14,6 +14,7 @@ public class BloomBiomeTags {
 	public static final TagKey<Biome> INTERNAL_MOUNTAIN = bind("internal/mountain");
 	public static final TagKey<Biome> INTERNAL_STONY = bind("internal/stony");
 	public static final TagKey<Biome> INTERNAL_BADLANDS = bind("internal/badlands");
+	public static final TagKey<Biome> INTERNAL_WINDSWEPT_HILL = bind("internal/windswept_hill");
 
     public static final TagKey<Biome> HAS_WARM_COLORS = bind("has_effect/warm_colors");
     public static final TagKey<Biome> HAS_LUKEWARM_COLORS = bind("has_effect/lukewarm_colors");
