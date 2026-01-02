@@ -73,7 +73,7 @@ public class SurfaceRuleHelper {
 		return NoiseRules.HeightmapDepth.below(point);
 	}
 
-	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float point) {
+	public static SurfaceRules.ConditionSource noise(NoiseRule.Type type, float point) {
 		return switch (type) {
 			case TEMPERATURE -> NoiseRules.Temperature.point(point);
 			case HUMIDITY -> NoiseRules.Humidity.point(point);
@@ -89,7 +89,7 @@ public class SurfaceRuleHelper {
 		return noise(rule.getType(), rule.getMin(), rule.getMax());
 	}
 
-	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float min, float max) {
+	public static SurfaceRules.ConditionSource noise(NoiseRule.Type type, float min, float max) {
 		return switch (type) {
 			case TEMPERATURE -> NoiseRules.Temperature.range(min, max);
 			case HUMIDITY -> NoiseRules.Humidity.range(min, max);

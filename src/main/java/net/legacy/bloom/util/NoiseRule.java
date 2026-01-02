@@ -2,13 +2,13 @@ package net.legacy.bloom.util;
 
 import org.apache.commons.lang3.tuple.Triple;
 
-public record NoiseRule(Triple<NoiseRules.Type, Float, Float> rules) {
+public record NoiseRule(Triple<Type, Float, Float> rules) {
 
-	public static NoiseRule create(NoiseRules.Type type, float min, float max) {
+	public static NoiseRule create(Type type, float min, float max) {
 		return new NoiseRule(Triple.of(type, min, max));
 	}
 
-	public NoiseRules.Type getType() {
+	public Type getType() {
 		return rules.getLeft();
 	}
 
@@ -20,4 +20,13 @@ public record NoiseRule(Triple<NoiseRules.Type, Float, Float> rules) {
 		return rules.getRight();
 	}
 
+	public enum Type {
+		HUMIDITY,
+		CONTINENTALNESS,
+		TEMPERATURE,
+		EROSION,
+		WEIRDNESS,
+		DEPTH,
+		HEIGHTMAP_DEPTH
+	}
 }

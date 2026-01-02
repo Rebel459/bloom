@@ -257,16 +257,16 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 						SurfaceRuleHelper.downfall(0.8F, 1F)
 					),
 					NoiseRules.of(
-						NoiseRule.create(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_2, BiomeHelper.TEMPERATURE_5),
-						NoiseRule.create(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
+						NoiseRule.create(NoiseRule.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_2, BiomeHelper.TEMPERATURE_5),
+						NoiseRule.create(NoiseRule.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
 					)
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.ANDESITE,
 					SurfaceRuleHelper.temperature(0.15F, SurfaceRuleHelper.MAX),
 					NoiseRules.of(
-						NoiseRule.create(NoiseRules.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
-						NoiseRule.create(NoiseRules.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
+						NoiseRule.create(NoiseRule.Type.TEMPERATURE, BiomeHelper.TEMPERATURE_1, BiomeHelper.TEMPERATURE_2),
+						NoiseRule.create(NoiseRule.Type.HUMIDITY, BiomeHelper.HUMIDITY_3, BiomeHelper.HUMIDITY_5)
 					)
 				)
 			)

@@ -12,16 +12,6 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 
 public record NoiseRules(List<NoiseRule> rules)  {
 
-	public enum Type {
-		HUMIDITY,
-		CONTINENTALNESS,
-		TEMPERATURE,
-		EROSION,
-		WEIRDNESS,
-		DEPTH,
-		HEIGHTMAP_DEPTH
-	}
-
 	public static NoiseRules of(NoiseRule rule) {
 		return new NoiseRules(List.of(rule));
 	}
