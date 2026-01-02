@@ -10,14 +10,16 @@ import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
-public record NoiseRules(List<NoiseRule> rules)  {
+public class NoiseRules {
 
-	public static NoiseRules of(NoiseRule rule) {
-		return new NoiseRules(List.of(rule));
-	}
-
-	public static NoiseRules of(NoiseRule... rules) {
-		return new NoiseRules(List.of(rules));
+	public enum Type {
+		HUMIDITY,
+		CONTINENTALNESS,
+		TEMPERATURE,
+		EROSION,
+		WEIRDNESS,
+		DEPTH,
+		HEIGHTMAP_DEPTH
 	}
 
 	public static class Temperature implements SurfaceRules.ConditionSource {

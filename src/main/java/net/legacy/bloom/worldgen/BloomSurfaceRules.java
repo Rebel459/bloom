@@ -1,28 +1,19 @@
 package net.legacy.bloom.worldgen;
 
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
-import net.frozenblock.lib.worldgen.biome.api.parameters.Humidity;
-import net.frozenblock.lib.worldgen.biome.api.parameters.Temperature;
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.tag.BloomBiomeTags;
-import net.legacy.bloom.util.BiomeHelper;
-import net.legacy.bloom.util.NoiseRule;
 import net.legacy.bloom.util.NoiseRules;
 import net.legacy.bloom.util.Parameters;
 import net.legacy.bloom.util.SurfaceRuleHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.placement.CaveSurface;
-import org.apache.commons.lang3.tuple.Triple;
 
-import java.lang.reflect.Parameter;
 import java.util.List;
 
 public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfaceRuleCallback, SurfaceRuleEvents.OverworldSurfaceRuleNoPrelimSurfaceCallback {
@@ -256,19 +247,17 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 					Blocks.DIORITE,
 					List.of(
 						SurfaceRuleHelper.temperature(0.8F, 0.92F),
-						SurfaceRuleHelper.downfall(0.8F, 1F)
-					),
-					NoiseRules.of(
-						NoiseRule.create(NoiseRule.Type.TEMPERATURE, Parameters.TEMPERATURE_2, Parameters.TEMPERATURE_5),
-						NoiseRule.create(NoiseRule.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
+						SurfaceRuleHelper.downfall(0.8F, 1F),
+						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_2, Parameters.TEMPERATURE_5),
+						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
 					)
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.ANDESITE,
+					List.of(
 					SurfaceRuleHelper.temperature(0.15F, SurfaceRuleHelper.MAX),
-					NoiseRules.of(
-						NoiseRule.create(NoiseRule.Type.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
-						NoiseRule.create(NoiseRule.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
+						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
 					)
 				)
 			)
