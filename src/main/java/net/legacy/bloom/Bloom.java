@@ -8,14 +8,17 @@ import net.fabricmc.loader.api.ModContainer;
 import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.BloomConditionSources;
 import net.legacy.bloom.registry.BloomCreativeInventory;
 import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.sound.BloomSounds;
 import net.legacy.bloom.util.ClimateCommand;
 import net.legacy.bloom.worldgen.BloomBiomeModifications;
 import net.legacy.bloom.worldgen.BloomBiomePlacement;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 
 public class Bloom implements ModInitializer {
 	public static final String MOD_ID = "bloom";
@@ -32,7 +35,8 @@ public class Bloom implements ModInitializer {
         BloomBiomeModifications.init();
         BloomSounds.init();
         BloomCreativeInventory.init();
-		ClimateCommand.register();
+		BloomConditionSources.init();
+		ClimateCommand.init();
 
 		ResourceLoader.registerBuiltinPack(
 			Bloom.id("ore_variants"), modContainer,
@@ -43,6 +47,10 @@ public class Bloom implements ModInitializer {
 
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
+	}
+
+	public static <T> ResourceKey<T> key(ResourceKey<? extends Registry<T>> resourceKey, String path) {
+		return ResourceKey.create(resourceKey, id(path));
 	}
 
 }

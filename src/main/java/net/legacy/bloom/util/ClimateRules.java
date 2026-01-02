@@ -109,6 +109,7 @@ public class ClimateRules {
 			return CODEC;
 		}
 	}
+
 	public static class TemperatureOffset implements SurfaceRules.ConditionSource {
 		public static final KeyDispatchDataCodec<TemperatureOffset> CODEC = KeyDispatchDataCodec.of(
 			RecordCodecBuilder.mapCodec(instance ->

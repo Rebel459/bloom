@@ -106,7 +106,8 @@ public class StoneOresRegistry {
 			final Block block = BloomBlocks.register(
 				BuiltInRegistries.BLOCK.getKey(baseStone).getPath() + "_" + type.name + "_ore",
 				properties -> normalFunction.apply(type, properties),
-				finalProperties
+				finalProperties,
+				true
 			);
 			oresMap.put(type, block);
         }

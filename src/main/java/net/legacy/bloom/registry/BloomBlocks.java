@@ -1,5 +1,7 @@
 package net.legacy.bloom.registry;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -63,6 +65,8 @@ import net.minecraft.world.level.material.MapColor;
 public final class BloomBlocks {
     public static final BlockSetType JACARANDA_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(Bloom.id("jacaranda"));
     public static final WoodType JACARANDA_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CHERRY).register(Bloom.id("jacaranda"), JACARANDA_SET);
+
+	public static List<Block> ALL_REGISTRIES = new ArrayList<>();
 
     // Flora
 
@@ -403,8 +407,12 @@ public final class BloomBlocks {
 	}
 
 	public static <T extends Block> T register(String path, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties) {
+		return register(path, block, properties, false);
+	}
+
+	public static <T extends Block> T register(String path, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties, boolean skipNameGen) {
 		final T registered = registerWithoutItem(path, block, properties);
-		registerBlockItem(registered);
+		registerBlockItem(registered, skipNameGen);
 		return registered;
 	}
 
@@ -417,7 +425,8 @@ public final class BloomBlocks {
 		return function.apply(properties.setId(ResourceKey.create(Registries.BLOCK, id)));
 	}
 
-	private static void registerBlockItem(Block block) {
+	private static void registerBlockItem(Block block, boolean skipNameGen) {
+		if (!skipNameGen) ALL_REGISTRIES.add(block);
 		BiFunction<Block, Item.Properties, Item> itemSupplier = BlockItem::new;
 		if (block instanceof DoorBlock || block instanceof TallFlowerBlock) itemSupplier = DoubleHighBlockItem::new;
 		if (block instanceof ShelfBlock) itemSupplier = (shelfBlock, properties) -> new BlockItem(shelfBlock, properties.component(DataComponents.CONTAINER, ItemContainerContents.EMPTY));

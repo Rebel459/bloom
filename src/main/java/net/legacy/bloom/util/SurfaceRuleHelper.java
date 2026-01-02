@@ -1,10 +1,12 @@
 package net.legacy.bloom.util;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.minecraft.data.worldgen.SurfaceRuleData;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.biome.Biome;
+import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -146,17 +148,14 @@ public class SurfaceRuleHelper {
 
 	public static SurfaceRules.RuleSource configuredRule(boolean config, SurfaceRules.RuleSource ruleSource) {
 		if (config) return ruleSource;
-		else return impossible(ruleSource);
+		else return SurfaceRules.ifTrue(
+			impossible(),
+			ruleSource
+		);
 	}
 
-	public static SurfaceRules.RuleSource impossible(SurfaceRules.RuleSource ruleSource) {
-		return SurfaceRules.ifTrue(
-			SurfaceRules.abovePreliminarySurface(),
-			SurfaceRules.ifTrue(
-				SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
-				ruleSource
-			)
-		);
+	public static SurfaceRules.ConditionSource impossible() {
+		return Impossible.get();
 	}
 
 	public static float greaterThan(float value) {
@@ -359,5 +358,36 @@ public class SurfaceRuleHelper {
 				)
 			)
 		);
+	}
+
+	public static class Impossible implements SurfaceRules.ConditionSource {
+
+		public static final KeyDispatchDataCodec<Impossible> CODEC = KeyDispatchDataCodec.of(MapCodec.unit(new Impossible()));
+
+		public Impossible() {}
+
+		@Override
+		public SurfaceRules.Condition apply(SurfaceRules.Context context) {
+			return new Impossible.Condition(context);
+		}
+
+		private final class Condition implements SurfaceRules.Condition {
+
+			Condition(SurfaceRules.Context context) {}
+
+			@Override
+			public boolean test() {
+				return false;
+			}
+		}
+
+		public static SurfaceRules.ConditionSource get() {
+			return new Impossible();
+		}
+
+		@Override
+		public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
+			return CODEC;
+		}
 	}
 }
