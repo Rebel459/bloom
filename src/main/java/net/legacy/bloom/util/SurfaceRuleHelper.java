@@ -98,7 +98,7 @@ public class SurfaceRuleHelper {
 			case HEIGHTMAP_DEPTH -> NoiseRules.HeightmapDepth.range(min, max);
 		};
 	}
-	
+
 	public static SurfaceRules.ConditionSource noise(NoiseRule rule) {
 		return noise(rule.getType(), rule.getMin(), rule.getMax());
 	}
