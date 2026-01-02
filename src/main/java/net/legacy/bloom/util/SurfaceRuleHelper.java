@@ -146,7 +146,17 @@ public class SurfaceRuleHelper {
 
 	public static SurfaceRules.RuleSource configuredRule(boolean config, SurfaceRules.RuleSource ruleSource) {
 		if (config) return ruleSource;
-		else return SurfaceRules.ifTrue(temperature(Float.MIN_VALUE), ruleSource);
+		else return impossible(ruleSource);
+	}
+
+	public static SurfaceRules.RuleSource impossible(SurfaceRules.RuleSource ruleSource) {
+		return SurfaceRules.ifTrue(
+			SurfaceRules.abovePreliminarySurface(),
+			SurfaceRules.ifTrue(
+				SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
+				ruleSource
+			)
+		);
 	}
 
 	public static float greaterThan(float value) {
