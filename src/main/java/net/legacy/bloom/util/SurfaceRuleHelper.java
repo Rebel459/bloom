@@ -103,7 +103,7 @@ public class SurfaceRuleHelper {
 		return noise(rule.getType(), rule.getMin(), rule.getMax());
 	}
 
-	public static SurfaceRules.RuleSource noises(SurfaceRules.RuleSource rule, NoiseRules conditions) {
+	public static SurfaceRules.RuleSource noises(NoiseRules conditions, SurfaceRules.RuleSource rule) {
 		if (conditions.rules().isEmpty()) {
 			return rule;
 		}
@@ -122,7 +122,7 @@ public class SurfaceRuleHelper {
 		return rules;
 	}
 
-	public static SurfaceRules.RuleSource conditions(SurfaceRules.RuleSource rule, List<SurfaceRules.ConditionSource> conditions) {
+	public static SurfaceRules.RuleSource conditions(List<SurfaceRules.ConditionSource> conditions, SurfaceRules.RuleSource rule) {
 		if (conditions.isEmpty()) {
 			return rule;
 		}
@@ -351,7 +351,7 @@ public class SurfaceRuleHelper {
 		boolean config
 	) {
 		SurfaceRules.ConditionSource verticalGradient = SurfaceRules.verticalGradient(key, startAnchor, transitionAnchor);
-		SurfaceRules.RuleSource ruleSource = configuredRule(conditions(noises(internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, block), noiseRules), conditions), config);
+		SurfaceRules.RuleSource ruleSource = configuredRule(conditions(conditions, noises(noiseRules, internalDepthRule(FrozenSurfaceRules.makeStateRule(block), verticalGradient, block))), config);
 		if (aboveDeepslate) {
 			return SurfaceRules.ifTrue(
 				SurfaceRules.not(verticalGradient),
