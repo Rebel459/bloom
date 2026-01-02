@@ -21,7 +21,7 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		for (StoneOresRegistry registry : StoneOresRegistry.ALL_REGISTRIES) {
 			generateOreSet(translationBuilder, registry);
 		}
-		for (Block blocks : BloomBlocks.ALL_REGISTRIES) {
+		for (Block blocks : BloomBlocks.TRANSLATABLE_BLOCKS) {
 			autoName(translationBuilder, blocks);
 		}
 	}

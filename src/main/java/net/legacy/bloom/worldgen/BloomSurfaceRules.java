@@ -11,6 +11,7 @@ import net.legacy.bloom.util.SurfaceRuleHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 
@@ -158,20 +159,57 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
+	public static List<SurfaceRules.ConditionSource> graniteNoises = List.of(
+		SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_3, Parameters.TEMPERATURE_4),
+		SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_0, Parameters.HUMIDITY_2)
+	);
+
     public static SurfaceRules.RuleSource windsweptSavanna() {
         return SurfaceRules.ifTrue(
 			SurfaceRules.isBiome(Biomes.WINDSWEPT_SAVANNA),
-			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
-				SurfaceRules.sequence(
-					SurfaceRules.ifTrue(
-						SurfaceRuleData.surfaceNoiseAbove(1.75),
-						FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
+			SurfaceRuleHelper.collectedRule(
+				graniteNoises,
+				SurfaceRules.ifTrue(
+					FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
+					SurfaceRules.sequence(
+						SurfaceRules.ifTrue(
+							SurfaceRuleData.surfaceNoiseAbove(1.75),
+							FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
+						)
 					)
 				)
 			)
         );
     }
+
+	public static SurfaceRules.RuleSource snowyShore() {
+		SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(BloomBlocks.DOLERITE);
+		return SurfaceRules.ifTrue(
+			SurfaceRules.isBiome(BloomBiomes.SNOWY_SHORE),
+			SurfaceRules.sequence(
+				SurfaceRules.ifTrue(
+					SurfaceRules.noiseCondition(Noises.GRAVEL, -0.05, 0.05),
+					SurfaceRules.sequence(
+						SurfaceRules.ifTrue(
+							SurfaceRules.ON_CEILING,
+							SurfaceRules.sequence(
+								SurfaceRules.ifTrue(
+									SurfaceRuleHelper.isFreezing(),
+									rule
+								),
+								FrozenSurfaceRules.STONE
+							)
+						),
+						FrozenSurfaceRules.GRAVEL)
+				),
+				SurfaceRules.ifTrue(
+					SurfaceRuleHelper.isFreezing(),
+					rule
+				),
+				FrozenSurfaceRules.STONE
+			)
+		);
+	}
 
     public static SurfaceRules.RuleSource swampMud() {
         return SurfaceRules.sequence(
@@ -239,9 +277,10 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 					BloomBlocks.DOLERITE,
 					SurfaceRuleHelper.isFreezing()
 				),
+				snowyShore(),
 				SurfaceRuleHelper.depthRule(
 					Blocks.GRANITE,
-					SurfaceRuleHelper.temperature(1.8F, SurfaceRuleHelper.MAX)
+					graniteNoises
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.DIORITE,
@@ -255,7 +294,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				SurfaceRuleHelper.depthRule(
 					Blocks.ANDESITE,
 					List.of(
-					SurfaceRuleHelper.temperature(0.15F, SurfaceRuleHelper.MAX),
+						SurfaceRuleHelper.temperature(0.15F, SurfaceRuleHelper.MAX),
 						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
 						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
 					)

@@ -129,5 +129,12 @@ public class BloomBiomePlacement {
 				CriterionBuilder.value(BiomeParameterTargets.EROSION, Parameters.EROSION_6, Parameters.EROSION_7)
 			)
 		);
+		BiomePlacement.addSubOverworld(
+			Biomes.STONY_SHORE,
+			BloomBiomes.SNOWY_SHORE,
+			CriterionBuilder.allOf(
+				CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_1)
+			)
+		);
     }
 }

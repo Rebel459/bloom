@@ -8,6 +8,7 @@ import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
 import net.legacy.bloom.worldgen.biome.ColdRiver;
 import net.legacy.bloom.worldgen.biome.LukewarmRiver;
+import net.legacy.bloom.worldgen.biome.SnowyShore;
 import net.legacy.bloom.worldgen.biome.TropicalRiver;
 import net.legacy.bloom.worldgen.biome.WarmRiver;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
@@ -62,7 +63,7 @@ public final class BloomBiomeModifications {
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_FROZEN_COLORS),
 			(selectionContext, modificationContext) -> {
-				modificationContext.getEffects().setWaterColor(1596048);
+				modificationContext.getEffects().setWaterColor(SnowyShore.WATER_COLOR);
 			}
 		);
 

@@ -28,7 +28,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.LUKEWARM_RIVER)
 			.add(BloomBiomes.LUKEWARM_BEACH)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE)
-			.add(BloomBiomes.FEN);
+			.add(BloomBiomes.FEN)
+			.add(BloomBiomes.SNOWY_SHORE);
 
 		this.builder(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 			.add(Biomes.JUNGLE)
@@ -256,7 +257,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS)
 			.add(BloomBiomes.COLD_RIVER)
 			.add(BloomBiomes.COLD_BEACH)
-			.add(BloomBiomes.FEN);
+			.add(BloomBiomes.FEN)
+			.add(BloomBiomes.SNOWY_SHORE);
 
 		this.builder(BiomeTags.HAS_MINESHAFT)
 			.addTag(BloomBiomeTags.BLOOM_BIOMES);

@@ -66,7 +66,7 @@ public final class BloomBlocks {
     public static final BlockSetType JACARANDA_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(Bloom.id("jacaranda"));
     public static final WoodType JACARANDA_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CHERRY).register(Bloom.id("jacaranda"), JACARANDA_SET);
 
-	public static List<Block> ALL_REGISTRIES = new ArrayList<>();
+	public static List<Block> TRANSLATABLE_BLOCKS = new ArrayList<>();
 
     // Flora
 
@@ -426,7 +426,7 @@ public final class BloomBlocks {
 	}
 
 	private static void registerBlockItem(Block block, boolean skipNameGen) {
-		if (!skipNameGen) ALL_REGISTRIES.add(block);
+		if (!skipNameGen) TRANSLATABLE_BLOCKS.add(block);
 		BiFunction<Block, Item.Properties, Item> itemSupplier = BlockItem::new;
 		if (block instanceof DoorBlock || block instanceof TallFlowerBlock) itemSupplier = DoubleHighBlockItem::new;
 		if (block instanceof ShelfBlock) itemSupplier = (shelfBlock, properties) -> new BlockItem(shelfBlock, properties.component(DataComponents.CONTAINER, ItemContainerContents.EMPTY));
