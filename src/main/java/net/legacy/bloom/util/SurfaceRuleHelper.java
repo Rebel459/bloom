@@ -26,7 +26,6 @@ public class SurfaceRuleHelper {
 	public static SurfaceRules.ConditionSource isFreezing() {
 		return temperature(MIN, greaterThan(0.15F));
 	}
-
 	public static SurfaceRules.ConditionSource temperature(float point) {
 		return ClimateRules.Temperature.point(point);
 	}
@@ -40,6 +39,9 @@ public class SurfaceRuleHelper {
 		return ClimateRules.Temperature.below(point);
 	}
 
+	public static SurfaceRules.ConditionSource noDownfall() {
+		return downfall(0F);
+	}
 	public static SurfaceRules.ConditionSource downfall(float point) {
 		return ClimateRules.Downfall.point(point);
 	}
