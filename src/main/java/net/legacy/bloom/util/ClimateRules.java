@@ -66,7 +66,7 @@ public class ClimateRules {
 					cachedZ = z;
 
 					int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
-					surfacePos.set(x, surfaceY, z);
+					surfacePos.set(x, Math.max(surfaceY, seaLevel), z);
 					cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
 
 					isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
@@ -163,7 +163,7 @@ public class ClimateRules {
 					cachedZ = z;
 
 					int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
-					surfacePos.set(x, surfaceY, z);
+					surfacePos.set(x, Math.max(surfaceY, seaLevel), z);
 					cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
 
 					isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
@@ -229,6 +229,7 @@ public class ClimateRules {
 
 		private final class Condition implements SurfaceRules.Condition {
 			private final SurfaceRulesContextAccessor accessor;
+			private final int seaLevel;
 
 			private final BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos();
 			private final BlockPos.MutableBlockPos surfacePos = new BlockPos.MutableBlockPos();
@@ -240,6 +241,7 @@ public class ClimateRules {
 
 			Condition(SurfaceRules.Context context) {
 				this.accessor = (SurfaceRulesContextAccessor) (Object) context;
+				this.seaLevel = accessor.getSystem().getSeaLevel();
 			}
 
 			@Override
@@ -255,7 +257,7 @@ public class ClimateRules {
 					cachedZ = z;
 
 					int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
-					surfacePos.set(x, surfaceY, z);
+					surfacePos.set(x, Math.max(surfaceY, seaLevel), z);
 					cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
 
 					isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);

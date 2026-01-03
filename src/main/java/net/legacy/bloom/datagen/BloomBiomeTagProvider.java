@@ -76,7 +76,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.INTERNAL_WINDSWEPT_SAVANNA)
 			.add(Biomes.WINDSWEPT_SAVANNA);
 
-        this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
+        this.builder(BloomBiomeTags.INTERNAL_LESS_STRICT_DISKS)
 			.addOptionalTag(BiomeTags.IS_JUNGLE)
 			.add(BloomBiomes.WARM_RIVER)
 			.add(BloomBiomes.ARID_SHORE)
@@ -84,10 +84,10 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.COLD_RIVER)
 			.add(BloomBiomes.COLD_BEACH);
 
-        this.builder(BloomBiomeTags.HAS_WINDSWEPT_JUNGLE_FEATURES)
+        this.builder(BloomBiomeTags.INTERNAL_WINDSWEPT_JUNGLE_FEATURES)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE);
 
-        this.builder(BloomBiomeTags.HAS_FEN_FEATURES)
+        this.builder(BloomBiomeTags.INTERNAL_FEN_FEATURES)
 			.add(BloomBiomes.FEN);
 
 		// Effects
@@ -190,6 +190,15 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		// Features
 
+		this.builder(BloomBiomeTags.NO_DEFAULT_FLOWERS)
+			.add(Biomes.SNOWY_TAIGA)
+			.add(Biomes.SNOWY_PLAINS)
+			.add(Biomes.SNOWY_BEACH)
+			.add(Biomes.ICE_SPIKES)
+			.add(BloomBiomes.WINDSWEPT_JUNGLE)
+			.add(BloomBiomes.FEN)
+			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE);
+
 		this.builder(BloomBiomeTags.HAS_STONE_BLOBS)
 			.addTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
 			.addTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE);
@@ -237,6 +246,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.HAS_SCILLA)
 			.add(Biomes.SNOWY_TAIGA)
 			.add(Biomes.SNOWY_PLAINS)
+			.add(Biomes.ICE_SPIKES)
 			.add(Biomes.WINDSWEPT_FOREST)
 			.add(Biomes.WINDSWEPT_HILLS)
 			.add(Biomes.WINDSWEPT_GRAVELLY_HILLS);

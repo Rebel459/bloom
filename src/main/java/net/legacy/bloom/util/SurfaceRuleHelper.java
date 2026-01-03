@@ -1,7 +1,6 @@
 package net.legacy.bloom.util;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
@@ -11,7 +10,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -79,19 +77,25 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.ConditionSource isBiome(ResourceKey<Biome> biome) {
-		return isBiome(biome, false);
+		return isBiome(biome, BiomeRules.Type.ACTUAL);
 	}
-	public static SurfaceRules.ConditionSource isBiome(ResourceKey<Biome> biome, boolean heightmap) {
-		if (heightmap) return MiscRules.HeightmapBiome.isBiome(biome);
-		else return SurfaceRules.isBiome(biome);
+	public static SurfaceRules.ConditionSource isBiome(ResourceKey<Biome> biome, BiomeRules.Type type) {
+		return switch (type) {
+			case ACTUAL -> SurfaceRules.isBiome(biome);
+			case SURFACE -> BiomeRules.SurfaceBiome.isBiome(biome);
+			case HEIGHTMAP -> BiomeRules.HeightmapBiome.isBiome(biome);
+		};
 	}
 
-	public static SurfaceRules.ConditionSource isBiomeTag(TagKey<Biome> tag) {
-		return isBiomeTag(tag, false);
+	public static SurfaceRules.ConditionSource isBiomeTag(TagKey<Biome> biome) {
+		return isBiomeTag(biome, BiomeRules.Type.ACTUAL);
 	}
-	public static SurfaceRules.ConditionSource isBiomeTag(TagKey<Biome> tag, boolean heightmap) {
-		if (heightmap) return MiscRules.HeightmapBiomeTag.isBiomeTag(tag);
-		else return FrozenSurfaceRules.isBiomeTagOptimized(tag);
+	public static SurfaceRules.ConditionSource isBiomeTag(TagKey<Biome> biome, BiomeRules.Type type) {
+		return switch (type) {
+			case ACTUAL -> FrozenSurfaceRules.isBiomeTagOptimized(biome);
+			case SURFACE -> BiomeRules.SurfaceBiomeTag.isBiomeTag(biome);
+			case HEIGHTMAP -> BiomeRules.HeightmapBiomeTag.isBiomeTag(biome);
+		};
 	}
 
 	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float point) {
@@ -174,7 +178,7 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.ConditionSource checkBoolean(boolean value) {
-		return MiscRules.Configured.pass(value);
+		return Configured.pass(value);
 	}
 
 	public static float greaterThan(float value) {
@@ -406,5 +410,50 @@ public class SurfaceRuleHelper {
 			config,
 			depthRule
 		);
+	}
+
+	public static class Configured implements SurfaceRules.ConditionSource {
+
+		public static final KeyDispatchDataCodec<Configured> CODEC = KeyDispatchDataCodec.of(
+			RecordCodecBuilder.mapCodec(instance ->
+				instance.group(
+					Codec.BOOL.fieldOf("pass").forGetter(r -> r.value)
+				).apply(instance, Configured::new)
+			)
+		);
+
+		private final boolean value;
+
+		public Configured(boolean value) {
+			this.value = value;
+		}
+
+		@Override
+		public SurfaceRules.Condition apply(SurfaceRules.Context context) {
+			return new Condition(value);
+		}
+
+		private static final class Condition implements SurfaceRules.Condition {
+
+			private final boolean value;
+
+			Condition(boolean value) {
+				this.value = value;
+			}
+
+			@Override
+			public boolean test() {
+				return value;
+			}
+		}
+
+		public static SurfaceRules.ConditionSource pass(boolean value) {
+			return new Configured(value);
+		}
+
+		@Override
+		public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
+			return CODEC;
+		}
 	}
 }

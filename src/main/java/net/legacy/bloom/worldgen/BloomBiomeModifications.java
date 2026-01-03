@@ -79,9 +79,18 @@ public final class BloomBiomeModifications {
 			}
         );
 
+		BiomeModifications.create(Bloom.id("no_default_flowers")).add(
+			ModificationPhase.REPLACEMENTS,
+			BiomeSelectors.tag(BloomBiomeTags.NO_DEFAULT_FLOWERS),
+			(selectionContext, modificationContext) -> {
+				modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_WARM);
+				modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VegetationPlacements.FLOWER_DEFAULT);
+			}
+		);
+
         BiomeModifications.create(Bloom.id("has_less_strict_disks")).add(
 			ModificationPhase.REPLACEMENTS,
-			BiomeSelectors.tag(BloomBiomeTags.HAS_LESS_STRICT_DISKS),
+			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_LESS_STRICT_DISKS),
 			(selectionContext, modificationContext) -> {
 				modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
 				modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
@@ -91,7 +100,7 @@ public final class BloomBiomeModifications {
         );
         BiomeModifications.create(Bloom.id("has_windswept_jungle_features")).add(
 			ModificationPhase.REPLACEMENTS,
-			BiomeSelectors.tag(BloomBiomeTags.HAS_WINDSWEPT_JUNGLE_FEATURES),
+			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_WINDSWEPT_JUNGLE_FEATURES),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_TREES);
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_FLOWERS);
@@ -99,7 +108,7 @@ public final class BloomBiomeModifications {
         );
         BiomeModifications.create(Bloom.id("has_fen_features")).add(
 			ModificationPhase.REPLACEMENTS,
-			BiomeSelectors.tag(BloomBiomeTags.HAS_FEN_FEATURES),
+			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_FEN_FEATURES),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FEN_FLOWERS);
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FEN_TREES);

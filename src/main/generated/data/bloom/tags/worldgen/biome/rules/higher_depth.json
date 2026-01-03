@@ -1,6 +1,6 @@
 {
   "values": [
-    "#bloom:has_rule/higher_stone",
+    "#bloom:rules/higher_stone",
     "minecraft:savanna_plateau"
   ]
 }

@@ -3,7 +3,7 @@ package net.legacy.bloom.registry;
 import com.mojang.serialization.MapCodec;
 import net.legacy.bloom.Bloom;
 import net.legacy.bloom.util.ClimateRules;
-import net.legacy.bloom.util.MiscRules;
+import net.legacy.bloom.util.BiomeRules;
 import net.legacy.bloom.util.NoiseRules;
 import net.legacy.bloom.util.SurfaceRuleHelper;
 import net.minecraft.core.Registry;
@@ -18,9 +18,11 @@ public class BloomConditionSources {
 	}
 
 	public static void register(BiConsumer<String, MapCodec<? extends SurfaceRules.ConditionSource>> consumer) {
-		consumer.accept("configured", MiscRules.Configured.CODEC.codec());
-		consumer.accept("heightmap_biome", MiscRules.HeightmapBiome.CODEC.codec());
-		consumer.accept("heightmap_biome_tag", MiscRules.HeightmapBiomeTag.CODEC.codec());
+		consumer.accept("configured", SurfaceRuleHelper.Configured.CODEC.codec());
+		consumer.accept("heightmap_biome", BiomeRules.HeightmapBiome.CODEC.codec());
+		consumer.accept("heightmap_biome_tag", BiomeRules.HeightmapBiomeTag.CODEC.codec());
+		consumer.accept("surface_biome", BiomeRules.SurfaceBiome.CODEC.codec());
+		consumer.accept("surface_biome_tag", BiomeRules.SurfaceBiomeTag.CODEC.codec());
 		consumer.accept("climate_temperature", ClimateRules.Temperature.CODEC.codec());
 		consumer.accept("climate_temperature_offset", ClimateRules.TemperatureOffset.CODEC.codec());
 		consumer.accept("climate_downfall", ClimateRules.Downfall.CODEC.codec());

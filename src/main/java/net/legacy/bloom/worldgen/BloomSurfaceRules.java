@@ -5,6 +5,7 @@ import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.tag.BloomBiomeTags;
+import net.legacy.bloom.util.BiomeRules;
 import net.legacy.bloom.util.NoiseRules;
 import net.legacy.bloom.util.Parameters;
 import net.legacy.bloom.util.SurfaceRuleHelper;
@@ -211,12 +212,12 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			SurfaceRules.sequence(
 				SurfaceRuleHelper.depthRule(
 					Blocks.RED_SANDSTONE,
-					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, true),
+					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, BiomeRules.Type.SURFACE),
 					16
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.SANDSTONE,
-					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE, true),
+					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE, BiomeRules.Type.SURFACE),
 					16
 				),
 				SurfaceRuleHelper.depthRule(
@@ -242,7 +243,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				SurfaceRuleHelper.depthRule(
 					Blocks.ANDESITE,
 					List.of(
-						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_2),
 						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
 					)
 				),
