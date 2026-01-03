@@ -91,7 +91,7 @@ public class SurfaceRuleHelper {
 	}
 	public static SurfaceRules.ConditionSource isBiomeTag(TagKey<Biome> tag, boolean heightmap) {
 		if (heightmap) return MiscRules.HeightmapBiomeTag.isBiomeTag(tag);
-		else return isBiomeTag(tag);
+		else return FrozenSurfaceRules.isBiomeTagOptimized(tag);
 	}
 
 	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float point) {
