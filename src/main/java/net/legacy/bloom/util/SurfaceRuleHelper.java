@@ -364,20 +364,20 @@ public class SurfaceRuleHelper {
 		public static final KeyDispatchDataCodec<Configured> CODEC = KeyDispatchDataCodec.of(
 			RecordCodecBuilder.mapCodec(instance ->
 				instance.group(
-					Codec.BOOL.fieldOf("pass").forGetter(r -> r.config)
+					Codec.BOOL.fieldOf("pass").forGetter(r -> r.value)
 				).apply(instance, Configured::new)
 			)
 		);
 
-		private final boolean config;
+		private final boolean value;
 
-		public Configured(boolean config) {
-			this.config = config;
+		public Configured(boolean value) {
+			this.value = value;
 		}
 
 		@Override
 		public SurfaceRules.Condition apply(SurfaceRules.Context context) {
-			return new Condition(config);
+			return new Condition(value);
 		}
 
 		private static final class Condition implements SurfaceRules.Condition {
@@ -394,8 +394,8 @@ public class SurfaceRuleHelper {
 			}
 		}
 
-		public static SurfaceRules.ConditionSource pass(boolean config) {
-			return new Configured(config);
+		public static SurfaceRules.ConditionSource pass(boolean value) {
+			return new Configured(value);
 		}
 
 		@Override
