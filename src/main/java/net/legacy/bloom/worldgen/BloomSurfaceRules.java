@@ -159,58 +159,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
-	public static List<SurfaceRules.ConditionSource> graniteNoises = List.of(
-		SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_3, Parameters.TEMPERATURE_4),
-		SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_0, Parameters.HUMIDITY_2)
-	);
-
-    public static SurfaceRules.RuleSource windsweptSavanna() {
-        return SurfaceRules.ifTrue(
-			SurfaceRules.isBiome(Biomes.WINDSWEPT_SAVANNA),
-			SurfaceRuleHelper.collectedRule(
-				graniteNoises,
-				SurfaceRules.ifTrue(
-					FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_GRANITE),
-					SurfaceRules.sequence(
-						SurfaceRules.ifTrue(
-							SurfaceRuleData.surfaceNoiseAbove(1.75),
-							FrozenSurfaceRules.makeStateRule(Blocks.GRANITE)
-						)
-					)
-				)
-			)
-        );
-    }
-
-	public static SurfaceRules.RuleSource snowyShore() {
-		SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(BloomBlocks.DOLERITE);
-		return SurfaceRules.ifTrue(
-			SurfaceRules.isBiome(BloomBiomes.SNOWY_SHORE),
-			SurfaceRules.sequence(
-				SurfaceRules.ifTrue(
-					SurfaceRules.noiseCondition(Noises.GRAVEL, -0.05, 0.05),
-					SurfaceRules.sequence(
-						SurfaceRules.ifTrue(
-							SurfaceRules.ON_CEILING,
-							SurfaceRules.sequence(
-								SurfaceRules.ifTrue(
-									SurfaceRuleHelper.isFreezing(),
-									rule
-								),
-								FrozenSurfaceRules.STONE
-							)
-						),
-						FrozenSurfaceRules.GRAVEL)
-				),
-				SurfaceRules.ifTrue(
-					SurfaceRuleHelper.isFreezing(),
-					rule
-				),
-				FrozenSurfaceRules.STONE
-			)
-		);
-	}
-
     public static SurfaceRules.RuleSource swampMud() {
         return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
@@ -252,8 +200,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				swampMud(),
 				beaches(),
 				gravellyRiversAndBeaches(),
-				coarseDirtStrips(),
-				windsweptSavanna()
+				coarseDirtStrips()
 			)
         );
     }
@@ -262,7 +209,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
 		context.add(
 			SurfaceRules.sequence(
-				higherStoneRule(),
 				SurfaceRuleHelper.depthRule(
 					Blocks.RED_SANDSTONE,
 					FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE),
@@ -277,10 +223,12 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 					BloomBlocks.DOLERITE,
 					SurfaceRuleHelper.isFreezing()
 				),
-				snowyShore(),
 				SurfaceRuleHelper.depthRule(
 					Blocks.GRANITE,
-					graniteNoises
+					List.of(
+						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_3, Parameters.TEMPERATURE_4),
+						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_0, Parameters.HUMIDITY_2)
+					)
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.DIORITE,
@@ -298,7 +246,8 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
 						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
 					)
-				)
+				),
+				higherStoneRule()
 			)
         );
     }

@@ -43,6 +43,14 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		// Internal
 
+		this.builder(BloomBiomeTags.INTERNAL_DEPTH_ADAPTED)
+			.addTag(BloomBiomeTags.INTERNAL_STEEP)
+			.addTag(BloomBiomeTags.INTERNAL_MOUNTAIN)
+			.addTag(BloomBiomeTags.INTERNAL_STONY)
+			.addTag(BloomBiomeTags.INTERNAL_BADLANDS)
+			.addTag(BloomBiomeTags.INTERNAL_WINDSWEPT_HILL)
+			.addTag(BloomBiomeTags.INTERNAL_WINDSWEPT_SAVANNA);
+
 		this.builder(BloomBiomeTags.INTERNAL_STEEP)
 			.add(Biomes.JAGGED_PEAKS)
 			.add(Biomes.SNOWY_SLOPES);
@@ -52,8 +60,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.FROZEN_PEAKS);
 
 		this.builder(BloomBiomeTags.INTERNAL_STONY)
-			.add(Biomes.STONY_PEAKS)
-			.add(Biomes.STONY_SHORE);
+			.addTag(BloomBiomeTags.INTERNAL_STONY_SHORE)
+			.add(Biomes.STONY_PEAKS);
+		this.builder(BloomBiomeTags.INTERNAL_STONY_SHORE)
+			.add(Biomes.STONY_SHORE)
+			.add(BloomBiomes.SNOWY_SHORE);
 
 		this.builder(BloomBiomeTags.INTERNAL_BADLANDS)
 			.addOptionalTag(BiomeTags.IS_BADLANDS);
@@ -61,6 +72,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.INTERNAL_WINDSWEPT_HILL)
 			.add(Biomes.WINDSWEPT_HILLS)
 			.add(Biomes.WINDSWEPT_GRAVELLY_HILLS);
+
+		this.builder(BloomBiomeTags.INTERNAL_WINDSWEPT_SAVANNA)
+			.add(Biomes.WINDSWEPT_SAVANNA);
 
         this.builder(BloomBiomeTags.HAS_LESS_STRICT_DISKS)
 			.addOptionalTag(BiomeTags.IS_JUNGLE)

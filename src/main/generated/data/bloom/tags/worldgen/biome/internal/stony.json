@@ -1,6 +1,6 @@
 {
   "values": [
-    "minecraft:stony_peaks",
-    "minecraft:stony_shore"
+    "#bloom:internal/stony_shore",
+    "minecraft:stony_peaks"
   ]
 }
