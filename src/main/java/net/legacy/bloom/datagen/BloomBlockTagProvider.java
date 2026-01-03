@@ -125,12 +125,17 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(BloomBlocks.DOLERITE);
 
 		this.valueLookupBuilder(BlockTags.DRIPSTONE_REPLACEABLE)
+			.add(BloomBlocks.DOLERITE)
 			.add(Blocks.SANDSTONE)
 			.add(Blocks.RED_SANDSTONE);
 
 		this.valueLookupBuilder(BlockTags.MOSS_REPLACEABLE)
+			.add(BloomBlocks.DOLERITE)
 			.add(Blocks.SANDSTONE)
 			.add(Blocks.RED_SANDSTONE);
+
+		this.valueLookupBuilder(BlockTags.SCULK_REPLACEABLE)
+			.add(BloomBlocks.DOLERITE);
 
         tagOres(BloomBlocks.TUFF_ORES);
         tagOres(BloomBlocks.GRANITE_ORES);
