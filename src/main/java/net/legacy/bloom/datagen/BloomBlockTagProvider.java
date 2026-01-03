@@ -124,9 +124,6 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 		this.valueLookupBuilder(BlockTags.STONE_ORE_REPLACEABLES)
 			.add(BloomBlocks.DOLERITE);
 
-		this.valueLookupBuilder(BlockTags.BASE_STONE_OVERWORLD)
-			.add(BloomBlocks.DOLERITE);
-
 		this.valueLookupBuilder(BlockTags.DRIPSTONE_REPLACEABLE)
 			.add(Blocks.SANDSTONE)
 			.add(Blocks.RED_SANDSTONE);

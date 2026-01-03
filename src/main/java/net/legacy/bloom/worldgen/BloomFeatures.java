@@ -12,6 +12,7 @@ public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> DISK_GRAVEL = register("disk_gravel");
 
 	public static final ResourceKey<PlacedFeature> ORE_STONE = register("ore_stone");
+	public static final ResourceKey<PlacedFeature> ORE_GRAVEL = register("ore_gravel");
 
 	public static final ResourceKey<PlacedFeature> FLOWER_HELLEBORE = register("flower_hellebore");
 	public static final ResourceKey<PlacedFeature> FLOWER_LILY_OF_THE_VALLEY = register("flower_lily_of_the_valley");

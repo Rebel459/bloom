@@ -60,6 +60,7 @@ public class BloomBiomeTags {
 	public static final TagKey<Biome> HAS_REEDS = bind("has_feature/patch_reeds");
 
 	public static final TagKey<Biome> HAS_STONE_BLOBS = bind("has_feature/ore_stone");
+	public static final TagKey<Biome> HAS_GRAVEL_BLOBS = bind("has_feature/ore_gravel");
 
     private static TagKey<Biome> bind(String path) {
         return TagKey.create(Registries.BIOME, Bloom.id(path));

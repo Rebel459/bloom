@@ -194,6 +194,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.addTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
 			.addTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE);
 
+		this.builder(BloomBiomeTags.HAS_GRAVEL_BLOBS)
+			.addOptionalTag(BiomeTags.IS_OVERWORLD);
+
 		this.builder(BloomBiomeTags.HAS_BROMELIAD)
 			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 			.add(BloomBiomes.WARM_RIVER);

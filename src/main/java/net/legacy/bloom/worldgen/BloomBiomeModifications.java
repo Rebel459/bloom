@@ -115,6 +115,14 @@ public final class BloomBiomeModifications {
 			}
 		);
 
+		BiomeModifications.create(Bloom.id("has_gravel_blobs")).add(
+			ModificationPhase.REPLACEMENTS,
+			BiomeSelectors.tag(BloomBiomeTags.HAS_GRAVEL_BLOBS),
+			(selectionContext, modificationContext) -> {
+				modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.ORE_GRAVEL);
+			}
+		);
+
 		BiomeModifications.create(Bloom.id("has_bromeliad")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_BROMELIAD),
