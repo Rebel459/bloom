@@ -148,9 +148,13 @@ public class SurfaceRuleHelper {
 
 	public static SurfaceRules.RuleSource configuredRule(boolean config, SurfaceRules.RuleSource ruleSource) {
 		return SurfaceRules.ifTrue(
-			Configured.pass(config),
+			checkBoolean(config),
 			ruleSource
 		);
+	}
+
+	public static SurfaceRules.ConditionSource checkBoolean(boolean value) {
+		return Configured.pass(value);
 	}
 
 	public static float greaterThan(float value) {
