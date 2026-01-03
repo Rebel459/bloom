@@ -43,7 +43,7 @@ public class ClimateRules {
 			private final BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos();
 			private final BlockPos.MutableBlockPos surfacePos = new BlockPos.MutableBlockPos();
 
-			private Holder<Biome> cachedHeightmapBiome = null;
+			private Holder<Biome> cachedBiome = null;
 			private boolean isCachedMountain = false;
 			private int cachedX = Integer.MIN_VALUE;
 			private int cachedZ = Integer.MIN_VALUE;
@@ -67,18 +67,18 @@ public class ClimateRules {
 
 					int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
 					surfacePos.set(x, Math.max(surfaceY, seaLevel), z);
-					cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
+					cachedBiome = accessor.getBiomeAtPos().apply(surfacePos);
 
-					isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
+					isCachedMountain = cachedBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
 				}
 
 				Holder<Biome> biomeToUse;
 
 				if (isCachedMountain) {
 					biomeToUse = accessor.getBiomeAtPos().apply(currentPos);
-					if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE) && y >= 0) biomeToUse = cachedHeightmapBiome;
+					if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE) && y >= 0) biomeToUse = cachedBiome;
 				} else {
-					biomeToUse = cachedHeightmapBiome;
+					biomeToUse = cachedBiome;
 				}
 
 				Biome biome = biomeToUse.value();
@@ -140,7 +140,7 @@ public class ClimateRules {
 			private final BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos();
 			private final BlockPos.MutableBlockPos surfacePos = new BlockPos.MutableBlockPos();
 
-			private Holder<Biome> cachedHeightmapBiome = null;
+			private Holder<Biome> cachedBiome = null;
 			private boolean isCachedMountain = false;
 			private int cachedX = Integer.MIN_VALUE;
 			private int cachedZ = Integer.MIN_VALUE;
@@ -164,18 +164,18 @@ public class ClimateRules {
 
 					int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
 					surfacePos.set(x, Math.max(surfaceY, seaLevel), z);
-					cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
+					cachedBiome = accessor.getBiomeAtPos().apply(surfacePos);
 
-					isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
+					isCachedMountain = cachedBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
 				}
 
 				Holder<Biome> biomeToUse;
 
 				if (isCachedMountain) {
 					biomeToUse = accessor.getBiomeAtPos().apply(currentPos);
-					if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE) && y >= 0) biomeToUse = cachedHeightmapBiome;
+					if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE) && y >= 0) biomeToUse = cachedBiome;
 				} else {
-					biomeToUse = cachedHeightmapBiome;
+					biomeToUse = cachedBiome;
 				}
 
 				Biome biome = biomeToUse.value();
@@ -234,7 +234,7 @@ public class ClimateRules {
 			private final BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos();
 			private final BlockPos.MutableBlockPos surfacePos = new BlockPos.MutableBlockPos();
 
-			private Holder<Biome> cachedHeightmapBiome = null;
+			private Holder<Biome> cachedBiome = null;
 			private boolean isCachedMountain = false;
 			private int cachedX = Integer.MIN_VALUE;
 			private int cachedZ = Integer.MIN_VALUE;
@@ -258,18 +258,18 @@ public class ClimateRules {
 
 					int surfaceY = accessor.getChunk().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
 					surfacePos.set(x, Math.max(surfaceY, seaLevel), z);
-					cachedHeightmapBiome = accessor.getBiomeAtPos().apply(surfacePos);
+					cachedBiome = accessor.getBiomeAtPos().apply(surfacePos);
 
-					isCachedMountain = cachedHeightmapBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
+					isCachedMountain = cachedBiome.is(ConventionalBiomeTags.IS_MOUNTAIN);
 				}
 
 				Holder<Biome> biomeToUse;
 
 				if (isCachedMountain) {
 					biomeToUse = accessor.getBiomeAtPos().apply(currentPos);
-					if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE) && y >= 0) biomeToUse = cachedHeightmapBiome;
+					if (biomeToUse.is(ConventionalBiomeTags.IS_CAVE) && y >= 0) biomeToUse = cachedBiome;
 				} else {
-					biomeToUse = cachedHeightmapBiome;
+					biomeToUse = cachedBiome;
 				}
 
 				Biome biome = biomeToUse.value();

@@ -37,13 +37,8 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_STRIP_COARSE_DIRT = bind("rules/strip_coarse_dirt");
     public static final TagKey<Biome> HAS_HIGHER_DEPTH = bind("rules/higher_depth");
 	public static final TagKey<Biome> HAS_HIGHER_STONE = bind("rules/higher_stone");
-	public static final TagKey<Biome> HAS_MODIFIED_STONE_TYPE = bind("rules/internal/modified_stone_type"); // redundant
-	public static final TagKey<Biome> HAS_DEPTH_GRANITE = bind("rules/depth_granite");
-	public static final TagKey<Biome> HAS_DEPTH_DIORITE = bind("rules/depth_diorite");
-	public static final TagKey<Biome> HAS_DEPTH_ANDESITE = bind("rules/depth_andesite");
 	public static final TagKey<Biome> HAS_DEPTH_SANDSTONE = bind("rules/depth_sandstone");
 	public static final TagKey<Biome> HAS_DEPTH_RED_SANDSTONE = bind("rules/depth_red_sandstone");
-	public static final TagKey<Biome> HAS_DEPTH_DOLERITE = bind("rules/depth_dolerite");
 
     public static final TagKey<Biome> HAS_BROMELIAD = bind("features/flower_bromeliad");
     public static final TagKey<Biome> HAS_PINK_ORCHID = bind("features/flower_pink_orchid");

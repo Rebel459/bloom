@@ -146,25 +146,6 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.SAVANNA)
 			.add(Biomes.SAVANNA_PLATEAU);
 
-        this.builder(BloomBiomeTags.HAS_DEPTH_GRANITE)
-			.add(Biomes.SAVANNA)
-			.add(Biomes.SAVANNA_PLATEAU)
-			.add(Biomes.WINDSWEPT_SAVANNA)
-			.add(BloomBiomes.LUKEWARM_RIVER);
-
-        this.builder(BloomBiomeTags.HAS_DEPTH_DIORITE);
-
-        this.builder(BloomBiomeTags.HAS_DEPTH_ANDESITE)
-			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA)
-			.add(BloomBiomes.FEN)
-			.add(BloomBiomes.COLD_RIVER);
-
-        this.builder(BloomBiomeTags.HAS_DEPTH_DOLERITE)
-			.add(Biomes.SNOWY_PLAINS)
-			.add(Biomes.SNOWY_TAIGA)
-			.add(Biomes.FROZEN_RIVER)
-			.add(Biomes.ICE_SPIKES);
-
         this.builder(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
 			.add(Biomes.DESERT);
 
@@ -178,15 +159,6 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BloomBiomeTags.HAS_HIGHER_DEPTH)
 			.addTag(BloomBiomeTags.HAS_HIGHER_STONE)
 			.add(Biomes.SAVANNA_PLATEAU);
-
-		this.builder(BloomBiomeTags.HAS_MODIFIED_STONE_TYPE)
-			.addTag(BloomBiomeTags.HAS_DEPTH_GRANITE)
-			.addTag(BloomBiomeTags.HAS_DEPTH_DIORITE)
-			.addTag(BloomBiomeTags.HAS_DEPTH_DOLERITE)
-			.addTag(BloomBiomeTags.HAS_DEPTH_GRANITE)
-			.addTag(BloomBiomeTags.HAS_DEPTH_ANDESITE)
-			.addTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
-			.addTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE);
 
 		// Features
 
