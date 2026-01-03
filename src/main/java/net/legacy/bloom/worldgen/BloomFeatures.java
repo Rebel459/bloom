@@ -24,7 +24,9 @@ public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> FLOWER_DIANTHUS = register("flower_dianthus");
 	public static final ResourceKey<PlacedFeature> FLOWER_GOLDENROD = register("flower_goldenrod");
 	public static final ResourceKey<PlacedFeature> FLOWER_ORANGE_DAISY = register("flower_orange_daisy");
-    public static final ResourceKey<PlacedFeature> FLOWER_SCILLA = register("flower_scilla");
+	public static final ResourceKey<PlacedFeature> FLOWER_SCILLA = register("flower_scilla");
+	public static final ResourceKey<PlacedFeature> FLOWER_HYACINTH = register("flower_hyacinth");
+	public static final ResourceKey<PlacedFeature> FLOWER_QUEENCUP = register("flower_queencup");
 
     public static final ResourceKey<PlacedFeature> PATCH_SUCCULENT = register("patch_succulent");
     public static final ResourceKey<PlacedFeature> PATCH_REEDS = register("patch_reeds");

@@ -36,16 +36,14 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(BloomBlocks.PINK_ORCHID)
 			.add(BloomBlocks.GOLDENROD)
 			.add(BloomBlocks.CALLA_LILY)
-			.add(BloomBlocks.ORANGE_DAISY);
+			.add(BloomBlocks.ORANGE_DAISY)
+			.add(BloomBlocks.HYACINTH)
+			.add(BloomBlocks.QUEENCUP);
 
 		this.valueLookupBuilder(BlockTags.FLOWERS)
 			.add(BloomBlocks.DIANTHUS)
-			.add(BloomBlocks.GOLDENROD)
-			.add(BloomBlocks.CALLA_LILY)
-			.add(BloomBlocks.ORANGE_DAISY)
 			.add(BloomBlocks.SCILLA)
 			.add(BloomBlocks.BELLFLOWER)
-			.add(BloomBlocks.PINK_ORCHID)
 			.add(BloomBlocks.BROMELIAD)
 			.add(BloomBlocks.HELLEBORE)
 			.add(BloomBlocks.HYDRANGEA);
@@ -58,7 +56,9 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(BloomBlocks.POTTED_SCILLA)
 			.add(BloomBlocks.POTTED_PINK_ORCHID)
 			.add(BloomBlocks.POTTED_BROMELIAD)
-			.add(BloomBlocks.POTTED_HELLEBORE);
+			.add(BloomBlocks.POTTED_HELLEBORE)
+			.add(BloomBlocks.POTTED_HYACINTH)
+			.add(BloomBlocks.POTTED_QUEENCUP);
 
         this.valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
 			.add(BloomBlocks.JACARANDA_LOG);

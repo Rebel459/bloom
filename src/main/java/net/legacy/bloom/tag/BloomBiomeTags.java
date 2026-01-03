@@ -55,7 +55,9 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_DIANTHUS = bind("has_feature/flower_dianthus");
     public static final TagKey<Biome> HAS_GOLDENROD = bind("has_feature/flower_goldenrod");
     public static final TagKey<Biome> HAS_ORANGE_DAISY = bind("has_feature/flower_orange_daisy");
-    public static final TagKey<Biome> HAS_SCILLA = bind("has_feature/flower_scilla");
+	public static final TagKey<Biome> HAS_SCILLA = bind("has_feature/flower_scilla");
+	public static final TagKey<Biome> HAS_HYACINTH = bind("has_feature/flower_hyacinth");
+	public static final TagKey<Biome> HAS_QUEENCUP = bind("has_feature/flower_queencup");
     public static final TagKey<Biome> HAS_SUCCULENT = bind("has_feature/patch_succulent");
 	public static final TagKey<Biome> HAS_REEDS = bind("has_feature/patch_reeds");
 

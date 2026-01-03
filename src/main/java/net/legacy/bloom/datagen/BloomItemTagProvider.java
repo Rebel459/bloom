@@ -23,16 +23,14 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 			.add(BloomBlocks.PINK_ORCHID.asItem())
 			.add(BloomBlocks.GOLDENROD.asItem())
 			.add(BloomBlocks.CALLA_LILY.asItem())
-			.add(BloomBlocks.ORANGE_DAISY.asItem());
+			.add(BloomBlocks.ORANGE_DAISY.asItem())
+			.add(BloomBlocks.HYACINTH.asItem())
+			.add(BloomBlocks.QUEENCUP.asItem());
 
 		this.valueLookupBuilder(ItemTags.FLOWERS)
 			.add(BloomBlocks.DIANTHUS.asItem())
-			.add(BloomBlocks.GOLDENROD.asItem())
-			.add(BloomBlocks.CALLA_LILY.asItem())
-			.add(BloomBlocks.ORANGE_DAISY.asItem())
 			.add(BloomBlocks.SCILLA.asItem())
 			.add(BloomBlocks.BELLFLOWER.asItem())
-			.add(BloomBlocks.PINK_ORCHID.asItem())
 			.add(BloomBlocks.BROMELIAD.asItem())
 			.add(BloomBlocks.HELLEBORE.asItem())
 			.add(BloomBlocks.HYDRANGEA.asItem());

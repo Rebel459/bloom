@@ -193,13 +193,27 @@ public final class BloomBiomeModifications {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_ORANGE_DAISY);
 			}
         );
-        BiomeModifications.create(Bloom.id("has_scilla")).add(
+		BiomeModifications.create(Bloom.id("has_scilla")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_SCILLA),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_SCILLA);
 			}
-        );
+		);
+		BiomeModifications.create(Bloom.id("has_hyacinth")).add(
+			ModificationPhase.REPLACEMENTS,
+			BiomeSelectors.tag(BloomBiomeTags.HAS_HYACINTH),
+			(selectionContext, modificationContext) -> {
+				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_HYACINTH);
+			}
+		);
+		BiomeModifications.create(Bloom.id("has_queencup")).add(
+			ModificationPhase.REPLACEMENTS,
+			BiomeSelectors.tag(BloomBiomeTags.HAS_QUEENCUP),
+			(selectionContext, modificationContext) -> {
+				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_QUEENCUP);
+			}
+		);
         BiomeModifications.create(Bloom.id("has_succulent")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_SUCCULENT),

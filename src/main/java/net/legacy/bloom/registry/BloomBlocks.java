@@ -142,6 +142,24 @@ public final class BloomBlocks {
 		Blocks.flowerPotProperties()
 	);
 
+	public static final Block HYACINTH = register("hyacinth",
+		properties -> new FlowerBlock(MobEffects.POISON, 11F, properties),
+		BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final Block POTTED_HYACINTH = registerWithoutItem("potted_hyacinth",
+		properties -> new FlowerPotBlock(HYACINTH, properties),
+		Blocks.flowerPotProperties()
+	);
+
+	public static final Block QUEENCUP = register("queencup",
+		properties -> new FlowerBlock(MobEffects.SPEED, 5F, properties),
+		BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final Block POTTED_QUEENCUP = registerWithoutItem("potted_queencup",
+		properties -> new FlowerPotBlock(QUEENCUP, properties),
+		Blocks.flowerPotProperties()
+	);
+
 	public static final Block BELLFLOWER = register("bellflower",
 		TallFlowerBlock::new,
 		BlockBehaviour.Properties.ofFullCopy(Blocks.ROSE_BUSH)

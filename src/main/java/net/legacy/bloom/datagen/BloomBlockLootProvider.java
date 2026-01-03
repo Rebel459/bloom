@@ -35,7 +35,11 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.dropSelf(BloomBlocks.ORANGE_DAISY);
 		this.dropPottedContents(BloomBlocks.POTTED_ORANGE_DAISY);
 		this.dropSelf(BloomBlocks.SCILLA);
-        this.dropPottedContents(BloomBlocks.POTTED_SCILLA);
+		this.dropPottedContents(BloomBlocks.POTTED_SCILLA);
+		this.dropSelf(BloomBlocks.HYACINTH);
+		this.dropPottedContents(BloomBlocks.POTTED_HYACINTH);
+		this.dropSelf(BloomBlocks.QUEENCUP);
+		this.dropPottedContents(BloomBlocks.POTTED_QUEENCUP);
 		this.dropSelf(BloomBlocks.BELLFLOWER);
 		this.dropSelf(BloomBlocks.HYDRANGEA);
 		this.dropSelf(BloomBlocks.SUCCULENT);

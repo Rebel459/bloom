@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_queencup": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bloom:queencup"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bloom:white_dye_from_queencup"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_queencup"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bloom:white_dye_from_queencup"
+    ]
+  }
+}

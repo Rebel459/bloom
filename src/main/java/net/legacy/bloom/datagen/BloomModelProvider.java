@@ -31,6 +31,8 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.createPlantWithDefaultItem(BloomBlocks.GOLDENROD, BloomBlocks.POTTED_GOLDENROD, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createPlantWithDefaultItem(BloomBlocks.ORANGE_DAISY, BloomBlocks.POTTED_ORANGE_DAISY, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createPlantWithDefaultItem(BloomBlocks.SCILLA, BloomBlocks.POTTED_SCILLA, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.HYACINTH, BloomBlocks.POTTED_HYACINTH, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.QUEENCUP, BloomBlocks.POTTED_QUEENCUP, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createDoublePlantWithDefaultItem(BloomBlocks.BELLFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
         generator.createDoublePlantWithDefaultItem(BloomBlocks.HYDRANGEA, BlockModelGenerators.PlantType.NOT_TINTED);
         generator.createDoublePlantWithDefaultItem(BloomBlocks.REEDS, BlockModelGenerators.PlantType.NOT_TINTED);

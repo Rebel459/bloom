@@ -234,11 +234,21 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BloomBiomeTags.HAS_ORANGE_DAISY)
 			.add(Biomes.OLD_GROWTH_BIRCH_FOREST);
 
-        this.builder(BloomBiomeTags.HAS_SCILLA)
+		this.builder(BloomBiomeTags.HAS_SCILLA)
 			.add(Biomes.SNOWY_TAIGA)
 			.add(Biomes.SNOWY_PLAINS)
 			.add(Biomes.WINDSWEPT_FOREST)
 			.add(Biomes.WINDSWEPT_HILLS)
+			.add(Biomes.WINDSWEPT_GRAVELLY_HILLS);
+
+		this.builder(BloomBiomeTags.HAS_HYACINTH)
+			.add(Biomes.DARK_FOREST)
+			.add(Biomes.SWAMP)
+			.add(BloomBiomes.FEN);
+
+		this.builder(BloomBiomeTags.HAS_QUEENCUP)
+			.add(Biomes.WINDSWEPT_HILLS)
+			.add(Biomes.WINDSWEPT_FOREST)
 			.add(Biomes.WINDSWEPT_GRAVELLY_HILLS);
 
         this.builder(BloomBiomeTags.HAS_SUCCULENT)
