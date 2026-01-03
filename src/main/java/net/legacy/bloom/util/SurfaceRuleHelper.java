@@ -147,15 +147,10 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.RuleSource configuredRule(boolean config, SurfaceRules.RuleSource ruleSource) {
-		if (config) return ruleSource;
-		else return SurfaceRules.ifTrue(
-			impossible(),
+		return SurfaceRules.ifTrue(
+			Configured.pass(config),
 			ruleSource
 		);
-	}
-
-	public static SurfaceRules.ConditionSource impossible() {
-		return Impossible.get();
 	}
 
 	public static float greaterThan(float value) {
@@ -360,29 +355,43 @@ public class SurfaceRuleHelper {
 		);
 	}
 
-	public static class Impossible implements SurfaceRules.ConditionSource {
+	public static class Configured implements SurfaceRules.ConditionSource {
 
-		public static final KeyDispatchDataCodec<Impossible> CODEC = KeyDispatchDataCodec.of(MapCodec.unit(new Impossible()));
+		public static final KeyDispatchDataCodec<Configured> CODEC = KeyDispatchDataCodec.of(
+			RecordCodecBuilder.mapCodec(instance ->
+				instance.group(
+					Codec.BOOL.fieldOf("pass").forGetter(r -> r.config)
+				).apply(instance, Configured::new)
+			)
+		);
 
-		public Impossible() {}
+		private final boolean config;
+
+		public Configured(boolean config) {
+			this.config = config;
+		}
 
 		@Override
 		public SurfaceRules.Condition apply(SurfaceRules.Context context) {
-			return new Impossible.Condition(context);
+			return new Condition(config);
 		}
 
-		private final class Condition implements SurfaceRules.Condition {
+		private static final class Condition implements SurfaceRules.Condition {
 
-			Condition(SurfaceRules.Context context) {}
+			private final boolean value;
+
+			Condition(boolean value) {
+				this.value = value;
+			}
 
 			@Override
 			public boolean test() {
-				return false;
+				return value;
 			}
 		}
 
-		public static SurfaceRules.ConditionSource get() {
-			return new Impossible();
+		public static SurfaceRules.ConditionSource pass(boolean config) {
+			return new Configured(config);
 		}
 
 		@Override

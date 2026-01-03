@@ -17,7 +17,7 @@ public class BloomConditionSources {
 	}
 
 	public static void register(BiConsumer<String, MapCodec<? extends SurfaceRules.ConditionSource>> consumer) {
-		consumer.accept("impossible", SurfaceRuleHelper.Impossible.CODEC.codec());
+		consumer.accept("configured", SurfaceRuleHelper.Configured.CODEC.codec());
 		consumer.accept("climate_temperature", ClimateRules.Temperature.CODEC.codec());
 		consumer.accept("climate_temperature_offset", ClimateRules.TemperatureOffset.CODEC.codec());
 		consumer.accept("climate_downfall", ClimateRules.Downfall.CODEC.codec());
