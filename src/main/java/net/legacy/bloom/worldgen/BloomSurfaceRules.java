@@ -21,7 +21,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
     public static SurfaceRules.RuleSource aridRiversAndShores() {
         return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_COARSE_DIRT),
+			SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_SURFACE_COARSE_DIRT),
 			SurfaceRules.sequence(
 				SurfaceRules.ifTrue(
 					SurfaceRules.ON_FLOOR,
@@ -38,14 +38,14 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     public static SurfaceRules.RuleSource tropicalRivers() {
         return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
-				SurfaceRules.isBiome(BloomBiomes.TROPICAL_RIVER),
+				SurfaceRuleHelper.isBiome(BloomBiomes.TROPICAL_RIVER),
 				SurfaceRules.ifTrue(
 					SurfaceRules.ON_FLOOR,
 					FrozenSurfaceRules.makeStateRule(Blocks.MUD)
 				)
 			),
 			SurfaceRules.ifTrue(
-				SurfaceRules.isBiome(BloomBiomes.TROPICAL_RIVER),
+				SurfaceRuleHelper.isBiome(BloomBiomes.TROPICAL_RIVER),
 				SurfaceRules.ifTrue(
 					SurfaceRules.UNDER_FLOOR,
 					FrozenSurfaceRules.makeStateRule(Blocks.MUD)
@@ -57,7 +57,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     public static SurfaceRules.RuleSource underwaterMud() {
         return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_UNDERWATER_MUD),
+				SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_UNDERWATER_MUD),
 				SurfaceRules.ifTrue(
 					SurfaceRules.ON_FLOOR,
 					SurfaceRules.ifTrue(
@@ -67,7 +67,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				)
 			),
 			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_UNDERWATER_MUD),
+				SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_UNDERWATER_MUD),
 				SurfaceRules.ifTrue(
 					SurfaceRules.UNDER_FLOOR,
 					SurfaceRules.ifTrue(
@@ -118,14 +118,14 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
     public static SurfaceRules.RuleSource beaches() {
         return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_SAND),
+			SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_SURFACE_SAND),
 			sandyBiomeRules()
         );
     }
 
     public static SurfaceRules.RuleSource gravellyRiversAndBeaches() {
         return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SURFACE_GRAVEL),
+			SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_SURFACE_GRAVEL),
 			SurfaceRules.sequence(
 				SurfaceRules.ifTrue(
 					SurfaceRules.ON_FLOOR,
@@ -145,7 +145,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
         );
         return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_STRIP_COARSE_DIRT),
+			SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_STRIP_COARSE_DIRT),
 			SurfaceRules.sequence(
 				SurfaceRules.ifTrue(
 					SurfaceRules.ON_FLOOR,
@@ -162,7 +162,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
     public static SurfaceRules.RuleSource swampMud() {
         return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_SWAMP_MUD),
+				SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_SWAMP_MUD),
 				SurfaceRules.ifTrue(
 					SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(64), 0)),
 					SurfaceRules.ifTrue(
@@ -185,7 +185,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
 	public static SurfaceRules.RuleSource higherStoneRule() {
 		return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_STONE),
+			SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_HIGHER_STONE),
 			SurfaceRuleHelper.higherStoneRule(Blocks.STONE)
 		);
 	}
@@ -211,12 +211,12 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 			SurfaceRules.sequence(
 				SurfaceRuleHelper.depthRule(
 					Blocks.RED_SANDSTONE,
-					FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE),
+					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, true),
 					16
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.SANDSTONE,
-					FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_DEPTH_SANDSTONE),
+					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE, true),
 					16
 				),
 				SurfaceRuleHelper.depthRule(

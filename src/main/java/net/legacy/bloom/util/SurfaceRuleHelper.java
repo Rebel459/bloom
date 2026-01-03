@@ -6,7 +6,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.minecraft.data.worldgen.SurfaceRuleData;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.KeyDispatchDataCodec;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
@@ -73,6 +76,22 @@ public class SurfaceRuleHelper {
 	}
 	public static SurfaceRules.ConditionSource heightmapDepthBelow(float point) {
 		return NoiseRules.HeightmapDepth.below(point);
+	}
+
+	public static SurfaceRules.ConditionSource isBiome(ResourceKey<Biome> biome) {
+		return isBiome(biome, false);
+	}
+	public static SurfaceRules.ConditionSource isBiome(ResourceKey<Biome> biome, boolean heightmap) {
+		if (heightmap) return MiscRules.HeightmapBiome.isBiome(biome);
+		else return SurfaceRules.isBiome(biome);
+	}
+
+	public static SurfaceRules.ConditionSource isBiomeTag(TagKey<Biome> tag) {
+		return isBiomeTag(tag, false);
+	}
+	public static SurfaceRules.ConditionSource isBiomeTag(TagKey<Biome> tag, boolean heightmap) {
+		if (heightmap) return MiscRules.HeightmapBiomeTag.isBiomeTag(tag);
+		else return isBiomeTag(tag);
 	}
 
 	public static SurfaceRules.ConditionSource noise(NoiseRules.Type type, float point) {
@@ -155,7 +174,7 @@ public class SurfaceRuleHelper {
 	}
 
 	public static SurfaceRules.ConditionSource checkBoolean(boolean value) {
-		return Configured.pass(value);
+		return MiscRules.Configured.pass(value);
 	}
 
 	public static float greaterThan(float value) {
@@ -173,7 +192,7 @@ public class SurfaceRuleHelper {
 	public static SurfaceRules.RuleSource higherStoneRule(Block block) {
 		final SurfaceRules.RuleSource rule = FrozenSurfaceRules.makeStateRule(block);
 		return SurfaceRules.ifTrue(
-			FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.HAS_HIGHER_DEPTH),
+			isBiomeTag(BloomBiomeTags.HAS_HIGHER_DEPTH),
 			SurfaceRules.ifTrue(
 				SurfaceRules.not(SurfaceRules.stoneDepthCheck(1, false, CaveSurface.FLOOR)),
 				SurfaceRules.ifTrue(
@@ -289,10 +308,10 @@ public class SurfaceRuleHelper {
 						)
 					),
 					SurfaceRules.ifTrue(
-						FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_DEPTH_ADAPTED),
+						isBiomeTag(BloomBiomeTags.INTERNAL_DEPTH_ADAPTED),
 						SurfaceRules.sequence(
 							SurfaceRules.ifTrue(
-								FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_STEEP),
+								isBiomeTag(BloomBiomeTags.INTERNAL_STEEP),
 								SurfaceRules.sequence(
 									SurfaceRules.ifTrue(
 										SurfaceRules.steep(),
@@ -308,7 +327,7 @@ public class SurfaceRuleHelper {
 								)
 							),
 							SurfaceRules.ifTrue(
-								FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_MOUNTAIN),
+								isBiomeTag(BloomBiomeTags.INTERNAL_MOUNTAIN),
 								SurfaceRules.ifTrue(
 									SurfaceRules.not(SurfaceRules.ON_FLOOR),
 									SurfaceRules.ifTrue(
@@ -318,11 +337,11 @@ public class SurfaceRuleHelper {
 								)
 							),
 							SurfaceRules.ifTrue(
-								FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_STONY),
+								isBiomeTag(BloomBiomeTags.INTERNAL_STONY),
 								SurfaceRules.sequence(
 									SurfaceRules.sequence(
 										SurfaceRules.ifTrue(
-											FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_STONY_SHORE),
+											isBiomeTag(BloomBiomeTags.INTERNAL_STONY_SHORE),
 											SurfaceRules.ifTrue(
 												SurfaceRules.noiseCondition(Noises.GRAVEL, -0.05, 0.05),
 												SurfaceRules.sequence(
@@ -346,14 +365,14 @@ public class SurfaceRuleHelper {
 								)
 							),
 							SurfaceRules.ifTrue(
-								FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_WINDSWEPT_HILL),
+								isBiomeTag(BloomBiomeTags.INTERNAL_WINDSWEPT_HILL),
 								SurfaceRules.ifTrue(
 									SurfaceRuleData.surfaceNoiseAbove(1.0),
 									rule
 								)
 							),
 							SurfaceRules.ifTrue(
-								FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_WINDSWEPT_SAVANNA),
+								isBiomeTag(BloomBiomeTags.INTERNAL_WINDSWEPT_SAVANNA),
 								SurfaceRules.ifTrue(
 									SurfaceRuleData.surfaceNoiseAbove(1.75),
 									rule
@@ -366,11 +385,11 @@ public class SurfaceRuleHelper {
 			);
 		depthRule = SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
-				SurfaceRules.not(FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_BADLANDS)),
+				SurfaceRules.not(isBiomeTag(BloomBiomeTags.INTERNAL_BADLANDS)),
 				depthRule
 			),
 			SurfaceRules.ifTrue(
-				FrozenSurfaceRules.isBiomeTagOptimized(BloomBiomeTags.INTERNAL_BADLANDS),
+				isBiomeTag(BloomBiomeTags.INTERNAL_BADLANDS),
 				SurfaceRules.ifTrue(
 					SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
 					depthRule
@@ -387,50 +406,5 @@ public class SurfaceRuleHelper {
 			config,
 			depthRule
 		);
-	}
-
-	public static class Configured implements SurfaceRules.ConditionSource {
-
-		public static final KeyDispatchDataCodec<Configured> CODEC = KeyDispatchDataCodec.of(
-			RecordCodecBuilder.mapCodec(instance ->
-				instance.group(
-					Codec.BOOL.fieldOf("pass").forGetter(r -> r.value)
-				).apply(instance, Configured::new)
-			)
-		);
-
-		private final boolean value;
-
-		public Configured(boolean value) {
-			this.value = value;
-		}
-
-		@Override
-		public SurfaceRules.Condition apply(SurfaceRules.Context context) {
-			return new Condition(value);
-		}
-
-		private static final class Condition implements SurfaceRules.Condition {
-
-			private final boolean value;
-
-			Condition(boolean value) {
-				this.value = value;
-			}
-
-			@Override
-			public boolean test() {
-				return value;
-			}
-		}
-
-		public static SurfaceRules.ConditionSource pass(boolean value) {
-			return new Configured(value);
-		}
-
-		@Override
-		public KeyDispatchDataCodec<? extends SurfaceRules.ConditionSource> codec() {
-			return CODEC;
-		}
 	}
 }
