@@ -1,5 +1,6 @@
 package net.legacy.bloom.worldgen;
 
+import java.util.List;
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
 import net.legacy.bloom.registry.BloomBiomes;
@@ -10,13 +11,9 @@ import net.legacy.bloom.util.NoiseRules;
 import net.legacy.bloom.util.Parameters;
 import net.legacy.bloom.util.SurfaceRuleHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-
-import java.util.List;
 
 public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfaceRuleCallback, SurfaceRuleEvents.OverworldSurfaceRuleNoPrelimSurfaceCallback {
 

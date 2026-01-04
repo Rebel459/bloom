@@ -2,6 +2,7 @@ package net.legacy.bloom.util;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.legacy.bloom.mixin.worldgen.SurfaceRulesContextAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;

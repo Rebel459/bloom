@@ -52,5 +52,4 @@ public class Bloom implements ModInitializer {
 	public static <T> ResourceKey<T> key(ResourceKey<? extends Registry<T>> resourceKey, String path) {
 		return ResourceKey.create(resourceKey, id(path));
 	}
-
 }

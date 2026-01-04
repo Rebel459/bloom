@@ -49,7 +49,7 @@ public class ClimateCommand {
 				.withStyle(ChatFormatting.AQUA))
 			.append(Component.literal(String.format("  Biome Temperature: %.3f\n", baseTemp))
 				.withStyle(ChatFormatting.GREEN))
-			.append(Component.literal(String.format("  Biome Downfall:    %.3f", downfall))
+			.append(Component.literal(String.format("  Biome Downfall: %.3f", downfall))
 				.withStyle(ChatFormatting.LIGHT_PURPLE)), false);
 		return 1;
 	}
