@@ -37,7 +37,8 @@ public final class BloomBlockRenderLayers {
 
         BlockRenderLayerMap.putBlock(BloomBlocks.SUCCULENT, ChunkSectionLayer.CUTOUT);
 
-        BlockRenderLayerMap.putBlock(BloomBlocks.JACARANDA_SAPLING, ChunkSectionLayer.CUTOUT);
         BlockRenderLayerMap.putBlock(BloomBlocks.JACARANDA.getLeaves(), ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.JACARANDA_SAPLING, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_JACARANDA_SAPLING, ChunkSectionLayer.CUTOUT);
 	}
 }
