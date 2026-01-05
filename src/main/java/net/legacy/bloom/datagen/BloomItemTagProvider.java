@@ -4,12 +4,12 @@ import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.legacy.bloom.registry.BloomBlocks;
-import net.legacy.bloom.tag.BloomBlockTags;
 import net.legacy.bloom.tag.BloomItemTags;
+import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 
 public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
@@ -35,9 +35,30 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 			.add(BloomBlocks.HELLEBORE.asItem())
 			.add(BloomBlocks.HYDRANGEA.asItem());
 
+		this.valueLookupBuilder(ItemTags.SAPLINGS)
+			.add(BloomBlocks.JACARANDA_SAPLING.asItem());
+
+		this.valueLookupBuilder(ItemTags.STONE_TOOL_MATERIALS)
+			.add(BloomBlocks.DOLERITE.asItem());
+
+		tagWoodset(BloomBlocks.JACARANDA, BloomItemTags.JACARANDA_LOGS);
+	}
+
+	public void tagWoodset(WoodsetRegistry woodset, TagKey<Item> tag) {
+
+		this.valueLookupBuilder(tag)
+			.add(woodset.getLog().asItem(), woodset.getStrippedLog().asItem())
+			.add(woodset.getWood().asItem(), woodset.getStrippedWood().asItem());
+
+		this.valueLookupBuilder(ItemTags.LOGS)
+			.addOptionalTag(tag);
+
+		this.valueLookupBuilder(ItemTags.LOGS_THAT_BURN)
+			.addOptionalTag(tag);
+
 		this.valueLookupBuilder(BloomItemTags.JACARANDA_LOGS)
-			.add(BloomBlocks.JACARANDA_LOG.asItem(), BloomBlocks.STRIPPED_JACARANDA_LOG.asItem())
-			.add(BloomBlocks.JACARANDA_WOOD.asItem(), BloomBlocks.STRIPPED_JACARANDA_WOOD.asItem());
+			.add(woodset.getLog().asItem(), woodset.getStrippedLog().asItem())
+			.add(woodset.getWood().asItem(), woodset.getStrippedWood().asItem());
 
 		this.valueLookupBuilder(ItemTags.LOGS)
 			.addOptionalTag(BloomItemTags.JACARANDA_LOGS);
@@ -46,45 +67,39 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 			.addOptionalTag(BloomItemTags.JACARANDA_LOGS);
 
 		this.valueLookupBuilder(ItemTags.LEAVES)
-			.add(BloomBlocks.JACARANDA_LEAVES.asItem());
+			.add(woodset.getLeaves().asItem());
 
 		this.valueLookupBuilder(ItemTags.PLANKS)
-			.add(BloomBlocks.JACARANDA_PLANKS.asItem());
-
-		this.valueLookupBuilder(ItemTags.SAPLINGS)
-			.add(BloomBlocks.JACARANDA_SAPLING.asItem());
+			.add(woodset.getPlanks().asItem());
 
 		this.valueLookupBuilder(ItemTags.SIGNS)
-			.add(BloomBlocks.JACARANDA_SIGN.asItem());
+			.add(woodset.getSignItem());
 
 		this.valueLookupBuilder(ItemTags.HANGING_SIGNS)
-			.add(BloomBlocks.JACARANDA_WALL_HANGING_SIGN.asItem());
+			.add(woodset.getWallHangingSign().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_BUTTONS)
-			.add(BloomBlocks.JACARANDA_BUTTON.asItem());
+			.add(woodset.getButton().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_DOORS)
-			.add(BloomBlocks.JACARANDA_DOOR.asItem());
+			.add(woodset.getDoor().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_FENCES)
-			.add(BloomBlocks.JACARANDA_FENCE.asItem());
+			.add(woodset.getFence().asItem());
 
 		this.valueLookupBuilder(ItemTags.FENCE_GATES)
-			.add(BloomBlocks.JACARANDA_FENCE_GATE.asItem());
+			.add(woodset.getFenceGate().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_PRESSURE_PLATES)
-			.add(BloomBlocks.JACARANDA_PRESSURE_PLATE.asItem());
+			.add(woodset.getPressurePlate().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_SLABS)
-			.add(BloomBlocks.JACARANDA_SLAB.asItem());
+			.add(woodset.getSlab().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_STAIRS)
-			.add(BloomBlocks.JACARANDA_STAIRS.asItem());
+			.add(woodset.getStairs().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_TRAPDOORS)
-			.add(BloomBlocks.JACARANDA_TRAPDOOR.asItem());
-
-		this.valueLookupBuilder(ItemTags.STONE_TOOL_MATERIALS)
-			.add(BloomBlocks.DOLERITE.asItem());
+			.add(woodset.getTrapDoor().asItem());
 	}
 }

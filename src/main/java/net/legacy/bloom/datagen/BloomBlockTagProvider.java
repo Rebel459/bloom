@@ -5,8 +5,9 @@ import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.legacy.bloom.registry.BloomBlocks;
-import net.legacy.bloom.util.StoneOresRegistry;
 import net.legacy.bloom.tag.BloomBlockTags;
+import net.legacy.bloom.util.StoneOresRegistry;
+import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -60,63 +61,16 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(BloomBlocks.POTTED_HYACINTH)
 			.add(BloomBlocks.POTTED_QUEENCUP);
 
-        this.valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
-			.add(BloomBlocks.JACARANDA_LOG);
-
-        this.valueLookupBuilder(BloomBlockTags.JACARANDA_LOGS)
-			.add(BloomBlocks.JACARANDA_LOG, BloomBlocks.STRIPPED_JACARANDA_LOG)
-			.add(BloomBlocks.JACARANDA_WOOD, BloomBlocks.STRIPPED_JACARANDA_WOOD);
-
         this.valueLookupBuilder(BlockTags.LOGS)
 			.addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
 
         this.valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
 			.addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
 
-        this.valueLookupBuilder(BlockTags.LEAVES)
-			.add(BloomBlocks.JACARANDA_LEAVES);
-
-        this.valueLookupBuilder(BlockTags.PLANKS)
-			.add(BloomBlocks.JACARANDA_PLANKS);
-
         this.valueLookupBuilder(BlockTags.SAPLINGS)
 			.add(BloomBlocks.JACARANDA_SAPLING);
 
-        this.valueLookupBuilder(BlockTags.STANDING_SIGNS)
-			.add(BloomBlocks.JACARANDA_SIGN);
-
-        this.valueLookupBuilder(BlockTags.WALL_SIGNS)
-			.add(BloomBlocks.JACARANDA_WALL_SIGN);
-
-        this.valueLookupBuilder(BlockTags.CEILING_HANGING_SIGNS)
-			.add(BloomBlocks.JACARANDA_HANGING_SIGN);
-
-        this.valueLookupBuilder(BlockTags.WALL_HANGING_SIGNS)
-			.add(BloomBlocks.JACARANDA_WALL_HANGING_SIGN);
-
-        this.valueLookupBuilder(BlockTags.WOODEN_BUTTONS)
-			.add(BloomBlocks.JACARANDA_BUTTON);
-
-        this.valueLookupBuilder(BlockTags.WOODEN_DOORS)
-			.add(BloomBlocks.JACARANDA_DOOR);
-
-        this.valueLookupBuilder(BlockTags.WOODEN_FENCES)
-			.add(BloomBlocks.JACARANDA_FENCE);
-
-        this.valueLookupBuilder(BlockTags.FENCE_GATES)
-			.add(BloomBlocks.JACARANDA_FENCE_GATE);
-
-        this.valueLookupBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
-			.add(BloomBlocks.JACARANDA_PRESSURE_PLATE);
-
-        this.valueLookupBuilder(BlockTags.WOODEN_SLABS)
-			.add(BloomBlocks.JACARANDA_SLAB);
-
-        this.valueLookupBuilder(BlockTags.WOODEN_STAIRS)
-			.add(BloomBlocks.JACARANDA_STAIRS);
-
-        this.valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
-			.add(BloomBlocks.JACARANDA_TRAPDOOR);
+		tagWoodset(BloomBlocks.JACARANDA, BloomBlockTags.JACARANDA_LOGS);
 
 		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
 			.add(BloomBlocks.DOLERITE);
@@ -144,6 +98,80 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
         tagOres(BloomBlocks.DOLERITE_ORES);
         tagOres(BloomBlocks.SANDSTONE_ORES);
         tagOres(BloomBlocks.RED_SANDSTONE_ORES);
+	}
+
+	public void tagWoodset(WoodsetRegistry woodset, TagKey<Block> tag) {
+
+		this.valueLookupBuilder(BlockTags.STANDING_SIGNS)
+			.add(woodset.getSign());
+
+		this.valueLookupBuilder(BlockTags.WALL_SIGNS)
+			.add(woodset.getWallSign());
+
+		this.valueLookupBuilder(BlockTags.CEILING_HANGING_SIGNS)
+			.add(woodset.getHangingSign());
+
+		this.valueLookupBuilder(BlockTags.WALL_HANGING_SIGNS)
+			.add(woodset.getWallHangingSign());
+
+		this.valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
+			.add(woodset.getLog());
+
+		this.valueLookupBuilder(tag)
+			.add(woodset.getLog(), woodset.getStrippedLog())
+			.add(woodset.getWood(), woodset.getStrippedWood());
+
+		this.valueLookupBuilder(BlockTags.LOGS)
+			.addOptionalTag(tag);
+
+		this.valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
+			.addOptionalTag(tag);
+
+		this.valueLookupBuilder(BloomBlockTags.JACARANDA_LOGS)
+			.add(woodset.getLog(), woodset.getStrippedLog())
+			.add(woodset.getWood(), woodset.getStrippedWood());
+
+		this.valueLookupBuilder(BlockTags.LOGS)
+			.addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
+
+		this.valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
+			.addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
+
+		this.valueLookupBuilder(BlockTags.LEAVES)
+			.add(woodset.getLeaves());
+
+		this.valueLookupBuilder(BlockTags.PLANKS)
+			.add(woodset.getPlanks());
+
+		this.valueLookupBuilder(BlockTags.SIGNS)
+			.add(woodset.getSign());
+
+		this.valueLookupBuilder(BlockTags.ALL_HANGING_SIGNS)
+			.add(woodset.getHangingSign());
+
+		this.valueLookupBuilder(BlockTags.WOODEN_BUTTONS)
+			.add(woodset.getButton());
+
+		this.valueLookupBuilder(BlockTags.WOODEN_DOORS)
+			.add(woodset.getDoor());
+
+		this.valueLookupBuilder(BlockTags.WOODEN_FENCES)
+			.add(woodset.getFence());
+
+		this.valueLookupBuilder(BlockTags.FENCE_GATES)
+			.add(woodset.getFenceGate());
+
+		this.valueLookupBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
+			.add(woodset.getPressurePlate());
+
+		this.valueLookupBuilder(BlockTags.WOODEN_SLABS)
+			.add(woodset.getSlab());
+
+		this.valueLookupBuilder(BlockTags.WOODEN_STAIRS)
+			.add(woodset.getStairs());
+
+		this.valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
+			.add(woodset.getTrapDoor());
 	}
 
     public void tagOres(StoneOresRegistry ores) {

@@ -38,14 +38,8 @@ public final class BloomModelProvider extends FabricModelProvider {
         generator.createDoublePlantWithDefaultItem(BloomBlocks.REEDS, BlockModelGenerators.PlantType.NOT_TINTED);
         this.createSinglePlant(BloomBlocks.SUCCULENT, BlockModelGenerators.PlantType.NOT_TINTED, generator);
 
-        BlockModelGenerators.BlockFamilyProvider jacarandaFamily = generator.family(BloomBlocks.JACARANDA_PLANKS);
-        jacarandaFamily.generateFor(BloomBlocks.FAMILY_JACARANDA);
-        generator.woodProvider(BloomBlocks.JACARANDA_LOG).logWithHorizontal(BloomBlocks.JACARANDA_LOG).wood(BloomBlocks.JACARANDA_WOOD);
-        generator.woodProvider(BloomBlocks.STRIPPED_JACARANDA_LOG).logWithHorizontal(BloomBlocks.STRIPPED_JACARANDA_LOG).wood(BloomBlocks.STRIPPED_JACARANDA_WOOD);
-        generator.createHangingSign(BloomBlocks.STRIPPED_JACARANDA_LOG, BloomBlocks.JACARANDA_HANGING_SIGN, BloomBlocks.JACARANDA_WALL_HANGING_SIGN);
-        generator.createShelf(BloomBlocks.JACARANDA_SHELF, BloomBlocks.STRIPPED_JACARANDA_LOG);
-        generator.createPlantWithDefaultItem(BloomBlocks.JACARANDA_SAPLING, BloomBlocks.POTTED_JACARANDA_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
-        generator.createTrivialBlock(BloomBlocks.JACARANDA_LEAVES, TexturedModel.LEAVES);
+		BloomBlocks.JACARANDA.fullWoodset(generator);
+		generator.createPlantWithDefaultItem(BloomBlocks.JACARANDA_SAPLING, BloomBlocks.POTTED_JACARANDA_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         generator.createTrivialCube(BloomBlocks.DOLERITE);
 

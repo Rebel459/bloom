@@ -84,7 +84,7 @@ public final class BloomBiomeModifications {
 			BiomeSelectors.tag(BloomBiomeTags.NO_DEFAULT_FLOWERS),
 			(selectionContext, modificationContext) -> {
 				modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_WARM);
-				modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VegetationPlacements.FLOWER_DEFAULT);
+				modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_DEFAULT);
 			}
 		);
 

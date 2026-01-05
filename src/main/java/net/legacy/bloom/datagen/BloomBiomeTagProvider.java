@@ -167,9 +167,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.SNOWY_PLAINS)
 			.add(Biomes.SNOWY_BEACH)
 			.add(Biomes.ICE_SPIKES)
-			.add(BloomBiomes.WINDSWEPT_JUNGLE)
 			.add(BloomBiomes.FEN)
-			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE);
+			.addOptionalTag(BiomeTags.IS_JUNGLE);
 
 		this.builder(BloomBiomeTags.HAS_STONE_BLOBS)
 			.addTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE)

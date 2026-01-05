@@ -3,6 +3,10 @@
     {
       "id": "#bloom:jacaranda_logs",
       "required": false
+    },
+    {
+      "id": "#bloom:jacaranda_logs",
+      "required": false
     }
   ]
 }

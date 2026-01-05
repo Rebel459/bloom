@@ -14,6 +14,5 @@ public final class BloomParticleResources extends ParticleResources {
 		final ParticleFactoryRegistry particleRegistry = ParticleFactoryRegistry.getInstance();
 
         particleRegistry.register(BloomParticleTypes.JACARANDA_LEAVES, FallingLeavesParticle.CherryProvider::new);
-
 	}
 }

@@ -6,6 +6,9 @@ import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.BloomItems;
+import net.legacy.bloom.tag.BloomBlockTags;
+import net.legacy.bloom.tag.BloomItemTags;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -44,6 +47,8 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 				this.oneToOneConversionRecipe(Items.ORANGE_DYE, BloomBlocks.ORANGE_DAISY, "orange_dye");
 				this.oneToOneConversionRecipe(Items.PINK_DYE, BloomBlocks.HYACINTH, "pink_dye");
 				this.oneToOneConversionRecipe(Items.WHITE_DYE, BloomBlocks.QUEENCUP, "white_dye");
+
+				BloomBlocks.JACARANDA.generateRecipes(this, exporter, BloomItemTags.JACARANDA_LOGS);
 
 				for (StoneOresRegistry registry : StoneOresRegistry.ALL_REGISTRIES) {
 					oreRecipes(registry);

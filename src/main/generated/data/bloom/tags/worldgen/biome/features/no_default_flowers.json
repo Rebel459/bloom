@@ -4,8 +4,10 @@
     "minecraft:snowy_plains",
     "minecraft:snowy_beach",
     "minecraft:ice_spikes",
-    "bloom:windswept_jungle",
     "bloom:fen",
-    "#bloom:is_non_bamboo_jungle"
+    {
+      "id": "#minecraft:is_jungle",
+      "required": false
+    }
   ]
 }

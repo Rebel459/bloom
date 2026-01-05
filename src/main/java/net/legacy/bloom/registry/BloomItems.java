@@ -12,9 +12,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import static net.minecraft.world.item.Items.registerBlock;
 import net.minecraft.world.item.SignItem;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
 public final class BloomItems {
+
+	public static List<Item> TRANSLATABLE_ITEMS = new ArrayList<>();
 
     // Entity Items
 /*    public static final BoatItem CHORUS_RAFT = init("chorus_raft",
@@ -25,18 +28,6 @@ public final class BloomItems {
             properties -> new BoatItem(EREntityTypes.CHORUS_CHEST_RAFT, properties),
             new Item.Properties()
     );*/
-
-    // Block Items
-    public static final Item JACARANDA_SIGN = registerBlock(BloomBlocks.JACARANDA_SIGN,
-		(block, properties) -> new SignItem(block, BloomBlocks.JACARANDA_WALL_SIGN, properties),
-		new Item.Properties()
-			.stacksTo(16)
-    );
-    public static final Item JACARANDA_HANGING_SIGN = registerBlock(BloomBlocks.JACARANDA_HANGING_SIGN,
-		(block, properties) -> new HangingSignItem(block, BloomBlocks.JACARANDA_WALL_HANGING_SIGN, properties),
-		new Item.Properties()
-			.stacksTo(16)
-    );
 
     public static void init() {
     }

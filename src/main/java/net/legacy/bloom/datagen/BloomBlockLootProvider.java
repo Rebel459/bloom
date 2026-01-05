@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.util.StoneOresRegistry;
+import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -44,24 +45,7 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.dropSelf(BloomBlocks.HYDRANGEA);
 		this.dropSelf(BloomBlocks.SUCCULENT);
 
-        this.dropSelf(BloomBlocks.JACARANDA_LOG);
-        this.dropSelf(BloomBlocks.STRIPPED_JACARANDA_LOG);
-        this.dropSelf(BloomBlocks.JACARANDA_WOOD);
-        this.dropSelf(BloomBlocks.STRIPPED_JACARANDA_WOOD);
-        this.dropSelf(BloomBlocks.JACARANDA_PLANKS);
-        this.dropSelf(BloomBlocks.JACARANDA_BUTTON);
-        this.dropSelf(BloomBlocks.JACARANDA_PRESSURE_PLATE);
-        this.dropSelf(BloomBlocks.JACARANDA_TRAPDOOR);
-        this.dropSelf(BloomBlocks.JACARANDA_STAIRS);
-        this.add(BloomBlocks.JACARANDA_SLAB, this::createSlabItemTable);
-        this.dropSelf(BloomBlocks.JACARANDA_FENCE);
-        this.dropSelf(BloomBlocks.JACARANDA_FENCE_GATE);
-        this.add(BloomBlocks.JACARANDA_DOOR, this::createDoorTable);
-        this.dropSelf(BloomBlocks.JACARANDA_SIGN);
-        this.dropSelf(BloomBlocks.JACARANDA_HANGING_SIGN);
-        this.dropSelf(BloomBlocks.JACARANDA_SHELF);
-        this.dropSelf(BloomBlocks.JACARANDA_SAPLING);
-        this.add(BloomBlocks.JACARANDA_LEAVES, block -> this.createLeavesDrops(block, BloomBlocks.JACARANDA_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        woodDrops(BloomBlocks.JACARANDA);
 
         this.dropSelf(BloomBlocks.DOLERITE);
 
@@ -72,8 +56,6 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
         this.oreDrops(BloomBlocks.DOLERITE_ORES);
         this.oreDrops(BloomBlocks.SANDSTONE_ORES);
         this.oreDrops(BloomBlocks.RED_SANDSTONE_ORES);
-
-        //this.add(ERBlocks.CHORUS_MOSAIC_SLAB, this::createSlabItemTable);
 	}
 
     public void oreDrops(StoneOresRegistry ores) {
@@ -89,4 +71,36 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
         if (Objects.equals(material, "sapphire")) id = "legacies_and_legends";
         return BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(id, "deepslate_" + material + "_ore"));
     }
+
+	public void woodDrops(WoodsetRegistry woodset){
+		this.dropSelf(woodset.getPlanks());
+		this.dropSelf(woodset.getStairs());
+		this.createSlabItemTable(woodset.getSlab());
+		this.dropSelf(woodset.getFence());
+		this.dropSelf(woodset.getFenceGate());
+		this.dropSelf(woodset.getButton());
+		this.dropSelf(woodset.getPressurePlate());
+		this.dropSelf(woodset.getLog());
+
+		if (woodset.getWoodPreset() == WoodsetRegistry.WoodPreset.BAMBOO) {
+			this.dropSelf(woodset.getMosaic());
+			this.dropSelf(woodset.getMosaicStairs());
+			this.createSlabItemTable(woodset.getMosaicSlab());
+		}
+		else{
+			this.dropSelf(woodset.getWood());
+			this.dropSelf(woodset.getStrippedLog());
+			this.dropSelf(woodset.getStrippedWood());
+		}
+
+		this.dropSelf(woodset.getTrapDoor());
+		this.createDoorTable(woodset.getDoor());
+		if (woodset.isOverworldTreeWood()){
+			this.createLeavesDrops(woodset.getLeaves(), woodset.getLeaves(), 0.05f, 0.0625f, 0.025f, 0.083333336f, 0.1f);
+		}
+		this.dropSelf(woodset.getSign());
+		this.dropSelf(woodset.getHangingSign());
+
+		this.dropSelf(woodset.getShelf());
+	}
 }

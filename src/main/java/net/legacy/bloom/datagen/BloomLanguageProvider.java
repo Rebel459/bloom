@@ -3,10 +3,13 @@ package net.legacy.bloom.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.util.StoneOresRegistry;
+import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import java.util.concurrent.CompletableFuture;
@@ -23,6 +26,9 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		}
 		for (Block blocks : BloomBlocks.TRANSLATABLE_BLOCKS) {
 			autoName(translationBuilder, blocks);
+		}
+		for (Item items : BloomItems.TRANSLATABLE_ITEMS) {
+			autoName(translationBuilder, items);
 		}
 	}
 

@@ -9,7 +9,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 public final class BloomParticleTypes {
     public static final SimpleParticleType JACARANDA_LEAVES = register("jacaranda_leaves", false);
 
-    private static SimpleParticleType register(String path, boolean alwaysShow) {
+    public static SimpleParticleType register(String path, boolean alwaysShow) {
         return Registry.register(BuiltInRegistries.PARTICLE_TYPE, Bloom.id(path), FabricParticleTypes.simple(alwaysShow));
     }
 }
