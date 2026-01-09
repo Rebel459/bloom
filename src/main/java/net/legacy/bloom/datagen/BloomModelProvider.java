@@ -4,34 +4,14 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.legacy.bloom.Bloom;
-import net.legacy.bloom.client.SleepingBagSpecialRenderer;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.client.data.models.MultiVariant;
-import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.client.data.models.model.TexturedModel;
-import net.minecraft.client.renderer.block.model.BlockModelDefinition;
-import net.minecraft.client.renderer.blockentity.BedRenderer;
-import net.minecraft.client.renderer.special.BedSpecialRenderer;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
 public final class BloomModelProvider extends FabricModelProvider {

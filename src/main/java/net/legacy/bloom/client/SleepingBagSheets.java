@@ -20,7 +20,7 @@ public class SleepingBagSheets {
 		.toArray(Material[]::new);
 
 	public static Material createSleepingBagMaterial(DyeColor dyeColor) {
-		return SLEEPING_BAG_MAPPER.apply(net.minecraft.client.renderer.Sheets.colorToResourceMaterial(dyeColor));
+		return SLEEPING_BAG_MAPPER.apply(Sheets.colorToResourceMaterial(dyeColor));
 	}
 
 	public static Material getSleepingBagMaterial(DyeColor dyeColor) {
