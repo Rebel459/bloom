@@ -2,11 +2,13 @@ package net.legacy.bloom.client;
 
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.legacy.bloom.registry.BloomBlockEntities;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.object.boat.BoatModel;
 import net.minecraft.client.model.object.boat.RaftModel;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.RaftRenderer;
 import net.minecraft.resources.Identifier;

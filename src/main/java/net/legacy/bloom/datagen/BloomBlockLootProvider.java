@@ -49,6 +49,8 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 
         this.dropSelf(BloomBlocks.DOLERITE);
 
+		this.dropSelf(BloomBlocks.WHITE_SLEEPING_BAG);
+
         this.oreDrops(BloomBlocks.TUFF_ORES);
         this.oreDrops(BloomBlocks.GRANITE_ORES);
         this.oreDrops(BloomBlocks.ANDESITE_ORES);

@@ -7,6 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.registry.BloomBiomes;
+import net.legacy.bloom.registry.BloomBlockEntities;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.BloomConditionSources;
 import net.legacy.bloom.registry.BloomCreativeInventory;
@@ -36,6 +37,7 @@ public class Bloom implements ModInitializer {
         BloomSounds.init();
         BloomCreativeInventory.init();
 		BloomConditionSources.init();
+		BloomBlockEntities.init();
 		ClimateCommand.init();
 
 		ResourceLoader.registerBuiltinPack(

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -14,6 +13,7 @@ import net.legacy.bloom.Bloom;
 import net.legacy.bloom.block.AridVegetationBlock;
 import net.legacy.bloom.block.HalfSubmergedBlock;
 import net.legacy.bloom.block.LargeFlowerBlock;
+import net.legacy.bloom.block.SleepingBagBlock;
 import net.legacy.bloom.block.WideFlowerBlock;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.legacy.bloom.util.WoodsetRegistry;
@@ -27,6 +27,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemContainerContents;
@@ -37,17 +38,23 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.ShelfBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 public final class BloomBlocks {
     public static final BlockSetType JACARANDA_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(Bloom.id("jacaranda"));
     public static final WoodType JACARANDA_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CHERRY).register(Bloom.id("jacaranda"), JACARANDA_SET);
 
 	public static List<Block> TRANSLATABLE_BLOCKS = new ArrayList<>();
+
+	// Cotton
+
+	public static final Block WHITE_SLEEPING_BAG = registerSleepingBag("white_sleeping_bag", DyeColor.WHITE);
 
     // Flora
 
@@ -160,11 +167,11 @@ public final class BloomBlocks {
 		BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_SEAGRASS)
     );
 
-    public static final Block DOLERITE = register("dolerite",
+	public static final Block DOLERITE = register("dolerite",
 		Block::new,
 		BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
 			.strength(1.8F, 8F)
-    );
+	);
 
 	public static final WoodsetRegistry JACARANDA = new WoodsetRegistry(Bloom.id("jacaranda"), MapColor.COLOR_PURPLE, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.FANCY));
 
@@ -264,5 +271,9 @@ public final class BloomBlocks {
 		if (block instanceof DoorBlock || block instanceof TallFlowerBlock) itemSupplier = DoubleHighBlockItem::new;
 		if (block instanceof ShelfBlock) itemSupplier = (shelfBlock, properties) -> new BlockItem(shelfBlock, properties.component(DataComponents.CONTAINER, ItemContainerContents.EMPTY));
 		Items.registerBlock(block, itemSupplier);
+	}
+
+	private static Block registerSleepingBag(String string, DyeColor dyeColor) {
+		return registerWithoutItem(string, (properties) -> new SleepingBagBlock(dyeColor, properties), BlockBehaviour.Properties.of().mapColor((blockState) -> blockState.getValue(SleepingBagBlock.PART) == SleepingBagBlock.Part.FOOT ? dyeColor.getMapColor() : MapColor.WOOL).sound(SoundType.WOOD).strength(0.1F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY));
 	}
 }

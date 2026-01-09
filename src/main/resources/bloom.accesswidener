@@ -13,3 +13,10 @@ accessible class net/minecraft/client/particle/ParticleResources$MutableSpriteSe
 accessible class net/minecraft/client/particle/ParticleResources$SpriteParticleRegistration
 accessible method net/minecraft/client/particle/ParticleResources$SpriteParticleRegistration create (Lnet/minecraft/client/particle/SpriteSet;)Lnet/minecraft/client/particle/ParticleProvider;
 accessible method net/minecraft/client/particle/FallingLeavesParticle$CherryProvider <init> (Lnet/minecraft/client/particle/SpriteSet;)V
+
+accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier
+accessible method net/minecraft/world/level/block/entity/BlockEntityType <init> (Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;Ljava/util/Set;)V
+accessible field net/minecraft/world/level/block/BedBlock color Lnet/minecraft/world/item/DyeColor;
+accessible method net/minecraft/client/data/AtlasProvider storeAtlas (Lnet/minecraft/data/CachedOutput;Lnet/minecraft/resources/Identifier;Ljava/util/List;)Ljava/util/concurrent/CompletableFuture;
+accessible method net/minecraft/client/data/AtlasProvider simpleMapper (Lnet/minecraft/client/renderer/MaterialMapper;)Ljava/util/List;
+accessible field net/minecraft/client/resources/model/AtlasManager KNOWN_ATLASES Ljava/util/List;

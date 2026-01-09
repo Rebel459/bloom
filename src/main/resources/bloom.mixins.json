@@ -5,9 +5,14 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "client": [],
+  "client": [
+    "client.AtlasManagerMixin",
+    "client.AtlasProviderMixin"
+  ],
   "mixins": [
+    "entity.LivingEntityMixin",
     "item.HoeItemMixin",
+    "server.ServerPlayerMixin",
     "worldgen.BiomeAccessor",
     "worldgen.SurfaceRulesContextAccessor"
   ]

@@ -20,15 +20,15 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 	}
 
 	@Override
-	public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder) {
+	public void generateTranslations(HolderLookup.Provider lookup, TranslationBuilder translation) {
 		for (StoneOresRegistry registry : StoneOresRegistry.ALL_REGISTRIES) {
-			generateOreSet(translationBuilder, registry);
+			generateOreSet(translation, registry);
 		}
 		for (Block blocks : BloomBlocks.TRANSLATABLE_BLOCKS) {
-			autoName(translationBuilder, blocks);
+			autoName(translation, blocks);
 		}
 		for (Item items : BloomItems.TRANSLATABLE_ITEMS) {
-			autoName(translationBuilder, items);
+			autoName(translation, items);
 		}
 	}
 

@@ -1,0 +1,9 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:directory",
+      "prefix": "entity/sleeping_bag/",
+      "source": "entity/sleeping_bag"
+    }
+  ]
+}
