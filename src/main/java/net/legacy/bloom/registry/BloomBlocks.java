@@ -2,6 +2,7 @@ package net.legacy.bloom.registry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
@@ -24,6 +25,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -51,10 +53,27 @@ public final class BloomBlocks {
     public static final WoodType JACARANDA_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CHERRY).register(Bloom.id("jacaranda"), JACARANDA_SET);
 
 	public static List<Block> TRANSLATABLE_BLOCKS = new ArrayList<>();
+	public static List<Block> SMALL_FLOWERS = new ArrayList<>();
+	public static List<Block> LARGE_FLOWERS = new ArrayList<>();
 
 	// Cotton
 
 	public static final Block WHITE_SLEEPING_BAG = registerSleepingBag("white_sleeping_bag", DyeColor.WHITE);
+	public static final Block ORANGE_SLEEPING_BAG = registerSleepingBag("orange_sleeping_bag", DyeColor.ORANGE);
+	public static final Block MAGENTA_SLEEPING_BAG = registerSleepingBag("magenta_sleeping_bag", DyeColor.MAGENTA);
+	public static final Block LIGHT_BLUE_SLEEPING_BAG = registerSleepingBag("light_blue_sleeping_bag", DyeColor.LIGHT_BLUE);
+	public static final Block YELLOW_SLEEPING_BAG = registerSleepingBag("yellow_sleeping_bag", DyeColor.YELLOW);
+	public static final Block LIME_SLEEPING_BAG = registerSleepingBag("lime_sleeping_bag", DyeColor.LIME);
+	public static final Block PINK_SLEEPING_BAG = registerSleepingBag("pink_sleeping_bag", DyeColor.PINK);
+	public static final Block GRAY_SLEEPING_BAG = registerSleepingBag("gray_sleeping_bag", DyeColor.GRAY);
+	public static final Block LIGHT_GRAY_SLEEPING_BAG = registerSleepingBag("light_gray_sleeping_bag", DyeColor.LIGHT_GRAY);
+	public static final Block CYAN_SLEEPING_BAG = registerSleepingBag("cyan_sleeping_bag", DyeColor.CYAN);
+	public static final Block PURPLE_SLEEPING_BAG = registerSleepingBag("purple_sleeping_bag", DyeColor.PURPLE);
+	public static final Block BLUE_SLEEPING_BAG = registerSleepingBag("blue_sleeping_bag", DyeColor.BLUE);
+	public static final Block BROWN_SLEEPING_BAG = registerSleepingBag("brown_sleeping_bag", DyeColor.BROWN);
+	public static final Block GREEN_SLEEPING_BAG = registerSleepingBag("green_sleeping_bag", DyeColor.GREEN);
+	public static final Block RED_SLEEPING_BAG = registerSleepingBag("red_sleeping_bag", DyeColor.RED);
+	public static final Block BLACK_SLEEPING_BAG = registerSleepingBag("black_sleeping_bag", DyeColor.BLACK);
 
     // Flora
 
@@ -249,7 +268,6 @@ public final class BloomBlocks {
 	public static <T extends Block> T register(String path, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties) {
 		return register(path, block, properties, false);
 	}
-
 	public static <T extends Block> T register(String path, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties, boolean skipNameGen) {
 		final T registered = registerWithoutItem(path, block, properties);
 		registerBlockItem(registered, skipNameGen);
@@ -267,6 +285,8 @@ public final class BloomBlocks {
 
 	private static void registerBlockItem(Block block, boolean skipNameGen) {
 		if (!skipNameGen) TRANSLATABLE_BLOCKS.add(block);
+		if (block.defaultBlockState().is(BlockTags.SMALL_FLOWERS)) SMALL_FLOWERS.add(block);
+		else if (block.defaultBlockState().is(BlockTags.FLOWERS)) LARGE_FLOWERS.add(block);
 		BiFunction<Block, Item.Properties, Item> itemSupplier = BlockItem::new;
 		if (block instanceof DoorBlock || block instanceof TallFlowerBlock) itemSupplier = DoubleHighBlockItem::new;
 		if (block instanceof ShelfBlock) itemSupplier = (shelfBlock, properties) -> new BlockItem(shelfBlock, properties.component(DataComponents.CONTAINER, ItemContainerContents.EMPTY));
@@ -274,6 +294,11 @@ public final class BloomBlocks {
 	}
 
 	private static Block registerSleepingBag(String string, DyeColor dyeColor) {
-		return registerWithoutItem(string, (properties) -> new SleepingBagBlock(dyeColor, properties), BlockBehaviour.Properties.of().mapColor((blockState) -> blockState.getValue(SleepingBagBlock.PART) == SleepingBagBlock.Part.FOOT ? dyeColor.getMapColor() : MapColor.WOOL).sound(SoundType.WOOD).strength(0.1F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY));
+		return registerSleepingBag(string, dyeColor, false);
+	}
+	private static Block registerSleepingBag(String string, DyeColor dyeColor, boolean skipNameGen) {
+		Block block = registerWithoutItem(string, (properties) -> new SleepingBagBlock(dyeColor, properties), BlockBehaviour.Properties.of().mapColor((blockState) -> blockState.getValue(SleepingBagBlock.PART) == SleepingBagBlock.Part.FOOT ? dyeColor.getMapColor() : MapColor.WOOL).sound(SoundType.WOOD).strength(0.1F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY));
+		if (!skipNameGen) TRANSLATABLE_BLOCKS.add(block);
+		return block;
 	}
 }

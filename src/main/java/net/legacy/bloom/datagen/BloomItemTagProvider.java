@@ -4,6 +4,8 @@ import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.BloomItems;
+import net.legacy.bloom.tag.BloomBlockTags;
 import net.legacy.bloom.tag.BloomItemTags;
 import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.core.HolderLookup;
@@ -19,6 +21,24 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 
 	@Override
 	protected void addTags(HolderLookup.Provider arg) {
+		this.valueLookupBuilder(BloomItemTags.SLEEPING_BAGS)
+			.add(BloomItems.WHITE_SLEEPING_BAG)
+			.add(BloomItems.ORANGE_SLEEPING_BAG)
+			.add(BloomItems.MAGENTA_SLEEPING_BAG)
+			.add(BloomItems.LIGHT_BLUE_SLEEPING_BAG)
+			.add(BloomItems.YELLOW_SLEEPING_BAG)
+			.add(BloomItems.LIME_SLEEPING_BAG)
+			.add(BloomItems.PINK_SLEEPING_BAG)
+			.add(BloomItems.GRAY_SLEEPING_BAG)
+			.add(BloomItems.LIGHT_GRAY_SLEEPING_BAG)
+			.add(BloomItems.CYAN_SLEEPING_BAG)
+			.add(BloomItems.PURPLE_SLEEPING_BAG)
+			.add(BloomItems.BLUE_SLEEPING_BAG)
+			.add(BloomItems.BROWN_SLEEPING_BAG)
+			.add(BloomItems.GREEN_SLEEPING_BAG)
+			.add(BloomItems.RED_SLEEPING_BAG)
+			.add(BloomItems.BLACK_SLEEPING_BAG);
+
 		this.valueLookupBuilder(ItemTags.SMALL_FLOWERS)
 			.add(BloomBlocks.PINK_ORCHID.asItem())
 			.add(BloomBlocks.GOLDENROD.asItem())

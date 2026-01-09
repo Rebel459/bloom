@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bloom:block/yellow_sleeping_bag"
+    }
+  }
+}

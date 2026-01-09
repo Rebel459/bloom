@@ -51,23 +51,21 @@ public final class BloomModelProvider extends FabricModelProvider {
         oreModels(BloomBlocks.RED_SANDSTONE_ORES, generator);
 
 		generator.createParticleOnlyBlock(BloomBlocks.WHITE_SLEEPING_BAG, Blocks.WHITE_WOOL);
-
-/*		generator.createTrivialCube(ERBlocks.CRYSTALLINE_LAMP);
-		generator.createTrivialCube(ERBlocks.CRYSTALLINE_BLOCK);
-		generator.createTrivialCube(ERBlocks.END_IRON_ORE);
-		generator.createTrivialCube(ERBlocks.MIRESTONE_IRON_ORE);
-		generator.createTrivialCube(ERBlocks.RAW_CRYSTALLINE_BLOCK);
-		generator.createDoor(ERBlocks.CHORUS_DOOR);
-		generator.createTrapdoor(ERBlocks.CHORUS_TRAPDOOR);
-        generator.createShelf(ERBlocks.CHORUS_SHELF, ERBlocks.STRIPPED_CHORUS_BLOCK);
-
-		BlockModelGenerators.BlockFamilyProvider chorusFamily = generator.family(ERBlocks.CHORUS_PLANKS);
-		chorusFamily.skipGeneratingModelsFor.add(ERBlocks.CHORUS_DOOR);
-		chorusFamily.skipGeneratingModelsFor.add(ERBlocks.CHORUS_TRAPDOOR);
-		chorusFamily.generateFor(ERBlocks.FAMILY_CHORUS);
-		generator.woodProvider(ERBlocks.CHORUS_BLOCK).logWithHorizontal(ERBlocks.CHORUS_BLOCK);
-		generator.woodProvider(ERBlocks.STRIPPED_CHORUS_BLOCK).logWithHorizontal(ERBlocks.STRIPPED_CHORUS_BLOCK);
-		generator.createHangingSign(ERBlocks.STRIPPED_CHORUS_BLOCK, ERBlocks.CHORUS_HANGING_SIGN, ERBlocks.CHORUS_WALL_HANGING_SIGN);*/
+		generator.createParticleOnlyBlock(BloomBlocks.ORANGE_SLEEPING_BAG, Blocks.ORANGE_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.MAGENTA_SLEEPING_BAG, Blocks.MAGENTA_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.LIGHT_BLUE_SLEEPING_BAG, Blocks.LIGHT_BLUE_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.YELLOW_SLEEPING_BAG, Blocks.YELLOW_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.LIME_SLEEPING_BAG, Blocks.LIME_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.PINK_SLEEPING_BAG, Blocks.PINK_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.GRAY_SLEEPING_BAG, Blocks.GRAY_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.LIGHT_GRAY_SLEEPING_BAG, Blocks.LIGHT_GRAY_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.CYAN_SLEEPING_BAG, Blocks.CYAN_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.PURPLE_SLEEPING_BAG, Blocks.PURPLE_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.BLUE_SLEEPING_BAG, Blocks.BLUE_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.BROWN_SLEEPING_BAG, Blocks.BROWN_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.GREEN_SLEEPING_BAG, Blocks.GREEN_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.RED_SLEEPING_BAG, Blocks.RED_WOOL);
+		generator.createParticleOnlyBlock(BloomBlocks.BLACK_SLEEPING_BAG, Blocks.BLACK_WOOL);
 	}
 
     public void oreModels(StoneOresRegistry ores, BlockModelGenerators generator) {
@@ -82,8 +80,21 @@ public final class BloomModelProvider extends FabricModelProvider {
 	@Override
 	public void generateItemModels(ItemModelGenerators generator) {
 		generator.generateFlatItem(BloomItems.WHITE_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
-/*        generator.generateFlatItem(ERItems.CHORUS_RAFT, ModelTemplates.FLAT_ITEM);
-		generator.generateFlatItem(ERItems.CHORUS_CHEST_RAFT, ModelTemplates.FLAT_ITEM);*/
+		generator.generateFlatItem(BloomItems.ORANGE_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.MAGENTA_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.LIGHT_BLUE_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.YELLOW_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.LIME_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.PINK_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.GRAY_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.LIGHT_GRAY_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.CYAN_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.PURPLE_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.BLUE_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.BROWN_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.GREEN_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.RED_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.BLACK_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
 	}
 
 	public void createSinglePlant(Block block, BlockModelGenerators.PlantType type, BlockModelGenerators generator) {

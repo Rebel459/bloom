@@ -4,13 +4,17 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.legacy.bloom.block.SleepingBagBlock;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 
 public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
@@ -49,7 +53,22 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 
         this.dropSelf(BloomBlocks.DOLERITE);
 
-		this.dropSelf(BloomBlocks.WHITE_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.WHITE_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.ORANGE_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.MAGENTA_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.LIGHT_BLUE_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.YELLOW_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.LIME_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.PINK_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.GRAY_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.LIGHT_GRAY_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.CYAN_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.PURPLE_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.BLUE_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.BROWN_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.GREEN_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.RED_SLEEPING_BAG);
+		this.sleepingBagDrops(BloomBlocks.BLACK_SLEEPING_BAG);
 
         this.oreDrops(BloomBlocks.TUFF_ORES);
         this.oreDrops(BloomBlocks.GRANITE_ORES);
@@ -58,6 +77,10 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
         this.oreDrops(BloomBlocks.DOLERITE_ORES);
         this.oreDrops(BloomBlocks.SANDSTONE_ORES);
         this.oreDrops(BloomBlocks.RED_SANDSTONE_ORES);
+	}
+
+	public void sleepingBagDrops(Block sleepingBag) {
+		this.add(sleepingBag, block -> this.createSinglePropConditionTable(block, SleepingBagBlock.PART, SleepingBagBlock.Part.HEAD));
 	}
 
     public void oreDrops(StoneOresRegistry ores) {

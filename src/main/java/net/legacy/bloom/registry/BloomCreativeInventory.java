@@ -9,6 +9,27 @@ import net.minecraft.world.item.Items;
 
 public class BloomCreativeInventory {
     public static void init() {
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
+			entries.addAfter(
+				Items.PINK_BED,
+				BloomItems.WHITE_SLEEPING_BAG,
+				BloomItems.LIGHT_GRAY_SLEEPING_BAG,
+				BloomItems.GRAY_SLEEPING_BAG,
+				BloomItems.BLACK_SLEEPING_BAG,
+				BloomItems.BROWN_SLEEPING_BAG,
+				BloomItems.RED_SLEEPING_BAG,
+				BloomItems.ORANGE_SLEEPING_BAG,
+				BloomItems.YELLOW_SLEEPING_BAG,
+				BloomItems.LIME_SLEEPING_BAG,
+				BloomItems.GREEN_SLEEPING_BAG,
+				BloomItems.CYAN_SLEEPING_BAG,
+				BloomItems.LIGHT_BLUE_SLEEPING_BAG,
+				BloomItems.BLUE_SLEEPING_BAG,
+				BloomItems.PURPLE_SLEEPING_BAG,
+				BloomItems.MAGENTA_SLEEPING_BAG,
+				BloomItems.PINK_SLEEPING_BAG
+			);
+		});
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> {
             addOres(BloomBlocks.TUFF_ORES, entries);
 			addOres(BloomBlocks.DOLERITE_ORES, entries);

@@ -14,7 +14,26 @@ import java.util.Set;
 public class BloomBlockEntities {
 	public static void init() {}
 
-	public static BlockEntityType<SleepingBagBlockEntity> SLEEPING_BAG = init("sleeping_bag", SleepingBagBlockEntity::new, BloomBlocks.WHITE_SLEEPING_BAG);
+	public static BlockEntityType<SleepingBagBlockEntity> SLEEPING_BAG = init(
+		"sleeping_bag",
+		SleepingBagBlockEntity::new,
+		BloomBlocks.WHITE_SLEEPING_BAG,
+		BloomBlocks.ORANGE_SLEEPING_BAG,
+		BloomBlocks.MAGENTA_SLEEPING_BAG,
+		BloomBlocks.LIGHT_BLUE_SLEEPING_BAG,
+		BloomBlocks.YELLOW_SLEEPING_BAG,
+		BloomBlocks.LIME_SLEEPING_BAG,
+		BloomBlocks.PINK_SLEEPING_BAG,
+		BloomBlocks.GRAY_SLEEPING_BAG,
+		BloomBlocks.LIGHT_GRAY_SLEEPING_BAG,
+		BloomBlocks.CYAN_SLEEPING_BAG,
+		BloomBlocks.PURPLE_SLEEPING_BAG,
+		BloomBlocks.BLUE_SLEEPING_BAG,
+		BloomBlocks.BROWN_SLEEPING_BAG,
+		BloomBlocks.GREEN_SLEEPING_BAG,
+		BloomBlocks.RED_SLEEPING_BAG,
+		BloomBlocks.BLACK_SLEEPING_BAG
+	);
 
 	private static <T extends BlockEntity> BlockEntityType<T> init(String path, BlockEntityType.BlockEntitySupplier<T> builder, Block... blocks) {
 		Util.fetchChoiceType(References.BLOCK_ENTITY, Bloom.id(path).toString());

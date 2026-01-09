@@ -22,6 +22,24 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 
 	@Override
 	protected void addTags(HolderLookup.Provider arg) {
+		this.valueLookupBuilder(BloomBlockTags.SLEEPING_BAGS)
+			.add(BloomBlocks.WHITE_SLEEPING_BAG)
+			.add(BloomBlocks.ORANGE_SLEEPING_BAG)
+			.add(BloomBlocks.MAGENTA_SLEEPING_BAG)
+			.add(BloomBlocks.LIGHT_BLUE_SLEEPING_BAG)
+			.add(BloomBlocks.YELLOW_SLEEPING_BAG)
+			.add(BloomBlocks.LIME_SLEEPING_BAG)
+			.add(BloomBlocks.PINK_SLEEPING_BAG)
+			.add(BloomBlocks.GRAY_SLEEPING_BAG)
+			.add(BloomBlocks.LIGHT_GRAY_SLEEPING_BAG)
+			.add(BloomBlocks.CYAN_SLEEPING_BAG)
+			.add(BloomBlocks.PURPLE_SLEEPING_BAG)
+			.add(BloomBlocks.BLUE_SLEEPING_BAG)
+			.add(BloomBlocks.BROWN_SLEEPING_BAG)
+			.add(BloomBlocks.GREEN_SLEEPING_BAG)
+			.add(BloomBlocks.RED_SLEEPING_BAG)
+			.add(BloomBlocks.BLACK_SLEEPING_BAG);
+
         this.valueLookupBuilder(BloomBlockTags.ARID_VEGETATION_MAY_PLACE_ON)
 			.addOptionalTag(BlockTags.SAND)
 			.addOptionalTag(BlockTags.DIRT)

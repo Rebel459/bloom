@@ -22,6 +22,21 @@ public final class BloomItems {
 
     // Block Items
 	public static final Item WHITE_SLEEPING_BAG = sleepingBagItem(BloomBlocks.WHITE_SLEEPING_BAG);
+	public static final Item ORANGE_SLEEPING_BAG = sleepingBagItem(BloomBlocks.ORANGE_SLEEPING_BAG);
+	public static final Item MAGENTA_SLEEPING_BAG = sleepingBagItem(BloomBlocks.MAGENTA_SLEEPING_BAG);
+	public static final Item LIGHT_BLUE_SLEEPING_BAG = sleepingBagItem(BloomBlocks.LIGHT_BLUE_SLEEPING_BAG);
+	public static final Item YELLOW_SLEEPING_BAG = sleepingBagItem(BloomBlocks.YELLOW_SLEEPING_BAG);
+	public static final Item LIME_SLEEPING_BAG = sleepingBagItem(BloomBlocks.LIME_SLEEPING_BAG);
+	public static final Item PINK_SLEEPING_BAG = sleepingBagItem(BloomBlocks.PINK_SLEEPING_BAG);
+	public static final Item GRAY_SLEEPING_BAG = sleepingBagItem(BloomBlocks.GRAY_SLEEPING_BAG);
+	public static final Item LIGHT_GRAY_SLEEPING_BAG = sleepingBagItem(BloomBlocks.LIGHT_GRAY_SLEEPING_BAG);
+	public static final Item CYAN_SLEEPING_BAG = sleepingBagItem(BloomBlocks.CYAN_SLEEPING_BAG);
+	public static final Item PURPLE_SLEEPING_BAG = sleepingBagItem(BloomBlocks.PURPLE_SLEEPING_BAG);
+	public static final Item BLUE_SLEEPING_BAG = sleepingBagItem(BloomBlocks.BLUE_SLEEPING_BAG);
+	public static final Item BROWN_SLEEPING_BAG = sleepingBagItem(BloomBlocks.BROWN_SLEEPING_BAG);
+	public static final Item GREEN_SLEEPING_BAG = sleepingBagItem(BloomBlocks.GREEN_SLEEPING_BAG);
+	public static final Item RED_SLEEPING_BAG = sleepingBagItem(BloomBlocks.RED_SLEEPING_BAG);
+	public static final Item BLACK_SLEEPING_BAG = sleepingBagItem(BloomBlocks.BLACK_SLEEPING_BAG);
 
     public static void init() {}
 
@@ -29,6 +44,7 @@ public final class BloomItems {
 		return registerBlock(sleepingBag,
 			(block, properties) -> new BlockItem(sleepingBag, properties),
 			new Item.Properties()
+				.stacksTo(1)
 		);
 	}
 
