@@ -285,8 +285,8 @@ public final class BloomBlocks {
 
 	private static void registerBlockItem(Block block, boolean skipNameGen) {
 		if (!skipNameGen) TRANSLATABLE_BLOCKS.add(block);
-		if (block.defaultBlockState().is(BlockTags.SMALL_FLOWERS)) SMALL_FLOWERS.add(block);
-		else if (block.defaultBlockState().is(BlockTags.FLOWERS)) LARGE_FLOWERS.add(block);
+		if (block instanceof FlowerBlock || block instanceof WideFlowerBlock || block instanceof LargeFlowerBlock) SMALL_FLOWERS.add(block);
+		else if (block instanceof TallFlowerBlock) LARGE_FLOWERS.add(block);
 		BiFunction<Block, Item.Properties, Item> itemSupplier = BlockItem::new;
 		if (block instanceof DoorBlock || block instanceof TallFlowerBlock) itemSupplier = DoubleHighBlockItem::new;
 		if (block instanceof ShelfBlock) itemSupplier = (shelfBlock, properties) -> new BlockItem(shelfBlock, properties.component(DataComponents.CONTAINER, ItemContainerContents.EMPTY));
@@ -297,7 +297,7 @@ public final class BloomBlocks {
 		return registerSleepingBag(string, dyeColor, false);
 	}
 	private static Block registerSleepingBag(String string, DyeColor dyeColor, boolean skipNameGen) {
-		Block block = registerWithoutItem(string, (properties) -> new SleepingBagBlock(dyeColor, properties), BlockBehaviour.Properties.of().mapColor((blockState) -> blockState.getValue(SleepingBagBlock.PART) == SleepingBagBlock.Part.FOOT ? dyeColor.getMapColor() : MapColor.WOOL).sound(SoundType.WOOD).strength(0.1F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY));
+		Block block = registerWithoutItem(string, (properties) -> new SleepingBagBlock(dyeColor, properties), BlockBehaviour.Properties.of().mapColor((blockState) -> blockState.getValue(SleepingBagBlock.PART) == SleepingBagBlock.Part.FOOT ? dyeColor.getMapColor() : MapColor.WOOL).sound(SoundType.WOOL).strength(0.1F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY));
 		if (!skipNameGen) TRANSLATABLE_BLOCKS.add(block);
 		return block;
 	}
