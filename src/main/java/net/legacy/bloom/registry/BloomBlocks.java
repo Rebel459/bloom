@@ -44,6 +44,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.WoolCarpetBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
@@ -311,11 +312,21 @@ public final class BloomBlocks {
 		Items.registerBlock(block, itemSupplier);
 	}
 
-	private static Block registerSleepingBag(String string, DyeColor dyeColor) {
-		return registerSleepingBag(string, dyeColor, false);
+	private static Block registerSleepingBag(String string, DyeColor color) {
+		return registerSleepingBag(string, color, false);
 	}
-	private static Block registerSleepingBag(String string, DyeColor dyeColor, boolean skipNameGen) {
-		Block block = registerWithoutItem(string, (properties) -> new SleepingBagBlock(dyeColor, properties), BlockBehaviour.Properties.of().mapColor((blockState) -> blockState.getValue(SleepingBagBlock.PART) == SleepingBagBlock.Part.FOOT ? dyeColor.getMapColor() : MapColor.WOOL).sound(SoundType.WOOL).strength(0.1F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY));
+
+	private static Block registerSleepingBag(String string, DyeColor color, boolean skipNameGen) {
+		Block block = registerWithoutItem(
+			string,
+			(properties) -> new SleepingBagBlock(color, properties),
+			BlockBehaviour.Properties.of()
+				.mapColor((state) -> state.getValue(SleepingBagBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WOOL)
+				.sound(SoundType.WOOL).strength(0.1F)
+				.noOcclusion()
+				.ignitedByLava()
+				.pushReaction(PushReaction.DESTROY)
+		);
 		if (!skipNameGen) TRANSLATABLE_BLOCKS.add(block);
 		return block;
 	}
@@ -323,6 +334,7 @@ public final class BloomBlocks {
 	private static Block registerRug(String string, DyeColor dyeColor) {
 		return registerRug(string, dyeColor, false);
 	}
+
 	private static Block registerRug(String string, DyeColor dyeColor, boolean skipNameGen) {
 		return register(string, (properties) -> new WoolCarpetBlock(dyeColor, properties), BlockBehaviour.Properties.of().mapColor(dyeColor.getMapColor()).sound(SoundType.WOOL).strength(0.1F).ignitedByLava());
 	}

@@ -7,7 +7,8 @@
   },
   "client": [
     "client.AtlasManagerMixin",
-    "client.AtlasProviderMixin"
+    "client.AtlasProviderMixin",
+    "client.BedRendererMixin"
   ],
   "mixins": [
     "entity.LivingEntityMixin",

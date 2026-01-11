@@ -97,7 +97,7 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 	}
 
 	public void sleepingBagDrops(Block sleepingBag) {
-		this.add(sleepingBag, block -> this.createSinglePropConditionTable(block, SleepingBagBlock.PART, SleepingBagBlock.Part.HEAD));
+		this.add(sleepingBag, block -> this.createSinglePropConditionTable(block, SleepingBagBlock.PART, BedPart.HEAD));
 	}
 
     public void oreDrops(StoneOresRegistry ores) {
