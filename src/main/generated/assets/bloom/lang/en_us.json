@@ -129,8 +129,11 @@
   "block.bloom.white_sleeping_bag": "White Sleeping Bag",
   "block.bloom.yellow_rug": "Yellow Rug",
   "block.bloom.yellow_sleeping_bag": "Yellow Sleeping Bag",
+  "item.bloom.cotton": "Cotton",
+  "item.bloom.cotton_seeds": "Cotton Seeds",
   "item.bloom.jacaranda_boat": "Jacaranda Boat",
   "item.bloom.jacaranda_chest_boat": "Jacaranda Chest Boat",
   "item.bloom.jacaranda_hanging_sign": "Jacaranda Hanging Sign",
-  "item.bloom.jacaranda_sign": "Jacaranda Sign"
+  "item.bloom.jacaranda_sign": "Jacaranda Sign",
+  "item.bloom.yarn": "Yarn"
 }

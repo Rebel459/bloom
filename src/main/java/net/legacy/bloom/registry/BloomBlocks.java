@@ -265,6 +265,8 @@ public final class BloomBlocks {
 		CompostingChanceRegistry.INSTANCE.add(ORANGE_DAISY, 0.65F);
 		CompostingChanceRegistry.INSTANCE.add(SCILLA, 0.65F);
 		CompostingChanceRegistry.INSTANCE.add(SUCCULENT, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(BloomItems.COTTON, 0.65F);
+		CompostingChanceRegistry.INSTANCE.add(BloomItems.COTTON_SEEDS, 0.3F);
 	}
 
 	private static void registerFlammability() {

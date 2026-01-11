@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "rug_dye",
+  "ingredients": [
+    [
+      "bloom:black_rug",
+      "bloom:blue_rug",
+      "bloom:brown_rug",
+      "bloom:cyan_rug",
+      "bloom:gray_rug",
+      "bloom:light_blue_rug",
+      "bloom:light_gray_rug",
+      "bloom:lime_rug",
+      "bloom:magenta_rug",
+      "bloom:orange_rug",
+      "bloom:pink_rug",
+      "bloom:purple_rug",
+      "bloom:red_rug",
+      "bloom:yellow_rug",
+      "bloom:white_rug"
+    ]
+  ],
+  "result": {
+    "count": 1,
+    "id": "bloom:green_rug"
+  }
+}

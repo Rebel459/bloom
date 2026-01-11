@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "sleeping_bag_dye",
+  "ingredients": [
+    [
+      "bloom:black_sleeping_bag",
+      "bloom:blue_sleeping_bag",
+      "bloom:brown_sleeping_bag",
+      "bloom:cyan_sleeping_bag",
+      "bloom:gray_sleeping_bag",
+      "bloom:green_sleeping_bag",
+      "bloom:light_blue_sleeping_bag",
+      "bloom:lime_sleeping_bag",
+      "bloom:magenta_sleeping_bag",
+      "bloom:orange_sleeping_bag",
+      "bloom:pink_sleeping_bag",
+      "bloom:purple_sleeping_bag",
+      "bloom:red_sleeping_bag",
+      "bloom:yellow_sleeping_bag",
+      "bloom:white_sleeping_bag"
+    ]
+  ],
+  "result": {
+    "count": 1,
+    "id": "bloom:light_gray_sleeping_bag"
+  }
+}

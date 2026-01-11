@@ -39,6 +39,10 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 			.add(BloomItems.RED_SLEEPING_BAG)
 			.add(BloomItems.BLACK_SLEEPING_BAG);
 
+		this.valueLookupBuilder(BloomItemTags.SLEEPING_BAG_MATERIALS)
+			.add(BloomItems.YARN)
+			.addOptionalTag(ItemTags.WOOL);
+
 		this.valueLookupBuilder(ItemTags.SMALL_FLOWERS)
 			.add(BloomBlocks.PINK_ORCHID.asItem())
 			.add(BloomBlocks.GOLDENROD.asItem())

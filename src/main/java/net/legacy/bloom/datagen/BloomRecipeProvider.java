@@ -1,13 +1,15 @@
 package net.legacy.bloom.datagen;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
+import com.ibm.icu.impl.Pair;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.BloomItems;
-import net.legacy.bloom.tag.BloomBlockTags;
 import net.legacy.bloom.tag.BloomItemTags;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.minecraft.core.HolderLookup;
@@ -18,7 +20,10 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import org.apache.commons.lang3.tuple.Triple;
 import org.jetbrains.annotations.Contract;
 
 public final class BloomRecipeProvider extends FabricRecipeProvider {
@@ -47,6 +52,62 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 				this.oneToOneConversionRecipe(Items.ORANGE_DYE, BloomBlocks.ORANGE_DAISY, "orange_dye");
 				this.oneToOneConversionRecipe(Items.PINK_DYE, BloomBlocks.HYACINTH, "pink_dye");
 				this.oneToOneConversionRecipe(Items.WHITE_DYE, BloomBlocks.QUEENCUP, "white_dye");
+
+				this.shaped(RecipeCategory.MISC, BloomItems.YARN)
+					.define('#', Ingredient.of(BloomItems.COTTON))
+					.pattern("##")
+					.pattern("##")
+					.unlockedBy("has_cotton", this.has(BloomItems.COTTON))
+					.save(exporter);
+
+				this.shaped(RecipeCategory.DECORATIONS, BloomBlocks.WHITE_RUG, 2)
+					.define('#', Ingredient.of(BloomItems.YARN))
+					.pattern("###")
+					.unlockedBy("has_yarn", this.has(BloomItems.YARN))
+					.group("rug")
+					.save(exporter);
+
+				sleepingBagRecipes(
+					List.of(
+						Triple.of(BloomItems.BLACK_SLEEPING_BAG, Items.BLACK_WOOL, Items.BLACK_DYE),
+						Triple.of(BloomItems.BLUE_SLEEPING_BAG, Items.BLUE_WOOL, Items.BLUE_DYE),
+						Triple.of(BloomItems.BROWN_SLEEPING_BAG, Items.BROWN_WOOL, Items.BROWN_DYE),
+						Triple.of(BloomItems.CYAN_SLEEPING_BAG, Items.CYAN_WOOL, Items.CYAN_DYE),
+						Triple.of(BloomItems.GRAY_SLEEPING_BAG, Items.GRAY_WOOL, Items.GRAY_DYE),
+						Triple.of(BloomItems.GREEN_SLEEPING_BAG, Items.GREEN_WOOL, Items.GREEN_DYE),
+						Triple.of(BloomItems.LIGHT_BLUE_SLEEPING_BAG, Items.LIGHT_BLUE_WOOL, Items.LIGHT_BLUE_DYE),
+						Triple.of(BloomItems.LIGHT_GRAY_SLEEPING_BAG, Items.LIGHT_GRAY_WOOL, Items.LIGHT_GRAY_DYE),
+						Triple.of(BloomItems.LIME_SLEEPING_BAG, Items.LIME_WOOL, Items.LIME_DYE),
+						Triple.of(BloomItems.MAGENTA_SLEEPING_BAG, Items.MAGENTA_WOOL, Items.MAGENTA_DYE),
+						Triple.of(BloomItems.ORANGE_SLEEPING_BAG, Items.ORANGE_WOOL, Items.ORANGE_DYE),
+						Triple.of(BloomItems.PINK_SLEEPING_BAG, Items.PINK_WOOL, Items.PINK_DYE),
+						Triple.of(BloomItems.PURPLE_SLEEPING_BAG, Items.PURPLE_WOOL, Items.PURPLE_DYE),
+						Triple.of(BloomItems.RED_SLEEPING_BAG, Items.RED_WOOL, Items.RED_DYE),
+						Triple.of(BloomItems.YELLOW_SLEEPING_BAG, Items.YELLOW_WOOL, Items.YELLOW_DYE),
+						Triple.of(BloomItems.WHITE_SLEEPING_BAG, Items.WHITE_WOOL, Items.WHITE_DYE)
+					)
+				);
+
+				rugRecipes(
+					List.of(
+						Pair.of(BloomBlocks.BLACK_RUG.asItem(), Items.BLACK_DYE),
+						Pair.of(BloomBlocks.BLUE_RUG.asItem(), Items.BLUE_DYE),
+						Pair.of(BloomBlocks.BROWN_RUG.asItem(), Items.BROWN_DYE),
+						Pair.of(BloomBlocks.CYAN_RUG.asItem(), Items.CYAN_DYE),
+						Pair.of(BloomBlocks.GRAY_RUG.asItem(), Items.GRAY_DYE),
+						Pair.of(BloomBlocks.GREEN_RUG.asItem(), Items.GREEN_DYE),
+						Pair.of(BloomBlocks.LIGHT_BLUE_RUG.asItem(), Items.LIGHT_BLUE_DYE),
+						Pair.of(BloomBlocks.LIGHT_GRAY_RUG.asItem(), Items.LIGHT_GRAY_DYE),
+						Pair.of(BloomBlocks.LIME_RUG.asItem(), Items.LIME_DYE),
+						Pair.of(BloomBlocks.MAGENTA_RUG.asItem(), Items.MAGENTA_DYE),
+						Pair.of(BloomBlocks.ORANGE_RUG.asItem(), Items.ORANGE_DYE),
+						Pair.of(BloomBlocks.PINK_RUG.asItem(), Items.PINK_DYE),
+						Pair.of(BloomBlocks.PURPLE_RUG.asItem(), Items.PURPLE_DYE),
+						Pair.of(BloomBlocks.RED_RUG.asItem(), Items.RED_DYE),
+						Pair.of(BloomBlocks.YELLOW_RUG.asItem(), Items.YELLOW_DYE),
+						Pair.of(BloomBlocks.WHITE_RUG.asItem(), Items.WHITE_DYE)
+					)
+				);
 
 				BloomBlocks.JACARANDA.generateRecipes(this, exporter, BloomItemTags.JACARANDA_LOGS);
 
@@ -80,6 +141,60 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
                 this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.PURPUR_PILLAR, ERBlocks.PURPUR);*/
             }
 
+			public void sleepingBagRecipes(List<Triple<Item, Item, Item>> list) {
+				list.forEach(triple -> {
+					Item sleepingBag = triple.getLeft();
+					Item wool = triple.getMiddle();
+					Item dye = triple.getRight();
+					this.shaped(RecipeCategory.DECORATIONS, sleepingBag)
+						.define('Y', Ingredient.of(BloomItems.YARN))
+						.define('#', Ingredient.of(wool))
+						.pattern("YYY")
+						.pattern("###")
+						.unlockedBy("has_sleeping_bag_material", this.has(BloomItemTags.SLEEPING_BAG_MATERIALS))
+						.group("sleeping_bag")
+						.save(exporter);
+					Stream<Triple<Item, Item, Item>> stream = list.stream().filter(sleepingBagTriple -> !sleepingBagTriple.getLeft().equals(sleepingBag.asItem()));
+					List<Triple<Item, Item, Item>> streamList = stream.toList();
+					List<Item> sleepingBagList = new ArrayList<>();
+					for (Triple<Item, Item, Item> sleepingBagTriple : streamList) {
+						sleepingBagList.add(sleepingBagTriple.getLeft());
+					}
+					this.shapeless(RecipeCategory.DECORATIONS, sleepingBag)
+						.requires(Ingredient.of(sleepingBagList.stream()))
+						.unlockedBy("has_dye", this.has(dye))
+						.group("sleeping_bag_dye")
+						.save(this.output, "dye_" + getItemName(sleepingBag));
+				});
+			}
+
+			public void rugRecipes(List<Pair<Item, Item>> list) {
+				list.forEach(pair -> {
+				Item rug = pair.first;
+				Item dye = pair.second;
+				if (rug != BloomBlocks.WHITE_RUG.asItem()) {
+					this.shaped(RecipeCategory.DECORATIONS, rug, 3)
+						.define('D', Ingredient.of(dye))
+						.define('#', Ingredient.of(BloomItems.YARN))
+						.pattern("DDD")
+						.pattern("###")
+						.unlockedBy("has_dye", this.has(dye))
+						.group("rug")
+						.save(exporter);
+				}
+				Stream<Pair<Item, Item>> stream = list.stream().filter(rugPair -> !rugPair.first.equals(rug.asItem()));
+				List<Pair<Item, Item>> streamList = stream.toList();
+				List<Item> rugList = new ArrayList<>();
+				for (Pair<Item, Item> rugPair : streamList) {
+					rugList.add(rugPair.first);
+				}
+				this.shapeless(RecipeCategory.DECORATIONS, rug)
+					.requires(Ingredient.of(rugList.stream()))
+					.unlockedBy("has_dye", this.has(dye))
+					.group("rug_dye")
+					.save(this.output, "dye_" + getItemName(rug));
+				});
+			}
 
             public void oreRecipes(StoneOresRegistry ores) {
                 ores.getOresMap().forEach((oreType, block) -> {
