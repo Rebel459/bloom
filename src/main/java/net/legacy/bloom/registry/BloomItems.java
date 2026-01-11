@@ -14,13 +14,31 @@ import net.minecraft.world.item.Items;
 import static net.minecraft.world.item.Items.registerBlock;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
 public final class BloomItems {
 
 	public static List<Item> TRANSLATABLE_ITEMS = new ArrayList<>();
 
+	public static final Item COTTON = register("cotton",
+		Item::new,
+		new Item.Properties()
+			.stacksTo(64)
+	);
+	public static final Item YARN = register("yarn",
+		Item::new,
+		new Item.Properties()
+			.stacksTo(64)
+	);
+
     // Block Items
+	public static final Item COTTON_SEEDS = register("cotton_seeds",
+		Items.createBlockItemWithCustomItemName(BloomBlocks.COTTON),
+		new Item.Properties()
+			.stacksTo(64)
+	);
+
 	public static final Item WHITE_SLEEPING_BAG = sleepingBagItem(BloomBlocks.WHITE_SLEEPING_BAG);
 	public static final Item ORANGE_SLEEPING_BAG = sleepingBagItem(BloomBlocks.ORANGE_SLEEPING_BAG);
 	public static final Item MAGENTA_SLEEPING_BAG = sleepingBagItem(BloomBlocks.MAGENTA_SLEEPING_BAG);
@@ -49,6 +67,8 @@ public final class BloomItems {
 	}
 
     private static <T extends Item> T register(String name, Function<Item.Properties, Item> function, Item.Properties properties) {
-        return (T) Items.registerItem(ResourceKey.create(Registries.ITEM, Bloom.id(name)), function, properties);
+        var item = (T) Items.registerItem(ResourceKey.create(Registries.ITEM, Bloom.id(name)), function, properties);
+		TRANSLATABLE_ITEMS.add(item);
+		return item;
     }
 }

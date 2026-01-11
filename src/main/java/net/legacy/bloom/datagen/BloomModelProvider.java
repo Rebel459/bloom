@@ -14,6 +14,7 @@ import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 @Environment(EnvType.CLIENT)
 public final class BloomModelProvider extends FabricModelProvider {
@@ -51,6 +52,8 @@ public final class BloomModelProvider extends FabricModelProvider {
         oreModels(BloomBlocks.DOLERITE_ORES, generator);
         oreModels(BloomBlocks.SANDSTONE_ORES, generator);
         oreModels(BloomBlocks.RED_SANDSTONE_ORES, generator);
+
+		generator.createCropBlock(BloomBlocks.COTTON, BlockStateProperties.AGE_7, 0, 1, 2, 3 , 4, 5, 5, 6);
 
 		this.rug(BloomBlocks.WHITE_RUG, generator);
 		this.rug(BloomBlocks.ORANGE_RUG, generator);

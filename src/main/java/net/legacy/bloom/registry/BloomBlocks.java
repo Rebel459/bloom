@@ -35,6 +35,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -59,6 +60,18 @@ public final class BloomBlocks {
 	public static List<Block> LARGE_FLOWERS = new ArrayList<>();
 
 	// Cotton
+
+	public static final Block COTTON = registerWithoutItem(
+		"cotton",
+		CropBlock::new,
+		BlockBehaviour.Properties.of()
+			.mapColor(blockState -> blockState.getValue(CropBlock.AGE) >= 7 ? MapColor.COLOR_BROWN : MapColor.PLANT)
+			.noCollision()
+			.randomTicks()
+			.instabreak()
+			.sound(SoundType.CROP)
+			.pushReaction(PushReaction.DESTROY)
+	);
 
 	public static final Block WHITE_SLEEPING_BAG = registerSleepingBag("white_sleeping_bag", DyeColor.WHITE);
 	public static final Block ORANGE_SLEEPING_BAG = registerSleepingBag("orange_sleeping_bag", DyeColor.ORANGE);

@@ -130,6 +130,15 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 		this.valueLookupBuilder(BlockTags.SCULK_REPLACEABLE)
 			.add(BloomBlocks.DOLERITE);
 
+		this.valueLookupBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
+			.addTag(BloomBlockTags.SLEEPING_BAGS);
+
+		this.valueLookupBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS)
+			.addTag(BloomBlockTags.RUGS);
+
+		this.valueLookupBuilder(BlockTags.CROPS)
+			.add(BloomBlocks.COTTON);
+
         tagOres(BloomBlocks.TUFF_ORES);
         tagOres(BloomBlocks.GRANITE_ORES);
         tagOres(BloomBlocks.ANDESITE_ORES);

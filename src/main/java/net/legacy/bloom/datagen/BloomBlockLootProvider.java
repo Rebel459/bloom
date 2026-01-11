@@ -6,16 +6,24 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.legacy.bloom.block.SleepingBagBlock;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.legacy.bloom.util.WoodsetRegistry;
+import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CarrotBlock;
+import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 
@@ -49,7 +57,9 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.dropSelf(BloomBlocks.HYDRANGEA);
 		this.dropSelf(BloomBlocks.SUCCULENT);
 
-        woodDrops(BloomBlocks.JACARANDA);
+		this.cropDrops(BloomBlocks.COTTON, 7, BloomItems.COTTON, BloomItems.COTTON_SEEDS);
+
+        this.woodDrops(BloomBlocks.JACARANDA);
 
         this.dropSelf(BloomBlocks.DOLERITE);
 
@@ -94,6 +104,11 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
         this.oreDrops(BloomBlocks.DOLERITE_ORES);
         this.oreDrops(BloomBlocks.SANDSTONE_ORES);
         this.oreDrops(BloomBlocks.RED_SANDSTONE_ORES);
+	}
+
+	public void cropDrops(Block crop, int age, Item drop, Item seeds) {
+		LootItemCondition.Builder condition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, age));
+		this.add(crop, this.createCropDrops(crop, drop, seeds, condition));
 	}
 
 	public void sleepingBagDrops(Block sleepingBag) {
