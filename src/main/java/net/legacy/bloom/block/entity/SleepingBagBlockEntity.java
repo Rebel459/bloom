@@ -23,7 +23,7 @@ public class SleepingBagBlockEntity extends BlockEntity {
 	private final DyeColor color;
 
 	public SleepingBagBlockEntity(BlockPos blockPos, BlockState blockState) {
-		this(blockPos, blockState, ((SleepingBagBlock)blockState.getBlock()).getColor());
+		this(blockPos, blockState, ((BedBlock)blockState.getBlock()).getColor());
 	}
 
 	public SleepingBagBlockEntity(BlockPos blockPos, BlockState blockState, DyeColor dyeColor) {

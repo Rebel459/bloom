@@ -14,7 +14,7 @@ import java.util.Set;
 public class BloomBlockEntities {
 	public static void init() {}
 
-	public static BlockEntityType<SleepingBagBlockEntity> SLEEPING_BAG = register(
+	public static BlockEntityType<SleepingBagBlockEntity> SLEEPING_BAG = init(
 		"sleeping_bag",
 		SleepingBagBlockEntity::new,
 		BloomBlocks.WHITE_SLEEPING_BAG,
@@ -35,7 +35,7 @@ public class BloomBlockEntities {
 		BloomBlocks.BLACK_SLEEPING_BAG
 	);
 
-	private static <T extends BlockEntity> BlockEntityType<T> register(String path, BlockEntityType.BlockEntitySupplier<T> builder, Block... blocks) {
+	private static <T extends BlockEntity> BlockEntityType<T> init(String path, BlockEntityType.BlockEntitySupplier<T> builder, Block... blocks) {
 		Util.fetchChoiceType(References.BLOCK_ENTITY, Bloom.id(path).toString());
 		return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Bloom.id(path), new BlockEntityType<>(builder, Set.of(blocks)));
 	}
