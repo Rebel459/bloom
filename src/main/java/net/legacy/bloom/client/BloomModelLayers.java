@@ -6,8 +6,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.legacy.bloom.Bloom;
 import net.legacy.bloom.registry.BloomBlockEntities;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.blockentity.BedRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 
 @Environment(EnvType.CLIENT)

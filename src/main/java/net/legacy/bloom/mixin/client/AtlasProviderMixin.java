@@ -18,7 +18,7 @@ public class AtlasProviderMixin {
 		AtlasProvider provider = AtlasProvider.class.cast(this);
 		cir.setReturnValue(CompletableFuture.allOf(
 			cir.getReturnValue(),
-			provider.storeAtlas(cachedOutput, Bloom.id("sleeping_bags"), provider.simpleMapper(SleepingBagSheets.SLEEPING_BAG_MAPPER))
+			provider.storeAtlas(cachedOutput, Bloom.id("sleeping_bags"), AtlasProvider.simpleMapper(SleepingBagSheets.SLEEPING_BAG_MAPPER))
 		));
     }
 }
