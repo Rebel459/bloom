@@ -9,7 +9,9 @@ import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
@@ -50,6 +52,23 @@ public final class BloomModelProvider extends FabricModelProvider {
         oreModels(BloomBlocks.SANDSTONE_ORES, generator);
         oreModels(BloomBlocks.RED_SANDSTONE_ORES, generator);
 
+		this.rug(BloomBlocks.WHITE_RUG, generator);
+		this.rug(BloomBlocks.ORANGE_RUG, generator);
+		this.rug(BloomBlocks.MAGENTA_RUG, generator);
+		this.rug(BloomBlocks.LIGHT_BLUE_RUG, generator);
+		this.rug(BloomBlocks.YELLOW_RUG, generator);
+		this.rug(BloomBlocks.LIME_RUG, generator);
+		this.rug(BloomBlocks.PINK_RUG, generator);
+		this.rug(BloomBlocks.GRAY_RUG, generator);
+		this.rug(BloomBlocks.LIGHT_GRAY_RUG, generator);
+		this.rug(BloomBlocks.CYAN_RUG, generator);
+		this.rug(BloomBlocks.PURPLE_RUG, generator);
+		this.rug(BloomBlocks.BLUE_RUG, generator);
+		this.rug(BloomBlocks.BROWN_RUG, generator);
+		this.rug(BloomBlocks.GREEN_RUG, generator);
+		this.rug(BloomBlocks.RED_RUG, generator);
+		this.rug(BloomBlocks.BLACK_RUG, generator);
+
 		generator.createParticleOnlyBlock(BloomBlocks.WHITE_SLEEPING_BAG, Blocks.WHITE_WOOL);
 		generator.createParticleOnlyBlock(BloomBlocks.ORANGE_SLEEPING_BAG, Blocks.ORANGE_WOOL);
 		generator.createParticleOnlyBlock(BloomBlocks.MAGENTA_SLEEPING_BAG, Blocks.MAGENTA_WOOL);
@@ -66,6 +85,11 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.createParticleOnlyBlock(BloomBlocks.GREEN_SLEEPING_BAG, Blocks.GREEN_WOOL);
 		generator.createParticleOnlyBlock(BloomBlocks.RED_SLEEPING_BAG, Blocks.RED_WOOL);
 		generator.createParticleOnlyBlock(BloomBlocks.BLACK_SLEEPING_BAG, Blocks.BLACK_WOOL);
+	}
+
+	public void rug(Block block, BlockModelGenerators generator) {
+		MultiVariant multiVariant = BlockModelGenerators.plainVariant(TexturedModel.CARPET.get(block).create(block, generator.modelOutput));
+		generator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, multiVariant));
 	}
 
     public void oreModels(StoneOresRegistry ores, BlockModelGenerators generator) {

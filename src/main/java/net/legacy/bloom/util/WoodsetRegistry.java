@@ -557,6 +557,7 @@ public class WoodsetRegistry {
             builder.add(fenceGate, 300);
             builder.add(signItem, 300);
             builder.add(hangingSignItem, 800);
+			builder.add(shelf, 300);
 
             if (woodsetSettings.hasBoats()){
                 builder.add(boatItem, 1200);
@@ -592,6 +593,7 @@ public class WoodsetRegistry {
 
         addFlammable(getHangingSign(), 5, 20);
         addFlammable(getWallHangingSign(), 5, 20);
+		addFlammable(getShelf(), 30, 20);
     }
     public static void addFlammable(Block block, int burn, int spread){
         FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);

@@ -22,6 +22,27 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 
 	@Override
 	protected void addTags(HolderLookup.Provider arg) {
+		this.valueLookupBuilder(BloomBlockTags.RUGS)
+			.add(BloomBlocks.WHITE_RUG)
+			.add(BloomBlocks.ORANGE_RUG)
+			.add(BloomBlocks.MAGENTA_RUG)
+			.add(BloomBlocks.LIGHT_BLUE_RUG)
+			.add(BloomBlocks.YELLOW_RUG)
+			.add(BloomBlocks.LIME_RUG)
+			.add(BloomBlocks.PINK_RUG)
+			.add(BloomBlocks.GRAY_RUG)
+			.add(BloomBlocks.LIGHT_GRAY_RUG)
+			.add(BloomBlocks.CYAN_RUG)
+			.add(BloomBlocks.PURPLE_RUG)
+			.add(BloomBlocks.BLUE_RUG)
+			.add(BloomBlocks.BROWN_RUG)
+			.add(BloomBlocks.GREEN_RUG)
+			.add(BloomBlocks.RED_RUG)
+			.add(BloomBlocks.BLACK_RUG);
+
+		this.valueLookupBuilder(BloomBlockTags.OVERLAY)
+			.addTag(BloomBlockTags.RUGS);
+
 		this.valueLookupBuilder(BloomBlockTags.SLEEPING_BAGS)
 			.add(BloomBlocks.WHITE_SLEEPING_BAG)
 			.add(BloomBlocks.ORANGE_SLEEPING_BAG)

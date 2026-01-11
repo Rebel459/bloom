@@ -70,6 +70,23 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.sleepingBagDrops(BloomBlocks.RED_SLEEPING_BAG);
 		this.sleepingBagDrops(BloomBlocks.BLACK_SLEEPING_BAG);
 
+		this.dropSelf(BloomBlocks.WHITE_RUG);
+		this.dropSelf(BloomBlocks.ORANGE_RUG);
+		this.dropSelf(BloomBlocks.MAGENTA_RUG);
+		this.dropSelf(BloomBlocks.LIGHT_BLUE_RUG);
+		this.dropSelf(BloomBlocks.YELLOW_RUG);
+		this.dropSelf(BloomBlocks.LIME_RUG);
+		this.dropSelf(BloomBlocks.PINK_RUG);
+		this.dropSelf(BloomBlocks.GRAY_RUG);
+		this.dropSelf(BloomBlocks.LIGHT_GRAY_RUG);
+		this.dropSelf(BloomBlocks.CYAN_RUG);
+		this.dropSelf(BloomBlocks.PURPLE_RUG);
+		this.dropSelf(BloomBlocks.BLUE_RUG);
+		this.dropSelf(BloomBlocks.BROWN_RUG);
+		this.dropSelf(BloomBlocks.GREEN_RUG);
+		this.dropSelf(BloomBlocks.RED_RUG);
+		this.dropSelf(BloomBlocks.BLACK_RUG);
+
         this.oreDrops(BloomBlocks.TUFF_ORES);
         this.oreDrops(BloomBlocks.GRANITE_ORES);
         this.oreDrops(BloomBlocks.ANDESITE_ORES);

@@ -14,7 +14,9 @@ public class BloomBlockTags {
 	public static final TagKey<Block> JACARANDA_LOGS = bind("jacaranda_logs");
 
 	public static final TagKey<Block> SLEEPING_BAGS = bind("sleeping_bags");
+	public static final TagKey<Block> RUGS = bind("rugs");
 
+	public static final TagKey<Block> OVERLAY = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("underlay", "overlay"));
     public static final TagKey<Block> SAPPHIRE_ORES = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("legacies_and_legends", "sapphire_ores"));
 
     private static TagKey<Block> bind(String path) {

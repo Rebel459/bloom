@@ -42,6 +42,7 @@ import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.ShelfBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.TallFlowerBlock;
+import net.minecraft.world.level.block.WoolCarpetBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -74,6 +75,23 @@ public final class BloomBlocks {
 	public static final Block GREEN_SLEEPING_BAG = registerSleepingBag("green_sleeping_bag", DyeColor.GREEN);
 	public static final Block RED_SLEEPING_BAG = registerSleepingBag("red_sleeping_bag", DyeColor.RED);
 	public static final Block BLACK_SLEEPING_BAG = registerSleepingBag("black_sleeping_bag", DyeColor.BLACK);
+
+	public static final Block WHITE_RUG = registerRug("white_rug", DyeColor.WHITE);
+	public static final Block ORANGE_RUG = registerRug("orange_rug", DyeColor.ORANGE);
+	public static final Block MAGENTA_RUG = registerRug("magenta_rug", DyeColor.MAGENTA);
+	public static final Block LIGHT_BLUE_RUG = registerRug("light_blue_rug", DyeColor.LIGHT_BLUE);
+	public static final Block YELLOW_RUG = registerRug("yellow_rug", DyeColor.YELLOW);
+	public static final Block LIME_RUG = registerRug("lime_rug", DyeColor.LIME);
+	public static final Block PINK_RUG = registerRug("pink_rug", DyeColor.PINK);
+	public static final Block GRAY_RUG = registerRug("gray_rug", DyeColor.GRAY);
+	public static final Block LIGHT_GRAY_RUG = registerRug("light_gray_rug", DyeColor.LIGHT_GRAY);
+	public static final Block CYAN_RUG = registerRug("cyan_rug", DyeColor.CYAN);
+	public static final Block PURPLE_RUG = registerRug("purple_rug", DyeColor.PURPLE);
+	public static final Block BLUE_RUG = registerRug("blue_rug", DyeColor.BLUE);
+	public static final Block BROWN_RUG = registerRug("brown_rug", DyeColor.BROWN);
+	public static final Block GREEN_RUG = registerRug("green_rug", DyeColor.GREEN);
+	public static final Block RED_RUG = registerRug("red_rug", DyeColor.RED);
+	public static final Block BLACK_RUG = registerRug("black_rug", DyeColor.BLACK);
 
     // Flora
 
@@ -300,5 +318,12 @@ public final class BloomBlocks {
 		Block block = registerWithoutItem(string, (properties) -> new SleepingBagBlock(dyeColor, properties), BlockBehaviour.Properties.of().mapColor((blockState) -> blockState.getValue(SleepingBagBlock.PART) == SleepingBagBlock.Part.FOOT ? dyeColor.getMapColor() : MapColor.WOOL).sound(SoundType.WOOL).strength(0.1F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY));
 		if (!skipNameGen) TRANSLATABLE_BLOCKS.add(block);
 		return block;
+	}
+
+	private static Block registerRug(String string, DyeColor dyeColor) {
+		return registerRug(string, dyeColor, false);
+	}
+	private static Block registerRug(String string, DyeColor dyeColor, boolean skipNameGen) {
+		return register(string, (properties) -> new WoolCarpetBlock(dyeColor, properties), BlockBehaviour.Properties.of().mapColor(dyeColor.getMapColor()).sound(SoundType.WOOL).strength(0.1F).ignitedByLava());
 	}
 }
