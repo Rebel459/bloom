@@ -31,8 +31,6 @@ public class BloomCreativeInventory {
 				BloomBlocks.MAGENTA_RUG,
 				BloomBlocks.PINK_RUG
 			);
-		});
-		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(entries -> {
 			addSleepingBags(entries);
 		});
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
