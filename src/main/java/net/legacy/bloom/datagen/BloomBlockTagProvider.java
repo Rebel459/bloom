@@ -110,6 +110,8 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(BloomBlocks.JACARANDA_SAPLING);
 
 		tagWoodset(BloomBlocks.JACARANDA, BloomBlockTags.JACARANDA_LOGS);
+		tagWoodset(BloomBlocks.GOLDEN_BIRCH, BloomBlockTags.GOLDEN_BIRCH_LOGS);
+		tagWoodset(BloomBlocks.PINE, BloomBlockTags.PINE_LOGS);
 
 		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
 			.add(BloomBlocks.DOLERITE);
@@ -139,13 +141,7 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 		this.valueLookupBuilder(BlockTags.CROPS)
 			.add(BloomBlocks.COTTON);
 
-        tagOres(BloomBlocks.TUFF_ORES);
-        tagOres(BloomBlocks.GRANITE_ORES);
-        tagOres(BloomBlocks.ANDESITE_ORES);
-        tagOres(BloomBlocks.DIORITE_ORES);
-        tagOres(BloomBlocks.DOLERITE_ORES);
-        tagOres(BloomBlocks.SANDSTONE_ORES);
-        tagOres(BloomBlocks.RED_SANDSTONE_ORES);
+		StoneOresRegistry.ALL_REGISTRIES.forEach(this::tagOres);
 	}
 
 	public void tagWoodset(WoodsetRegistry woodset, TagKey<Block> tag) {

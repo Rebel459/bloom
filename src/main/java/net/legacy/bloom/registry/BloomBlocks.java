@@ -44,6 +44,7 @@ import net.minecraft.world.level.block.ShelfBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.WoolCarpetBlock;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -225,12 +226,31 @@ public final class BloomBlocks {
 	);
 
 	public static final WoodsetRegistry JACARANDA = new WoodsetRegistry(Bloom.id("jacaranda"), MapColor.COLOR_PURPLE, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.FANCY));
-
 	public static final SaplingBlock JACARANDA_SAPLING = register("jacaranda_sapling",
 		properties -> new SaplingBlock(BloomTreeGrowers.JACARANDA, properties),
 		BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)
 	);
 	public static final Block POTTED_JACARANDA_SAPLING = registerWithoutItem("potted_jacaranda_sapling",
+		properties -> new FlowerPotBlock(JACARANDA_SAPLING, properties),
+		Blocks.flowerPotProperties()
+	);
+
+	public static final WoodsetRegistry GOLDEN_BIRCH = new WoodsetRegistry(Bloom.id("golden_birch"), MapColor.COLOR_YELLOW, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.DEFAULT));
+	public static final SaplingBlock GOLDEN_BIRCH_SAPLING = register("golden_birch_sapling",
+		properties -> new SaplingBlock(TreeGrower.BIRCH, properties),
+		BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)
+	);
+	public static final Block POTTED_GOLDEN_BIRCH_SAPLING = registerWithoutItem("potted_golden_birch_sapling",
+		properties -> new FlowerPotBlock(JACARANDA_SAPLING, properties),
+		Blocks.flowerPotProperties()
+	);
+
+	public static final WoodsetRegistry PINE = new WoodsetRegistry(Bloom.id("pine"), MapColor.COLOR_BROWN, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.DEFAULT));
+	public static final SaplingBlock PINE_SAPLING = register("pine_sapling",
+		properties -> new SaplingBlock(TreeGrower.SPRUCE, properties),
+		BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)
+	);
+	public static final Block POTTED_PINE_SAPLING = registerWithoutItem("potted_pine_sapling",
 		properties -> new FlowerPotBlock(JACARANDA_SAPLING, properties),
 		Blocks.flowerPotProperties()
 	);

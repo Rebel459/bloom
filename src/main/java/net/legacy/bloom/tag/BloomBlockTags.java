@@ -12,6 +12,8 @@ public class BloomBlockTags {
     public static final TagKey<Block> SUBMERGED_VEGETATION_MAY_PLACE_ON = bind("submerged_vegetation_may_place_on");
 
 	public static final TagKey<Block> JACARANDA_LOGS = bind("jacaranda_logs");
+	public static final TagKey<Block> GOLDEN_BIRCH_LOGS = bind("golden_birch_logs");
+	public static final TagKey<Block> PINE_LOGS = bind("pine_logs");
 
 	public static final TagKey<Block> SLEEPING_BAGS = bind("sleeping_bags");
 	public static final TagKey<Block> RUGS = bind("rugs");

@@ -59,7 +59,7 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 
 		this.cropDrops(BloomBlocks.COTTON, 7, BloomItems.COTTON, BloomItems.COTTON_SEEDS);
 
-        this.woodDrops(BloomBlocks.JACARANDA);
+		WoodsetRegistry.WOODSETS.forEach(this::woodDrops);
 
         this.dropSelf(BloomBlocks.DOLERITE);
 
@@ -97,13 +97,7 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.dropSelf(BloomBlocks.RED_RUG);
 		this.dropSelf(BloomBlocks.BLACK_RUG);
 
-        this.oreDrops(BloomBlocks.TUFF_ORES);
-        this.oreDrops(BloomBlocks.GRANITE_ORES);
-        this.oreDrops(BloomBlocks.ANDESITE_ORES);
-        this.oreDrops(BloomBlocks.DIORITE_ORES);
-        this.oreDrops(BloomBlocks.DOLERITE_ORES);
-        this.oreDrops(BloomBlocks.SANDSTONE_ORES);
-        this.oreDrops(BloomBlocks.RED_SANDSTONE_ORES);
+		StoneOresRegistry.ALL_REGISTRIES.forEach(this::oreDrops);
 	}
 
 	public void cropDrops(Block crop, int age, Item drop, Item seeds) {

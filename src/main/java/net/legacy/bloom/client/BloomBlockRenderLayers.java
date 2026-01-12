@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.legacy.bloom.registry.BloomBlocks;
+import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 
 @Environment(EnvType.CLIENT)
@@ -39,8 +40,15 @@ public final class BloomBlockRenderLayers {
 
 		BlockRenderLayerMap.putBlock(BloomBlocks.COTTON, ChunkSectionLayer.CUTOUT);
 
-        BlockRenderLayerMap.putBlock(BloomBlocks.JACARANDA.getLeaves(), ChunkSectionLayer.CUTOUT);
+		WoodsetRegistry.WOODSETS.forEach(woodset -> {
+			BlockRenderLayerMap.putBlock(woodset.getLeaves(), ChunkSectionLayer.CUTOUT);
+		});
+
 		BlockRenderLayerMap.putBlock(BloomBlocks.JACARANDA_SAPLING, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_JACARANDA_SAPLING, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.GOLDEN_BIRCH_SAPLING, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_GOLDEN_BIRCH_SAPLING, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.PINE_SAPLING, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_PINE_SAPLING, ChunkSectionLayer.CUTOUT);
 	}
 }

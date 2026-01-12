@@ -452,6 +452,7 @@ public class WoodsetRegistry {
     }
     private Block createLeaves() {
 		if (Objects.equals(getName(), "jacaranda")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleLeavesBlock(0.1F, BloomParticleTypes.JACARANDA_LEAVES, settings), createLeavesBlock());
+		if (Objects.equals(getName(), "golden_birch")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleLeavesBlock(0.1F, BloomParticleTypes.JACARANDA_LEAVES, settings), createLeavesBlock());
 		else return createBlockWithItem(this.getName() + "_leaves", settings -> new TintedParticleLeavesBlock(0.1F, settings), createLeavesBlock());
     }
     private Block createPlanks(){

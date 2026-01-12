@@ -110,6 +110,8 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 				);
 
 				BloomBlocks.JACARANDA.generateRecipes(this, exporter, BloomItemTags.JACARANDA_LOGS);
+				BloomBlocks.GOLDEN_BIRCH.generateRecipes(this, exporter, BloomItemTags.GOLDEN_BIRCH_LOGS);
+				BloomBlocks.PINE.generateRecipes(this, exporter, BloomItemTags.PINE_LOGS);
 
 				for (StoneOresRegistry registry : StoneOresRegistry.ALL_REGISTRIES) {
 					oreRecipes(registry);

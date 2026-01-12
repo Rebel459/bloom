@@ -5,9 +5,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 public class BloomItemTags {
 	public static final TagKey<Item> JACARANDA_LOGS = bind("jacaranda_logs");
+	public static final TagKey<Item> GOLDEN_BIRCH_LOGS = bind("golden_birch_logs");
+	public static final TagKey<Item> PINE_LOGS = bind("pine_logs");
 
 	public static final TagKey<Item> SLEEPING_BAG_MATERIALS = bind("sleeping_bag_materials");
 

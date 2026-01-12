@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.util.StoneOresRegistry;
+import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
@@ -40,8 +41,12 @@ public final class BloomModelProvider extends FabricModelProvider {
         generator.createDoublePlantWithDefaultItem(BloomBlocks.REEDS, BlockModelGenerators.PlantType.NOT_TINTED);
         this.createSinglePlant(BloomBlocks.SUCCULENT, BlockModelGenerators.PlantType.NOT_TINTED, generator);
 
-		BloomBlocks.JACARANDA.fullWoodset(generator);
+		WoodsetRegistry.WOODSETS.forEach(woodset -> {
+			woodset.fullWoodset(generator);
+		});
 		generator.createPlantWithDefaultItem(BloomBlocks.JACARANDA_SAPLING, BloomBlocks.POTTED_JACARANDA_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.GOLDEN_BIRCH_SAPLING, BloomBlocks.POTTED_GOLDEN_BIRCH_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+		generator.createPlantWithDefaultItem(BloomBlocks.PINE_SAPLING, BloomBlocks.POTTED_PINE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         generator.createTrivialCube(BloomBlocks.DOLERITE);
 

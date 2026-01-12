@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "textures": {
+    "bottom": "bloom:block/golden_birch_door_bottom",
+    "top": "bloom:block/golden_birch_door_top"
+  }
+}

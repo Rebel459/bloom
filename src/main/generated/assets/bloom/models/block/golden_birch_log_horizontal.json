@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "bloom:block/golden_birch_log_top",
+    "side": "bloom:block/golden_birch_log"
+  }
+}

@@ -69,6 +69,8 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 			.add(BloomItems.COTTON_SEEDS);
 
 		tagWoodset(BloomBlocks.JACARANDA, BloomItemTags.JACARANDA_LOGS);
+		tagWoodset(BloomBlocks.GOLDEN_BIRCH, BloomItemTags.GOLDEN_BIRCH_LOGS);
+		tagWoodset(BloomBlocks.PINE, BloomItemTags.PINE_LOGS);
 	}
 
 	public void tagWoodset(WoodsetRegistry woodset, TagKey<Item> tag) {

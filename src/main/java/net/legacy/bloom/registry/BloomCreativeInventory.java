@@ -51,6 +51,16 @@ public class BloomCreativeInventory {
 		WoodsetRegistry.addToNaturalTab(Items.CHERRY_SAPLING, BloomBlocks.JACARANDA, BloomBlocks.JACARANDA_SAPLING);
 		WoodsetRegistry.addToFunctionalTab(Items.CHERRY_HANGING_SIGN, BloomBlocks.JACARANDA);
 		WoodsetRegistry.addToUtilitiesTab(Items.CHERRY_CHEST_BOAT, BloomBlocks.JACARANDA);
+
+		WoodsetRegistry.addToBuildingTab(Items.BIRCH_BUTTON, BloomBlocks.GOLDEN_BIRCH);
+		WoodsetRegistry.addToNaturalTab(Items.BIRCH_SAPLING, BloomBlocks.GOLDEN_BIRCH, BloomBlocks.GOLDEN_BIRCH_SAPLING);
+		WoodsetRegistry.addToFunctionalTab(Items.BIRCH_HANGING_SIGN, BloomBlocks.GOLDEN_BIRCH);
+		WoodsetRegistry.addToUtilitiesTab(Items.BIRCH_CHEST_BOAT, BloomBlocks.GOLDEN_BIRCH);
+
+		WoodsetRegistry.addToBuildingTab(Items.SPRUCE_BUTTON, BloomBlocks.PINE);
+		WoodsetRegistry.addToNaturalTab(Items.SPRUCE_SAPLING, BloomBlocks.PINE, BloomBlocks.PINE_SAPLING);
+		WoodsetRegistry.addToFunctionalTab(Items.SPRUCE_HANGING_SIGN, BloomBlocks.PINE);
+		WoodsetRegistry.addToUtilitiesTab(Items.SPRUCE_CHEST_BOAT, BloomBlocks.PINE);
     }
 
     public static void addOres(StoneOresRegistry ores, FabricItemGroupEntries entries) {
