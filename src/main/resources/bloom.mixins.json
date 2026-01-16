@@ -15,6 +15,7 @@
     "item.HoeItemMixin",
     "server.ServerPlayerMixin",
     "worldgen.BiomeAccessor",
-    "worldgen.SurfaceRulesContextAccessor"
+    "worldgen.SurfaceRulesContextAccessor",
+    "worldgen.TreeGrowerMixin"
   ]
 }

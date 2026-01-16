@@ -22,6 +22,7 @@ public class BloomBiomeTags {
 	public static final TagKey<Biome> INTERNAL_LESS_STRICT_DISKS = bind("internal/less_strict_disks");
 	public static final TagKey<Biome> INTERNAL_WINDSWEPT_JUNGLE_FEATURES = bind("internal/windswept_jungle_features");
 	public static final TagKey<Biome> INTERNAL_FEN_FEATURES = bind("internal/fen_features");
+	public static final TagKey<Biome> INTERNAL_GOLDEN_FOREST_FEATURES = bind("internal/golden_forest_features");
 
     public static final TagKey<Biome> HAS_WARM_COLORS = bind("effects/warm_colors");
     public static final TagKey<Biome> HAS_LUKEWARM_COLORS = bind("effects/lukewarm_colors");
@@ -34,7 +35,7 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_SURFACE_COARSE_DIRT = bind("rules/surface_coarse_dirt");
     public static final TagKey<Biome> HAS_UNDERWATER_MUD = bind("rules/underwater_mud");
     public static final TagKey<Biome> HAS_SWAMP_MUD = bind("rules/swamp_mud");
-    public static final TagKey<Biome> HAS_STRIP_COARSE_DIRT = bind("rules/strip_coarse_dirt");
+	public static final TagKey<Biome> HAS_STRIP_COARSE_DIRT = bind("rules/strip_coarse_dirt");
     public static final TagKey<Biome> HAS_HIGHER_DEPTH = bind("rules/higher_depth");
 	public static final TagKey<Biome> HAS_HIGHER_STONE = bind("rules/higher_stone");
 	public static final TagKey<Biome> HAS_DEPTH_SANDSTONE = bind("rules/depth_sandstone");
@@ -57,6 +58,7 @@ public class BloomBiomeTags {
 	public static final TagKey<Biome> HAS_REEDS = bind("features/patch_reeds");
 
 	public static final TagKey<Biome> NO_DEFAULT_FLOWERS = bind("features/no_default_flowers");
+	public static final TagKey<Biome> NO_PINE_TREES = bind("features/no_pine_trees");
 
 	public static final TagKey<Biome> HAS_STONE_BLOBS = bind("features/ore_stone");
 	public static final TagKey<Biome> HAS_GRAVEL_BLOBS = bind("features/ore_gravel");

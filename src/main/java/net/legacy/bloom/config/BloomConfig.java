@@ -26,42 +26,46 @@ public class BloomConfig implements ConfigData {
         get = AutoConfig.getConfigHolder(BloomConfig.class).getConfig();
     }
 
-    @ConfigEntry.Gui.CollapsibleObject
-    public BiomeConfig biomes = new BiomeConfig();
+	@ConfigEntry.Gui.CollapsibleObject
+	public BiomeConfig biomes = new BiomeConfig();
+
+	@ConfigEntry.Gui.CollapsibleObject
+	public WorldgenConfig worldgen = new WorldgenConfig();
 
     public static class BiomeConfig {
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
+		public boolean golden_forest = true;
+		@ConfigEntry.Category("config")
 		public boolean fen = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
+		public boolean pine_taiga = true;
+		@ConfigEntry.Category("config")
+		public boolean snowy_pine_taiga = true;
+		@ConfigEntry.Category("config")
 		public boolean windswept_jungle = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
 		public boolean arid_shore = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
 		public boolean warm_river = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
 		public boolean cold_beach = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
 		public boolean cold_river = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
 		public boolean lukewarm_beach = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
 		public boolean lukewarm_river = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
 		public boolean snowy_shore = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
 		public boolean tropical_beach = true;
 		@ConfigEntry.Category("config")
-		@ConfigEntry.Gui.Tooltip
 		public boolean tropical_river = true;
     }
+
+	public static class WorldgenConfig {
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean pine_trees = true;
+	}
 }

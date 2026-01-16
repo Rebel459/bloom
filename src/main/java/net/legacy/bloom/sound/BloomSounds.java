@@ -9,6 +9,8 @@ import net.minecraft.sounds.SoundEvent;
 
 public class BloomSounds {
 	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_FEN = registerForHolder("music.overworld.fen");
+	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_TAIGA = registerForHolder("music.overworld.taiga");
+	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_GOLDEN_BIRCH_FOREST = registerForHolder("music.overworld.golden_birch_forest");
 
 	private static SoundEvent register(String string) {
 		Identifier identifier = Bloom.id(string);

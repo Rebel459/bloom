@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 public final class ColdRiver extends FrozenBiome {
     public static final float TEMP = 0.25F;
     public static final float DOWNFALL = 0.8F;
-    public static final int WATER_COLOR = 2650242;
+    public static final int WATER_COLOR = BiomeHelper.Colors.COLD_WATER;
     public static final int FOLIAGE_COLOR = 6857828;
     public static final int DRY_FOLIAGE_COLOR = 10122831;
     public static final int GRASS_COLOR = 8828803;

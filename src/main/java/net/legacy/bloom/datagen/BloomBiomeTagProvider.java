@@ -29,7 +29,10 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.LUKEWARM_BEACH)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE)
 			.add(BloomBiomes.FEN)
-			.add(BloomBiomes.SNOWY_SHORE);
+			.add(BloomBiomes.SNOWY_SHORE)
+			.add(BloomBiomes.PINE_TAIGA)
+			.add(BloomBiomes.SNOWY_PINE_TAIGA)
+			.add(BloomBiomes.GOLDEN_FOREST);
 
 		this.builder(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 			.add(Biomes.JUNGLE)
@@ -39,7 +42,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.IS_NON_SNOWY_TAIGA)
 			.add(Biomes.TAIGA)
 			.add(Biomes.OLD_GROWTH_PINE_TAIGA)
-			.add(Biomes.OLD_GROWTH_SPRUCE_TAIGA);
+			.add(Biomes.OLD_GROWTH_SPRUCE_TAIGA)
+			.add(BloomBiomes.PINE_TAIGA);
 
 		// Internal
 
@@ -87,8 +91,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BloomBiomeTags.INTERNAL_WINDSWEPT_JUNGLE_FEATURES)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE);
 
-        this.builder(BloomBiomeTags.INTERNAL_FEN_FEATURES)
+		this.builder(BloomBiomeTags.INTERNAL_FEN_FEATURES)
 			.add(BloomBiomes.FEN);
+
+		this.builder(BloomBiomeTags.INTERNAL_GOLDEN_FOREST_FEATURES)
+			.add(BloomBiomes.GOLDEN_FOREST);
 
 		// Effects
         this.builder(BloomBiomeTags.HAS_WARM_COLORS)
@@ -142,7 +149,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.FEN)
 			.add(Biomes.SWAMP);
 
-        this.builder(BloomBiomeTags.HAS_STRIP_COARSE_DIRT)
+		this.builder(BloomBiomeTags.HAS_STRIP_COARSE_DIRT)
 			.add(Biomes.SAVANNA)
 			.add(Biomes.SAVANNA_PLATEAU);
 
@@ -169,6 +176,10 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.ICE_SPIKES)
 			.add(BloomBiomes.FEN)
 			.addOptionalTag(BiomeTags.IS_JUNGLE);
+
+		this.builder(BloomBiomeTags.NO_PINE_TREES)
+			.add(Biomes.TAIGA)
+			.add(Biomes.SNOWY_TAIGA);
 
 		this.builder(BloomBiomeTags.HAS_STONE_BLOBS)
 			.addTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
@@ -198,7 +209,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BloomBiomeTags.HAS_HYDRANGEA)
 			.add(Biomes.FOREST)
 			.add(Biomes.FLOWER_FOREST)
-			.add(Biomes.CHERRY_GROVE);
+			.add(Biomes.CHERRY_GROVE)
+			.add(BloomBiomes.GOLDEN_FOREST);
 
         this.builder(BloomBiomeTags.HAS_CALLA_LILY)
 			.addOptionalTag(BiomeTags.IS_SAVANNA)
@@ -206,10 +218,12 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
         this.builder(BloomBiomeTags.HAS_DIANTHUS)
 			.add(Biomes.SNOWY_TAIGA)
-			.add(Biomes.SNOWY_PLAINS);
+			.add(Biomes.SNOWY_PLAINS)
+			.add(BloomBiomes.SNOWY_PINE_TAIGA);
 
         this.builder(BloomBiomeTags.HAS_GOLDENROD)
-			.add(Biomes.SUNFLOWER_PLAINS);
+			.add(Biomes.SUNFLOWER_PLAINS)
+			.add(BloomBiomes.GOLDEN_FOREST);
 
         this.builder(BloomBiomeTags.HAS_ORANGE_DAISY)
 			.add(Biomes.OLD_GROWTH_BIRCH_FOREST);
@@ -220,7 +234,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.ICE_SPIKES)
 			.add(Biomes.WINDSWEPT_FOREST)
 			.add(Biomes.WINDSWEPT_HILLS)
-			.add(Biomes.WINDSWEPT_GRAVELLY_HILLS);
+			.add(Biomes.WINDSWEPT_GRAVELLY_HILLS)
+			.add(BloomBiomes.SNOWY_PINE_TAIGA);
 
 		this.builder(BloomBiomeTags.HAS_HYACINTH)
 			.add(Biomes.DARK_FOREST)
@@ -253,6 +268,10 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BiomeTags.IS_JUNGLE)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE);
 
+		this.builder(BiomeTags.IS_TAIGA)
+			.add(BloomBiomes.PINE_TAIGA)
+			.add(BloomBiomes.SNOWY_PINE_TAIGA);
+
         this.builder(BiomeTags.HAS_SWAMP_HUT)
 			.add(BloomBiomes.FEN);
 
@@ -266,7 +285,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.COLD_RIVER)
 			.add(BloomBiomes.COLD_BEACH)
 			.add(BloomBiomes.FEN)
-			.add(BloomBiomes.SNOWY_SHORE);
+			.add(BloomBiomes.SNOWY_SHORE)
+			.add(BloomBiomes.PINE_TAIGA)
+			.add(BloomBiomes.SNOWY_PINE_TAIGA);
 
 		this.builder(BiomeTags.HAS_MINESHAFT)
 			.addTag(BloomBiomeTags.BLOOM_BIOMES);

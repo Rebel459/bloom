@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "minecraft:pine_checked",
+    "features": [
+      {
+        "chance": 0.0125,
+        "feature": "bloom:fallen_pine_tree"
+      }
+    ]
+  }
+}

@@ -3,8 +3,7 @@ package net.legacy.bloom.util;
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import java.util.Optional;
 import net.fabricmc.fabric.api.biome.v1.BiomeModificationContext;
-import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
-import net.legacy.bloom.tag.BloomBiomeTags;
+import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.worldgen.BloomFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -12,19 +11,29 @@ import net.minecraft.data.registries.VanillaRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class BiomeHelper {
+
+	public static class Colors {
+		public static int DEFAULT_WATER = 4159204;
+
+		public static int WARM_WATER = 3586498;
+
+		public static int LUKEWARM_WATER = 2197679;
+		public static int LUKEWARM_FOLIAGE = 9743914;
+		public static int LUKEWARM_GRASS = 12561493;
+
+		public static int TROPICAL_WATER = 2001635;
+
+		public static int COLD_WATER = 2650242;
+
+		public static int FROZEN_WATER = 15960;
+	}
 
 	public static BackgroundMusic music(Holder<SoundEvent> music, boolean underWater) {
 		if (underWater) {

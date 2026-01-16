@@ -2,11 +2,8 @@ package net.legacy.bloom.registry;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
@@ -25,7 +22,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -47,15 +43,10 @@ import net.minecraft.world.level.block.WoolCarpetBlock;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BedPart;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
 public final class BloomBlocks {
-    public static final BlockSetType JACARANDA_SET = BlockSetTypeBuilder.copyOf(BlockSetType.CHERRY).register(Bloom.id("jacaranda"));
-    public static final WoodType JACARANDA_WOOD_TYPE = WoodTypeBuilder.copyOf(WoodType.CHERRY).register(Bloom.id("jacaranda"), JACARANDA_SET);
-
 	public static List<Block> TRANSLATABLE_BLOCKS = new ArrayList<>();
 	public static List<Block> SMALL_FLOWERS = new ArrayList<>();
 	public static List<Block> LARGE_FLOWERS = new ArrayList<>();
@@ -237,8 +228,9 @@ public final class BloomBlocks {
 
 	public static final WoodsetRegistry GOLDEN_BIRCH = new WoodsetRegistry(Bloom.id("golden_birch"), MapColor.COLOR_YELLOW, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.DEFAULT));
 	public static final SaplingBlock GOLDEN_BIRCH_SAPLING = register("golden_birch_sapling",
-		properties -> new SaplingBlock(TreeGrower.BIRCH, properties),
-		BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)
+		properties -> new SaplingBlock(BloomTreeGrowers.GOLDEN_BIRCH, properties),
+		BlockBehaviour.Properties.ofFullCopy(Blocks.BIRCH_SAPLING)
+			.mapColor(MapColor.COLOR_YELLOW)
 	);
 	public static final Block POTTED_GOLDEN_BIRCH_SAPLING = registerWithoutItem("potted_golden_birch_sapling",
 		properties -> new FlowerPotBlock(JACARANDA_SAPLING, properties),
@@ -247,8 +239,9 @@ public final class BloomBlocks {
 
 	public static final WoodsetRegistry PINE = new WoodsetRegistry(Bloom.id("pine"), MapColor.COLOR_BROWN, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.DEFAULT));
 	public static final SaplingBlock PINE_SAPLING = register("pine_sapling",
-		properties -> new SaplingBlock(TreeGrower.SPRUCE, properties),
-		BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)
+		properties -> new SaplingBlock(BloomTreeGrowers.PINE, properties),
+		BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SAPLING)
+			.mapColor(MapColor.COLOR_GREEN)
 	);
 	public static final Block POTTED_PINE_SAPLING = registerWithoutItem("potted_pine_sapling",
 		properties -> new FlowerPotBlock(JACARANDA_SAPLING, properties),

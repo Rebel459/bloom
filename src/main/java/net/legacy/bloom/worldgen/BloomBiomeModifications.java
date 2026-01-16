@@ -6,11 +6,6 @@ import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.legacy.bloom.Bloom;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
-import net.legacy.bloom.worldgen.biome.ColdRiver;
-import net.legacy.bloom.worldgen.biome.LukewarmRiver;
-import net.legacy.bloom.worldgen.biome.SnowyShore;
-import net.legacy.bloom.worldgen.biome.TropicalRiver;
-import net.legacy.bloom.worldgen.biome.WarmRiver;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.biome.Biomes;
@@ -33,41 +28,41 @@ public final class BloomBiomeModifications {
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_WARM_COLORS),
 			(selectionContext, modificationContext) -> {
-				modificationContext.getEffects().setWaterColor(WarmRiver.WATER_COLOR);
+				modificationContext.getEffects().setWaterColor(BiomeHelper.Colors.WARM_WATER);
 			}
         );
         BiomeModifications.create(Bloom.id("has_lukewarm_colors")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_LUKEWARM_COLORS),
 			(selectionContext, modificationContext) -> {
-				modificationContext.getEffects().setWaterColor(LukewarmRiver.WATER_COLOR);
-				modificationContext.getEffects().setFoliageColor(LukewarmRiver.FOLIAGE_COLOR);
-				modificationContext.getEffects().setGrassColor(LukewarmRiver.GRASS_COLOR);
+				modificationContext.getEffects().setWaterColor(BiomeHelper.Colors.LUKEWARM_WATER);
+				modificationContext.getEffects().setFoliageColor(BiomeHelper.Colors.LUKEWARM_FOLIAGE);
+				modificationContext.getEffects().setGrassColor(BiomeHelper.Colors.LUKEWARM_GRASS);
 			}
         );
 		BiomeModifications.create(Bloom.id("has_tropical_colors")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_TROPICAL_COLORS),
 			(selectionContext, modificationContext) -> {
-				modificationContext.getEffects().setWaterColor(TropicalRiver.WATER_COLOR);
+				modificationContext.getEffects().setWaterColor(BiomeHelper.Colors.TROPICAL_WATER);
 			}
 		);
 		BiomeModifications.create(Bloom.id("has_cold_colors")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_COLD_COLORS),
 			(selectionContext, modificationContext) -> {
-				modificationContext.getEffects().setWaterColor(ColdRiver.WATER_COLOR);;
+				modificationContext.getEffects().setWaterColor(BiomeHelper.Colors.COLD_WATER);;
 			}
 		);
 		BiomeModifications.create(Bloom.id("has_frozen_colors")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_FROZEN_COLORS),
 			(selectionContext, modificationContext) -> {
-				modificationContext.getEffects().setWaterColor(SnowyShore.WATER_COLOR);
+				modificationContext.getEffects().setWaterColor(BiomeHelper.Colors.FROZEN_WATER);
 			}
 		);
 
-        BiomeModifications.create(Bloom.id("has_swamp_mud")).add(
+		BiomeModifications.create(Bloom.id("has_swamp_mud")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_SWAMP_MUD),
 			(selectionContext, modificationContext) -> {
@@ -77,7 +72,16 @@ public final class BloomBiomeModifications {
 				modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_CLAY);
 				modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.DISK_GRAVEL);
 			}
-        );
+		);
+
+		BiomeModifications.create(Bloom.id("no_pine_trees")).add(
+			ModificationPhase.REPLACEMENTS,
+			BiomeSelectors.tag(BloomBiomeTags.NO_PINE_TREES),
+			(selectionContext, modificationContext) -> {
+				modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_TAIGA);
+				modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BloomFeatures.TREES_TAIGA);
+			}
+		);
 
 		BiomeModifications.create(Bloom.id("no_default_flowers")).add(
 			ModificationPhase.REPLACEMENTS,
@@ -106,7 +110,7 @@ public final class BloomBiomeModifications {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_FLOWERS);
 			}
         );
-        BiomeModifications.create(Bloom.id("has_fen_features")).add(
+		BiomeModifications.create(Bloom.id("has_fen_features")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_FEN_FEATURES),
 			(selectionContext, modificationContext) -> {
@@ -114,7 +118,15 @@ public final class BloomBiomeModifications {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FEN_TREES);
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FEN_WILDFLOWERS);
 			}
-        );
+		);
+		BiomeModifications.create(Bloom.id("has_golden_forest_features")).add(
+			ModificationPhase.REPLACEMENTS,
+			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_GOLDEN_FOREST_FEATURES),
+			(selectionContext, modificationContext) -> {
+				BiomeHelper.addVegetation(modificationContext, BloomFeatures.GOLDEN_FOREST_FLOWERS);
+				BiomeHelper.addVegetation(modificationContext, BloomFeatures.GOLDEN_FOREST_TREES);
+			}
+		);
 
 		BiomeModifications.create(Bloom.id("has_stone_blobs")).add(
 			ModificationPhase.REPLACEMENTS,

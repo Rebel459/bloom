@@ -2,10 +2,6 @@
   "feature": "bloom:ore_stone",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 2
-    },
-    {
       "type": "minecraft:in_square"
     },
     {
@@ -13,10 +9,10 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 80
+          "absolute": 60
         },
         "min_inclusive": {
-          "absolute": 0
+          "absolute": 4
         }
       }
     },

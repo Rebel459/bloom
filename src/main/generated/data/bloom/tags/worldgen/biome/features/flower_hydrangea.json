@@ -2,6 +2,7 @@
   "values": [
     "minecraft:forest",
     "minecraft:flower_forest",
-    "minecraft:cherry_grove"
+    "minecraft:cherry_grove",
+    "bloom:golden_forest"
   ]
 }

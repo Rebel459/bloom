@@ -10,6 +10,9 @@
     "bloom:lukewarm_beach",
     "bloom:windswept_jungle",
     "bloom:fen",
-    "bloom:snowy_shore"
+    "bloom:snowy_shore",
+    "bloom:pine_taiga",
+    "bloom:snowy_pine_taiga",
+    "bloom:golden_forest"
   ]
 }

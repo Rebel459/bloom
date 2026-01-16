@@ -4,8 +4,11 @@ import net.legacy.bloom.worldgen.biome.AridShore;
 import net.legacy.bloom.worldgen.biome.ColdBeach;
 import net.legacy.bloom.worldgen.biome.ColdRiver;
 import net.legacy.bloom.worldgen.biome.Fen;
+import net.legacy.bloom.worldgen.biome.GoldenForest;
 import net.legacy.bloom.worldgen.biome.LukewarmBeach;
 import net.legacy.bloom.worldgen.biome.LukewarmRiver;
+import net.legacy.bloom.worldgen.biome.PineTaiga;
+import net.legacy.bloom.worldgen.biome.SnowyPineTaiga;
 import net.legacy.bloom.worldgen.biome.SnowyShore;
 import net.legacy.bloom.worldgen.biome.TropicalBeach;
 import net.legacy.bloom.worldgen.biome.TropicalRiver;
@@ -27,6 +30,9 @@ public class BloomBiomes {
     public static final ResourceKey<Biome> WINDSWEPT_JUNGLE = WindsweptJungle.INSTANCE.getKey();
 	public static final ResourceKey<Biome> FEN = Fen.INSTANCE.getKey();
 	public static final ResourceKey<Biome> SNOWY_SHORE = SnowyShore.INSTANCE.getKey();
+	public static final ResourceKey<Biome> PINE_TAIGA = PineTaiga.INSTANCE.getKey();
+	public static final ResourceKey<Biome> SNOWY_PINE_TAIGA = SnowyPineTaiga.INSTANCE.getKey();
+	public static final ResourceKey<Biome> GOLDEN_FOREST = GoldenForest.INSTANCE.getKey();
 
     public static void init() {}
 
@@ -42,6 +48,9 @@ public class BloomBiomes {
         register(context, WINDSWEPT_JUNGLE, WindsweptJungle.INSTANCE.create(context));
 		register(context, FEN, Fen.INSTANCE.create(context));
 		register(context, SNOWY_SHORE, SnowyShore.INSTANCE.create(context));
+		register(context, PINE_TAIGA, PineTaiga.INSTANCE.create(context));
+		register(context, SNOWY_PINE_TAIGA, SnowyPineTaiga.INSTANCE.create(context));
+		register(context, GOLDEN_FOREST, GoldenForest.INSTANCE.create(context));
     }
 
     private static void register(BootstrapContext<Biome> entries, ResourceKey<Biome> key, Biome biome) {

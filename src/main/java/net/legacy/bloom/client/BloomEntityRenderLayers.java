@@ -17,7 +17,7 @@ import java.util.Objects;
 public class BloomEntityRenderLayers {
 
 	public static void init() {
-		registerBoatModels(BloomBlocks.JACARANDA);
+		WoodsetRegistry.WOODSETS.forEach(BloomEntityRenderLayers::registerBoatModels);
 	}
 
 	public static void registerBoatModels(WoodsetRegistry woodset){

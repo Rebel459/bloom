@@ -3,6 +3,7 @@ package net.legacy.bloom.worldgen;
 import java.util.List;
 import net.frozenblock.lib.worldgen.surface.api.FrozenSurfaceRules;
 import net.frozenblock.lib.worldgen.surface.api.SurfaceRuleEvents;
+import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.tag.BloomBiomeTags;
@@ -11,7 +12,9 @@ import net.legacy.bloom.util.NoiseRules;
 import net.legacy.bloom.util.Parameters;
 import net.legacy.bloom.util.SurfaceRuleHelper;
 import net.minecraft.data.worldgen.SurfaceRuleData;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 
@@ -137,12 +140,12 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
         );
     }
 
-    public static SurfaceRules.RuleSource coarseDirtStrips() {
-        final SurfaceRules.RuleSource coarseDirtRule = SurfaceRules.ifTrue(
+	public static SurfaceRules.RuleSource coarseDirtStrips() {
+		final SurfaceRules.RuleSource coarseDirtRule = SurfaceRules.ifTrue(
 			SurfaceRuleData.surfaceNoiseAbove(5.5),
 			FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
-        );
-        return SurfaceRules.ifTrue(
+		);
+		return SurfaceRules.ifTrue(
 			SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_STRIP_COARSE_DIRT),
 			SurfaceRules.sequence(
 				SurfaceRules.ifTrue(
@@ -154,8 +157,8 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 					coarseDirtRule
 				)
 			)
-        );
-    }
+		);
+	}
 
     public static SurfaceRules.RuleSource swampMud() {
         return SurfaceRules.sequence(
@@ -188,6 +191,16 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 		);
 	}
 
+	public static SurfaceRules.RuleSource frozenPeaksRule() {
+		return SurfaceRules.ifTrue(
+			SurfaceRules.isBiome(Biomes.FROZEN_PEAKS),
+			SurfaceRules.sequence(
+				SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PACKED_ICE, -0.5, 0.2), FrozenSurfaceRules.PACKED_ICE),
+				SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.ICE, -0.0625, 0.025), FrozenSurfaceRules.ICE)
+			)
+		);
+	}
+
     @Override
     public void addOverworldSurfaceRules(List<SurfaceRules.RuleSource> context) {
         context.add(
@@ -205,8 +218,11 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
     @Override
     public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
+		float andesiteStartHumidity = Parameters.HUMIDITY_3;
+		if (BloomConfig.get.biomes.golden_forest) andesiteStartHumidity = Parameters.HUMIDITY_2;
 		context.add(
 			SurfaceRules.sequence(
+				frozenPeaksRule(),
 				SurfaceRuleHelper.depthRule(
 					Blocks.RED_SANDSTONE,
 					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, BiomeRules.Type.SURFACE),
@@ -241,7 +257,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 					Blocks.ANDESITE,
 					List.of(
 						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_2),
-						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
+						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, andesiteStartHumidity, Parameters.HUMIDITY_5)
 					)
 				),
 				higherStoneRule()

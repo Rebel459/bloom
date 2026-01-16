@@ -61,6 +61,7 @@ public class HoeItemMixin {
                 serverLevel.setBlock(nearbyPos, crop.defaultBlockState(), 512);
                 Block.dropResources(blockState, serverLevel, nearbyPos);
                 context.getItemInHand().hurtAndBreak(1, player, slot);
+
                 harvested = true;
             }
         }

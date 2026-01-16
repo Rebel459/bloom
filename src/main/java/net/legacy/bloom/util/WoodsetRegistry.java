@@ -17,6 +17,8 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
@@ -452,8 +454,9 @@ public class WoodsetRegistry {
     }
     private Block createLeaves() {
 		if (Objects.equals(getName(), "jacaranda")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleLeavesBlock(0.1F, BloomParticleTypes.JACARANDA_LEAVES, settings), createLeavesBlock());
-		if (Objects.equals(getName(), "golden_birch")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleLeavesBlock(0.1F, BloomParticleTypes.JACARANDA_LEAVES, settings), createLeavesBlock());
-		else return createBlockWithItem(this.getName() + "_leaves", settings -> new TintedParticleLeavesBlock(0.1F, settings), createLeavesBlock());
+		else if (Objects.equals(getName(), "pine")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 7639389), settings), createLeavesBlock());
+		else if (Objects.equals(getName(), "golden_birch")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 13807429), settings), createLeavesBlock());
+		else return createBlockWithItem(this.getName() + "_leaves", settings -> new TintedParticleLeavesBlock(0.01F, settings), createLeavesBlock());
     }
     private Block createPlanks(){
         return createBlockWithItem(this.getName() + "_planks", BlockBehaviour.Properties.ofFullCopy(getBase()).sound(getBlockSetType().soundType()).mapColor(getTopColor()));

@@ -220,8 +220,8 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 
     public void tagOres(StoneOresRegistry ores) {
         ores.getOresMap().forEach((type, block) -> {
-            addTag(block, BlockTags.MINEABLE_WITH_PICKAXE);
             String name = type.name;
+			addTag(block, BlockTags.MINEABLE_WITH_PICKAXE, Objects.equals(name, "sapphire"));
             if (Objects.equals(name, "coal")) addTag(block, BlockTags.COAL_ORES);
             if (Objects.equals(name, "copper")) addTag(block, BlockTags.COPPER_ORES);
             if (Objects.equals(name, "iron")) addTag(block, BlockTags.IRON_ORES);

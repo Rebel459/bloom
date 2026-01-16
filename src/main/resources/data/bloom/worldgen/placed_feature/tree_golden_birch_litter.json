@@ -1,12 +1,12 @@
 {
-  "feature": "bloom:tree_pine_litter",
+  "feature": "bloom:tree_golden_birch_litter",
   "placement": [
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:spruce_sapling",
+          "Name": "bloom:golden_birch_sapling",
           "Properties": {
             "stage": "0"
           }

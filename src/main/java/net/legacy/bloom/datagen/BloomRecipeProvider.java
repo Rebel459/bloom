@@ -60,12 +60,13 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 					.unlockedBy("has_cotton", this.has(BloomItems.COTTON))
 					.save(exporter);
 
-				this.shaped(RecipeCategory.DECORATIONS, BloomBlocks.WHITE_RUG, 2)
+				this.shaped(RecipeCategory.DECORATIONS, BloomBlocks.WHITE_RUG, 3)
 					.define('#', Ingredient.of(BloomItems.YARN))
+					.pattern("###")
 					.pattern("###")
 					.unlockedBy("has_yarn", this.has(BloomItems.YARN))
 					.group("rug")
-					.save(exporter);
+					.save(this.output, "rug");
 
 				sleepingBagRecipes(
 					List.of(
@@ -174,16 +175,14 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 				list.forEach(pair -> {
 				Item rug = pair.first;
 				Item dye = pair.second;
-				if (rug != BloomBlocks.WHITE_RUG.asItem()) {
-					this.shaped(RecipeCategory.DECORATIONS, rug, 3)
-						.define('D', Ingredient.of(dye))
-						.define('#', Ingredient.of(BloomItems.YARN))
-						.pattern("DDD")
-						.pattern("###")
-						.unlockedBy("has_dye", this.has(dye))
-						.group("rug")
-						.save(exporter);
-				}
+				this.shaped(RecipeCategory.DECORATIONS, rug, 3)
+					.define('D', Ingredient.of(dye))
+					.define('#', Ingredient.of(BloomItems.YARN))
+					.pattern("DDD")
+					.pattern("###")
+					.unlockedBy("has_dye", this.has(dye))
+					.group("rug")
+					.save(exporter);
 				Stream<Pair<Item, Item>> stream = list.stream().filter(rugPair -> !rugPair.first.equals(rug.asItem()));
 				List<Pair<Item, Item>> streamList = stream.toList();
 				List<Item> rugList = new ArrayList<>();

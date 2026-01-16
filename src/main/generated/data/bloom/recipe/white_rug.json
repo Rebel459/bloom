@@ -3,13 +3,15 @@
   "category": "misc",
   "group": "rug",
   "key": {
-    "#": "bloom:yarn"
+    "#": "bloom:yarn",
+    "D": "minecraft:white_dye"
   },
   "pattern": [
+    "DDD",
     "###"
   ],
   "result": {
-    "count": 2,
+    "count": 3,
     "id": "bloom:white_rug"
   }
 }

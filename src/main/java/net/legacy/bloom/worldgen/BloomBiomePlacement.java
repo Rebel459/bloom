@@ -3,6 +3,7 @@ package net.legacy.bloom.worldgen;
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.terraformersmc.biolith.api.biome.sub.BiomeParameterTargets;
 import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder;
+import com.terraformersmc.biolith.api.biome.sub.RatioTargets;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.util.BiomeHelper;
 import net.legacy.bloom.util.Parameters;
@@ -135,6 +136,29 @@ public class BloomBiomePlacement {
 			CriterionBuilder.allOf(
 				CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_1)
 			)
+		);
+		BiomePlacement.addSubOverworld(
+			Biomes.TAIGA,
+			BloomBiomes.PINE_TAIGA,
+			CriterionBuilder.allOf(
+				CriterionBuilder.neighbor(Biomes.OLD_GROWTH_PINE_TAIGA)
+			)
+		);
+		BiomePlacement.addSubOverworld(
+			Biomes.TAIGA,
+			BloomBiomes.SNOWY_PINE_TAIGA,
+			CriterionBuilder.allOf(
+				CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_1)
+			)
+		);
+		BiomeHelper.surfaceBiome(
+			BloomBiomes.GOLDEN_FOREST,
+			Climate.Parameter.span(Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+			Climate.Parameter.span(Parameters.HUMIDITY_2, Parameters.HUMIDITY_3),
+			Climate.Parameter.span(Parameters.CONTINENTALNESS_COAST, Parameters.CONTINENTALNESS_MAX),
+			Climate.Parameter.span(Parameters.EROSION_4, Parameters.EROSION_5),
+			Climate.Parameter.span(Parameters.WEIRDNESS_MID_SLICE_NORMAL_ASCENDING, Parameters.WEIRDNESS_MAX),
+			0L
 		);
     }
 }

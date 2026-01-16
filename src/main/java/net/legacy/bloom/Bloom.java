@@ -41,6 +41,11 @@ public class Bloom implements ModInitializer {
 		ClimateCommand.init();
 
 		ResourceLoader.registerBuiltinPack(
+			Bloom.id("pine_trees"), modContainer,
+			Component.translatable("pack.bloom.pine_trees"),
+			PackActivationType.ALWAYS_ENABLED
+		);
+		ResourceLoader.registerBuiltinPack(
 			Bloom.id("ore_variants"), modContainer,
 			Component.translatable("pack.bloom.ore_variants"),
 			PackActivationType.ALWAYS_ENABLED
