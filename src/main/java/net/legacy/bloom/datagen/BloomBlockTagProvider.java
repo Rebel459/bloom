@@ -114,7 +114,19 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 		tagWoodset(BloomBlocks.PINE, BloomBlockTags.PINE_LOGS);
 
 		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-			.add(BloomBlocks.DOLERITE);
+			.add(BloomBlocks.DOLERITE)
+			.add(BloomBlocks.POLISHED_DOLERITE)
+			.add(BloomBlocks.POLISHED_DOLERITE_SLAB)
+			.add(BloomBlocks.POLISHED_DOLERITE_STAIRS)
+			.add(BloomBlocks.POLISHED_DOLERITE_WALL)
+			.add(BloomBlocks.DOLERITE_BRICKS)
+			.add(BloomBlocks.DOLERITE_BRICK_SLAB)
+			.add(BloomBlocks.DOLERITE_BRICK_STAIRS)
+			.add(BloomBlocks.DOLERITE_BRICK_WALL)
+			.add(BloomBlocks.DOLERITE_TILES)
+			.add(BloomBlocks.DOLERITE_TILE_SLAB)
+			.add(BloomBlocks.DOLERITE_TILE_STAIRS)
+			.add(BloomBlocks.DOLERITE_TILE_WALL);
 
 		this.valueLookupBuilder(BlockTags.STONE_ORE_REPLACEABLES)
 			.add(BloomBlocks.DOLERITE);
@@ -140,6 +152,11 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 
 		this.valueLookupBuilder(BlockTags.CROPS)
 			.add(BloomBlocks.COTTON);
+
+		this.valueLookupBuilder(BlockTags.WALLS)
+			.add(BloomBlocks.POLISHED_DOLERITE_WALL)
+			.add(BloomBlocks.DOLERITE_BRICK_WALL)
+			.add(BloomBlocks.DOLERITE_TILE_WALL);
 
 		StoneOresRegistry.ALL_REGISTRIES.forEach(this::tagOres);
 	}

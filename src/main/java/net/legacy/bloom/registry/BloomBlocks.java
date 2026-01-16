@@ -37,8 +37,11 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.ShelfBlock;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.TallFlowerBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.WoolCarpetBlock;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -216,6 +219,51 @@ public final class BloomBlocks {
 			.strength(1.8F, 8F)
 	);
 
+	public static final Block POLISHED_DOLERITE = register("polished_dolerite",
+		Block::new,
+		BlockBehaviour.Properties.ofFullCopy(DOLERITE)
+	);
+	public static final Block POLISHED_DOLERITE_SLAB = register("polished_dolerite_slab",
+		SlabBlock::new,
+		BlockBehaviour.Properties.ofFullCopy(POLISHED_DOLERITE)
+	);
+	public static final Block POLISHED_DOLERITE_STAIRS = registerStair("polished_dolerite_stairs", POLISHED_DOLERITE);
+	public static final Block POLISHED_DOLERITE_WALL = register("polished_dolerite_wall",
+		WallBlock::new,
+		BlockBehaviour.Properties.ofFullCopy(POLISHED_DOLERITE)
+			.forceSolidOn()
+	);
+
+	public static final Block DOLERITE_BRICKS = register("dolerite_bricks",
+		Block::new,
+		BlockBehaviour.Properties.ofFullCopy(DOLERITE)
+	);
+	public static final Block DOLERITE_BRICK_SLAB = register("dolerite_brick_slab",
+		SlabBlock::new,
+		BlockBehaviour.Properties.ofFullCopy(DOLERITE_BRICKS)
+	);
+	public static final Block DOLERITE_BRICK_STAIRS = registerStair("dolerite_brick_stairs", DOLERITE_BRICKS);
+	public static final Block DOLERITE_BRICK_WALL = register("dolerite_brick_wall",
+		WallBlock::new,
+		BlockBehaviour.Properties.ofFullCopy(DOLERITE_BRICKS)
+			.forceSolidOn()
+	);
+
+	public static final Block DOLERITE_TILES = register("dolerite_tiles",
+		Block::new,
+		BlockBehaviour.Properties.ofFullCopy(DOLERITE)
+	);
+	public static final Block DOLERITE_TILE_SLAB = register("dolerite_tile_slab",
+		SlabBlock::new,
+		BlockBehaviour.Properties.ofFullCopy(DOLERITE_TILES)
+	);
+	public static final Block DOLERITE_TILE_STAIRS = registerStair("dolerite_tile_stairs", DOLERITE_TILES);
+	public static final Block DOLERITE_TILE_WALL = register("dolerite_tile_wall",
+		WallBlock::new,
+		BlockBehaviour.Properties.ofFullCopy(DOLERITE_TILES)
+			.forceSolidOn()
+	);
+
 	public static final WoodsetRegistry JACARANDA = new WoodsetRegistry(Bloom.id("jacaranda"), MapColor.COLOR_PURPLE, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.FANCY));
 	public static final SaplingBlock JACARANDA_SAPLING = register("jacaranda_sapling",
 		properties -> new SaplingBlock(BloomTreeGrowers.JACARANDA, properties),
@@ -305,6 +353,10 @@ public final class BloomBlocks {
 
 	public static void init() {
 		registerBlockProperties();
+	}
+
+	private static Block registerStair(String string, Block block) {
+		return register(string, properties -> new StairBlock(block.defaultBlockState(), properties), BlockBehaviour.Properties.ofFullCopy(block));
 	}
 
 	private static <T extends Block> T registerWithoutItem(String path, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties) {

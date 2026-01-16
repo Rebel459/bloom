@@ -218,8 +218,6 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
     @Override
     public void addOverworldNoPrelimSurfaceRules(List<SurfaceRules.RuleSource> context) {
-		float andesiteStartHumidity = Parameters.HUMIDITY_3;
-		if (BloomConfig.get.biomes.golden_forest) andesiteStartHumidity = Parameters.HUMIDITY_2;
 		context.add(
 			SurfaceRules.sequence(
 				frozenPeaksRule(),
@@ -257,7 +255,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 					Blocks.ANDESITE,
 					List.of(
 						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_2),
-						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, andesiteStartHumidity, Parameters.HUMIDITY_5)
+						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_2, Parameters.HUMIDITY_5)
 					)
 				),
 				higherStoneRule()

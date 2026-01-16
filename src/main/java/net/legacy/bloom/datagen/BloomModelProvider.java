@@ -13,6 +13,8 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.data.BlockFamilies;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -23,6 +25,24 @@ public final class BloomModelProvider extends FabricModelProvider {
 	public BloomModelProvider(FabricDataOutput output) {
 		super(output);
 	}
+
+	public static final BlockFamily FAMILY_POLISHED_DOLERITE = BlockFamilies.familyBuilder(BloomBlocks.POLISHED_DOLERITE)
+		.stairs(BloomBlocks.POLISHED_DOLERITE_STAIRS)
+		.slab(BloomBlocks.POLISHED_DOLERITE_SLAB)
+		.wall(BloomBlocks.POLISHED_DOLERITE_WALL)
+		.getFamily();
+
+	public static final BlockFamily FAMILY_DOLERITE_BRICKS = BlockFamilies.familyBuilder(BloomBlocks.DOLERITE_BRICKS)
+		.stairs(BloomBlocks.DOLERITE_BRICK_STAIRS)
+		.slab(BloomBlocks.DOLERITE_BRICK_SLAB)
+		.wall(BloomBlocks.DOLERITE_BRICK_WALL)
+		.getFamily();
+
+	public static final BlockFamily FAMILY_DOLERITE_TILES = BlockFamilies.familyBuilder(BloomBlocks.DOLERITE_TILES)
+		.stairs(BloomBlocks.DOLERITE_TILE_STAIRS)
+		.slab(BloomBlocks.DOLERITE_TILE_SLAB)
+		.wall(BloomBlocks.DOLERITE_TILE_WALL)
+		.getFamily();
 
 	@Override
 	public void generateBlockStateModels(BlockModelGenerators generator) {
@@ -48,7 +68,11 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.createPlantWithDefaultItem(BloomBlocks.GOLDEN_BIRCH_SAPLING, BloomBlocks.POTTED_GOLDEN_BIRCH_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createPlantWithDefaultItem(BloomBlocks.PINE_SAPLING, BloomBlocks.POTTED_PINE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
-        generator.createTrivialCube(BloomBlocks.DOLERITE);
+		generator.createTrivialCube(BloomBlocks.DOLERITE);
+
+		generator.family(BloomBlocks.POLISHED_DOLERITE).generateFor(FAMILY_POLISHED_DOLERITE);
+		generator.family(BloomBlocks.DOLERITE_BRICKS).generateFor(FAMILY_DOLERITE_BRICKS);
+		generator.family(BloomBlocks.DOLERITE_TILES).generateFor(FAMILY_DOLERITE_TILES);
 
         oreModels(BloomBlocks.TUFF_ORES, generator);
         oreModels(BloomBlocks.GRANITE_ORES, generator);

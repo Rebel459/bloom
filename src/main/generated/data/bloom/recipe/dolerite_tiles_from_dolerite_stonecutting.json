@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "bloom:dolerite",
+  "result": {
+    "count": 1,
+    "id": "bloom:dolerite_tiles"
+  }
+}

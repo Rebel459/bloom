@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_polished_dolerite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bloom:polished_dolerite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bloom:dolerite_brick_wall_from_polished_dolerite_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_polished_dolerite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bloom:dolerite_brick_wall_from_polished_dolerite_stonecutting"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bloom:block/polished_dolerite_slab"
+    },
+    "type=double": {
+      "model": "bloom:block/polished_dolerite"
+    },
+    "type=top": {
+      "model": "bloom:block/polished_dolerite_slab_top"
+    }
+  }
+}

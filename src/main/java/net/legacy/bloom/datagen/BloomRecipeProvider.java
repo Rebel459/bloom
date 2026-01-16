@@ -53,6 +53,58 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 				this.oneToOneConversionRecipe(Items.PINK_DYE, BloomBlocks.HYACINTH, "pink_dye");
 				this.oneToOneConversionRecipe(Items.WHITE_DYE, BloomBlocks.QUEENCUP, "white_dye");
 
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.POLISHED_DOLERITE, BloomBlocks.DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.POLISHED_DOLERITE_STAIRS, BloomBlocks.DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.POLISHED_DOLERITE_SLAB, BloomBlocks.DOLERITE, 2);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.POLISHED_DOLERITE_WALL, BloomBlocks.DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICKS, BloomBlocks.DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICK_STAIRS, BloomBlocks.DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICK_SLAB, BloomBlocks.DOLERITE, 2);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICK_WALL, BloomBlocks.DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILES, BloomBlocks.DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_STAIRS, BloomBlocks.DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_SLAB, BloomBlocks.DOLERITE, 2);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_WALL, BloomBlocks.DOLERITE);
+
+				this.convertStoneRecipe(BloomBlocks.POLISHED_DOLERITE, BloomBlocks.DOLERITE);
+
+				this.slabRecipe(BloomBlocks.POLISHED_DOLERITE_SLAB, BloomBlocks.POLISHED_DOLERITE);
+				this.stairRecipe(BloomBlocks.POLISHED_DOLERITE_STAIRS, BloomBlocks.POLISHED_DOLERITE);
+				this.wallRecipe(BloomBlocks.POLISHED_DOLERITE_WALL, BloomBlocks.POLISHED_DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.POLISHED_DOLERITE_STAIRS, BloomBlocks.POLISHED_DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.POLISHED_DOLERITE_SLAB, BloomBlocks.POLISHED_DOLERITE, 2);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.POLISHED_DOLERITE_WALL, BloomBlocks.POLISHED_DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICKS, BloomBlocks.POLISHED_DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICK_STAIRS, BloomBlocks.POLISHED_DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICK_SLAB, BloomBlocks.POLISHED_DOLERITE, 2);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICK_WALL, BloomBlocks.POLISHED_DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILES, BloomBlocks.POLISHED_DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_STAIRS, BloomBlocks.POLISHED_DOLERITE);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_SLAB, BloomBlocks.POLISHED_DOLERITE, 2);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_WALL, BloomBlocks.POLISHED_DOLERITE);
+
+				this.convertStoneRecipe(BloomBlocks.DOLERITE_BRICKS, BloomBlocks.POLISHED_DOLERITE);
+
+				this.slabRecipe(BloomBlocks.DOLERITE_BRICK_SLAB, BloomBlocks.DOLERITE_BRICKS);
+				this.stairRecipe(BloomBlocks.DOLERITE_BRICK_STAIRS, BloomBlocks.DOLERITE_BRICKS);
+				this.wallRecipe(BloomBlocks.DOLERITE_BRICK_WALL, BloomBlocks.DOLERITE_BRICKS);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICK_STAIRS, BloomBlocks.DOLERITE_BRICKS);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICK_SLAB, BloomBlocks.DOLERITE_BRICKS, 2);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_BRICK_WALL, BloomBlocks.DOLERITE_BRICKS);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILES, BloomBlocks.DOLERITE_BRICKS);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_STAIRS, BloomBlocks.DOLERITE_BRICKS);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_SLAB, BloomBlocks.DOLERITE_BRICKS, 2);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_WALL, BloomBlocks.DOLERITE_BRICKS);
+
+				this.convertStoneRecipe(BloomBlocks.DOLERITE_TILES, BloomBlocks.DOLERITE_BRICKS);
+
+				this.slabRecipe(BloomBlocks.DOLERITE_TILE_SLAB, BloomBlocks.DOLERITE_TILES);
+				this.stairRecipe(BloomBlocks.DOLERITE_TILE_STAIRS, BloomBlocks.DOLERITE_TILES);
+				this.wallRecipe(BloomBlocks.DOLERITE_TILE_WALL, BloomBlocks.DOLERITE_TILES);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_STAIRS, BloomBlocks.DOLERITE_TILES);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_SLAB, BloomBlocks.DOLERITE_TILES, 2);
+				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.DOLERITE_TILE_WALL, BloomBlocks.DOLERITE_TILES);
+
 				this.shaped(RecipeCategory.MISC, BloomItems.YARN)
 					.define('#', Ingredient.of(BloomItems.COTTON))
 					.pattern("##")
@@ -117,31 +169,6 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 				for (StoneOresRegistry registry : StoneOresRegistry.ALL_REGISTRIES) {
 					oreRecipes(registry);
 				}
-//                oreRecipes(BloomBlocks.DOLERITE_ORES);
-//                oreRecipes(BloomBlocks.DIORITE_ORES);
-//                oreRecipes(BloomBlocks.GRANITE_ORES);
-//                oreRecipes(BloomBlocks.ANDESITE_ORES);
-//                oreRecipes(BloomBlocks.SANDSTONE_ORES);
-//                oreRecipes(BloomBlocks.TUFF_ORES);
-
-/*                ERWoodRecipeProvider.buildRecipes(this, exporter);
-
-                this.shapeless(RecipeCategory.BUILDING_BLOCKS, ERBlocks.CHORUS_BLOCK)
-                        .requires(Ingredient.of(ERItems.CHORUS_SPINE), 9)
-                        .unlockedBy("has_chorus_spine", this.has(ERItems.CHORUS_SPINE))
-                        .save(exporter);
-
-                this.shaped(RecipeCategory.BUILDING_BLOCKS, ERBlocks.CHORUS_MOSAIC)
-                        .define('#', Ingredient.of(ERBlocks.CHORUS_SLAB))
-                        .pattern("#")
-                        .pattern("#")
-                        .unlockedBy("has_planks", this.has(ERBlocks.CHORUS_PLANKS))
-                        .save(exporter);
-
-                this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.PURPUR_BLOCK, ERBlocks.PURPUR);
-                this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.PURPUR_STAIRS, ERBlocks.PURPUR);
-                this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.PURPUR_SLAB, ERBlocks.PURPUR, 2);
-                this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.PURPUR_PILLAR, ERBlocks.PURPUR);*/
             }
 
 			public void sleepingBagRecipes(List<Triple<Item, Item, Item>> list) {
@@ -220,6 +247,54 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
                 this.oreSmelting(List.of(input.asItem()), RecipeCategory.MISC, output, experience, 200, group);
                 this.oreBlasting(List.of(input.asItem()), RecipeCategory.MISC, output, experience, 100, group);
             }
+
+			public void slabRecipe(Block output, Block ingredient) {
+				this.slabRecipe(output.asItem(), ingredient.asItem());
+			}
+			public void slabRecipe(Item output, Item ingredient) {
+				this.shaped(RecipeCategory.BUILDING_BLOCKS, output, 6)
+					.define('#', Ingredient.of(ingredient))
+					.pattern("###")
+					.unlockedBy("has_ingredient", this.has(ingredient))
+					.save(exporter);
+			}
+
+			public void stairRecipe(Block output, Block ingredient) {
+				this.stairRecipe(output.asItem(), ingredient.asItem());
+			}
+			public void stairRecipe(Item output, Item ingredient) {
+				this.shaped(RecipeCategory.BUILDING_BLOCKS, output, 4)
+					.define('#', Ingredient.of(ingredient))
+					.pattern("#  ")
+					.pattern("## ")
+					.pattern("###")
+					.unlockedBy("has_ingredient", this.has(ingredient))
+					.save(exporter);
+			}
+
+			public void wallRecipe(Block output, Block ingredient) {
+				this.wallRecipe(output.asItem(), ingredient.asItem());
+			}
+			public void wallRecipe(Item output, Item ingredient) {
+				this.shaped(RecipeCategory.BUILDING_BLOCKS, output, 6)
+					.define('#', Ingredient.of(ingredient))
+					.pattern("###")
+					.pattern("###")
+					.unlockedBy("has_ingredient", this.has(ingredient))
+					.save(exporter);
+			}
+
+			public void convertStoneRecipe(Block output, Block ingredient) {
+				this.convertStoneRecipe(output.asItem(), ingredient.asItem());
+			}
+			public void convertStoneRecipe(Item output, Item ingredient) {
+				this.shaped(RecipeCategory.BUILDING_BLOCKS, output, 4)
+					.define('#', Ingredient.of(ingredient))
+					.pattern("##")
+					.pattern("##")
+					.unlockedBy("has_ingredient", this.has(ingredient))
+					.save(exporter);
+			}
         };
     }
 
