@@ -151,7 +151,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		this.builder(BloomBiomeTags.HAS_STRIP_COARSE_DIRT)
 			.add(Biomes.SAVANNA)
-			.add(Biomes.SAVANNA_PLATEAU);
+			.add(Biomes.SAVANNA_PLATEAU)
+			.add(BloomBiomes.GOLDEN_FOREST);
 
         this.builder(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
 			.add(Biomes.DESERT);

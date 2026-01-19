@@ -1,6 +1,7 @@
 {
   "values": [
     "minecraft:savanna",
-    "minecraft:savanna_plateau"
+    "minecraft:savanna_plateau",
+    "bloom:golden_forest"
   ]
 }

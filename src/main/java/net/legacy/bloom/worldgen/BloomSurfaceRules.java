@@ -142,7 +142,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 
 	public static SurfaceRules.RuleSource coarseDirtStrips() {
 		final SurfaceRules.RuleSource coarseDirtRule = SurfaceRules.ifTrue(
-			SurfaceRuleData.surfaceNoiseAbove(5.5),
+			SurfaceRuleData.surfaceNoiseAbove(4.5),
 			FrozenSurfaceRules.makeStateRule(Blocks.COARSE_DIRT)
 		);
 		return SurfaceRules.ifTrue(

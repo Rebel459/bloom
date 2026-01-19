@@ -125,6 +125,7 @@ public final class BloomBiomeModifications {
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.GOLDEN_FOREST_FLOWERS);
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.GOLDEN_FOREST_TREES);
+				BiomeHelper.addVegetation(modificationContext, BloomFeatures.GOLDEN_FOREST_WILDFLOWERS);
 			}
 		);
 
