@@ -64,7 +64,7 @@ public class BloomBiomeTags {
 	public static final TagKey<Biome> HAS_GRAVEL_BLOBS = bind("features/ore_gravel");
 
 	public static final TagKey<Biome> HAS_TAIGA_MUSIC = bind("music/taiga");
-	public static final TagKey<Biome> HAS_OLD_GROWTH_TAIGA_MUSIC = bind("music/taiga");
+	public static final TagKey<Biome> HAS_OLD_GROWTH_TAIGA_MUSIC = bind("music/old_growth_taiga");
 
     private static TagKey<Biome> bind(String path) {
         return TagKey.create(Registries.BIOME, Bloom.id(path));
