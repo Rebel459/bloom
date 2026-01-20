@@ -5,14 +5,25 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.frozenblock.lib.datagen.api.FrozenBiomeTagProvider;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.tag.BloomBiomeTags;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.registries.VanillaRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 
 public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 	public BloomBiomeTagProvider(FabricDataOutput output, CompletableFuture registries) {
 		super(output, registries);
+	}
+
+	private ResourceKey<Biome> getBiome(String id) {
+		return ResourceKey.create(this.registryKey, Identifier.parse(id));
 	}
 
 	@Override
@@ -37,13 +48,18 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 			.add(Biomes.JUNGLE)
 			.add(Biomes.SPARSE_JUNGLE)
-			.add(BloomBiomes.WINDSWEPT_JUNGLE);
+			.add(BloomBiomes.WINDSWEPT_JUNGLE)
+			.addOptional(this.getBiome("wilderwild:birch_jungle"))
+			.addOptional(this.getBiome("wilderwild:sparse_birch_jungle"));
 
 		this.builder(BloomBiomeTags.IS_NON_SNOWY_TAIGA)
 			.add(Biomes.TAIGA)
 			.add(Biomes.OLD_GROWTH_PINE_TAIGA)
 			.add(Biomes.OLD_GROWTH_SPRUCE_TAIGA)
-			.add(BloomBiomes.PINE_TAIGA);
+			.add(BloomBiomes.PINE_TAIGA)
+			.addOptional(this.getBiome("wilderwild:birch_taiga"))
+			.addOptional(this.getBiome("wilderwild:old_growth_birch_taiga"))
+			.addOptional(this.getBiome("wilderwild:dark_taiga"));
 
 		// Internal
 
@@ -100,13 +116,19 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		// Effects
         this.builder(BloomBiomeTags.HAS_WARM_COLORS)
 			.add(Biomes.DESERT)
-			.addOptionalTag(BiomeTags.IS_BADLANDS);
+			.addOptionalTag(BiomeTags.IS_BADLANDS)
+			.addOptional(this.getBiome("wilderwild:oasis"))
+			.addOptional(this.getBiome("wilderwild:warm_beach"))
+			.addOptional(this.getBiome("wilderwild:warm_river"));
 
         this.builder(BloomBiomeTags.HAS_LUKEWARM_COLORS)
-			.addOptionalTag(BiomeTags.IS_SAVANNA);
+			.addOptionalTag(BiomeTags.IS_SAVANNA)
+			.addOptional(this.getBiome("wilderwild:arid_forest"))
+			.addOptional(this.getBiome("wilderwild:parched_forest"));
 
 		this.builder(BloomBiomeTags.HAS_TROPICAL_COLORS)
-			.addOptionalTag(BiomeTags.IS_JUNGLE);
+			.addOptionalTag(BiomeTags.IS_JUNGLE)
+			.addOptional(this.getBiome("wilderwild:rainforest"));
 
 		this.builder(BloomBiomeTags.HAS_COLD_COLORS)
 			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA)
@@ -124,7 +146,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.ICE_SPIKES)
 			.add(Biomes.FROZEN_RIVER)
 			.add(Biomes.FROZEN_OCEAN)
-			.add(Biomes.DEEP_FROZEN_OCEAN);
+			.add(Biomes.DEEP_FROZEN_OCEAN)
+			.addOptional(this.getBiome("wilderwild:snowy_old_growth_pine_taiga"))
+			.addOptional(this.getBiome("wilderwild:snowy_dying_forest"))
+			.addOptional(this.getBiome("wilderwild:snowy_dying_mixed_forest"))
+			.addOptional(this.getBiome("wilderwild:snowy_old_growth_pine_taiga"));
 
 		// Surface Rules
 		this.builder(BloomBiomeTags.HAS_SURFACE_GRAVEL)
@@ -169,14 +195,14 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.SAVANNA_PLATEAU);
 
 		// Features
-
 		this.builder(BloomBiomeTags.NO_DEFAULT_FLOWERS)
 			.add(Biomes.SNOWY_TAIGA)
 			.add(Biomes.SNOWY_PLAINS)
 			.add(Biomes.SNOWY_BEACH)
 			.add(Biomes.ICE_SPIKES)
 			.add(BloomBiomes.FEN)
-			.addOptionalTag(BiomeTags.IS_JUNGLE);
+			.addOptionalTag(BiomeTags.IS_JUNGLE)
+			.addOptional(this.getBiome("wilderwild:snowy_old_growth_pine_taiga"));
 
 		this.builder(BloomBiomeTags.NO_PINE_TREES)
 			.add(Biomes.TAIGA)
@@ -191,7 +217,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		this.builder(BloomBiomeTags.HAS_BROMELIAD)
 			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
-			.add(BloomBiomes.WARM_RIVER);
+			.add(BloomBiomes.WARM_RIVER)
+			.addOptional(this.getBiome("wilderwild:rainforest"));
 
 		this.builder(BloomBiomeTags.HAS_PINK_ORCHID)
 			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE);
@@ -205,22 +232,33 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.HAS_BELLFLOWER)
 			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 			.add(Biomes.DARK_FOREST)
-			.add(Biomes.FLOWER_FOREST);
+			.add(Biomes.FLOWER_FOREST)
+			.addOptional(this.getBiome("wilderwild:dark_birch_forest"))
+			.addOptional(this.getBiome("wilderwild:flower_field"))
+			.addOptional(this.getBiome("wilderwild:old_growth_dark_forest"));
 
         this.builder(BloomBiomeTags.HAS_HYDRANGEA)
 			.add(Biomes.FOREST)
 			.add(Biomes.FLOWER_FOREST)
 			.add(Biomes.CHERRY_GROVE)
-			.add(BloomBiomes.GOLDEN_FOREST);
+			.add(BloomBiomes.GOLDEN_FOREST)
+			.addOptional(this.getBiome("wilderwild:mixed_forest"))
+			.addOptional(this.getBiome("wilderwild:semi_birch_forest"))
+			.addOptional(this.getBiome("wilderwild:flower_field"))
+			.addOptional(this.getBiome("wilderwild:sparse_forest"));
 
         this.builder(BloomBiomeTags.HAS_CALLA_LILY)
 			.addOptionalTag(BiomeTags.IS_SAVANNA)
-			.add(Biomes.FLOWER_FOREST);
+			.add(Biomes.FLOWER_FOREST)
+			.addOptional(this.getBiome("wilderwild:arid_forest"))
+			.addOptional(this.getBiome("wilderwild:arid_savanna"))
+			.addOptional(this.getBiome("wilderwild:flower_field"));
 
         this.builder(BloomBiomeTags.HAS_DIANTHUS)
 			.add(Biomes.SNOWY_TAIGA)
 			.add(Biomes.SNOWY_PLAINS)
-			.add(BloomBiomes.SNOWY_PINE_TAIGA);
+			.add(BloomBiomes.SNOWY_PINE_TAIGA)
+			.addOptional(this.getBiome("wilderwild:snowy_old_growth_pine_taiga"));
 
         this.builder(BloomBiomeTags.HAS_GOLDENROD)
 			.add(Biomes.SUNFLOWER_PLAINS)
@@ -236,7 +274,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.WINDSWEPT_FOREST)
 			.add(Biomes.WINDSWEPT_HILLS)
 			.add(Biomes.WINDSWEPT_GRAVELLY_HILLS)
-			.add(BloomBiomes.SNOWY_PINE_TAIGA);
+			.add(BloomBiomes.SNOWY_PINE_TAIGA)
+			.addOptional(this.getBiome("wilderwild:snowy_old_growth_pine_taiga"));
 
 		this.builder(BloomBiomeTags.HAS_HYACINTH)
 			.add(Biomes.DARK_FOREST)
@@ -252,7 +291,19 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.addOptionalTag(BiomeTags.IS_BADLANDS);
 
         this.builder(BloomBiomeTags.HAS_REEDS)
-			.add(BloomBiomes.FEN);
+			.add(BloomBiomes.FEN)
+			.addOptional(this.getBiome("wilderwild:cypress_wetlands"));
+
+		// Music
+		this.builder(BloomBiomeTags.HAS_TAIGA_MUSIC)
+			.add(Biomes.TAIGA)
+			.addOptional(this.getBiome("wilderwild:birch_taiga"))
+			.addOptional(this.getBiome("wilderwild:dark_taiga"));
+
+		this.builder(BloomBiomeTags.HAS_OLD_GROWTH_TAIGA_MUSIC)
+			.add(Biomes.OLD_GROWTH_SPRUCE_TAIGA)
+			.add(Biomes.OLD_GROWTH_PINE_TAIGA)
+			.addOptional(this.getBiome("wilderwild:old_growth_birch_taiga"));
 
 		// Vanilla
 		this.builder(BiomeTags.IS_RIVER)

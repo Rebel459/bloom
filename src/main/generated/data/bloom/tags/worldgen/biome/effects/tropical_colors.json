@@ -3,6 +3,10 @@
     {
       "id": "#minecraft:is_jungle",
       "required": false
+    },
+    {
+      "id": "wilderwild:rainforest",
+      "required": false
     }
   ]
 }

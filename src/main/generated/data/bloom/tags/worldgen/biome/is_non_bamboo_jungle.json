@@ -2,6 +2,14 @@
   "values": [
     "minecraft:jungle",
     "minecraft:sparse_jungle",
-    "bloom:windswept_jungle"
+    "bloom:windswept_jungle",
+    {
+      "id": "wilderwild:birch_jungle",
+      "required": false
+    },
+    {
+      "id": "wilderwild:sparse_birch_jungle",
+      "required": false
+    }
   ]
 }

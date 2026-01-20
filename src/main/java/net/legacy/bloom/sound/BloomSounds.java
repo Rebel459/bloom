@@ -8,9 +8,16 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 
 public class BloomSounds {
+	public static final SoundEvent DOLERITE_BREAK = register("block.dolerite.break");
+	public static final SoundEvent DOLERITE_STEP = register("block.dolerite.step");
+	public static final SoundEvent DOLERITE_PLACE = register("block.dolerite.place");
+	public static final SoundEvent DOLERITE_HIT = register("block.dolerite.hit");
+	public static final SoundEvent DOLERITE_FALL = register("block.dolerite.fall");
+
 	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_FEN = registerForHolder("music.overworld.fen");
 	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_TAIGA = registerForHolder("music.overworld.taiga");
-	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_GOLDEN_BIRCH_FOREST = registerForHolder("music.overworld.golden_birch_forest");
+	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_OLD_GROWTH_TAIGA = registerForHolder("music.overworld.old_growth_taiga");
+	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_GOLDEN_FOREST = registerForHolder("music.overworld.golden_forest");
 
 	private static SoundEvent register(String string) {
 		Identifier identifier = Bloom.id(string);

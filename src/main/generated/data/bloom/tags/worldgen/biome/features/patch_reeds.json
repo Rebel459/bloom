@@ -1,5 +1,9 @@
 {
   "values": [
-    "bloom:fen"
+    "bloom:fen",
+    {
+      "id": "wilderwild:cypress_wetlands",
+      "required": false
+    }
   ]
 }

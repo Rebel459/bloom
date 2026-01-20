@@ -1,6 +1,10 @@
 {
   "values": [
     "#bloom:is_non_bamboo_jungle",
-    "bloom:warm_river"
+    "bloom:warm_river",
+    {
+      "id": "wilderwild:rainforest",
+      "required": false
+    }
   ]
 }

@@ -8,6 +8,10 @@
     {
       "id": "#minecraft:is_jungle",
       "required": false
+    },
+    {
+      "id": "wilderwild:snowy_old_growth_pine_taiga",
+      "required": false
     }
   ]
 }

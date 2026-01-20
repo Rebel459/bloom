@@ -159,6 +159,9 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(BloomBlocks.DOLERITE_TILE_WALL);
 
 		StoneOresRegistry.ALL_REGISTRIES.forEach(this::tagOres);
+
+		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+			.addOptionalTag(BloomBlockTags.SAPPHIRE_ORES);
 	}
 
 	public void tagWoodset(WoodsetRegistry woodset, TagKey<Block> tag) {
@@ -238,7 +241,7 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
     public void tagOres(StoneOresRegistry ores) {
         ores.getOresMap().forEach((type, block) -> {
             String name = type.name;
-			addTag(block, BlockTags.MINEABLE_WITH_PICKAXE, Objects.equals(name, "sapphire"));
+			if (!Objects.equals(name, "sapphire")) addTag(block, BlockTags.MINEABLE_WITH_PICKAXE);
             if (Objects.equals(name, "coal")) addTag(block, BlockTags.COAL_ORES);
             if (Objects.equals(name, "copper")) addTag(block, BlockTags.COPPER_ORES);
             if (Objects.equals(name, "iron")) addTag(block, BlockTags.IRON_ORES);
@@ -247,19 +250,11 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
             if (Objects.equals(name, "diamond")) addTag(block, BlockTags.DIAMOND_ORES);
             if (Objects.equals(name, "emerald")) addTag(block, BlockTags.EMERALD_ORES);
             if (Objects.equals(name, "lapis")) addTag(block, BlockTags.LAPIS_ORES);
-            if (Objects.equals(name, "sapphire")) addTag(block, BloomBlockTags.SAPPHIRE_ORES, true);
+            if (Objects.equals(name, "sapphire")) addTag(block, BloomBlockTags.SAPPHIRE_ORES);
         });
     }
 
     public void addTag(Block block, TagKey<Block> tag) {
-        addTag(block, tag, false);
-    }
-
-    public void addTag(Block block, TagKey<Block> tag, boolean optional) {
-        if (optional) {
-			this.valueLookupBuilder(tag).addOptional(block);
-			return;
-        }
-		this.valueLookupBuilder(tag).add(block);
+        this.valueLookupBuilder(tag).add(block);
     }
 }

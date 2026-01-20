@@ -3,6 +3,22 @@
     "minecraft:forest",
     "minecraft:flower_forest",
     "minecraft:cherry_grove",
-    "bloom:golden_forest"
+    "bloom:golden_forest",
+    {
+      "id": "wilderwild:mixed_forest",
+      "required": false
+    },
+    {
+      "id": "wilderwild:semi_birch_forest",
+      "required": false
+    },
+    {
+      "id": "wilderwild:flower_field",
+      "required": false
+    },
+    {
+      "id": "wilderwild:sparse_forest",
+      "required": false
+    }
   ]
 }

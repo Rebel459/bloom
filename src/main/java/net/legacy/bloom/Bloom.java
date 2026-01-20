@@ -23,7 +23,6 @@ import net.minecraft.resources.ResourceKey;
 
 public class Bloom implements ModInitializer {
 	public static final String MOD_ID = "bloom";
-    public static final boolean HAS_WILDERWILD = FabricLoader.getInstance().isModLoaded("wilderwild");
 
 	@Override
 	public void onInitialize() {

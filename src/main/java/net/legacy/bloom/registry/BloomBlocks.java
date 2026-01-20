@@ -13,6 +13,7 @@ import net.legacy.bloom.block.HalfSubmergedBlock;
 import net.legacy.bloom.block.LargeFlowerBlock;
 import net.legacy.bloom.block.SleepingBagBlock;
 import net.legacy.bloom.block.WideFlowerBlock;
+import net.legacy.bloom.sound.BloomBlockSounds;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.legacy.bloom.util.WoodsetRegistry;
 import net.legacy.bloom.worldgen.sapling.BloomTreeGrowers;
@@ -217,6 +218,7 @@ public final class BloomBlocks {
 		Block::new,
 		BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
 			.strength(1.8F, 8F)
+			.sound(BloomBlockSounds.DOLERITE)
 	);
 
 	public static final Block POLISHED_DOLERITE = register("polished_dolerite",

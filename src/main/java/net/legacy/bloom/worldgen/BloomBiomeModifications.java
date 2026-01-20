@@ -4,10 +4,14 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.legacy.bloom.Bloom;
+import net.legacy.bloom.sound.BloomSounds;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.sounds.Musics;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
@@ -250,5 +254,19 @@ public final class BloomBiomeModifications {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.PATCH_REEDS);
 			}
         );
+		BiomeModifications.create(Bloom.id("has_taiga_music")).add(
+			ModificationPhase.REPLACEMENTS,
+			BiomeSelectors.tag(BloomBiomeTags.HAS_TAIGA_MUSIC),
+			(selectionContext, modificationContext) -> {
+				modificationContext.getAttributes().set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(Musics.createGameMusic(BloomSounds.MUSIC_BIOME_TAIGA)));
+			}
+		);
+		BiomeModifications.create(Bloom.id("has_old_growth_taiga_music")).add(
+			ModificationPhase.REPLACEMENTS,
+			BiomeSelectors.tag(BloomBiomeTags.HAS_OLD_GROWTH_TAIGA_MUSIC),
+			(selectionContext, modificationContext) -> {
+				modificationContext.getAttributes().set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(Musics.createGameMusic(BloomSounds.MUSIC_BIOME_OLD_GROWTH_TAIGA)));
+			}
+		);
 	}
 }

@@ -4,6 +4,18 @@
       "id": "#minecraft:is_savanna",
       "required": false
     },
-    "minecraft:flower_forest"
+    "minecraft:flower_forest",
+    {
+      "id": "wilderwild:arid_forest",
+      "required": false
+    },
+    {
+      "id": "wilderwild:arid_savanna",
+      "required": false
+    },
+    {
+      "id": "wilderwild:flower_field",
+      "required": false
+    }
   ]
 }

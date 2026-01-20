@@ -1,0 +1,142 @@
+{
+  "block.dolerite.break": {
+    "sounds": [
+      {
+        "name": "bloom:block/dolerite/break1"
+      },
+      {
+        "name": "bloom:block/dolerite/break1",
+        "pitch": 0.9
+      },
+      {
+        "name": "bloom:block/dolerite/break2"
+      },
+      {
+        "name": "bloom:block/dolerite/break2",
+        "pitch": 0.9
+      },
+      {
+        "name": "bloom:block/dolerite/break3"
+      },
+      {
+        "name": "bloom:block/dolerite/break3",
+        "pitch": 0.9
+      },
+      {
+        "name": "bloom:block/dolerite/break4"
+      },
+      {
+        "name": "bloom:block/dolerite/break4",
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.dolerite.fall": {
+    "sounds": [
+      "bloom:block/dolerite/step1",
+      "bloom:block/dolerite/step2",
+      "bloom:block/dolerite/step3",
+      "bloom:block/dolerite/step4"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.dolerite.hit": {
+    "sounds": [
+      "bloom:block/dolerite/step1",
+      "bloom:block/dolerite/step2",
+      "bloom:block/dolerite/step3",
+      "bloom:block/dolerite/step4"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.dolerite.place": {
+    "sounds": [
+      {
+        "name": "bloom:block/dolerite/place1"
+      },
+      {
+        "name": "bloom:block/dolerite/place1",
+        "pitch": 0.9
+      },
+      {
+        "name": "bloom:block/dolerite/place2"
+      },
+      {
+        "name": "bloom:block/dolerite/place2",
+        "pitch": 0.9
+      },
+      {
+        "name": "bloom:block/dolerite/place3"
+      },
+      {
+        "name": "bloom:block/dolerite/place3",
+        "pitch": 0.9
+      },
+      {
+        "name": "bloom:block/dolerite/place4"
+      },
+      {
+        "name": "bloom:block/dolerite/place4",
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.dolerite.step": {
+    "sounds": [
+      "bloom:block/dolerite/step1",
+      "bloom:block/dolerite/step2",
+      "bloom:block/dolerite/step3",
+      "bloom:block/dolerite/step4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "music.overworld.taiga": {
+    "sounds": [
+      {
+        "name": "music.game",
+        "type": "event",
+        "weight": 27
+      },
+      {
+        "name": "bloom:music/overworld/lock_and_key",
+        "stream": true,
+        "volume": 0.7
+      }
+    ]
+  },
+  "music.overworld.old_growth_taiga": {
+    "sounds": [
+      {
+        "name": "music.overworld.old_growth_taiga",
+        "type": "event",
+        "weight": 51
+      },
+      {
+        "name": "bloom:music/overworld/lock_and_key",
+        "stream": true,
+        "volume": 0.7,
+        "weight": 3
+      }
+    ]
+  },
+  "music.overworld.fen": {
+    "sounds": [
+      {
+        "name": "music.overworld.swamp",
+        "type": "event",
+        "weight": 3
+      },
+      {
+        "name": "bloom:music/overworld/lock_and_key",
+        "stream": true,
+        "volume": 0.7
+      }
+    ]
+  },
+  "music.overworld.golden_forest": {
+    "sounds": [
+    ]
+  }
+}

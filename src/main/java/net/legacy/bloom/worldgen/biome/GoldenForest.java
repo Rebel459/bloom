@@ -78,7 +78,7 @@ public final class GoldenForest extends FrozenBiome {
     @Override
     public void fillEnvironmentAttributes(EnvironmentAttributeMap.Builder builder) {
         builder.set(EnvironmentAttributes.SKY_COLOR, SKY_COLOR);
-        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(BloomSounds.MUSIC_BIOME_GOLDEN_BIRCH_FOREST, false));
+        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(BloomSounds.MUSIC_BIOME_GOLDEN_FOREST, false));
     }
 
     @Override
