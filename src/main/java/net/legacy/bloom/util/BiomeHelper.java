@@ -35,6 +35,9 @@ public class BiomeHelper {
 		public static int FROZEN_WATER = 15960;
 	}
 
+	public static BackgroundMusic music(Holder<SoundEvent> music) {
+		return music(music, false);
+	}
 	public static BackgroundMusic music(Holder<SoundEvent> music, boolean underWater) {
 		if (underWater) {
 			return new BackgroundMusic(

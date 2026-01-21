@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import java.util.function.Consumer;
 import net.frozenblock.lib.worldgen.biome.api.FrozenBiome;
 import net.legacy.bloom.Bloom;
+import net.legacy.bloom.sound.BloomSounds;
 import net.legacy.bloom.util.BiomeHelper;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
@@ -73,7 +74,7 @@ public final class WindsweptJungle extends FrozenBiome {
     @Override
     public void fillEnvironmentAttributes(EnvironmentAttributeMap.Builder builder) {
         builder.set(EnvironmentAttributes.SKY_COLOR, SKY_COLOR);
-        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_BIOME_JUNGLE, false));
+        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(BloomSounds.MUSIC_BIOME_WINDSWEPT_JUNGLE, false));
     }
 
     @Override

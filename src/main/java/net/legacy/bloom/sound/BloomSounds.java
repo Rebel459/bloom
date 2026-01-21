@@ -17,6 +17,7 @@ public class BloomSounds {
 	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_FEN = registerForHolder("music.overworld.fen");
 	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_TAIGA = registerForHolder("music.overworld.taiga");
 	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_OLD_GROWTH_TAIGA = registerForHolder("music.overworld.old_growth_taiga");
+	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_WINDSWEPT_JUNGLE = registerForHolder("music.overworld.windswept_jungle");
 	public static final Holder.Reference<SoundEvent> MUSIC_BIOME_GOLDEN_FOREST = registerForHolder("music.overworld.golden_forest");
 
 	private static SoundEvent register(String string) {
