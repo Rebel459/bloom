@@ -28,7 +28,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 	@Override
 	protected void addTags(HolderLookup.Provider arg) {
-		
+
 		// Normal
 		this.builder(BloomBiomeTags.BLOOM_BIOMES)
 			.add(BloomBiomes.WARM_RIVER)
