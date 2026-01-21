@@ -219,6 +219,8 @@
   "text.autoconfig.bloom.option.farming.cotton.@Tooltip": "Whether the new cotton crop and its related items should be obtainable in survival",
   "text.autoconfig.bloom.option.farming.hoe_replanting": "Hoe Replanting",
   "text.autoconfig.bloom.option.farming.hoe_replanting.@Tooltip": "Whether right-clicking crops with a Hoe should both harvest and replant the crop",
+  "text.autoconfig.bloom.option.farming.tradable_yarn": "Tradable Yarn",
+  "text.autoconfig.bloom.option.farming.tradable_yarn.@Tooltip": "Whether Shepherds should have a chance to purchase Yarn",
   "text.autoconfig.bloom.option.worldgen": "Worldgen",
   "text.autoconfig.bloom.option.worldgen.dolerite_depth": "Dolerite Depth",
   "text.autoconfig.bloom.option.worldgen.dolerite_depth.@Tooltip": "Whether Dolerite should replace Stone in frozen regions",

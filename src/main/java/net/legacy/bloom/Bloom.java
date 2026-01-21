@@ -12,6 +12,8 @@ import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.BloomConditionSources;
 import net.legacy.bloom.registry.BloomCreativeInventory;
 import net.legacy.bloom.registry.BloomItems;
+import net.legacy.bloom.registry.BloomLootTables;
+import net.legacy.bloom.registry.BloomVillagerTrades;
 import net.legacy.bloom.sound.BloomSounds;
 import net.legacy.bloom.util.ClimateCommand;
 import net.legacy.bloom.worldgen.BloomBiomeModifications;
@@ -37,6 +39,8 @@ public class Bloom implements ModInitializer {
         BloomCreativeInventory.init();
 		BloomConditionSources.init();
 		BloomBlockEntities.init();
+		BloomLootTables.init();
+		BloomVillagerTrades.init();
 		ClimateCommand.init();
 
 		if (BloomConfig.get.worldgen.pine_trees) {
