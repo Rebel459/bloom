@@ -19,6 +19,7 @@ public class ClimateCommand {
 	public static void init() {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 			dispatcher.register(Commands.literal("climate")
+				.requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
 				.executes(ctx -> climateCommand(ctx, ctx.getSource().getPlayerOrException()))
 			);
 		});

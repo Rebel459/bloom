@@ -33,10 +33,54 @@ public class BloomCreativeInventory {
 			);
 			addSleepingBags(entries);
 		});
-		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
-			addSleepingBags(entries);
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(BloomCreativeInventory::addSleepingBags);
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
+			entries.addAfter(
+				Items.POLISHED_ANDESITE_SLAB,
+				BloomBlocks.DOLERITE,
+				BloomBlocks.POLISHED_DOLERITE,
+				BloomBlocks.POLISHED_DOLERITE_STAIRS,
+				BloomBlocks.POLISHED_DOLERITE_SLAB,
+				BloomBlocks.POLISHED_DOLERITE_WALL,
+				BloomBlocks.DOLERITE_BRICKS,
+				BloomBlocks.DOLERITE_BRICK_STAIRS,
+				BloomBlocks.DOLERITE_BRICK_SLAB,
+				BloomBlocks.DOLERITE_BRICK_WALL,
+				BloomBlocks.DOLERITE_TILES,
+				BloomBlocks.DOLERITE_TILE_STAIRS,
+				BloomBlocks.DOLERITE_TILE_SLAB,
+				BloomBlocks.DOLERITE_TILE_WALL
+			);
 		});
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> {
+			entries.addAfter(Items.ANDESITE, BloomBlocks.DOLERITE);
+			entries.addAfter(Items.BEETROOT_SEEDS, BloomItems.COTTON_SEEDS);
+			entries.addAfter(
+				Items.LILY_OF_THE_VALLEY,
+				BloomBlocks.HELLEBORE,
+				BloomBlocks.BROMELIAD,
+				BloomBlocks.PINK_ORCHID,
+				BloomBlocks.CALLA_LILY,
+				BloomBlocks.DIANTHUS,
+				BloomBlocks.GOLDENROD,
+				BloomBlocks.ORANGE_DAISY,
+				BloomBlocks.SCILLA,
+				BloomBlocks.HYACINTH,
+				BloomBlocks.QUEENCUP
+			);
+			entries.addAfter(
+				Items.CACTUS_FLOWER,
+				BloomBlocks.SUCCULENT
+			);
+			entries.addAfter(
+				Items.PEONY,
+				BloomBlocks.BELLFLOWER,
+				BloomBlocks.HYDRANGEA
+			);
+			entries.addAfter(
+				Items.LARGE_FERN,
+				BloomBlocks.REEDS
+			);
             addOres(BloomBlocks.TUFF_ORES, entries);
 			addOres(BloomBlocks.DOLERITE_ORES, entries);
             addOres(BloomBlocks.GRANITE_ORES, entries);
@@ -45,6 +89,9 @@ public class BloomCreativeInventory {
             addOres(BloomBlocks.RED_SANDSTONE_ORES, entries);
             addOres(BloomBlocks.SANDSTONE_ORES, entries);
         });
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> {
+			entries.addBefore(Items.STRING, BloomItems.COTTON, BloomItems.YARN);
+		});
 		WoodsetRegistry.addToBuildingTab(Items.CHERRY_BUTTON, BloomBlocks.JACARANDA);
 		WoodsetRegistry.addToNaturalTab(Items.CHERRY_SAPLING, BloomBlocks.JACARANDA, BloomBlocks.JACARANDA_SAPLING);
 		WoodsetRegistry.addToFunctionalTab(Items.CHERRY_HANGING_SIGN, BloomBlocks.JACARANDA);

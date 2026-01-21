@@ -32,6 +32,9 @@ public class BloomConfig implements ConfigData {
 	@ConfigEntry.Gui.CollapsibleObject
 	public WorldgenConfig worldgen = new WorldgenConfig();
 
+	@ConfigEntry.Gui.CollapsibleObject
+	public FarmingConfig farming = new FarmingConfig();
+
     public static class BiomeConfig {
 		@ConfigEntry.Category("config")
 		public boolean golden_forest = true;
@@ -67,5 +70,29 @@ public class BloomConfig implements ConfigData {
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
 		public boolean pine_trees = true;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean stony_cliffs = true;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean ore_variants = true;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean stone_variant_depth = true;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean sandstone_depth = true;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean dolerite_depth = true;
+	}
+
+	public static class FarmingConfig {
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean hoe_replanting = true;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean cotton = true;
 	}
 }

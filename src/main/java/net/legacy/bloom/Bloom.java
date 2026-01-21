@@ -39,16 +39,20 @@ public class Bloom implements ModInitializer {
 		BloomBlockEntities.init();
 		ClimateCommand.init();
 
-		ResourceLoader.registerBuiltinPack(
-			Bloom.id("pine_trees"), modContainer,
-			Component.translatable("pack.bloom.pine_trees"),
-			PackActivationType.ALWAYS_ENABLED
-		);
-		ResourceLoader.registerBuiltinPack(
-			Bloom.id("ore_variants"), modContainer,
-			Component.translatable("pack.bloom.ore_variants"),
-			PackActivationType.ALWAYS_ENABLED
-        );
+		if (BloomConfig.get.worldgen.pine_trees) {
+			ResourceLoader.registerBuiltinPack(
+				Bloom.id("pine_trees"), modContainer,
+				Component.translatable("pack.bloom.pine_trees"),
+				PackActivationType.ALWAYS_ENABLED
+			);
+		}
+		if (BloomConfig.get.worldgen.ore_variants) {
+			ResourceLoader.registerBuiltinPack(
+				Bloom.id("ore_variants"), modContainer,
+				Component.translatable("pack.bloom.ore_variants"),
+				PackActivationType.ALWAYS_ENABLED
+			);
+		}
 	}
 
 	public static Identifier id(String path) {

@@ -1,5 +1,6 @@
 package net.legacy.bloom.mixin.item;
 
+import net.legacy.bloom.config.BloomConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -30,16 +31,15 @@ public class HoeItemMixin {
     }
 
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
-    private void harvestCropsWithHoe(UseOnContext context, CallbackInfoReturnable<InteractionResult> kirk) {
-        Level level = context.getLevel();
+    private void harvestCropsWithHoe(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
+		if (!BloomConfig.get.farming.hoe_replanting) return;
 
-        if (level.isClientSide() || !(level instanceof ServerLevel))
-            return;
+        Level level = context.getLevel();
+        if (level.isClientSide() || !(level instanceof ServerLevel)) return;
 
         BlockPos pos = context.getClickedPos();
         Block block = level.getBlockState(pos).getBlock();
-        if (!(block instanceof CropBlock cropBlock) || !cropBlock.isMaxAge(level.getBlockState(pos)))
-            return;
+        if (!(block instanceof CropBlock cropBlock) || !cropBlock.isMaxAge(level.getBlockState(pos))) return;
 
         Player player = context.getPlayer();
         if (!context.getItemInHand().is(ItemTags.HOES) || player == null) return;
@@ -68,7 +68,7 @@ public class HoeItemMixin {
 
         if (harvested) {
             serverLevel.playSound(null, pos, SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-            kirk.setReturnValue(InteractionResult.SUCCESS);
+			cir.setReturnValue(InteractionResult.SUCCESS);
         }
     }
 }

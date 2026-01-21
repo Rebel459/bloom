@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.legacy.bloom.Bloom;
+import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.sound.BloomSounds;
 import net.legacy.bloom.tag.BloomBiomeTags;
 import net.legacy.bloom.util.BiomeHelper;
@@ -78,14 +79,16 @@ public final class BloomBiomeModifications {
 			}
 		);
 
-		BiomeModifications.create(Bloom.id("no_pine_trees")).add(
-			ModificationPhase.REPLACEMENTS,
-			BiomeSelectors.tag(BloomBiomeTags.NO_PINE_TREES),
-			(selectionContext, modificationContext) -> {
-				modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_TAIGA);
-				modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BloomFeatures.TREES_TAIGA);
-			}
-		);
+		if (BloomConfig.get.worldgen.pine_trees) {
+			BiomeModifications.create(Bloom.id("no_pine_trees")).add(
+				ModificationPhase.REPLACEMENTS,
+				BiomeSelectors.tag(BloomBiomeTags.NO_PINE_TREES),
+				(selectionContext, modificationContext) -> {
+					modificationContext.getGenerationSettings().removeFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_TAIGA);
+					modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, BloomFeatures.TREES_TAIGA);
+				}
+			);
+		}
 
 		BiomeModifications.create(Bloom.id("no_default_flowers")).add(
 			ModificationPhase.REPLACEMENTS,
