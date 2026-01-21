@@ -2,6 +2,7 @@ package net.legacy.bloom.datagen;
 
 import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.frozenblock.lib.datagen.api.FrozenBiomeTagProvider;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.tag.BloomBiomeTags;
@@ -307,6 +308,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.addOptional(this.getBiome("wilderwild:old_growth_birch_taiga"));
 
 		// Vanilla
+		this.builder(BiomeTags.IS_OVERWORLD)
+			.addTag(BloomBiomeTags.BLOOM_BIOMES);
+
 		this.builder(BiomeTags.IS_RIVER)
 			.add(BloomBiomes.WARM_RIVER)
 			.add(BloomBiomes.TROPICAL_RIVER)
@@ -318,7 +322,10 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.COLD_BEACH)
 			.add(BloomBiomes.LUKEWARM_BEACH);
 
-        this.builder(BiomeTags.IS_JUNGLE)
+		this.builder(BiomeTags.IS_JUNGLE)
+			.add(BloomBiomes.WINDSWEPT_JUNGLE);
+
+		this.builder(BiomeTags.HAS_JUNGLE_TEMPLE)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE);
 
 		this.builder(BiomeTags.IS_TAIGA)
@@ -347,5 +354,39 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		this.builder(BiomeTags.HAS_TRIAL_CHAMBERS)
 			.addTag(BloomBiomeTags.BLOOM_BIOMES);
+
+		this.builder(BiomeTags.IS_FOREST)
+			.add(BloomBiomes.GOLDEN_FOREST);
+
+		// Conventional
+		this.builder(ConventionalBiomeTags.IS_SWAMP)
+			.add(BloomBiomes.FEN);
+
+		this.builder(ConventionalBiomeTags.IS_WET_OVERWORLD)
+			.add(BloomBiomes.FEN)
+			.add(BloomBiomes.TROPICAL_BEACH)
+			.add(BloomBiomes.TROPICAL_RIVER);
+
+		this.builder(ConventionalBiomeTags.IS_TEMPERATE_OVERWORLD)
+			.add(BloomBiomes.GOLDEN_FOREST)
+			.add(BloomBiomes.PINE_TAIGA)
+			.add(BloomBiomes.COLD_BEACH)
+			.add(BloomBiomes.COLD_RIVER);
+
+		this.builder(ConventionalBiomeTags.IS_COLD_OVERWORLD)
+			.add(BloomBiomes.SNOWY_PINE_TAIGA)
+			.add(BloomBiomes.SNOWY_SHORE);
+
+		this.builder(ConventionalBiomeTags.IS_HOT_OVERWORLD)
+			.add(BloomBiomes.WARM_RIVER)
+			.add(BloomBiomes.ARID_SHORE)
+			.add(BloomBiomes.LUKEWARM_BEACH)
+			.add(BloomBiomes.LUKEWARM_RIVER);
+
+		this.builder(ConventionalBiomeTags.IS_DRY_OVERWORLD)
+			.add(BloomBiomes.ARID_SHORE);
+
+		this.builder(ConventionalBiomeTags.IS_WINDSWEPT)
+			.add(BloomBiomes.WINDSWEPT_JUNGLE);
 	}
 }
