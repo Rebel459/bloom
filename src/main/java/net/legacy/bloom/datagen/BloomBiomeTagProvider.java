@@ -23,10 +23,6 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		super(output, registries);
 	}
 
-	private ResourceKey<Biome> getBiome(String id) {
-		return ResourceKey.create(this.registryKey, Identifier.parse(id));
-	}
-
 	@Override
 	protected void addTags(HolderLookup.Provider arg) {
 
@@ -403,5 +399,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		this.builder(ConventionalBiomeTags.IS_WINDSWEPT)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE);
+	}
+
+	private ResourceKey<Biome> getBiome(String id) {
+		return ResourceKey.create(this.registryKey, Identifier.parse(id));
 	}
 }
