@@ -6,7 +6,7 @@ import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.entity.npc.villager.VillagerTrades;
 
 public class BloomVillagerTrades {
-	
+
     public static void init() {
 		if (BloomConfig.get.farming.cotton && BloomConfig.get.farming.tradable_yarn) {
 			TradeOfferHelper.registerVillagerOffers(
