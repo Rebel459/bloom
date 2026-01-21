@@ -183,7 +183,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.GOLDEN_FOREST);
 
         this.builder(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
-			.add(Biomes.DESERT);
+			.add(Biomes.DESERT)
+			.addOptional(this.getBiome("wilderwild:oasis"));
 
         this.builder(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE)
 			.addOptionalTag(BiomeTags.IS_BADLANDS);
