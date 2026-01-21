@@ -138,10 +138,13 @@
   "music.overworld.windswept_jungle": {
     "sounds": [
       {
+        "name": "music/game/creative/aria_math",
+        "stream": true
+      },
+      {
         "name": "music/game/bromeliad",
         "stream": true,
-        "volume": 0.4,
-        "weight": 2
+        "volume": 0.4
       },
       {
         "name": "music/game/danny",

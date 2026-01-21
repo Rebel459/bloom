@@ -9,7 +9,7 @@
       "default": {
         "max_delay": 24000,
         "min_delay": 12000,
-        "sound": "minecraft:music.overworld.jungle"
+        "sound": "bloom:music.overworld.windswept_jungle"
       }
     },
     "minecraft:visual/sky_color": "#77a8ff"

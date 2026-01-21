@@ -28,6 +28,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 	@Override
 	protected void addTags(HolderLookup.Provider arg) {
+		
 		// Normal
 		this.builder(BloomBiomeTags.BLOOM_BIOMES)
 			.add(BloomBiomes.WARM_RIVER)
@@ -62,7 +63,6 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.addOptional(this.getBiome("wilderwild:dark_taiga"));
 
 		// Internal
-
 		this.builder(BloomBiomeTags.INTERNAL_DEPTH_ADAPTED)
 			.addTag(BloomBiomeTags.INTERNAL_STEEP)
 			.addTag(BloomBiomeTags.INTERNAL_MOUNTAIN)
@@ -134,7 +134,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA)
 			.add(Biomes.WINDSWEPT_FOREST)
 			.add(Biomes.WINDSWEPT_HILLS)
-			.add(Biomes.WINDSWEPT_GRAVELLY_HILLS);
+			.add(Biomes.WINDSWEPT_GRAVELLY_HILLS)
+			.addOptional(this.getBiome("wilderwild:temperate_rainforest"));
 
 		this.builder(BloomBiomeTags.HAS_FROZEN_COLORS)
 			.add(Biomes.JAGGED_PEAKS)

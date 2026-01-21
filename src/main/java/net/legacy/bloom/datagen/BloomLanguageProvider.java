@@ -36,6 +36,8 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 			autoName(translation, items);
 		}
 
+		this.music("overworld.lock_and_key", "Zhen - Lock and Key");
+
 		translation.add("pack.bloom.pine_trees", "Pine Trees");
 		translation.add("pack.bloom.ore_variants", "Ore Variants");
 
@@ -114,5 +116,9 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 	public void config(String path, String name, String tooltip) {
 		config(path, name);
 		config(path + ".@Tooltip", tooltip);
+	}
+
+	public void music(String path, String name) {
+		this.translation.add(Bloom.MOD_ID + ".music." + path, name);
 	}
 }
