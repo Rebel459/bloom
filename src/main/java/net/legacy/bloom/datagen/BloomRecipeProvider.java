@@ -112,6 +112,13 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 					.unlockedBy("has_cotton", this.has(BloomItems.COTTON))
 					.save(exporter);
 
+				this.shaped(RecipeCategory.MISC, Items.STRING)
+					.define('#', Ingredient.of(BloomItems.YARN))
+					.pattern("##")
+					.pattern("##")
+					.unlockedBy("has_cotton", this.has(BloomItems.YARN))
+					.save(exporter);
+
 				this.shaped(RecipeCategory.DECORATIONS, BloomBlocks.WHITE_RUG, 3)
 					.define('#', Ingredient.of(BloomItems.YARN))
 					.pattern("###")

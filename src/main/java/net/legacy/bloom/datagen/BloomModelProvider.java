@@ -151,6 +151,9 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.generateFlatItem(BloomItems.GREEN_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
 		generator.generateFlatItem(BloomItems.RED_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
 		generator.generateFlatItem(BloomItems.BLACK_SLEEPING_BAG, ModelTemplates.FLAT_ITEM);
+
+		generator.generateFlatItem(BloomItems.COTTON, ModelTemplates.FLAT_ITEM);
+		generator.generateFlatItem(BloomItems.YARN, ModelTemplates.FLAT_ITEM);
 	}
 
 	public void createSinglePlant(Block block, BlockModelGenerators.PlantType type, BlockModelGenerators generator) {
