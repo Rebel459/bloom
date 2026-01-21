@@ -349,6 +349,20 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.PINE_TAIGA)
 			.add(BloomBiomes.SNOWY_PINE_TAIGA);
 
+		this.builder(BiomeTags.HAS_IGLOO)
+			.add(BloomBiomes.SNOWY_PINE_TAIGA);
+
+		this.builder(BiomeTags.HAS_RUINED_PORTAL_SWAMP)
+			.add(BloomBiomes.FEN);
+
+		this.builder(BiomeTags.HAS_TRAIL_RUINS)
+			.add(BloomBiomes.PINE_TAIGA)
+			.add(BloomBiomes.SNOWY_PINE_TAIGA);
+
+		this.builder(BiomeTags.HAS_VILLAGE_TAIGA)
+			.add(BloomBiomes.PINE_TAIGA)
+			.add(BloomBiomes.SNOWY_PINE_TAIGA);
+
 		this.builder(BiomeTags.HAS_MINESHAFT)
 			.addTag(BloomBiomeTags.BLOOM_BIOMES);
 
