@@ -1,9 +1,6 @@
 {
   "values": [
-    "bloom:fen",
-    {
-      "id": "wilderwild:cypress_wetlands",
-      "required": false
-    }
+    "minecraft:swamp",
+    "bloom:fen"
   ]
 }

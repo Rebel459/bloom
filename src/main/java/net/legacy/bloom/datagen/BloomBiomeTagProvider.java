@@ -290,8 +290,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.addOptionalTag(BiomeTags.IS_BADLANDS);
 
         this.builder(BloomBiomeTags.HAS_REEDS)
-			.add(BloomBiomes.FEN)
-			.addOptional(this.getBiome("wilderwild:cypress_wetlands"));
+			.add(Biomes.SWAMP)
+			.add(BloomBiomes.FEN);
 
 		// Music
 		this.builder(BloomBiomeTags.HAS_TAIGA_MUSIC)
