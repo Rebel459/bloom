@@ -40,6 +40,7 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 
 		translation.add("pack.bloom.pine_trees", "Pine Trees");
 		translation.add("pack.bloom.ore_variants", "Ore Variants");
+		translation.add("pack.bloom.wild_crops", "Wild Crops");
 
 		translation.add("text.autoconfig.bloom.title", "Bloom");
 
@@ -71,6 +72,7 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		this.config("farming.hoe_replanting", "Hoe Replanting", "Whether right-clicking crops with a Hoe should both harvest and replant the crop");
 		this.config("farming.cotton", "Cotton", "Whether the new cotton crop and its related items should be obtainable in survival");
 		this.config("farming.tradable_yarn", "Tradable Yarn", "Whether Shepherds should have a chance to purchase Yarn");
+		this.config("farming.wild_crops", "Wild Crops", "Whether wild variants of Bloom crops should be added when Farmer's Delight is installed");
 	}
 
 	private void generateOreSet(TranslationBuilder translationBuilder, StoneOresRegistry registry){

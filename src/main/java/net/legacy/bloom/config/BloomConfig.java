@@ -97,5 +97,8 @@ public class BloomConfig implements ConfigData {
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
 		public boolean tradable_yarn = true;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean wild_crops = true;
 	}
 }

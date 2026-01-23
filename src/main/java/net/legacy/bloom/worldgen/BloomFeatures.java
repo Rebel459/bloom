@@ -31,6 +31,8 @@ public final class BloomFeatures {
     public static final ResourceKey<PlacedFeature> PATCH_SUCCULENT = register("patch_succulent");
     public static final ResourceKey<PlacedFeature> PATCH_REEDS = register("patch_reeds");
 
+	public static final ResourceKey<PlacedFeature> PATCH_WILD_COTTON = register("patch_wild_cotton");
+
 	public static final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_JACARANDA_TREE = registerConfigured("tree_jacaranda");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_JACARANDA_TREE_BEES = registerConfigured("tree_jacaranda_bees");
 

@@ -39,6 +39,7 @@ public final class BloomBlockRenderLayers {
 		BlockRenderLayerMap.putBlock(BloomBlocks.SUCCULENT, ChunkSectionLayer.CUTOUT);
 
 		BlockRenderLayerMap.putBlock(BloomBlocks.COTTON, ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.WILD_COTTON, ChunkSectionLayer.CUTOUT);
 
 		WoodsetRegistry.WOODSETS.forEach(woodset -> {
 			BlockRenderLayerMap.putBlock(woodset.getLeaves(), ChunkSectionLayer.CUTOUT);

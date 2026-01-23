@@ -17,7 +17,8 @@ public class BloomItemTags {
 	public static final TagKey<Item> SLEEPING_BAGS = bind("sleeping_bags");
 	public static final TagKey<Item> RUGS = bind("sleeping_bags");
 
-    public static final TagKey<Item> SAPPHIRE_ORES = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("legacies_and_legends", "sapphire_ores"));
+	public static final TagKey<Item> SAPPHIRE_ORES = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("legacies_and_legends", "sapphire_ores"));
+	public static final TagKey<Item> WILD_CROPS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("farmersdelight", "wild_crops"));
 
     private static TagKey<Item> bind(String path) {
         return TagKey.create(Registries.ITEM, Bloom.id(path));

@@ -1,5 +1,6 @@
 package net.legacy.bloom.worldgen;
 
+import com.mojang.logging.LogUtils;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
@@ -110,7 +111,7 @@ public final class BloomBiomeModifications {
 			}
         );
         BiomeModifications.create(Bloom.id("has_windswept_jungle_features")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_WINDSWEPT_JUNGLE_FEATURES),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_TREES);
@@ -118,7 +119,7 @@ public final class BloomBiomeModifications {
 			}
         );
 		BiomeModifications.create(Bloom.id("has_fen_features")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_FEN_FEATURES),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FEN_FLOWERS);
@@ -127,7 +128,7 @@ public final class BloomBiomeModifications {
 			}
 		);
 		BiomeModifications.create(Bloom.id("has_golden_forest_features")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_GOLDEN_FOREST_FEATURES),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.GOLDEN_FOREST_FLOWERS);
@@ -137,7 +138,7 @@ public final class BloomBiomeModifications {
 		);
 
 		BiomeModifications.create(Bloom.id("has_stone_blobs")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_STONE_BLOBS),
 			(selectionContext, modificationContext) -> {
 				modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.ORE_STONE);
@@ -145,7 +146,7 @@ public final class BloomBiomeModifications {
 		);
 
 		BiomeModifications.create(Bloom.id("has_gravel_blobs")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_GRAVEL_BLOBS),
 			(selectionContext, modificationContext) -> {
 				modificationContext.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, BloomFeatures.ORE_GRAVEL);
@@ -153,110 +154,110 @@ public final class BloomBiomeModifications {
 		);
 
 		BiomeModifications.create(Bloom.id("has_bromeliad")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_BROMELIAD),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_BROMELIAD);
 			}
 		);
 		BiomeModifications.create(Bloom.id("has_pink_orchid")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_PINK_ORCHID),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_PINK_ORCHID);
 			}
 		);
 		BiomeModifications.create(Bloom.id("has_bellflower")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_BELLFLOWER),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_BELLFLOWER);
 			}
 		);
 		BiomeModifications.create(Bloom.id("has_hellebore")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_HELLEBORE),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_HELLEBORE);
 			}
 		);
 		BiomeModifications.create(Bloom.id("has_lily_of_the_valley")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_LILY_OF_THE_VALLEY),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_LILY_OF_THE_VALLEY);
 			}
 		);
         BiomeModifications.create(Bloom.id("has_hydrangea")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_HYDRANGEA),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_HYDRANGEA);
 			}
         );
         BiomeModifications.create(Bloom.id("has_calla_lily")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_CALLA_LILY),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_CALLA_LILY);
 			}
         );
         BiomeModifications.create(Bloom.id("has_dianthus")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_DIANTHUS),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_DIANTHUS);
 			}
         );
         BiomeModifications.create(Bloom.id("has_goldenrod")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_GOLDENROD),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_GOLDENROD);
 			}
         );
         BiomeModifications.create(Bloom.id("has_orange_daisy")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_ORANGE_DAISY),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_ORANGE_DAISY);
 			}
         );
 		BiomeModifications.create(Bloom.id("has_scilla")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_SCILLA),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_SCILLA);
 			}
 		);
 		BiomeModifications.create(Bloom.id("has_hyacinth")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_HYACINTH),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_HYACINTH);
 			}
 		);
 		BiomeModifications.create(Bloom.id("has_queencup")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_QUEENCUP),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.FLOWER_QUEENCUP);
 			}
 		);
         BiomeModifications.create(Bloom.id("has_succulent")).add(
-			ModificationPhase.REPLACEMENTS,
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_SUCCULENT),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.PATCH_SUCCULENT);
 			}
         );
-        BiomeModifications.create(Bloom.id("has_reeds")).add(
-			ModificationPhase.REPLACEMENTS,
+		BiomeModifications.create(Bloom.id("has_reeds")).add(
+			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_REEDS),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.PATCH_REEDS);
 			}
-        );
+		);
 		BiomeModifications.create(Bloom.id("has_taiga_music")).add(
 			ModificationPhase.REPLACEMENTS,
 			BiomeSelectors.tag(BloomBiomeTags.HAS_TAIGA_MUSIC),

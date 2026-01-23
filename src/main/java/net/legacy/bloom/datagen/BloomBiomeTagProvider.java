@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.frozenblock.lib.datagen.api.FrozenBiomeTagProvider;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.tag.BloomBiomeTags;
+import net.legacy.bloom.tag.BloomBlockTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -289,9 +290,15 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
         this.builder(BloomBiomeTags.HAS_SUCCULENT)
 			.addOptionalTag(BiomeTags.IS_BADLANDS);
 
-        this.builder(BloomBiomeTags.HAS_REEDS)
+		this.builder(BloomBiomeTags.HAS_REEDS)
 			.add(Biomes.SWAMP)
 			.add(BloomBiomes.FEN);
+
+		this.builder(BloomBiomeTags.HAS_WILD_COTTON)
+			.addOptionalTag(BiomeTags.IS_FOREST)
+			.addOptionalTag(ConventionalBiomeTags.IS_PLAINS)
+			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
+			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA);
 
 		// Music
 		this.builder(BloomBiomeTags.HAS_TAIGA_MUSIC)

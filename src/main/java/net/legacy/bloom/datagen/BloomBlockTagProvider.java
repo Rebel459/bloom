@@ -72,13 +72,17 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(Blocks.FARMLAND)
 			.add(Blocks.CLAY);
 
+		this.valueLookupBuilder(BloomBlockTags.WILD_CROPS)
+			.add(BloomBlocks.WILD_COTTON);
+
 		this.valueLookupBuilder(BlockTags.SMALL_FLOWERS)
 			.add(BloomBlocks.PINK_ORCHID)
 			.add(BloomBlocks.GOLDENROD)
 			.add(BloomBlocks.CALLA_LILY)
 			.add(BloomBlocks.ORANGE_DAISY)
 			.add(BloomBlocks.HYACINTH)
-			.add(BloomBlocks.QUEENCUP);
+			.add(BloomBlocks.QUEENCUP)
+			.add(BloomBlocks.WILD_COTTON);
 
 		this.valueLookupBuilder(BlockTags.FLOWERS)
 			.add(BloomBlocks.DIANTHUS)

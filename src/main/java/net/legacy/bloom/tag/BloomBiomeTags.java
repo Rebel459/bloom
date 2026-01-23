@@ -56,6 +56,7 @@ public class BloomBiomeTags {
 	public static final TagKey<Biome> HAS_QUEENCUP = bind("features/flower_queencup");
     public static final TagKey<Biome> HAS_SUCCULENT = bind("features/patch_succulent");
 	public static final TagKey<Biome> HAS_REEDS = bind("features/patch_reeds");
+	public static final TagKey<Biome> HAS_WILD_COTTON = bind("features/patch_wild_cotton");
 
 	public static final TagKey<Biome> NO_DEFAULT_FLOWERS = bind("features/no_default_flowers");
 	public static final TagKey<Biome> NO_PINE_TREES = bind("features/no_pine_trees");

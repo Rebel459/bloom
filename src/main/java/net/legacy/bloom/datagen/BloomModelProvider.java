@@ -59,7 +59,7 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.createDoublePlantWithDefaultItem(BloomBlocks.BELLFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
         generator.createDoublePlantWithDefaultItem(BloomBlocks.HYDRANGEA, BlockModelGenerators.PlantType.NOT_TINTED);
         generator.createDoublePlantWithDefaultItem(BloomBlocks.REEDS, BlockModelGenerators.PlantType.NOT_TINTED);
-        this.createSinglePlant(BloomBlocks.SUCCULENT, BlockModelGenerators.PlantType.NOT_TINTED, generator);
+		this.createSinglePlant(BloomBlocks.SUCCULENT, BlockModelGenerators.PlantType.NOT_TINTED, generator);
 
 		WoodsetRegistry.WOODSETS.forEach(woodset -> {
 			woodset.fullWoodset(generator);
@@ -83,6 +83,7 @@ public final class BloomModelProvider extends FabricModelProvider {
         oreModels(BloomBlocks.RED_SANDSTONE_ORES, generator);
 
 		generator.createCropBlock(BloomBlocks.COTTON, BlockStateProperties.AGE_7, 0, 1, 2, 3 , 4, 5, 5, 6);
+		this.createSinglePlant(BloomBlocks.WILD_COTTON, BlockModelGenerators.PlantType.NOT_TINTED, generator);
 
 		this.rug(BloomBlocks.WHITE_RUG, generator);
 		this.rug(BloomBlocks.ORANGE_RUG, generator);

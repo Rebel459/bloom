@@ -43,13 +43,17 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 			.add(BloomItems.YARN)
 			.addOptionalTag(ItemTags.WOOL);
 
+		this.valueLookupBuilder(BloomItemTags.WILD_CROPS)
+			.add(BloomBlocks.WILD_COTTON.asItem());
+
 		this.valueLookupBuilder(ItemTags.SMALL_FLOWERS)
 			.add(BloomBlocks.PINK_ORCHID.asItem())
 			.add(BloomBlocks.GOLDENROD.asItem())
 			.add(BloomBlocks.CALLA_LILY.asItem())
 			.add(BloomBlocks.ORANGE_DAISY.asItem())
 			.add(BloomBlocks.HYACINTH.asItem())
-			.add(BloomBlocks.QUEENCUP.asItem());
+			.add(BloomBlocks.QUEENCUP.asItem())
+			.add(BloomBlocks.WILD_COTTON.asItem());
 
 		this.valueLookupBuilder(ItemTags.FLOWERS)
 			.add(BloomBlocks.DIANTHUS.asItem())

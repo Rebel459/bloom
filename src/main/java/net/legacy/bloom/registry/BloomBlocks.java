@@ -13,6 +13,7 @@ import net.legacy.bloom.block.HalfSubmergedBlock;
 import net.legacy.bloom.block.LargeFlowerBlock;
 import net.legacy.bloom.block.SleepingBagBlock;
 import net.legacy.bloom.block.WideFlowerBlock;
+import net.legacy.bloom.block.WildCropBlock;
 import net.legacy.bloom.sound.BloomBlockSounds;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.legacy.bloom.util.WoodsetRegistry;
@@ -67,6 +68,11 @@ public final class BloomBlocks {
 			.instabreak()
 			.sound(SoundType.CROP)
 			.pushReaction(PushReaction.DESTROY)
+	);
+
+	public static final Block WILD_COTTON = register("wild_cotton",
+		(properties) -> new WildCropBlock(MobEffects.SLOW_FALLING, 4, properties),
+		BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS)
 	);
 
 	public static final Block WHITE_SLEEPING_BAG = registerSleepingBag("white_sleeping_bag", DyeColor.WHITE);
