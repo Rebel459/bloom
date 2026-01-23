@@ -40,25 +40,26 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 
 		translation.add("pack.bloom.pine_trees", "Pine Trees");
 		translation.add("pack.bloom.ore_variants", "Ore Variants");
+		translation.add("pack.bloom.ore_variants_sapphire", "Ore Variants - Sapphire");
 		translation.add("pack.bloom.wild_crops", "Wild Crops");
 
 		translation.add("text.autoconfig.bloom.title", "Bloom");
 
 		this.config("biomes", "Biomes");
-		this.config("biomes.golden_forest", "Golden Forest");
-		this.config("biomes.fen", "Fen");
-		this.config("biomes.pine_taiga", "Pine Taiga");
-		this.config("biomes.snowy_pine_taiga", "Snowy Pine Taiga");
-		this.config("biomes.windswept_jungle", "Windswept Jungle");
-		this.config("biomes.arid_shore", "Arid Shore");
-		this.config("biomes.warm_river", "Warm River");
-		this.config("biomes.cold_beach", "Cold Beach");
-		this.config("biomes.cold_river", "Cold River");
-		this.config("biomes.lukewarm_beach", "Lukewarm Beach");
-		this.config("biomes.lukewarm_river", "Lukewarm River");
-		this.config("biomes.snowy_shore", "Snowy Shore");
-		this.config("biomes.tropical_beach", "Tropical Beach");
-		this.config("biomes.tropical_river", "Tropical River");
+		this.configuredBiome("golden_forest", "Golden Forest");
+		this.configuredBiome("fen", "Fen");
+		this.configuredBiome("pine_taiga", "Pine Taiga");
+		this.configuredBiome("snowy_pine_taiga", "Snowy Pine Taiga");
+		this.configuredBiome("windswept_jungle", "Windswept Jungle");
+		this.configuredBiome("arid_shore", "Arid Shore");
+		this.configuredBiome("warm_river", "Warm River");
+		this.configuredBiome("cold_beach", "Cold Beach");
+		this.configuredBiome("cold_river", "Cold River");
+		this.configuredBiome("lukewarm_beach", "Lukewarm Beach");
+		this.configuredBiome("lukewarm_river", "Lukewarm River");
+		this.configuredBiome("snowy_shore", "Snowy Shore");
+		this.configuredBiome("tropical_beach", "Tropical Beach");
+		this.configuredBiome("tropical_river", "Tropical River");
 
 		this.config("worldgen", "Worldgen");
 		this.config("worldgen.pine_trees", "Pine Trees", "Whether new Pine Trees should be used");
@@ -111,6 +112,15 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		// return the output string by updating
 		//the first char of the input string
 		return inputString.replaceFirst(String.valueOf(firstLetter), String.valueOf(firstLetter).toUpperCase());
+	}
+
+	public void biome(String path, String name) {
+		translation.add("biome." + Bloom.MOD_ID + "." + path, name);
+	}
+
+	public void configuredBiome(String path, String name) {
+		biome(path, name);
+		config("biomes." + path, name);
 	}
 
 	public void config(String path, String name) {

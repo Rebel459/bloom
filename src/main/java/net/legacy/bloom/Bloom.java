@@ -66,6 +66,13 @@ public class Bloom implements ModInitializer {
 				PackActivationType.ALWAYS_ENABLED
 			);
 		}
+		if (BloomConfig.get.worldgen.ore_variants && FabricLoader.getInstance().isModLoaded("legacies_and_legends")) {
+			ResourceLoader.registerBuiltinPack(
+				Bloom.id("ore_variants_sapphire"), modContainer,
+				Component.translatable("pack.bloom.ore_variants_sapphire"),
+				PackActivationType.ALWAYS_ENABLED
+			);
+		}
 		if (FabricLoader.getInstance().isModLoaded("farmersdelight")) {
 			if (BloomConfig.get.farming.wild_crops) {
 				ResourceLoader.registerBuiltinPack(
