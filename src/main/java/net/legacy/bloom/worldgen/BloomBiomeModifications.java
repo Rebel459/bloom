@@ -110,14 +110,22 @@ public final class BloomBiomeModifications {
 				BiomeHelper.addLessStrictDisks(modificationContext);
 			}
         );
-        BiomeModifications.create(Bloom.id("has_windswept_jungle_features")).add(
+		BiomeModifications.create(Bloom.id("has_windswept_jungle_features")).add(
 			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_WINDSWEPT_JUNGLE_FEATURES),
 			(selectionContext, modificationContext) -> {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_TREES);
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_FLOWERS);
 			}
-        );
+		);
+		BiomeModifications.create(Bloom.id("has_sparse_windswept_jungle_features")).add(
+			ModificationPhase.ADDITIONS,
+			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_SPARSE_WINDSWEPT_JUNGLE_FEATURES),
+			(selectionContext, modificationContext) -> {
+				BiomeHelper.addVegetation(modificationContext, BloomFeatures.SPARSE_WINDSWEPT_JUNGLE_TREES);
+				BiomeHelper.addVegetation(modificationContext, BloomFeatures.WINDSWEPT_JUNGLE_FLOWERS);
+			}
+		);
 		BiomeModifications.create(Bloom.id("has_fen_features")).add(
 			ModificationPhase.ADDITIONS,
 			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_FEN_FEATURES),

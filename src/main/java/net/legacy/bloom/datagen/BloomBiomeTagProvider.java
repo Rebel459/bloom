@@ -38,6 +38,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.LUKEWARM_RIVER)
 			.add(BloomBiomes.LUKEWARM_BEACH)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE)
+			.add(BloomBiomes.SPARSE_WINDSWEPT_JUNGLE)
 			.add(BloomBiomes.FEN)
 			.add(BloomBiomes.SNOWY_SHORE)
 			.add(BloomBiomes.PINE_TAIGA)
@@ -48,6 +49,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.JUNGLE)
 			.add(Biomes.SPARSE_JUNGLE)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE)
+			.add(BloomBiomes.SPARSE_WINDSWEPT_JUNGLE)
 			.addOptional(this.getBiome("wilderwild:birch_jungle"))
 			.addOptional(this.getBiome("wilderwild:sparse_birch_jungle"));
 
@@ -102,8 +104,11 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.COLD_RIVER)
 			.add(BloomBiomes.COLD_BEACH);
 
-        this.builder(BloomBiomeTags.INTERNAL_WINDSWEPT_JUNGLE_FEATURES)
+		this.builder(BloomBiomeTags.INTERNAL_WINDSWEPT_JUNGLE_FEATURES)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE);
+
+		this.builder(BloomBiomeTags.INTERNAL_SPARSE_WINDSWEPT_JUNGLE_FEATURES)
+			.add(BloomBiomes.SPARSE_WINDSWEPT_JUNGLE);
 
 		this.builder(BloomBiomeTags.INTERNAL_FEN_FEATURES)
 			.add(BloomBiomes.FEN);
@@ -327,10 +332,12 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.LUKEWARM_BEACH);
 
 		this.builder(BiomeTags.IS_JUNGLE)
-			.add(BloomBiomes.WINDSWEPT_JUNGLE);
+			.add(BloomBiomes.WINDSWEPT_JUNGLE)
+			.add(BloomBiomes.SPARSE_WINDSWEPT_JUNGLE);
 
 		this.builder(BiomeTags.HAS_JUNGLE_TEMPLE)
-			.add(BloomBiomes.WINDSWEPT_JUNGLE);
+			.add(BloomBiomes.WINDSWEPT_JUNGLE)
+			.add(BloomBiomes.SPARSE_WINDSWEPT_JUNGLE);
 
 		this.builder(BiomeTags.IS_TAIGA)
 			.add(BloomBiomes.PINE_TAIGA)
@@ -405,7 +412,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.ARID_SHORE);
 
 		this.builder(ConventionalBiomeTags.IS_WINDSWEPT)
-			.add(BloomBiomes.WINDSWEPT_JUNGLE);
+			.add(BloomBiomes.WINDSWEPT_JUNGLE)
+			.add(BloomBiomes.SPARSE_WINDSWEPT_JUNGLE);
 	}
 
 	private ResourceKey<Biome> getBiome(String id) {

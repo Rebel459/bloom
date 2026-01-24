@@ -47,6 +47,8 @@ public class BloomConfig implements ConfigData {
 		@ConfigEntry.Category("config")
 		public boolean windswept_jungle = true;
 		@ConfigEntry.Category("config")
+		public boolean sparse_windswept_jungle = true;
+		@ConfigEntry.Category("config")
 		public boolean arid_shore = true;
 		@ConfigEntry.Category("config")
 		public boolean warm_river = true;

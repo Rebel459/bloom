@@ -3,6 +3,7 @@
     "minecraft:jungle",
     "minecraft:sparse_jungle",
     "bloom:windswept_jungle",
+    "bloom:sparse_windswept_jungle",
     {
       "id": "wilderwild:birch_jungle",
       "required": false

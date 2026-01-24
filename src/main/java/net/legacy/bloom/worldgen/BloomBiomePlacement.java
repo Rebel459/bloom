@@ -111,7 +111,7 @@ public class BloomBiomePlacement {
 				Climate.Parameter.span(Parameters.HUMIDITY_3, Parameters.HUMIDITY_5),
 				Climate.Parameter.span(Parameters.CONTINENTALNESS_COAST, Parameters.CONTINENTALNESS_MAX),
 				Climate.Parameter.span(Parameters.EROSION_5, Parameters.EROSION_6),
-				Climate.Parameter.span(Parameters.WEIRDNESS_PEAK_NORMAL, Parameters.WEIRDNESS_MID_SLICE_NORMAL_DESCENDING),
+				Climate.Parameter.span(Parameters.WEIRDNESS_HIGH_SLICE_NORMAL_ASCENDING, Parameters.WEIRDNESS_HIGH_SLICE_NORMAL_DESCENDING),
 				0L
 			);
 			BiomePlacement.addSubOverworld(
@@ -120,6 +120,18 @@ public class BloomBiomePlacement {
 				CriterionBuilder.allOf(
 					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_3, Parameters.TEMPERATURE_4),
 					CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_4)
+				)
+			);
+		}
+		if (BloomConfig.get.biomes.sparse_windswept_jungle) {
+			BiomePlacement.addSubOverworld(
+				Biomes.SPARSE_JUNGLE,
+				BloomBiomes.SPARSE_WINDSWEPT_JUNGLE,
+				CriterionBuilder.allOf(
+					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_3, Parameters.TEMPERATURE_4),
+					CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5),
+					CriterionBuilder.value(BiomeParameterTargets.EROSION, Parameters.EROSION_5, Parameters.EROSION_6),
+					CriterionBuilder.value(BiomeParameterTargets.WEIRDNESS, Parameters.WEIRDNESS_HIGH_SLICE_VARIANT_ASCENDING, Parameters.WEIRDNESS_MAX)
 				)
 			);
 		}

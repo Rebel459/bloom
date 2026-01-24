@@ -21,6 +21,7 @@ public class BloomBiomeTags {
 
 	public static final TagKey<Biome> INTERNAL_LESS_STRICT_DISKS = bind("internal/less_strict_disks");
 	public static final TagKey<Biome> INTERNAL_WINDSWEPT_JUNGLE_FEATURES = bind("internal/windswept_jungle_features");
+	public static final TagKey<Biome> INTERNAL_SPARSE_WINDSWEPT_JUNGLE_FEATURES = bind("internal/sparse_windswept_jungle_features");
 	public static final TagKey<Biome> INTERNAL_FEN_FEATURES = bind("internal/fen_features");
 	public static final TagKey<Biome> INTERNAL_GOLDEN_FOREST_FEATURES = bind("internal/golden_forest_features");
 

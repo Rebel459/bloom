@@ -51,6 +51,7 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		this.configuredBiome("pine_taiga", "Pine Taiga");
 		this.configuredBiome("snowy_pine_taiga", "Snowy Pine Taiga");
 		this.configuredBiome("windswept_jungle", "Windswept Jungle");
+		this.configuredBiome("sparse_windswept_jungle", "Sparse Windswept Jungle");
 		this.configuredBiome("arid_shore", "Arid Shore");
 		this.configuredBiome("warm_river", "Warm River");
 		this.configuredBiome("cold_beach", "Cold Beach");

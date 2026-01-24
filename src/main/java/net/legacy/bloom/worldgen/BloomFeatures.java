@@ -43,6 +43,8 @@ public final class BloomFeatures {
     public static final ResourceKey<PlacedFeature> WINDSWEPT_JUNGLE_TREES = register("trees_windswept_jungle");
     public static final ResourceKey<PlacedFeature> WINDSWEPT_JUNGLE_FLOWERS = register("flowers_windswept_jungle");
 
+	public static final ResourceKey<PlacedFeature> SPARSE_WINDSWEPT_JUNGLE_TREES = register("trees_sparse_windswept_jungle");
+
     public static final ResourceKey<PlacedFeature> FEN_FLOWERS = register("flowers_fen");
     public static final ResourceKey<PlacedFeature> FEN_TREES = register("trees_fen");
     public static final ResourceKey<PlacedFeature> FEN_WILDFLOWERS = register("wildflowers_fen");
