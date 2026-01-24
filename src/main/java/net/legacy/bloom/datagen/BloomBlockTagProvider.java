@@ -132,6 +132,16 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(BloomBlocks.DOLERITE_TILE_STAIRS)
 			.add(BloomBlocks.DOLERITE_TILE_WALL);
 
+		this.valueLookupBuilder(BlockTags.STAIRS)
+			.add(BloomBlocks.POLISHED_DOLERITE_STAIRS)
+			.add(BloomBlocks.DOLERITE_BRICK_STAIRS)
+			.add(BloomBlocks.DOLERITE_TILE_STAIRS);
+
+		this.valueLookupBuilder(BlockTags.SLABS)
+			.add(BloomBlocks.POLISHED_DOLERITE_SLAB)
+			.add(BloomBlocks.DOLERITE_BRICK_SLAB)
+			.add(BloomBlocks.DOLERITE_TILE_SLAB);
+
 		this.valueLookupBuilder(BlockTags.STONE_ORE_REPLACEABLES)
 			.add(BloomBlocks.DOLERITE);
 
