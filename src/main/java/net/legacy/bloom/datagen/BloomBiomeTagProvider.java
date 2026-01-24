@@ -43,7 +43,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.SNOWY_SHORE)
 			.add(BloomBiomes.PINE_TAIGA)
 			.add(BloomBiomes.SNOWY_PINE_TAIGA)
-			.add(BloomBiomes.GOLDEN_FOREST);
+			.add(BloomBiomes.GOLDEN_FOREST)
+			.add(BloomBiomes.GOLDEN_FIELDS)
+			.add(BloomBiomes.GOLDEN_RIVER);
 
 		this.builder(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 			.add(Biomes.JUNGLE)
@@ -116,6 +118,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.INTERNAL_GOLDEN_FOREST_FEATURES)
 			.add(BloomBiomes.GOLDEN_FOREST);
 
+		this.builder(BloomBiomeTags.INTERNAL_GOLDEN_FIELDS_FEATURES)
+			.add(BloomBiomes.GOLDEN_FIELDS);
+
 		// Effects
         this.builder(BloomBiomeTags.HAS_WARM_COLORS)
 			.add(Biomes.DESERT)
@@ -182,7 +187,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(BloomBiomeTags.HAS_STRIP_COARSE_DIRT)
 			.add(Biomes.SAVANNA)
 			.add(Biomes.SAVANNA_PLATEAU)
-			.add(BloomBiomes.GOLDEN_FOREST);
+			.add(BloomBiomes.GOLDEN_FOREST)
+			.add(BloomBiomes.GOLDEN_FIELDS);
 
         this.builder(BloomBiomeTags.HAS_DEPTH_SANDSTONE)
 			.add(Biomes.DESERT)
@@ -247,6 +253,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.FLOWER_FOREST)
 			.add(Biomes.CHERRY_GROVE)
 			.add(BloomBiomes.GOLDEN_FOREST)
+			.add(BloomBiomes.GOLDEN_FIELDS)
 			.addOptional(this.getBiome("wilderwild:mixed_forest"))
 			.addOptional(this.getBiome("wilderwild:semi_birch_forest"))
 			.addOptional(this.getBiome("wilderwild:flower_field"))
@@ -267,7 +274,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
         this.builder(BloomBiomeTags.HAS_GOLDENROD)
 			.add(Biomes.SUNFLOWER_PLAINS)
-			.add(BloomBiomes.GOLDEN_FOREST);
+			.add(BloomBiomes.GOLDEN_FOREST)
+			.add(BloomBiomes.GOLDEN_FIELDS);
 
         this.builder(BloomBiomeTags.HAS_ORANGE_DAISY)
 			.add(Biomes.OLD_GROWTH_BIRCH_FOREST);
@@ -324,7 +332,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.WARM_RIVER)
 			.add(BloomBiomes.TROPICAL_RIVER)
 			.add(BloomBiomes.COLD_RIVER)
-			.add(BloomBiomes.LUKEWARM_RIVER);
+			.add(BloomBiomes.LUKEWARM_RIVER)
+			.add(BloomBiomes.GOLDEN_RIVER);
 
         this.builder(BiomeTags.IS_BEACH)
 			.add(BloomBiomes.TROPICAL_BEACH)
@@ -394,6 +403,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		this.builder(ConventionalBiomeTags.IS_TEMPERATE_OVERWORLD)
 			.add(BloomBiomes.GOLDEN_FOREST)
+			.add(BloomBiomes.GOLDEN_FIELDS)
 			.add(BloomBiomes.PINE_TAIGA)
 			.add(BloomBiomes.COLD_BEACH)
 			.add(BloomBiomes.COLD_RIVER);
@@ -414,6 +424,9 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(ConventionalBiomeTags.IS_WINDSWEPT)
 			.add(BloomBiomes.WINDSWEPT_JUNGLE)
 			.add(BloomBiomes.SPARSE_WINDSWEPT_JUNGLE);
+
+		this.builder(ConventionalBiomeTags.IS_PLAINS)
+			.add(BloomBiomes.GOLDEN_FIELDS);
 	}
 
 	private ResourceKey<Biome> getBiome(String id) {

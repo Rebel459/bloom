@@ -39,6 +39,10 @@ public class BloomConfig implements ConfigData {
 		@ConfigEntry.Category("config")
 		public boolean golden_forest = true;
 		@ConfigEntry.Category("config")
+		public boolean golden_fields = true;
+		@ConfigEntry.Category("config")
+		public boolean golden_river = true;
+		@ConfigEntry.Category("config")
 		public boolean fen = true;
 		@ConfigEntry.Category("config")
 		public boolean pine_taiga = true;

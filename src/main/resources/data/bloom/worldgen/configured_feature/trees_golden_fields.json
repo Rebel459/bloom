@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "bloom:tree_golden_birch",
+    "features": [
+      {
+        "chance": 0.5,
+        "feature": "bloom:bush_golden_birch"
+      },
+      {
+        "chance": 0.0125,
+        "feature": "bloom:fallen_golden_birch_tree"
+      },
+      {
+        "chance": 0.15,
+        "feature": "bloom:tree_golden_birch_litter"
+      }
+    ]
+  }
+}

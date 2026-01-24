@@ -4,6 +4,7 @@
     "minecraft:flower_forest",
     "minecraft:cherry_grove",
     "bloom:golden_forest",
+    "bloom:golden_fields",
     {
       "id": "wilderwild:mixed_forest",
       "required": false

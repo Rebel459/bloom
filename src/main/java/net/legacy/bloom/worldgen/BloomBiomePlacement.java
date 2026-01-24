@@ -196,9 +196,47 @@ public class BloomBiomePlacement {
 				Climate.Parameter.span(Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
 				Climate.Parameter.span(Parameters.HUMIDITY_2, Parameters.HUMIDITY_3),
 				Climate.Parameter.span(Parameters.CONTINENTALNESS_COAST, Parameters.CONTINENTALNESS_MAX),
-				Climate.Parameter.span(Parameters.EROSION_4, Parameters.EROSION_5),
+				Climate.Parameter.span(0F, Parameters.EROSION_5),
 				Climate.Parameter.span(Parameters.WEIRDNESS_MID_SLICE_NORMAL_ASCENDING, Parameters.WEIRDNESS_MAX),
 				0L
+			);
+		}
+		if (BloomConfig.get.biomes.golden_fields) {
+			BiomePlacement.addSubOverworld(
+				Biomes.PLAINS,
+				BloomBiomes.GOLDEN_FIELDS,
+				CriterionBuilder.allOf(
+					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+					CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, -0.2F, Parameters.HUMIDITY_3),
+					CriterionBuilder.value(BiomeParameterTargets.EROSION, 0F, Parameters.EROSION_5)
+				)
+			);
+			BiomePlacement.addSubOverworld(
+				Biomes.SUNFLOWER_PLAINS,
+				BloomBiomes.GOLDEN_FIELDS,
+				CriterionBuilder.allOf(
+					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+					CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, -0.2F, Parameters.HUMIDITY_3),
+					CriterionBuilder.value(BiomeParameterTargets.EROSION, 0F, Parameters.EROSION_5)
+				)
+			);
+		}
+		if (BloomConfig.get.biomes.golden_river) {
+			BiomePlacement.addSubOverworld(
+				Biomes.RIVER,
+				BloomBiomes.GOLDEN_RIVER,
+				CriterionBuilder.allOf(
+					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+					CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, -0.2F, Parameters.HUMIDITY_3),
+					CriterionBuilder.value(BiomeParameterTargets.EROSION, 0F, Parameters.EROSION_5)
+				)
+			);
+			BiomePlacement.addSubOverworld(
+				BloomBiomes.GOLDEN_FOREST,
+				BloomBiomes.GOLDEN_RIVER,
+				CriterionBuilder.allOf(
+					CriterionBuilder.value(BiomeParameterTargets.WEIRDNESS, Parameters.WEIRDNESS_VALLEY, Parameters.WEIRDNESS_LOW_SLICE_VARIANT_ASCENDING)
+				)
 			);
 		}
     }

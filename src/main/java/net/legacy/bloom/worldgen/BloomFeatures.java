@@ -53,6 +53,8 @@ public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> GOLDEN_FOREST_FLOWERS = register("flowers_golden_forest");
 	public static final ResourceKey<PlacedFeature> GOLDEN_FOREST_WILDFLOWERS = register("wildflowers_golden_forest");
 
+	public static final ResourceKey<PlacedFeature> GOLDEN_FIELDS_TREES = register("trees_golden_fields");
+
     public static ResourceKey<PlacedFeature> register(String string) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Bloom.id(string));
     }

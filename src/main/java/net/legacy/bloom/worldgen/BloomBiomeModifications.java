@@ -144,6 +144,14 @@ public final class BloomBiomeModifications {
 				BiomeHelper.addVegetation(modificationContext, BloomFeatures.GOLDEN_FOREST_WILDFLOWERS);
 			}
 		);
+		BiomeModifications.create(Bloom.id("has_golden_fields_features")).add(
+			ModificationPhase.ADDITIONS,
+			BiomeSelectors.tag(BloomBiomeTags.INTERNAL_GOLDEN_FIELDS_FEATURES),
+			(selectionContext, modificationContext) -> {
+				BiomeHelper.addVegetation(modificationContext, BloomFeatures.GOLDEN_FOREST_FLOWERS);
+				BiomeHelper.addVegetation(modificationContext, BloomFeatures.GOLDEN_FIELDS_TREES);
+			}
+		);
 
 		BiomeModifications.create(Bloom.id("has_stone_blobs")).add(
 			ModificationPhase.ADDITIONS,
