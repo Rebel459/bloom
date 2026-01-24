@@ -253,10 +253,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(Biomes.FLOWER_FOREST)
 			.add(Biomes.CHERRY_GROVE)
 			.add(BloomBiomes.GOLDEN_FOREST)
-			.add(BloomBiomes.GOLDEN_FIELDS)
 			.addOptional(this.getBiome("wilderwild:mixed_forest"))
 			.addOptional(this.getBiome("wilderwild:semi_birch_forest"))
-			.addOptional(this.getBiome("wilderwild:flower_field"))
 			.addOptional(this.getBiome("wilderwild:sparse_forest"));
 
         this.builder(BloomBiomeTags.HAS_CALLA_LILY)
