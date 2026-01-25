@@ -193,7 +193,7 @@ public class BloomBiomePlacement {
 		if (BloomConfig.get.biomes.golden_forest) {
 			BiomeHelper.surfaceBiome(
 				BloomBiomes.GOLDEN_FOREST,
-				Climate.Parameter.span(Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+				Climate.Parameter.span(Parameters.TEMPERATURE_1, -0.2F),
 				Climate.Parameter.span(Parameters.HUMIDITY_2, Parameters.HUMIDITY_3),
 				Climate.Parameter.span(Parameters.CONTINENTALNESS_COAST, Parameters.CONTINENTALNESS_MAX),
 				Climate.Parameter.span(0F, Parameters.EROSION_5),
@@ -206,7 +206,7 @@ public class BloomBiomePlacement {
 				Biomes.PLAINS,
 				BloomBiomes.GOLDEN_FIELDS,
 				CriterionBuilder.allOf(
-					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_1, -0.2F),
 					CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, -0.2F, Parameters.HUMIDITY_3),
 					CriterionBuilder.value(BiomeParameterTargets.EROSION, 0F, Parameters.EROSION_5)
 				)
@@ -215,7 +215,7 @@ public class BloomBiomePlacement {
 				Biomes.SUNFLOWER_PLAINS,
 				BloomBiomes.GOLDEN_FIELDS,
 				CriterionBuilder.allOf(
-					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_1, -0.2F),
 					CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, -0.2F, Parameters.HUMIDITY_3),
 					CriterionBuilder.value(BiomeParameterTargets.EROSION, 0F, Parameters.EROSION_5)
 				)
@@ -226,7 +226,7 @@ public class BloomBiomePlacement {
 				Biomes.RIVER,
 				BloomBiomes.GOLDEN_RIVER,
 				CriterionBuilder.allOf(
-					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
+					CriterionBuilder.value(BiomeParameterTargets.TEMPERATURE, Parameters.TEMPERATURE_1, -0.2F),
 					CriterionBuilder.value(BiomeParameterTargets.HUMIDITY, -0.2F, Parameters.HUMIDITY_3),
 					CriterionBuilder.value(BiomeParameterTargets.EROSION, 0F, Parameters.EROSION_5)
 				)
