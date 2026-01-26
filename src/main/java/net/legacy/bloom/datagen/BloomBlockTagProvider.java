@@ -172,6 +172,9 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(BloomBlocks.DOLERITE_BRICK_WALL)
 			.add(BloomBlocks.DOLERITE_TILE_WALL);
 
+		this.valueLookupBuilder(BlockTags.BASE_STONE_OVERWORLD)
+			.add(BloomBlocks.DOLERITE);
+
 		StoneOresRegistry.ALL_REGISTRIES.forEach(this::tagOres);
 
 		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)

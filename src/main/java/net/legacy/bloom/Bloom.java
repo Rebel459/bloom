@@ -66,6 +66,13 @@ public class Bloom implements ModInitializer {
 				PackActivationType.ALWAYS_ENABLED
 			);
 		}
+		if (BloomConfig.get.misc.stone_variant_crafting) {
+			ResourceLoader.registerBuiltinPack(
+				Bloom.id("stone_variant_crafting"), modContainer,
+				Component.translatable("pack.bloom.stone_variant_crafting"),
+				PackActivationType.ALWAYS_ENABLED
+			);
+		}
 		if (BloomConfig.get.worldgen.ore_variants && FabricLoader.getInstance().isModLoaded("legacies_and_legends")) {
 			ResourceLoader.registerBuiltinPack(
 				Bloom.id("ore_variants_sapphire"), modContainer,

@@ -69,6 +69,9 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 		this.valueLookupBuilder(ItemTags.STONE_TOOL_MATERIALS)
 			.add(BloomBlocks.DOLERITE.asItem());
 
+		this.valueLookupBuilder(ItemTags.STONE_CRAFTING_MATERIALS)
+			.add(BloomBlocks.DOLERITE.asItem());
+
 		this.valueLookupBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
 			.add(BloomItems.COTTON_SEEDS);
 

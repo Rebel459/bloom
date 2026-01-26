@@ -35,6 +35,9 @@ public class BloomConfig implements ConfigData {
 	@ConfigEntry.Gui.CollapsibleObject
 	public FarmingConfig farming = new FarmingConfig();
 
+	@ConfigEntry.Gui.CollapsibleObject
+	public MiscConfig misc = new MiscConfig();
+
     public static class BiomeConfig {
 		@ConfigEntry.Category("config")
 		public boolean golden_forest = true;
@@ -106,5 +109,11 @@ public class BloomConfig implements ConfigData {
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
 		public boolean wild_crops = true;
+	}
+
+	public static class MiscConfig {
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
+		public boolean stone_variant_crafting = true;
 	}
 }

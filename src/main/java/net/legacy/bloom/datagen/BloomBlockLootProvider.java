@@ -61,7 +61,13 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 
 		WoodsetRegistry.WOODSETS.forEach(this::woodDrops);
 
-        this.dropSelf(BloomBlocks.DOLERITE);
+		this.add(BloomBlocks.JACARANDA.getLeaves(), block -> this.createLeavesDrops(block, BloomBlocks.JACARANDA_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+		this.add(BloomBlocks.GOLDEN_BIRCH.getLeaves(), block -> this.createLeavesDrops(block, BloomBlocks.GOLDEN_BIRCH_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+		this.add(BloomBlocks.PINE.getLeaves(), block -> this.createLeavesDrops(block, BloomBlocks.PINE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+
+		this.dropSelf(BloomBlocks.JACARANDA_SAPLING);
+		this.dropSelf(BloomBlocks.GOLDEN_BIRCH_SAPLING);
+		this.dropSelf(BloomBlocks.PINE_SAPLING);
 
 		this.sleepingBagDrops(BloomBlocks.WHITE_SLEEPING_BAG);
 		this.sleepingBagDrops(BloomBlocks.ORANGE_SLEEPING_BAG);
@@ -96,6 +102,8 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.dropSelf(BloomBlocks.GREEN_RUG);
 		this.dropSelf(BloomBlocks.RED_RUG);
 		this.dropSelf(BloomBlocks.BLACK_RUG);
+
+		this.dropSelf(BloomBlocks.DOLERITE);
 
 		StoneOresRegistry.ALL_REGISTRIES.forEach(this::oreDrops);
 	}
@@ -146,9 +154,6 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 
 		this.dropSelf(woodset.getTrapDoor());
 		this.createDoorTable(woodset.getDoor());
-		if (woodset.isOverworldTreeWood()){
-			this.createLeavesDrops(woodset.getLeaves(), woodset.getLeaves(), 0.05f, 0.0625f, 0.025f, 0.083333336f, 0.1f);
-		}
 		this.dropSelf(woodset.getSign());
 		this.dropSelf(woodset.getHangingSign());
 
