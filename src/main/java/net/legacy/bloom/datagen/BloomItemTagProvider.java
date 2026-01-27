@@ -92,16 +92,6 @@ public final class BloomItemTagProvider extends FabricTagProvider.ItemTagProvide
 		this.valueLookupBuilder(ItemTags.LOGS_THAT_BURN)
 			.addOptionalTag(tag);
 
-		this.valueLookupBuilder(BloomItemTags.JACARANDA_LOGS)
-			.add(woodset.getLog().asItem(), woodset.getStrippedLog().asItem())
-			.add(woodset.getWood().asItem(), woodset.getStrippedWood().asItem());
-
-		this.valueLookupBuilder(ItemTags.LOGS)
-			.addOptionalTag(BloomItemTags.JACARANDA_LOGS);
-
-		this.valueLookupBuilder(ItemTags.LOGS_THAT_BURN)
-			.addOptionalTag(BloomItemTags.JACARANDA_LOGS);
-
 		this.valueLookupBuilder(ItemTags.LEAVES)
 			.add(woodset.getLeaves().asItem());
 

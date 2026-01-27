@@ -5,23 +5,11 @@
       "required": false
     },
     {
-      "id": "#bloom:jacaranda_logs",
-      "required": false
-    },
-    {
       "id": "#bloom:golden_birch_logs",
       "required": false
     },
     {
-      "id": "#bloom:jacaranda_logs",
-      "required": false
-    },
-    {
       "id": "#bloom:pine_logs",
-      "required": false
-    },
-    {
-      "id": "#bloom:jacaranda_logs",
       "required": false
     }
   ]
