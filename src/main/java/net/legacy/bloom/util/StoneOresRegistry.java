@@ -6,20 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import com.google.common.collect.ImmutableBiMap;
 import net.fabricmc.loader.api.FabricLoader;
-import net.legacy.bloom.Bloom;
 import net.legacy.bloom.registry.BloomBlocks;
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.MultiVariant;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -39,16 +28,6 @@ public class StoneOresRegistry {
     private final Block baseStone;
     public final boolean deep;
     private final BiFunction<OreType, BlockBehaviour.Properties, Block> normalFunction;
-	public static Map<Block, BiFunction<BlockModelGenerators, Block, Boolean>> STONE_MODELS_MAP = Map.ofEntries(
-		Map.entry(Blocks.SANDSTONE, (generators, block) -> {
-			StoneCustomDatagens.sandstoneBlockModel(generators, Blocks.SANDSTONE, block);
-			return true;
-		}),
-		Map.entry(Blocks.RED_SANDSTONE, (generators, block) -> {
-			StoneCustomDatagens.sandstoneBlockModel(generators, Blocks.RED_SANDSTONE, block);
-			return true;
-		})
-	);
 
     public StoneOresRegistry(Block baseStone, boolean deep, BiFunction<OreType, BlockBehaviour.Properties, Block> normalFunction) {
         this.baseStone = baseStone;
@@ -153,15 +132,4 @@ public class StoneOresRegistry {
             return new OreType(name, BuiltInRegistries.BLOCK.getValue(baseBlock), xpProvider);
         }
     }
-
-	private static class StoneCustomDatagens{
-		private static void sandstoneBlockModel(BlockModelGenerators blockModelGenerators, Block stone, Block ore){
-			Identifier oreID = TextureMapping.getBlockTexture(ore);
-			TexturedModel texturedModel = TexturedModel.TOP_BOTTOM_WITH_WALL.get(stone)
-				.updateTextures(textureMapping -> textureMapping.put(TextureSlot.SIDE, oreID).put(TextureSlot.BOTTOM, oreID)
-				);
-			MultiVariant multiVariant = BlockModelGenerators.plainVariant(texturedModel.create(ore, blockModelGenerators.modelOutput));
-			blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ore, multiVariant));
-		}
-	}
 }

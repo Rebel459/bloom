@@ -47,14 +47,6 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.add(BloomBiomes.GOLDEN_FIELDS)
 			.add(BloomBiomes.GOLDEN_RIVER);
 
-		this.builder(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
-			.add(Biomes.JUNGLE)
-			.add(Biomes.SPARSE_JUNGLE)
-			.add(BloomBiomes.WINDSWEPT_JUNGLE)
-			.add(BloomBiomes.SPARSE_WINDSWEPT_JUNGLE)
-			.addOptional(this.getBiome("wilderwild:birch_jungle"))
-			.addOptional(this.getBiome("wilderwild:sparse_birch_jungle"));
-
 		this.builder(BloomBiomeTags.IS_NON_SNOWY_TAIGA)
 			.add(Biomes.TAIGA)
 			.add(Biomes.OLD_GROWTH_PINE_TAIGA)
@@ -227,12 +219,12 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.addOptionalTag(BiomeTags.IS_OVERWORLD);
 
 		this.builder(BloomBiomeTags.HAS_BROMELIAD)
-			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
+			.addOptionalTag(BiomeTags.IS_JUNGLE)
 			.add(BloomBiomes.WARM_RIVER)
 			.addOptional(this.getBiome("wilderwild:rainforest"));
 
 		this.builder(BloomBiomeTags.HAS_PINK_ORCHID)
-			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE);
+			.addOptionalTag(BiomeTags.IS_JUNGLE);
 
 		this.builder(BloomBiomeTags.HAS_LILY_OF_THE_VALLEY)
 			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA);
@@ -241,7 +233,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA);
 
 		this.builder(BloomBiomeTags.HAS_BELLFLOWER)
-			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
+			.addOptionalTag(BiomeTags.IS_JUNGLE)
 			.add(Biomes.DARK_FOREST)
 			.add(Biomes.FLOWER_FOREST)
 			.addOptional(this.getBiome("wilderwild:dark_birch_forest"))
@@ -307,8 +299,8 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 
 		this.builder(BloomBiomeTags.HAS_WILD_COTTON)
 			.addOptionalTag(BiomeTags.IS_FOREST)
+			.addOptionalTag(BiomeTags.IS_JUNGLE)
 			.addOptionalTag(ConventionalBiomeTags.IS_PLAINS)
-			.addTag(BloomBiomeTags.IS_NON_BAMBOO_JUNGLE)
 			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA);
 
 		// Music

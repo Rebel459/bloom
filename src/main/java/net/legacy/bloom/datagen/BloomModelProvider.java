@@ -12,12 +12,17 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TextureMapping;
+import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import java.util.Map;
+import java.util.function.BiFunction;
 
 @Environment(EnvType.CLIENT)
 public final class BloomModelProvider extends FabricModelProvider {
@@ -127,7 +132,7 @@ public final class BloomModelProvider extends FabricModelProvider {
 
     public void oreModels(StoneOresRegistry ores, BlockModelGenerators generator) {
         ores.getOresMap().forEach((type, ore) -> {
-            StoneOresRegistry.STONE_MODELS_MAP.getOrDefault(ores.getBaseStone(), (generators, b) -> {
+            STONE_MODELS_MAP.getOrDefault(ores.getBaseStone(), (generators, b) -> {
                 generators.createTrivialCube(ore);
                 return true;
             }).apply(generator, ore);
@@ -164,5 +169,27 @@ public final class BloomModelProvider extends FabricModelProvider {
 
 	public void createPlant(Block block, BlockModelGenerators.PlantType type, BlockModelGenerators generator) {
 		generator.createCrossBlock(block, type);
+	}
+
+	public static Map<Block, BiFunction<BlockModelGenerators, Block, Boolean>> STONE_MODELS_MAP = Map.ofEntries(
+		Map.entry(Blocks.SANDSTONE, (generators, block) -> {
+			StoneCustomDatagens.sandstoneBlockModel(generators, Blocks.SANDSTONE, block);
+			return true;
+		}),
+		Map.entry(Blocks.RED_SANDSTONE, (generators, block) -> {
+			StoneCustomDatagens.sandstoneBlockModel(generators, Blocks.RED_SANDSTONE, block);
+			return true;
+		})
+	);
+
+	private static class StoneCustomDatagens{
+		private static void sandstoneBlockModel(BlockModelGenerators blockModelGenerators, Block stone, Block ore){
+			Identifier oreID = TextureMapping.getBlockTexture(ore);
+			TexturedModel texturedModel = TexturedModel.TOP_BOTTOM_WITH_WALL.get(stone)
+				.updateTextures(textureMapping -> textureMapping.put(TextureSlot.SIDE, oreID).put(TextureSlot.BOTTOM, oreID)
+				);
+			MultiVariant multiVariant = BlockModelGenerators.plainVariant(texturedModel.create(ore, blockModelGenerators.modelOutput));
+			blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ore, multiVariant));
+		}
 	}
 }

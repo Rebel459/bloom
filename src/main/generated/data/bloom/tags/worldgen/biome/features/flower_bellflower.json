@@ -1,6 +1,9 @@
 {
   "values": [
-    "#bloom:is_non_bamboo_jungle",
+    {
+      "id": "#minecraft:is_jungle",
+      "required": false
+    },
     "minecraft:dark_forest",
     "minecraft:flower_forest",
     {

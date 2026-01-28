@@ -5,10 +5,13 @@
       "required": false
     },
     {
+      "id": "#minecraft:is_jungle",
+      "required": false
+    },
+    {
       "id": "#c:is_plains",
       "required": false
     },
-    "#bloom:is_non_bamboo_jungle",
     "#bloom:is_non_snowy_taiga"
   ]
 }
