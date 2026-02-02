@@ -1,10 +1,16 @@
 package net.legacy.bloom.worldgen;
 
+import com.mojang.serialization.MapCodec;
 import net.legacy.bloom.Bloom;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import org.jetbrains.annotations.NotNull;
 
 public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> DISK_CLAY = register("disk_clay");
@@ -38,7 +44,7 @@ public final class BloomFeatures {
 
 	public static final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_GOLDEN_BIRCH_TREE = registerConfigured("tree_golden_birch");
 
-    public static final ResourceKey<PlacedFeature> TREES_TAIGA = register("trees_taiga");
+	public static final ResourceKey<PlacedFeature> TREES_TAIGA = register("trees_taiga");
 
     public static final ResourceKey<PlacedFeature> WINDSWEPT_JUNGLE_TREES = register("trees_windswept_jungle");
     public static final ResourceKey<PlacedFeature> WINDSWEPT_JUNGLE_FLOWERS = register("flowers_windswept_jungle");
@@ -55,6 +61,8 @@ public final class BloomFeatures {
 
 	public static final ResourceKey<PlacedFeature> GOLDEN_FIELDS_TREES = register("trees_golden_fields");
 
+	public static void init() {}
+
     public static ResourceKey<PlacedFeature> register(String string) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Bloom.id(string));
     }
@@ -62,4 +70,9 @@ public final class BloomFeatures {
     public static ResourceKey<ConfiguredFeature<?, ?>> registerConfigured(String string) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, Bloom.id(string));
     }
+
+	@NotNull
+	private static <P extends FoliagePlacer> FoliagePlacerType<P> registerFoliage(@NotNull String id, @NotNull MapCodec<P> codec) {
+		return Registry.register(BuiltInRegistries.FOLIAGE_PLACER_TYPE, Bloom.id(id), new FoliagePlacerType<>(codec));
+	}
 }

@@ -12,6 +12,7 @@ import net.fabricmc.loader.api.ModContainer;
 import net.legacy.bloom.config.BloomConfig;
 import net.legacy.bloom.registry.BloomBiomes;
 import net.legacy.bloom.registry.BloomBlockEntities;
+import net.legacy.bloom.registry.BloomBlockStateProperties;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.BloomConditionSources;
 import net.legacy.bloom.registry.BloomCreativeInventory;
@@ -39,6 +40,7 @@ public class Bloom implements ModInitializer {
 	public void onInitialize() {
 		final ModContainer modContainer = FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow();
 		BloomConfig.init();
+		BloomBlockStateProperties.init();
         BloomBlocks.init();
         BloomItems.init();
         BloomBiomes.init();
@@ -50,6 +52,7 @@ public class Bloom implements ModInitializer {
 		BloomBlockEntities.init();
 		BloomLootTables.init();
 		BloomVillagerTrades.init();
+		BloomFeatures.init();
 		ClimateCommand.init();
 
 		if (BloomConfig.get.worldgen.pine_trees) {

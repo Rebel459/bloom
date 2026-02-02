@@ -334,7 +334,7 @@
       "state": {
         "Name": "bloom:golden_birch_leaves",
         "Properties": {
-          "distance": "7",
+          "extended_distance": "8",
           "persistent": "false",
           "waterlogged": "false"
         }

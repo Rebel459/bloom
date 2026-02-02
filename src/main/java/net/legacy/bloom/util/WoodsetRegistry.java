@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.legacy.bloom.block.UntintedParticleExtendedLeavesBlock;
 import net.legacy.bloom.registry.BloomBlocks;
 import net.legacy.bloom.registry.BloomItems;
 import net.legacy.bloom.registry.BloomParticleTypes;
@@ -255,12 +256,6 @@ public class WoodsetRegistry {
 	public <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> name, EntityType.Builder<T> type){
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, name, type.build(name));
 	}
-    private static EntityType.EntityFactory<Boat> boatFactory(Item item) {
-        return (entityType, world) -> new Boat(entityType, world, () -> item);
-    }
-    private static EntityType.EntityFactory<ChestBoat> chestBoatFactory(Item item) {
-        return (entityType, world) -> new ChestBoat(entityType, world, () -> item);
-    }
 
     private BlockBehaviour.Properties createLogBlock(MapColor topMapColor, MapColor sideMapColor) {
         return BlockBehaviour.Properties.of().mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).strength(2.0F).sound(this.getWoodType().soundType());
@@ -455,7 +450,7 @@ public class WoodsetRegistry {
     private Block createLeaves() {
 		if (Objects.equals(getName(), "jacaranda")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleLeavesBlock(0.1F, BloomParticleTypes.JACARANDA_LEAVES, settings), createLeavesBlock());
 		else if (Objects.equals(getName(), "pine")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 5468745), settings), createLeavesBlock());
-		else if (Objects.equals(getName(), "golden_birch")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 13807429), settings), createLeavesBlock());
+		else if (Objects.equals(getName(), "golden_birch")) return createBlockWithItem(this.getName() + "_leaves", settings -> new UntintedParticleExtendedLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 13807429), settings), createLeavesBlock());
 		else return createBlockWithItem(this.getName() + "_leaves", settings -> new TintedParticleLeavesBlock(0.01F, settings), createLeavesBlock());
     }
     private Block createPlanks(){
@@ -528,10 +523,10 @@ public class WoodsetRegistry {
     }
 
     private EntityType<Boat> createBoatEntity(){
-        return register(this.getName() + "_" + woodsetSettings.getBoatName(), EntityType.Builder.of(boatFactory(boatItem), MobCategory.MISC).noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+        return register(this.getName() + "_" + woodsetSettings.getBoatName(), EntityType.Builder.of(EntityType.boatFactory(() -> boatItem), MobCategory.MISC).noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
     }
     private EntityType<ChestBoat> createChestBoatEntity(){
-        return register(this.getName() + "_chest_" + woodsetSettings.getBoatName(), EntityType.Builder.of(chestBoatFactory(chestBoatItem), MobCategory.MISC).noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+        return register(this.getName() + "_chest_" + woodsetSettings.getBoatName(), EntityType.Builder.of(EntityType.chestBoatFactory(() -> chestBoatItem), MobCategory.MISC).noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
     }
     private Item createBoatItem(){
         return createItem(this.getName() + "_" + woodsetSettings.getBoatName(), settings -> new BoatItem(boat, settings), new Item.Properties().stacksTo(1));
