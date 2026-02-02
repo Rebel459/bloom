@@ -13,14 +13,14 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "block": "bloom:bellflower",
+              "block": "bloom:reeds",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "half": "lower"
               }
             }
           ],
-          "name": "bloom:bellflower"
+          "name": "bloom:reeds"
         }
       ],
       "rolls": 1.0

@@ -20,7 +20,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CarrotBlock;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.properties.BedPart;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -53,9 +55,12 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.dropPottedContents(BloomBlocks.POTTED_HYACINTH);
 		this.dropSelf(BloomBlocks.QUEENCUP);
 		this.dropPottedContents(BloomBlocks.POTTED_QUEENCUP);
-		this.dropSelf(BloomBlocks.BELLFLOWER);
-		this.dropSelf(BloomBlocks.HYDRANGEA);
+
 		this.dropSelf(BloomBlocks.SUCCULENT);
+
+		this.tallFoliageDrops(BloomBlocks.BELLFLOWER);
+		this.tallFoliageDrops(BloomBlocks.HYDRANGEA);
+		this.tallFoliageDrops(BloomBlocks.REEDS);
 
 		this.cropDrops(BloomBlocks.COTTON, 7, BloomItems.COTTON, BloomItems.COTTON_SEEDS);
 
@@ -111,6 +116,10 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 	public void cropDrops(Block crop, int age, Item drop, Item seeds) {
 		LootItemCondition.Builder condition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, age));
 		this.add(crop, this.createCropDrops(crop, drop, seeds, condition));
+	}
+
+	public void tallFoliageDrops(Block tallBlock) {
+		this.add(tallBlock, block -> this.createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
 	}
 
 	public void sleepingBagDrops(Block sleepingBag) {
