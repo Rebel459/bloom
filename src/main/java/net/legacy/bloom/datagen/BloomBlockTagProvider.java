@@ -111,7 +111,9 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
 
         this.valueLookupBuilder(BlockTags.SAPLINGS)
-			.add(BloomBlocks.JACARANDA_SAPLING);
+			.add(BloomBlocks.JACARANDA_SAPLING)
+			.add(BloomBlocks.GOLDEN_BIRCH_SAPLING)
+			.add(BloomBlocks.PINE_SAPLING);
 
 		tagWoodset(BloomBlocks.JACARANDA, BloomBlockTags.JACARANDA_LOGS);
 		tagWoodset(BloomBlocks.GOLDEN_BIRCH, BloomBlockTags.GOLDEN_BIRCH_LOGS);

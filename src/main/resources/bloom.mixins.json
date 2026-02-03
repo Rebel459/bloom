@@ -1,6 +1,7 @@
 {
   "required": true,
   "package": "net.legacy.bloom.mixin",
+  "plugin": "net.legacy.bloom.mixin.BloomMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1

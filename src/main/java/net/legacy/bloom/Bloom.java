@@ -39,7 +39,6 @@ public class Bloom implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		final ModContainer modContainer = FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow();
-		BloomConfig.init();
 		BloomBlockStateProperties.init();
         BloomBlocks.init();
         BloomItems.init();
