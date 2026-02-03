@@ -143,7 +143,7 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 	public void woodDrops(WoodsetRegistry woodset){
 		this.dropSelf(woodset.getPlanks());
 		this.dropSelf(woodset.getStairs());
-		this.createSlabItemTable(woodset.getSlab());
+		this.add(woodset.getSlab(), this::createSlabItemTable);
 		this.dropSelf(woodset.getFence());
 		this.dropSelf(woodset.getFenceGate());
 		this.dropSelf(woodset.getButton());
@@ -153,7 +153,7 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		if (woodset.getWoodPreset() == WoodsetRegistry.WoodPreset.BAMBOO) {
 			this.dropSelf(woodset.getMosaic());
 			this.dropSelf(woodset.getMosaicStairs());
-			this.createSlabItemTable(woodset.getMosaicSlab());
+			this.add(woodset.getMosaicSlab(), this::createSlabItemTable);
 		}
 		else{
 			this.dropSelf(woodset.getWood());
@@ -162,7 +162,7 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		}
 
 		this.dropSelf(woodset.getTrapDoor());
-		this.createDoorTable(woodset.getDoor());
+		this.add(woodset.getDoor(), this::createDoorTable);
 		this.dropSelf(woodset.getSign());
 		this.dropSelf(woodset.getHangingSign());
 
