@@ -394,6 +394,7 @@ public final class BloomBiomeTagProvider extends FrozenBiomeTagProvider {
 		this.builder(ConventionalBiomeTags.IS_TEMPERATE_OVERWORLD)
 			.add(BloomBiomes.GOLDEN_FOREST)
 			.add(BloomBiomes.GOLDEN_FIELDS)
+			.add(BloomBiomes.GOLDEN_RIVER)
 			.add(BloomBiomes.PINE_TAIGA)
 			.add(BloomBiomes.COLD_BEACH)
 			.add(BloomBiomes.COLD_RIVER);
