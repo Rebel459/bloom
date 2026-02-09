@@ -262,6 +262,7 @@ public final class BloomSurfaceRules implements SurfaceRuleEvents.OverworldSurfa
 				SurfaceRuleHelper.depthRule(
 					Blocks.ANDESITE,
 					List.of(
+						SurfaceRuleHelper.temperatureBelow(0.6F),
 						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_2),
 						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_2, Parameters.HUMIDITY_5)
 					),

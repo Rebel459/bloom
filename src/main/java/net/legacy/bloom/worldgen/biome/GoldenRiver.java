@@ -24,8 +24,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
 public final class GoldenRiver extends FrozenBiome {
-	public static final float TEMP = 0.8F;
-	public static final float DOWNFALL = 0.9F;
+	public static final float TEMP = 0.6F;
+	public static final float DOWNFALL = 0.6F;
 	public static final int WATER_COLOR = 4159204;
 	public static final int FOLIAGE_COLOR = 9610027;
 	public static final int DRY_FOLIAGE_COLOR = 10715206;

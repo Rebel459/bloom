@@ -9,8 +9,11 @@ import net.legacy.bloom.tag.BloomBlockTags;
 import net.legacy.bloom.util.StoneOresRegistry;
 import net.legacy.bloom.util.WoodsetRegistry;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
@@ -178,9 +181,6 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			.add(BloomBlocks.DOLERITE);
 
 		StoneOresRegistry.ALL_REGISTRIES.forEach(this::tagOres);
-
-		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-			.addOptionalTag(BloomBlockTags.SAPPHIRE_ORES);
 	}
 
 	public void tagWoodset(WoodsetRegistry woodset, TagKey<Block> tag) {
@@ -260,7 +260,13 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
     public void tagOres(StoneOresRegistry ores) {
         ores.getOresMap().forEach((type, block) -> {
             String name = type.name;
-			if (!Objects.equals(name, "sapphire")) addTag(block, BlockTags.MINEABLE_WITH_PICKAXE);
+			String blockName = block.getName().getString();
+
+			addOptionalTag(block, BlockTags.MINEABLE_WITH_PICKAXE);
+			if (blockName.contains("sandstone")) {
+				addOptionalTag(block, getTag("wilderwild:sound/sandstone"));
+			}
+
             if (Objects.equals(name, "coal")) addTag(block, BlockTags.COAL_ORES);
             if (Objects.equals(name, "copper")) addTag(block, BlockTags.COPPER_ORES);
             if (Objects.equals(name, "iron")) addTag(block, BlockTags.IRON_ORES);
@@ -273,7 +279,15 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
         });
     }
 
-    public void addTag(Block block, TagKey<Block> tag) {
-        this.valueLookupBuilder(tag).add(block);
-    }
+	public void addTag(Block block, TagKey<Block> tag) {
+		this.valueLookupBuilder(tag).add(block);
+	}
+	public void addOptionalTag(Block block, TagKey<Block> tag) {
+		ResourceKey<Block> blockKey = block.defaultBlockState().getBlockHolder().unwrapKey().get();
+		this.builder(tag).addOptional(blockKey);
+	}
+
+	private TagKey<Block> getTag(String id) {
+		return TagKey.create(this.registryKey, Identifier.parse(id));
+	}
 }
