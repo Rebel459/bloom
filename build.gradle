@@ -46,9 +46,8 @@ dependencies {
     modImplementation("maven.modrinth:modmenu:$modmenu_version")
 
     modDatagenRuntimeOnly("maven.modrinth:legacies-and-legends:${project.lal_version}")
-    modDatagenRuntimeOnly("net.legacy.legacies_and_legends:TrimPatcher-1.0-pre2-mc1.21.11")
-    //modDatagenRuntimeOnly("maven.modrinth:trim-patcher:${project.patcher_version}")
-    modDatagenRuntimeOnly("maven.modrinth:trinkets-canary:${project.trinkets_version}")
+	modDatagenRuntimeOnly("maven.modrinth:trim-patcher:${project.patcher_version}")
+    modDatagenRuntimeOnly("maven.modrinth:trinkets-continued:${project.trinkets_version}")
     modDatagenRuntimeOnly ("org.ladysnake.cardinal-components-api:cardinal-components-base:${project.cca_version}")
     modDatagenRuntimeOnly ("org.ladysnake.cardinal-components-api:cardinal-components-entity:${project.cca_version}")
 

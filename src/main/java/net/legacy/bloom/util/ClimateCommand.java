@@ -17,7 +17,7 @@ import net.minecraft.ChatFormatting;
 public class ClimateCommand {
 
 	public static void init() {
-		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+		CommandRegistrationCallback.EVENT.register((dispatcher, context, selection) -> {
 			dispatcher.register(Commands.literal("climate")
 				.requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
 				.executes(ctx -> climateCommand(ctx, ctx.getSource().getPlayerOrException()))
