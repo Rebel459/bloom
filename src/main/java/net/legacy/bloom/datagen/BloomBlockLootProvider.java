@@ -109,6 +109,18 @@ public final class BloomBlockLootProvider extends FabricBlockLootTableProvider {
 		this.dropSelf(BloomBlocks.BLACK_RUG);
 
 		this.dropSelf(BloomBlocks.DOLERITE);
+		this.dropSelf(BloomBlocks.POLISHED_DOLERITE);
+		this.dropSelf(BloomBlocks.POLISHED_DOLERITE_STAIRS);
+		this.dropSelf(BloomBlocks.POLISHED_DOLERITE_SLAB);
+		this.dropSelf(BloomBlocks.POLISHED_DOLERITE_WALL);
+		this.dropSelf(BloomBlocks.DOLERITE_BRICKS);
+		this.dropSelf(BloomBlocks.DOLERITE_BRICK_STAIRS);
+		this.dropSelf(BloomBlocks.DOLERITE_BRICK_SLAB);
+		this.dropSelf(BloomBlocks.DOLERITE_BRICK_WALL);
+		this.dropSelf(BloomBlocks.DOLERITE_TILES);
+		this.dropSelf(BloomBlocks.DOLERITE_TILE_STAIRS);
+		this.dropSelf(BloomBlocks.DOLERITE_TILE_SLAB);
+		this.dropSelf(BloomBlocks.DOLERITE_TILE_WALL);
 
 		StoneOresRegistry.ALL_REGISTRIES.forEach(this::oreDrops);
 	}
