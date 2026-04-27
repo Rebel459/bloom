@@ -45,6 +45,9 @@ public final class BloomBlockRenderLayers {
 			BlockRenderLayerMap.putBlock(woodset.getLeaves(), ChunkSectionLayer.CUTOUT);
 		});
 
+		BlockRenderLayerMap.putBlock(BloomBlocks.JACARANDA.getDoor(), ChunkSectionLayer.CUTOUT);
+		BlockRenderLayerMap.putBlock(BloomBlocks.JACARANDA.getTrapDoor(), ChunkSectionLayer.CUTOUT);
+
 		BlockRenderLayerMap.putBlock(BloomBlocks.JACARANDA_SAPLING, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(BloomBlocks.POTTED_JACARANDA_SAPLING, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(BloomBlocks.GOLDEN_BIRCH_SAPLING, ChunkSectionLayer.CUTOUT);
