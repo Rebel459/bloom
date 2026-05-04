@@ -1,5 +1,8 @@
 package net.legacy.bloom.datagen;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -267,20 +270,24 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 				addOptionalTag(block, getTag("wilderwild:sound/sandstone"));
 			}
 
-            if (Objects.equals(name, "coal")) addTag(block, BlockTags.COAL_ORES);
-            if (Objects.equals(name, "copper")) addTag(block, BlockTags.COPPER_ORES);
-            if (Objects.equals(name, "iron")) addTag(block, BlockTags.IRON_ORES);
-            if (Objects.equals(name, "redstone")) addTag(block, BlockTags.REDSTONE_ORES);
-            if (Objects.equals(name, "gold")) addTag(block, BlockTags.GOLD_ORES);
-            if (Objects.equals(name, "diamond")) addTag(block, BlockTags.DIAMOND_ORES);
-            if (Objects.equals(name, "emerald")) addTag(block, BlockTags.EMERALD_ORES);
-            if (Objects.equals(name, "lapis")) addTag(block, BlockTags.LAPIS_ORES);
-            if (Objects.equals(name, "sapphire")) addTag(block, BloomBlockTags.SAPPHIRE_ORES);
+            if (Objects.equals(name, "coal")) addTags(block, BlockTags.COAL_ORES);
+            if (Objects.equals(name, "copper")) addTags(block, BlockTags.COPPER_ORES, BlockTags.NEEDS_STONE_TOOL);
+            if (Objects.equals(name, "iron")) addTags(block, BlockTags.IRON_ORES, BlockTags.NEEDS_STONE_TOOL);
+            if (Objects.equals(name, "redstone")) addTags(block, BlockTags.REDSTONE_ORES, BlockTags.NEEDS_IRON_TOOL);
+            if (Objects.equals(name, "gold")) addTags(block, BlockTags.GOLD_ORES, BlockTags.NEEDS_IRON_TOOL);
+            if (Objects.equals(name, "diamond")) addTags(block, BlockTags.DIAMOND_ORES, BlockTags.NEEDS_IRON_TOOL);
+            if (Objects.equals(name, "emerald")) addTags(block, BlockTags.EMERALD_ORES, BlockTags.NEEDS_IRON_TOOL);
+            if (Objects.equals(name, "lapis")) addTags(block, BlockTags.LAPIS_ORES, BlockTags.NEEDS_IRON_TOOL);
+            if (Objects.equals(name, "sapphire")) addTags(block, BloomBlockTags.SAPPHIRE_ORES, BlockTags.NEEDS_IRON_TOOL);
         });
     }
 
-	public void addTag(Block block, TagKey<Block> tag) {
-		this.valueLookupBuilder(tag).add(block);
+	@SafeVarargs
+	public final void addTags(Block block, TagKey<Block>... tags) {
+		List<TagKey<Block>> tagList = Arrays.asList(tags);
+		tagList.forEach((tag) -> {
+			this.valueLookupBuilder(tag).add(block);
+		});
 	}
 	public void addOptionalTag(Block block, TagKey<Block> tag) {
 		ResourceKey<Block> blockKey = block.defaultBlockState().getBlockHolder().unwrapKey().get();
