@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bloom:block/dolerite_lapis_ore"
+    }
+  }
+}

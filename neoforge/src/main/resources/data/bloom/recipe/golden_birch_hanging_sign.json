@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hanging_sign",
+  "key": {
+    "#": "bloom:stripped_golden_birch_log",
+    "X": "minecraft:iron_chain"
+  },
+  "pattern": [
+    "X X",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "bloom:golden_birch_hanging_sign"
+  }
+}

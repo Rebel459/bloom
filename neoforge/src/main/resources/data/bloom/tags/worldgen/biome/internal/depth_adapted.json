@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#bloom:internal/steep",
+    "#bloom:internal/mountain",
+    "#bloom:internal/stony",
+    "#bloom:internal/badlands",
+    "#bloom:internal/windswept_hill",
+    "#bloom:internal/windswept_savanna"
+  ]
+}

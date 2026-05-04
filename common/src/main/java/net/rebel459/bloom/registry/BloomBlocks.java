@@ -2,6 +2,7 @@ package net.rebel459.bloom.registry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import net.minecraft.world.effect.MobEffects;
@@ -227,7 +228,7 @@ public final class BloomBlocks {
 		SlabBlock::new,
 		() -> BlockBehaviour.Properties.ofFullCopy(POLISHED_DOLERITE.get())
 	);
-	public static final SuppliedBlock POLISHED_DOLERITE_STAIRS = registerStair("polished_dolerite_stairs", POLISHED_DOLERITE.get());
+	public static final SuppliedBlock POLISHED_DOLERITE_STAIRS = registerStair("polished_dolerite_stairs", POLISHED_DOLERITE);
 	public static final SuppliedBlock POLISHED_DOLERITE_WALL = register("polished_dolerite_wall",
 		WallBlock::new,
 		() -> BlockBehaviour.Properties.ofFullCopy(POLISHED_DOLERITE.get())
@@ -242,7 +243,7 @@ public final class BloomBlocks {
 		SlabBlock::new,
 		() -> BlockBehaviour.Properties.ofFullCopy(DOLERITE_BRICKS.get())
 	);
-	public static final SuppliedBlock DOLERITE_BRICK_STAIRS = registerStair("dolerite_brick_stairs", DOLERITE_BRICKS.get());
+	public static final SuppliedBlock DOLERITE_BRICK_STAIRS = registerStair("dolerite_brick_stairs", DOLERITE_BRICKS);
 	public static final SuppliedBlock DOLERITE_BRICK_WALL = register("dolerite_brick_wall",
 		WallBlock::new,
 		() -> BlockBehaviour.Properties.ofFullCopy(DOLERITE_BRICKS.get())
@@ -257,7 +258,7 @@ public final class BloomBlocks {
 		SlabBlock::new,
 		() -> BlockBehaviour.Properties.ofFullCopy(DOLERITE_TILES.get())
 	);
-	public static final SuppliedBlock DOLERITE_TILE_STAIRS = registerStair("dolerite_tile_stairs", DOLERITE_TILES.get());
+	public static final SuppliedBlock DOLERITE_TILE_STAIRS = registerStair("dolerite_tile_stairs", DOLERITE_TILES);
 	public static final SuppliedBlock DOLERITE_TILE_WALL = register("dolerite_tile_wall",
 		WallBlock::new,
 		() -> BlockBehaviour.Properties.ofFullCopy(DOLERITE_TILES.get())
@@ -296,13 +297,13 @@ public final class BloomBlocks {
 		Blocks::flowerPotProperties
 	);
 
-	public static final StoneOresRegistry TUFF_ORES = new StoneOresRegistry(Blocks.TUFF, true).build();
-    public static final StoneOresRegistry GRANITE_ORES = new StoneOresRegistry(Blocks.GRANITE, false).build();
-    public static final StoneOresRegistry ANDESITE_ORES = new StoneOresRegistry(Blocks.ANDESITE, false).build();
-    public static final StoneOresRegistry DIORITE_ORES = new StoneOresRegistry(Blocks.DIORITE, false).build();
-    public static final StoneOresRegistry DOLERITE_ORES = new StoneOresRegistry(BloomBlocks.DOLERITE.get(), false).build();
-    public static final StoneOresRegistry SANDSTONE_ORES = new StoneOresRegistry(Blocks.SANDSTONE, false).build();
-    public static final StoneOresRegistry RED_SANDSTONE_ORES = new StoneOresRegistry(Blocks.RED_SANDSTONE, false).build();
+	public static final StoneOresRegistry TUFF_ORES = new StoneOresRegistry(() -> Blocks.TUFF, true).build();
+    public static final StoneOresRegistry GRANITE_ORES = new StoneOresRegistry(() -> Blocks.GRANITE, false).build();
+    public static final StoneOresRegistry ANDESITE_ORES = new StoneOresRegistry(() -> Blocks.ANDESITE, false).build();
+    public static final StoneOresRegistry DIORITE_ORES = new StoneOresRegistry(() -> Blocks.DIORITE, false).build();
+    public static final StoneOresRegistry DOLERITE_ORES = new StoneOresRegistry(BloomBlocks.DOLERITE, false, Optional.of("dolerite")).build();
+    public static final StoneOresRegistry SANDSTONE_ORES = new StoneOresRegistry(() -> Blocks.SANDSTONE, false).build();
+    public static final StoneOresRegistry RED_SANDSTONE_ORES = new StoneOresRegistry(() -> Blocks.RED_SANDSTONE, false).build();
 
 	public static void registerBlockProperties() {
 		registerStrippable();
@@ -421,8 +422,8 @@ public final class BloomBlocks {
 
 	public static void init() {}
 
-	private static SuppliedBlock registerStair(String string, Block block) {
-		return register(string, properties -> new StairBlock(block.defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(block));
+	private static SuppliedBlock registerStair(String string, Supplier<Block> block) {
+		return register(string, properties -> new StairBlock(block.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(block.get()));
 	}
 
 	public static <T extends Block> SuppliedBlock registerWithoutItem(String path, Function<BlockBehaviour.Properties, T> block, Supplier<BlockBehaviour.Properties> properties) {

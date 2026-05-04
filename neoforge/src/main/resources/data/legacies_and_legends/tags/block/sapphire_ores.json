@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "bloom:tuff_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:granite_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:andesite_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:diorite_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:dolerite_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:sandstone_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:red_sandstone_sapphire_ore",
+      "required": false
+    }
+  ]
+}

@@ -10,7 +10,7 @@ import net.rebel459.bloom.registry.BloomConditionSources;
 import net.rebel459.bloom.registry.BloomCreativeInventory;
 import net.rebel459.bloom.registry.BloomItems;
 import net.rebel459.bloom.registry.BloomLootTables;
-import net.rebel459.bloom.registry.BloomVillagerTrades;
+import net.rebel459.bloom.registry.BloomParticleTypes;
 import net.rebel459.bloom.sound.BloomSounds;
 import net.rebel459.bloom.tag.BloomBiomeTags;
 import net.rebel459.bloom.util.BiomeHelper;
@@ -36,6 +36,7 @@ public class Bloom {
 		BloomBiomeModifications.init();
 		BloomSounds.init();
 		BloomConditionSources.init();
+		BloomParticleTypes.init();
 	}
 
 	public static void init() {
@@ -43,7 +44,6 @@ public class Bloom {
 		BloomBlocks.registerBlockProperties();
         BloomCreativeInventory.init();
 		BloomLootTables.init();
-		BloomVillagerTrades.init();
 		BloomFeatures.init();
 		ClimateCommand.init();
 
@@ -52,12 +52,15 @@ public class Bloom {
 		}
 		if (BloomConfig.get.worldgen.ore_variants) {
 			UnifiedHelpers.PACKS.add(Bloom.id("ore_variants"), PackType.REQUIRED_DATA);
+			if (UnifiedPlatform.isModLoaded("legacies_and_legends")) {
+				UnifiedHelpers.PACKS.add(Bloom.id("ore_variants_sapphire"), PackType.REQUIRED_DATA);
+			}
 		}
 		if (BloomConfig.get.misc.stone_variant_crafting) {
 			UnifiedHelpers.PACKS.add(Bloom.id("stone_variant_crafting"), PackType.REQUIRED_DATA);
 		}
-		if (BloomConfig.get.worldgen.ore_variants && UnifiedPlatform.isModLoaded("legacies_and_legends")) {
-			UnifiedHelpers.PACKS.add(Bloom.id("ore_variants_sapphire"), PackType.REQUIRED_DATA);
+		if (BloomConfig.get.farming.tradable_yarn) {
+			UnifiedHelpers.PACKS.add(Bloom.id("tradable_yarn"), PackType.REQUIRED_DATA);
 		}
 		if (UnifiedPlatform.isModLoaded("farmersdelight")) {
 			if (BloomConfig.get.farming.wild_crops) {

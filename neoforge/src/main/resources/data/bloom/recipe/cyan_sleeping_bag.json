@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "sleeping_bag",
+  "key": {
+    "#": "minecraft:cyan_wool",
+    "Y": "bloom:yarn"
+  },
+  "pattern": [
+    "YYY",
+    "###"
+  ],
+  "result": {
+    "id": "bloom:cyan_sleeping_bag"
+  }
+}

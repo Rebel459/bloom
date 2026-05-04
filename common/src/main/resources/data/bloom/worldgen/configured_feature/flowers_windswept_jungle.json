@@ -1,44 +1,52 @@
 {
-  "type": "minecraft:simple_random_selector",
-  "config": {
-    "features": [
+  "type":  "minecraft:simple_random_selector",
+  "config":  {
+    "features":  [
       {
-        "feature": {
-          "type": "minecraft:random_patch",
-          "config": {
-            "feature": {
-              "feature": {
-                "type": "minecraft:simple_block",
-                "config": {
-                  "to_place": {
-                    "type": "minecraft:weighted_state_provider",
-                    "entries": [
-                      {
-                        "data": {
-                          "Name": "minecraft:rose_bush"
-                        },
-                        "weight": 1
-                      }
-                    ]
-                  }
-                }
-              },
-              "placement": [
+        "feature":  {
+          "type":  "minecraft:simple_block",
+          "config":  {
+            "to_place":  {
+              "type":  "minecraft:weighted_state_provider",
+              "entries":  [
                 {
-                  "type": "minecraft:block_predicate_filter",
-                  "predicate": {
-                    "type": "minecraft:matching_blocks",
-                    "blocks": "minecraft:air"
-                  }
+                  "data":  {
+                    "Name":  "minecraft:rose_bush"
+                  },
+                  "weight":  1
                 }
               ]
-            },
-            "tries": 96,
-            "xz_spread": 7,
-            "y_spread": 7
+            }
           }
         },
-        "placement": []
+        "placement":  [
+          {
+            "type":  "minecraft:count",
+            "count":  96
+          },
+          {
+            "type":  "minecraft:random_offset",
+            "xz_spread":  {
+              "type":  "minecraft:trapezoid",
+              "max":  7,
+              "min":  -7,
+              "plateau":  0
+            },
+            "y_spread":  {
+              "type":  "minecraft:trapezoid",
+              "max":  7,
+              "min":  -7,
+              "plateau":  0
+            }
+          },
+          {
+            "type":  "minecraft:block_predicate_filter",
+            "predicate":  {
+              "type":  "minecraft:matching_block_tag",
+              "tag":  "minecraft:air"
+            }
+          }
+        ]
       }
     ]
   }

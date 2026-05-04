@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "white_dye",
+  "ingredients": [
+    "bloom:calla_lily"
+  ],
+  "result": {
+    "id": "minecraft:white_dye"
+  }
+}

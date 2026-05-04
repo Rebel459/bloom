@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "bloom:block/hydrangea_bottom"
+  }
+}

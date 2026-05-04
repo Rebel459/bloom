@@ -1,0 +1,17 @@
+{
+  "values": [
+    "minecraft:snowy_taiga",
+    "minecraft:snowy_plains",
+    "minecraft:snowy_beach",
+    "minecraft:ice_spikes",
+    "bloom:fen",
+    {
+      "id": "#minecraft:is_jungle",
+      "required": false
+    },
+    {
+      "id": "wilderwild:snowy_old_growth_pine_taiga",
+      "required": false
+    }
+  ]
+}

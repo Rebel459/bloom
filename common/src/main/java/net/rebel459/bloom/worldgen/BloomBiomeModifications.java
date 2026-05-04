@@ -1,22 +1,21 @@
 package net.rebel459.bloom.worldgen;
 
-import net.rebel459.bloom.config.BloomConfig;
-import net.rebel459.bloom.sound.BloomSounds;
-import net.rebel459.bloom.tag.BloomBiomeTags;
-import net.rebel459.bloom.util.BiomeHelper;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.Musics;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.rebel459.bloom.config.BloomConfig;
+import net.rebel459.bloom.sound.BloomSounds;
+import net.rebel459.bloom.tag.BloomBiomeTags;
+import net.rebel459.bloom.util.BiomeHelper;
 import net.rebel459.unified.platform.UnifiedHelpers;
 
 public final class BloomBiomeModifications {
 
 	public static void init() {
-		UnifiedHelpers.BIOME_MODIFICATIONS.register(Biomes.DESERT, context -> {
+		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.NO_BADLANDS_GRASS, context -> {
 			context.getFeatures().removeFeature(VegetationPlacements.PATCH_GRASS_BADLANDS, GenerationStep.Decoration.VEGETAL_DECORATION);
 		});
 
@@ -36,6 +35,9 @@ public final class BloomBiomeModifications {
 		});
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_FROZEN_COLORS, context -> {
 			context.getEffects().setWaterColor(BiomeHelper.Colors.FROZEN_WATER);
+		});
+		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_MUSHROOM_COLORS, context -> {
+			context.getEffects().setWaterColor(BiomeHelper.Colors.MUSHROOM_WATER);
 		});
 
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_SWAMP_MUD, context -> {

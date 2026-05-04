@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "bloom:block/bellflower_bottom"
+    },
+    "half=upper": {
+      "model": "bloom:block/bellflower_top"
+    }
+  }
+}

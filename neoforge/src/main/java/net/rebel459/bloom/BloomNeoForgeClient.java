@@ -9,7 +9,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 public class BloomNeoForgeClient {
 
     public BloomNeoForgeClient(IEventBus modEventBus) {
-        Bloom.initRegistries();
+        BloomClient.initRegistries();
 		modEventBus.addListener(BloomNeoForgeClient::commonSetup);
 	}
 

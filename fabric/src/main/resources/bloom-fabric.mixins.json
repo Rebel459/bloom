@@ -2,7 +2,9 @@
   "required": true,
   "package": "net.rebel459.bloom.mixin",
   "compatibilityLevel": "JAVA_25",
-  "mixins": [],
+  "mixins": [
+    "server.ServerPlayerFabricMixin"
+  ],
   "client": [],
   "injectors": {
     "defaultRequire": 1

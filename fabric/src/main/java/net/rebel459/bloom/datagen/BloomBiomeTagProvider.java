@@ -149,6 +149,9 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 			.addOptional(this.getBiome("wilderwild:snowy_dying_mixed_forest"))
 			.addOptional(this.getBiome("wilderwild:snowy_old_growth_pine_taiga"));
 
+		this.builder(BloomBiomeTags.HAS_MUSHROOM_COLORS)
+			.add(Biomes.MUSHROOM_FIELDS);
+
 		// Surface Rules
 		this.builder(BloomBiomeTags.HAS_SURFACE_GRAVEL)
 			.add(BloomBiomes.COLD_RIVER)
@@ -202,6 +205,9 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 			.add(BloomBiomes.FEN)
 			.addOptionalTag(BiomeTags.IS_JUNGLE)
 			.addOptional(this.getBiome("wilderwild:snowy_old_growth_pine_taiga"));
+
+		this.builder(BloomBiomeTags.NO_BADLANDS_GRASS)
+			.add(Biomes.DESERT);
 
 		this.builder(BloomBiomeTags.NO_PINE_TREES)
 			.add(Biomes.TAIGA)

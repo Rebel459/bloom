@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_calla_lily": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bloom:calla_lily"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bloom:white_dye_from_calla_lily"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_calla_lily"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bloom:white_dye_from_calla_lily"
+    ]
+  }
+}

@@ -41,6 +41,7 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		translation.add("pack.bloom.ore_variants", "Ore Variants");
 		translation.add("pack.bloom.ore_variants_sapphire", "Ore Variants - Sapphire");
 		translation.add("pack.bloom.stone_variant_crafting", "Stone Variant Crafting");
+		translation.add("pack.bloom.tradable_yarn", "Tradable Yarn");
 		translation.add("pack.bloom.wild_crops", "Wild Crops");
 
 		translation.add("text.autoconfig.bloom.title", "Bloom");

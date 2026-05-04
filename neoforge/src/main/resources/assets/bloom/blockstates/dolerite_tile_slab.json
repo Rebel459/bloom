@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bloom:block/dolerite_tile_slab"
+    },
+    "type=double": {
+      "model": "bloom:block/dolerite_tiles"
+    },
+    "type=top": {
+      "model": "bloom:block/dolerite_tile_slab_top"
+    }
+  }
+}

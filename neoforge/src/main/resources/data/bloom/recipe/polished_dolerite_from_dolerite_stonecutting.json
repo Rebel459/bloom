@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "bloom:dolerite",
+  "result": {
+    "id": "bloom:polished_dolerite"
+  }
+}

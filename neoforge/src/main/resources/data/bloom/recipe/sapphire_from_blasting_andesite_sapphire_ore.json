@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "sapphire",
+  "ingredient": "bloom:andesite_sapphire_ore",
+  "result": {
+    "id": "legacies_and_legends:sapphire"
+  }
+}

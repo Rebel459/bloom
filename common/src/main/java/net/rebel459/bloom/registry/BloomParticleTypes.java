@@ -11,4 +11,6 @@ public final class BloomParticleTypes {
 	static UnifiedRegistries.DeferredRegistry PARTICLES = UnifiedRegistries.DeferredRegistry.create(Bloom.MOD_ID, BuiltInRegistries.PARTICLE_TYPE);
 
     public static final Supplier<SimpleParticleType> JACARANDA_LEAVES = PARTICLES.register("jacaranda_leaves", () -> new SimpleParticleType(false));
+
+	public static void init() {}
 }

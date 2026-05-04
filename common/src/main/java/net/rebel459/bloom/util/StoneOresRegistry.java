@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 import net.rebel459.bloom.registry.BloomBlocks;
@@ -27,22 +28,29 @@ public class StoneOresRegistry {
     private BiFunction<OreType, Supplier<BlockBehaviour.Properties>, BlockBehaviour.Properties> manualOverrideFunction = (oreType, properties) -> properties.get();
     private float strengthIncrease = 1.5F;
     private float explosionResistance = 3.0F;
-    private final Block baseStone;
+    private final Supplier<Block> baseStone;
     public final boolean deep;
+	private Optional<String> nameOverride;
     private final BiFunction<OreType, Supplier<BlockBehaviour.Properties>, Block> normalFunction;
 
-    public StoneOresRegistry(Block baseStone, boolean deep, BiFunction<OreType, Supplier<BlockBehaviour.Properties>, Block> normalFunction) {
+    public StoneOresRegistry(Supplier<Block> baseStone, boolean deep, Optional<String> nameOverride, BiFunction<OreType, Supplier<BlockBehaviour.Properties>, Block> normalFunction) {
         this.baseStone = baseStone;
         this.deep = deep;
+		this.nameOverride = nameOverride;
         this.normalFunction = normalFunction;
 		ALL_REGISTRIES.add(this);
     }
-    public StoneOresRegistry(Block baseStone, boolean deep){
-        this(baseStone, deep, (type, properties) -> {
-            if (type == OreType.REDSTONE) return new RedStoneOreBlock(properties.get());
-            return new DropExperienceBlock(type.xpProvider, properties.get());
-        });
-    }
+
+	public StoneOresRegistry(Supplier<Block> baseStone, boolean deep, Optional<String> nameOverride) {
+		this(baseStone, deep, nameOverride, (type, properties) -> {
+			if (type == OreType.REDSTONE) return new RedStoneOreBlock(properties.get());
+			return new DropExperienceBlock(type.xpProvider, properties.get());
+		});
+	}
+
+	public StoneOresRegistry(Supplier<Block> baseStone, boolean deep){
+		this(baseStone, deep, Optional.empty());
+	}
 
     public StoneOresRegistry setManualOverrideFunction(BiFunction<OreType, Supplier<BlockBehaviour.Properties>, BlockBehaviour.Properties> manualOverrideFunction) {
         this.manualOverrideFunction = manualOverrideFunction;
@@ -71,7 +79,7 @@ public class StoneOresRegistry {
         return oresMap;
     }
 
-	public Block getBaseStone() {
+	public Supplier<Block> getBaseStone() {
 		return baseStone;
 	}
 
@@ -79,15 +87,21 @@ public class StoneOresRegistry {
         for (OreType type : OreType.ORES) {
             if (!type.modRequirements.isEmpty() && !type.modRequirements.stream().allMatch(UnifiedPlatform::isModLoaded)) continue;
 
-			final BlockBehaviour.Properties finalProperties = manualOverrideFunction.apply(
+			final Supplier<BlockBehaviour.Properties> finalProperties = () -> manualOverrideFunction.apply(
 				type,
-				() -> BlockBehaviour.Properties.ofFullCopy(baseStone)
-					.strength(baseStone.defaultDestroyTime() + getStrengthIncrease()).explosionResistance(getExplosionResistance())
+				() -> {
+					final Block block = baseStone.get();
+					return BlockBehaviour.Properties.ofFullCopy(block)
+						.strength(block.defaultDestroyTime() + getStrengthIncrease())
+						.explosionResistance(getExplosionResistance());
+				}
 			);
+			String path;
+			path = this.nameOverride.orElseGet(() -> BuiltInRegistries.BLOCK.getKey(baseStone.get()).getPath());
 			final SuppliedBlock block = BloomBlocks.register(
-				BuiltInRegistries.BLOCK.getKey(baseStone).getPath() + "_" + type.name + "_ore",
+				path + "_" + type.name + "_ore",
 				properties -> normalFunction.apply(type, () -> properties),
-				() -> finalProperties,
+				finalProperties,
 				true
 			);
 			oresMap.put(type, block);

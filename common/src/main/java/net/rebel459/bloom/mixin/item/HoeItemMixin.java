@@ -35,7 +35,6 @@ public class HoeItemMixin {
 		if (!BloomConfig.get.farming.hoe_replanting) return;
 
         Level level = context.getLevel();
-        if (level.isClientSide() || !(level instanceof ServerLevel)) return;
 
         BlockPos pos = context.getClickedPos();
         Block block = level.getBlockState(pos).getBlock();
@@ -45,7 +44,6 @@ public class HoeItemMixin {
         if (!context.getItemInHand().is(ItemTags.HOES) || player == null) return;
         int radius = 0;
 
-        ServerLevel serverLevel = (ServerLevel) level;
         boolean harvested = false;
 
         EquipmentSlot slot = context.getHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
@@ -58,8 +56,8 @@ public class HoeItemMixin {
                 if (!(nearbyBlock instanceof CropBlock crop) || !crop.isMaxAge(blockState))
                     continue;
 
-                serverLevel.setBlock(nearbyPos, crop.defaultBlockState(), 512);
-                Block.dropResources(blockState, serverLevel, nearbyPos);
+                level.setBlock(nearbyPos, crop.defaultBlockState(), 512);
+                Block.dropResources(blockState, level, nearbyPos);
                 context.getItemInHand().hurtAndBreak(1, player, slot);
 
                 harvested = true;
@@ -67,8 +65,9 @@ public class HoeItemMixin {
         }
 
         if (harvested) {
-            serverLevel.playSound(null, pos, SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-			cir.setReturnValue(InteractionResult.SUCCESS);
+			level.playSound(null, pos, SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+			if (level.isClientSide()) cir.setReturnValue(InteractionResult.SUCCESS);
+			else cir.setReturnValue(InteractionResult.SUCCESS_SERVER);
         }
     }
 }

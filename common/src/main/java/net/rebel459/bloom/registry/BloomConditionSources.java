@@ -22,6 +22,7 @@ public class BloomConditionSources {
 
 	public static void register(BiConsumer<String, MapCodec<? extends SurfaceRules.ConditionSource>> consumer) {
 		consumer.accept("configured", SurfaceRuleHelper.Configured.CODEC.codec());
+		consumer.accept("biome_tag", BiomeRules.BiomeTag.CODEC.codec());
 		consumer.accept("heightmap_biome", BiomeRules.HeightmapBiome.CODEC.codec());
 		consumer.accept("heightmap_biome_tag", BiomeRules.HeightmapBiomeTag.CODEC.codec());
 		consumer.accept("surface_biome", BiomeRules.SurfaceBiome.CODEC.codec());

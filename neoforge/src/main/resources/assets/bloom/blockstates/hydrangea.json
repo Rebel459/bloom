@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "bloom:block/hydrangea_bottom"
+    },
+    "half=upper": {
+      "model": "bloom:block/hydrangea_top"
+    }
+  }
+}

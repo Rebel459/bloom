@@ -16,7 +16,6 @@
   "mixins": [
     "entity.LivingEntityMixin",
     "item.HoeItemMixin",
-    "server.ServerPlayerMixin",
     "worldgen.BiomeAccessor",
     "worldgen.SurfaceRulesContextAccessor",
     "worldgen.TreeGrowerMixin"

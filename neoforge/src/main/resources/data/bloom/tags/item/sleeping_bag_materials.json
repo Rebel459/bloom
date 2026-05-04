@@ -1,0 +1,9 @@
+{
+  "values": [
+    "bloom:yarn",
+    {
+      "id": "#minecraft:wool",
+      "required": false
+    }
+  ]
+}

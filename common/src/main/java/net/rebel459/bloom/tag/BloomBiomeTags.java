@@ -30,7 +30,8 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_LUKEWARM_COLORS = bind("effects/lukewarm_colors");
     public static final TagKey<Biome> HAS_TROPICAL_COLORS = bind("effects/tropical_colors");
     public static final TagKey<Biome> HAS_COLD_COLORS = bind("effects/cold_colors");
-    public static final TagKey<Biome> HAS_FROZEN_COLORS = bind("effects/frozen_colors");
+	public static final TagKey<Biome> HAS_FROZEN_COLORS = bind("effects/frozen_colors");
+	public static final TagKey<Biome> HAS_MUSHROOM_COLORS = bind("effects/mushroom_colors");
 
     public static final TagKey<Biome> HAS_SURFACE_SAND = bind("rules/surface_sand");
     public static final TagKey<Biome> HAS_SURFACE_GRAVEL = bind("rules/surface_gravel");
@@ -61,6 +62,7 @@ public class BloomBiomeTags {
 	public static final TagKey<Biome> HAS_WILD_COTTON = bind("features/patch_wild_cotton");
 
 	public static final TagKey<Biome> NO_DEFAULT_FLOWERS = bind("features/no_default_flowers");
+	public static final TagKey<Biome> NO_BADLANDS_GRASS = bind("features/no_badlands_grass");
 	public static final TagKey<Biome> NO_PINE_TREES = bind("features/no_pine_trees");
 
 	public static final TagKey<Biome> HAS_STONE_BLOBS = bind("features/ore_stone");

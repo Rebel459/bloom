@@ -3,6 +3,14 @@ plugins {
     id 'net.fabricmc.fabric-loom'
 }
 
+fabricApi {
+	configureDataGeneration() {
+		client = true
+		modId = "bloom"
+		createSourceSet = true
+	}
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     api "net.fabricmc:fabric-loader:${fabric_loader}"
@@ -15,13 +23,15 @@ dependencies {
     }
     api("maven.modrinth:unified-api:$unified_version-fabric")
 	api("maven.modrinth:biolith:$biolith_fabric")
-}
 
-fabricApi {
-	configureDataGeneration() {
-		client = true;
-		modId = "bloom"
-	}
+	compileOnly("maven.modrinth:legacies-and-legends:$lal_version-fabric")
+	datagenRuntimeOnly("maven.modrinth:legacies-and-legends:$lal_version-fabric")
+	compileOnly("maven.modrinth:item-tooltips:$tooltips_version-fabric")
+	datagenRuntimeOnly("maven.modrinth:item-tooltips:$tooltips_version-fabric")
+	compileOnly("maven.modrinth:trim-patcher:$patcher_version-fabric")
+	datagenRuntimeOnly("maven.modrinth:trim-patcher:$patcher_version-fabric")
+	compileOnly("maven.modrinth:lithostitched:$lithostitched_fabric")
+	datagenRuntimeOnly("maven.modrinth:lithostitched:$lithostitched_fabric")
 }
 
 loom {

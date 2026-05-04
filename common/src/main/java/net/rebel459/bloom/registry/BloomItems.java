@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -32,7 +33,7 @@ public final class BloomItems {
 
     // Block Items
 	public static final SuppliedItem COTTON_SEEDS = register("cotton_seeds",
-		Items.createBlockItemWithCustomItemName(BloomBlocks.COTTON.get()),
+		(properties) -> new BlockItem(BloomBlocks.COTTON.get(), properties.useItemDescriptionPrefix()),
 		() -> new Item.Properties()
 			.stacksTo(64)
 	);

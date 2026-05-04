@@ -206,19 +206,7 @@ public final class BloomSurfaceRules {
 
     public static void init() {
 		SurfaceGeneration.addOverworldSurfaceRules(
-			Bloom.id("bloom_surface_rules"),
-			SurfaceRules.sequence(
-				aridRiversAndShores(),
-				tropicalRivers(),
-				underwaterMud(),
-				swampMud(),
-				beaches(),
-				gravellyRiversAndBeaches(),
-				coarseDirtStrips()
-			)
-		);
-		SurfaceGeneration.addOverworldSurfaceRules(
-			Bloom.id("bloom_surface_rules_no_prelim"),
+			Bloom.id("surface_rules"),
 			SurfaceRules.sequence(
 				frozenPeaksRule(),
 				SurfaceRuleHelper.depthRule(
@@ -268,5 +256,20 @@ public final class BloomSurfaceRules {
 				higherStoneRule()
 			)
         );
+		SurfaceGeneration.addOverworldSurfaceRules(
+			Bloom.id("preliminary_surface_rules"),
+			SurfaceRules.ifTrue(
+				SurfaceRules.abovePreliminarySurface(),
+				SurfaceRules.sequence(
+					aridRiversAndShores(),
+					tropicalRivers(),
+					underwaterMud(),
+					swampMud(),
+					beaches(),
+					gravellyRiversAndBeaches(),
+					coarseDirtStrips()
+				)
+			)
+		);
     }
 }

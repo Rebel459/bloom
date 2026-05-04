@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "bloom:block/golden_birch_sapling"
+  }
+}
