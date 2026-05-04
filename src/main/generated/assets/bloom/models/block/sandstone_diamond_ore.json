@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "bloom:block/sandstone_diamond_ore",
-    "side": "bloom:block/sandstone_diamond_ore",
-    "top": "minecraft:block/sandstone_top"
-  }
-}

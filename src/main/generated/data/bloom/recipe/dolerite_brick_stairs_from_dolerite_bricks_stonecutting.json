@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "bloom:dolerite_bricks",
-  "result": {
-    "count": 1,
-    "id": "bloom:dolerite_brick_stairs"
-  }
-}

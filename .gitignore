@@ -50,5 +50,6 @@ replay_*.log
 # kotlin
 .kotlin/
 
-# Git
-/FrozenLib/
+# Runs
+/fabric/runs
+/neoforge/runs

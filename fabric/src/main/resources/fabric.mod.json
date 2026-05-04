@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}-fabric",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "Rebel459",
+    "Sierra",
+    "King",
+    "Castiel",
+    "DigitalPear",
+    "Zhen",
+    "AViewFromTheTop"
+  ],
+  "contact": {
+    "sources": "https://github.com/Rebel459/bloom"
+  },
+  "license": "${license}",
+  "icon": "assets/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.rebel459.bloom.BloomFabric"
+    ],
+    "client": [
+      "net.rebel459.bloom.BloomFabricClient"
+    ],
+    "modmenu": [
+      "net.rebel459.bloom.config.BloomModMenuIntegration"
+    ],
+    "fabric-datagen": [
+      "net.rebel459.bloom.datagen.BloomDataGenerator"
+    ]
+  },
+  "mixins": [
+    "bloom.mixins.json",
+    "bloom-fabric.mixins.json"
+  ],
+  "accessWidener": "bloom.classtweaker",
+  "depends": {
+    "fabricloader": ">=0.18",
+    "fabric-api": "*",
+    "minecraft": "${fabric_minecraft_version}",
+    "java": ">=25",
+    "unified": "*",
+    "cloth-config": "*",
+    "biolith": "*"
+  }
+}

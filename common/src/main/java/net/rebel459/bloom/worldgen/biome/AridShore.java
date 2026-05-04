@@ -1,0 +1,101 @@
+package net.rebel459.bloom.worldgen.biome;
+
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Consumer;
+import net.rebel459.bloom.util.BloomBiome;
+import net.rebel459.bloom.Bloom;
+import net.rebel459.bloom.util.BiomeHelper;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.biome.OverworldBiomes;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.EnvironmentAttributeMap;
+import net.minecraft.world.attribute.EnvironmentAttributes;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.Climate;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import org.jetbrains.annotations.NotNull;
+
+public final class AridShore extends BloomBiome {
+    public static final float TEMP = 2.0F;
+    public static final float DOWNFALL = 0.0F;
+    public static final int WATER_COLOR = WarmRiver.WATER_COLOR;
+    public static final int FOLIAGE_COLOR = WarmRiver.FOLIAGE_COLOR;
+    public static final int DRY_FOLIAGE_COLOR = WarmRiver.DRY_FOLIAGE_COLOR;
+    public static final int GRASS_COLOR = WarmRiver.GRASS_COLOR;
+    public static final int SKY_COLOR = OverworldBiomes.calculateSkyColor(TEMP);
+    public static final AridShore INSTANCE = new AridShore();
+
+    public String modID() {
+        return Bloom.MOD_ID;
+    }
+
+    @Override
+    public String biomeID() {
+        return "arid_shore";
+    }
+
+    @Override
+    public float temperature() {
+        return TEMP;
+    }
+
+    @Override
+    public float downfall() {
+        return DOWNFALL;
+    }
+
+    @Override
+    public boolean hasPrecipitation() {
+        return false;
+    }
+
+    @Override
+    public int waterColor() {
+        return WATER_COLOR;
+    }
+
+    @Override
+    public @NotNull Integer foliageColorOverride() {
+        return FOLIAGE_COLOR;
+    }
+
+    @Override
+    public @NotNull Integer dryFoliageColorOverride() {
+        return DRY_FOLIAGE_COLOR;
+    }
+
+    @Override
+    public @NotNull Integer grassColorOverride() {
+        return GRASS_COLOR;
+    }
+
+    @Override
+    public void fillEnvironmentAttributes(EnvironmentAttributeMap.Builder builder) {
+        builder.set(EnvironmentAttributes.SKY_COLOR, SKY_COLOR);
+        builder.set(EnvironmentAttributes.BACKGROUND_MUSIC, BiomeHelper.music(SoundEvents.MUSIC_BIOME_BADLANDS, false));
+        builder.set(EnvironmentAttributes.SNOW_GOLEM_MELTS, true);
+        builder.set(EnvironmentAttributes.WATER_FOG_COLOR, 270131);
+    }
+
+    @Override
+    public void addFeatures(BiomeGenerationSettings.Builder features) {
+        OverworldBiomes.globalOverworldGeneration(features);
+        BiomeDefaultFeatures.addDefaultOres(features);
+        BiomeDefaultFeatures.addDesertVegetation(features);
+        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DRY_GRASS_BADLANDS);
+        BiomeDefaultFeatures.addDefaultMushrooms(features);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(features, true);
+    }
+
+    @Override
+    public void addSpawns(MobSpawnSettings.Builder spawns) {
+        spawns.addSpawn(MobCategory.CREATURE, 5, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
+        BiomeDefaultFeatures.desertSpawns(spawns);
+    }
+}

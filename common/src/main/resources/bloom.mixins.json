@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "package": "net.rebel459.bloom.mixin",
+  "plugin": "net.rebel459.bloom.mixin.BloomMixinPlugin",
+  "compatibilityLevel": "JAVA_25",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "client.AtlasManagerMixin",
+    "client.AtlasProviderMixin",
+    "client.BedRenderStateMixin",
+    "client.BedRendererMixin",
+    "client.LevelRendererMixin"
+  ],
+  "mixins": [
+    "entity.LivingEntityMixin",
+    "item.HoeItemMixin",
+    "server.ServerPlayerMixin",
+    "worldgen.BiomeAccessor",
+    "worldgen.SurfaceRulesContextAccessor",
+    "worldgen.TreeGrowerMixin"
+  ]
+}

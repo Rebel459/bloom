@@ -1,9 +1,0 @@
-{
-  "values": [
-    "#bloom:rules/swamp_mud",
-    {
-      "id": "#minecraft:is_jungle",
-      "required": false
-    }
-  ]
-}

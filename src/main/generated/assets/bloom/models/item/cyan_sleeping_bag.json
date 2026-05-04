@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "bloom:item/cyan_sleeping_bag"
-  }
-}

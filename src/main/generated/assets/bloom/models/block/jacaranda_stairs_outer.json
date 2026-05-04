@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "bloom:block/jacaranda_planks",
-    "side": "bloom:block/jacaranda_planks",
-    "top": "bloom:block/jacaranda_planks"
-  }
-}
