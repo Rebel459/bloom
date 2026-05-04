@@ -265,9 +265,9 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
             String name = type.name;
 			String blockName = block.getName().getString();
 
-			addOptionalTag(block, BlockTags.MINEABLE_WITH_PICKAXE);
+			addOptionalTags(block, BlockTags.MINEABLE_WITH_PICKAXE);
 			if (blockName.contains("sandstone")) {
-				addOptionalTag(block, getTag("wilderwild:sound/sandstone"));
+				addOptionalTags(block, getTag("wilderwild:sound/sandstone"));
 			}
 
             if (Objects.equals(name, "coal")) addTags(block, BlockTags.COAL_ORES);
@@ -278,7 +278,7 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
             if (Objects.equals(name, "diamond")) addTags(block, BlockTags.DIAMOND_ORES, BlockTags.NEEDS_IRON_TOOL);
             if (Objects.equals(name, "emerald")) addTags(block, BlockTags.EMERALD_ORES, BlockTags.NEEDS_IRON_TOOL);
             if (Objects.equals(name, "lapis")) addTags(block, BlockTags.LAPIS_ORES, BlockTags.NEEDS_IRON_TOOL);
-            if (Objects.equals(name, "sapphire")) addTags(block, BloomBlockTags.SAPPHIRE_ORES, BlockTags.NEEDS_IRON_TOOL);
+            if (Objects.equals(name, "sapphire")) addOptionalTags(block, BloomBlockTags.SAPPHIRE_ORES, BlockTags.NEEDS_IRON_TOOL);
         });
     }
 
@@ -289,9 +289,13 @@ public final class BloomBlockTagProvider extends FabricTagProvider.BlockTagProvi
 			this.valueLookupBuilder(tag).add(block);
 		});
 	}
-	public void addOptionalTag(Block block, TagKey<Block> tag) {
+	@SafeVarargs
+	public final void addOptionalTags(Block block, TagKey<Block>... tags) {
 		ResourceKey<Block> blockKey = block.defaultBlockState().getBlockHolder().unwrapKey().get();
-		this.builder(tag).addOptional(blockKey);
+		List<TagKey<Block>> tagList = Arrays.asList(tags);
+		tagList.forEach((tag) -> {
+			this.builder(tag).addOptional(blockKey);
+		});
 	}
 
 	private TagKey<Block> getTag(String id) {

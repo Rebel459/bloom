@@ -5,23 +5,7 @@
       "required": false
     },
     {
-      "id": "bloom:sandstone_gold_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:sandstone_copper_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:sandstone_lapis_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:sandstone_redstone_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:sandstone_emerald_ore",
+      "id": "bloom:sandstone_sapphire_ore",
       "required": false
     },
     {
@@ -29,11 +13,27 @@
       "required": false
     },
     {
+      "id": "bloom:sandstone_emerald_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:sandstone_gold_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:sandstone_lapis_ore",
+      "required": false
+    },
+    {
       "id": "bloom:sandstone_diamond_ore",
       "required": false
     },
     {
-      "id": "bloom:sandstone_sapphire_ore",
+      "id": "bloom:sandstone_copper_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:sandstone_redstone_ore",
       "required": false
     },
     {
@@ -41,23 +41,7 @@
       "required": false
     },
     {
-      "id": "bloom:red_sandstone_gold_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:red_sandstone_copper_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:red_sandstone_lapis_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:red_sandstone_redstone_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:red_sandstone_emerald_ore",
+      "id": "bloom:red_sandstone_sapphire_ore",
       "required": false
     },
     {
@@ -65,11 +49,27 @@
       "required": false
     },
     {
+      "id": "bloom:red_sandstone_emerald_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:red_sandstone_gold_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:red_sandstone_lapis_ore",
+      "required": false
+    },
+    {
       "id": "bloom:red_sandstone_diamond_ore",
       "required": false
     },
     {
-      "id": "bloom:red_sandstone_sapphire_ore",
+      "id": "bloom:red_sandstone_copper_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:red_sandstone_redstone_ore",
       "required": false
     }
   ]
