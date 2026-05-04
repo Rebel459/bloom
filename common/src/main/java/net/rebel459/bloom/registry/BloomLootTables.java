@@ -48,7 +48,7 @@ public final class BloomLootTables {
         UnifiedEvents.LootTables.modify((tableBuilder, id, registries) -> {
             LootPool.Builder pool;
 
-            if (BloomConfig.get.farming.cotton) {
+            if (BloomConfig.get().farming.cotton) {
 				if (BuiltInLootTables.VILLAGE_SHEPHERD.equals(id)) {
 					pool = LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 						.add(EmptyLootItem.emptyItem().setWeight(2))

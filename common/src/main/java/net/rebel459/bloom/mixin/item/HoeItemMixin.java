@@ -32,7 +32,7 @@ public class HoeItemMixin {
 
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
     private void harvestCropsWithHoe(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
-		if (!BloomConfig.get.farming.hoe_replanting) return;
+		if (!BloomConfig.get().farming.hoe_replanting) return;
 
         Level level = context.getLevel();
 

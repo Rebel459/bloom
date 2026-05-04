@@ -18,12 +18,9 @@ public class BloomConfig implements ConfigData {
         return Path.of("./config/" + Bloom.MOD_ID + "." + (json5 ? "json5" : "json"));
     }
 
-    public static BloomConfig get;
-
-    public static void init() {
-        AutoConfig.register(BloomConfig.class, JanksonConfigSerializer::new);
-        get = AutoConfig.getConfigHolder(BloomConfig.class).getConfig();
-    }
+    public static BloomConfig get() {
+		return AutoConfig.getConfigHolder(BloomConfig.class).getConfig();
+	}
 
 	@ConfigEntry.Gui.CollapsibleObject
 	public BiomeConfig biomes = new BiomeConfig();

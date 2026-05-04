@@ -186,7 +186,7 @@ public final class BloomSurfaceRules {
 
 	public static SurfaceRules.RuleSource higherStoneRule() {
 		return SurfaceRuleHelper.configuredRule(
-			BloomConfig.get.worldgen.stony_cliffs,
+			BloomConfig.get().worldgen.stony_cliffs,
 			SurfaceRules.ifTrue(
 				SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_HIGHER_STONE),
 				SurfaceRuleHelper.higherStoneRule(Blocks.STONE)
@@ -213,18 +213,18 @@ public final class BloomSurfaceRules {
 					Blocks.RED_SANDSTONE,
 					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, BiomeRules.Type.SURFACE),
 					16,
-					BloomConfig.get.worldgen.sandstone_depth
+					BloomConfig.get().worldgen.sandstone_depth
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.SANDSTONE,
 					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE, BiomeRules.Type.SURFACE),
 					16,
-					BloomConfig.get.worldgen.sandstone_depth
+					BloomConfig.get().worldgen.sandstone_depth
 				),
 				SurfaceRuleHelper.depthRule(
 					BloomBlocks.DOLERITE.get(),
 					SurfaceRuleHelper.isFreezing(),
-					BloomConfig.get.worldgen.dolerite_depth
+					BloomConfig.get().worldgen.dolerite_depth
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.GRANITE,
@@ -232,7 +232,7 @@ public final class BloomSurfaceRules {
 						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_3, Parameters.TEMPERATURE_4),
 						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_0, Parameters.HUMIDITY_2)
 					),
-					BloomConfig.get.worldgen.stone_variant_depth
+					BloomConfig.get().worldgen.stone_variant_depth
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.DIORITE,
@@ -242,7 +242,7 @@ public final class BloomSurfaceRules {
 						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_2, Parameters.TEMPERATURE_5),
 						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
 					),
-					BloomConfig.get.worldgen.stone_variant_depth
+					BloomConfig.get().worldgen.stone_variant_depth
 				),
 				SurfaceRuleHelper.depthRule(
 					Blocks.ANDESITE,
@@ -251,7 +251,7 @@ public final class BloomSurfaceRules {
 						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_2),
 						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_2, Parameters.HUMIDITY_5)
 					),
-					BloomConfig.get.worldgen.stone_variant_depth
+					BloomConfig.get().worldgen.stone_variant_depth
 				),
 				higherStoneRule()
 			)

@@ -2,6 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.rebel459.bloom.mixin",
+  "plugin": "net.rebel459.bloom.mixin.BloomMixinPlugin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "server.ServerPlayerNeoForgeMixin"

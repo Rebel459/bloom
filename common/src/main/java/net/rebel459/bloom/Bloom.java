@@ -47,25 +47,25 @@ public class Bloom {
 		BloomFeatures.init();
 		ClimateCommand.init();
 
-		if (BloomConfig.get.worldgen.pine_trees) {
+		if (BloomConfig.get().worldgen.pine_trees) {
 			UnifiedHelpers.PACKS.add(Bloom.id("pine_trees"), PackType.REQUIRED_DATA);
 		}
-		if (BloomConfig.get.worldgen.ore_variants) {
+		if (BloomConfig.get().worldgen.ore_variants) {
 			UnifiedHelpers.PACKS.add(Bloom.id("ore_variants"), PackType.REQUIRED_DATA);
 			if (UnifiedPlatform.isModLoaded("legacies_and_legends")) {
 				UnifiedHelpers.PACKS.add(Bloom.id("ore_variants_sapphire"), PackType.REQUIRED_DATA);
 			}
 		}
-		if (BloomConfig.get.misc.stone_variant_crafting) {
+		if (BloomConfig.get().misc.stone_variant_crafting) {
 			UnifiedHelpers.PACKS.add(Bloom.id("stone_variant_crafting"), PackType.REQUIRED_DATA);
 		}
-		if (BloomConfig.get.farming.tradable_yarn) {
+		if (BloomConfig.get().farming.tradable_yarn) {
 			UnifiedHelpers.PACKS.add(Bloom.id("tradable_yarn"), PackType.REQUIRED_DATA);
 		}
 		if (UnifiedPlatform.isModLoaded("farmersdelight")) {
-			if (BloomConfig.get.farming.wild_crops) {
+			if (BloomConfig.get().farming.wild_crops) {
 				UnifiedHelpers.PACKS.add(Bloom.id("wild_crops"), PackType.REQUIRED_DATA);
-				if (BloomConfig.get.farming.cotton) {
+				if (BloomConfig.get().farming.cotton) {
 					UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_WILD_COTTON, context -> {
 						BiomeHelper.addVegetation(context, BloomFeatures.PATCH_WILD_COTTON);
 					});

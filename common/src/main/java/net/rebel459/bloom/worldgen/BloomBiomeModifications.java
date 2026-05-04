@@ -48,7 +48,7 @@ public final class BloomBiomeModifications {
 			context.getFeatures().addFeature(BloomFeatures.DISK_GRAVEL, GenerationStep.Decoration.UNDERGROUND_ORES);
 		});
 
-		if (BloomConfig.get.worldgen.pine_trees) {
+		if (BloomConfig.get().worldgen.pine_trees) {
 			UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.NO_PINE_TREES, context -> {
 				context.getFeatures().removeFeature(VegetationPlacements.TREES_TAIGA, GenerationStep.Decoration.VEGETAL_DECORATION);
 				context.getFeatures().addFeature(BloomFeatures.TREES_TAIGA, GenerationStep.Decoration.VEGETAL_DECORATION);

@@ -18,7 +18,6 @@ accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEnt
 accessible method net/minecraft/world/level/block/entity/BlockEntityType <init> (Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;Ljava/util/Set;)V
 accessible field net/minecraft/world/level/block/BedBlock color Lnet/minecraft/world/item/DyeColor;
 accessible method net/minecraft/client/data/AtlasProvider storeAtlas (Lnet/minecraft/data/CachedOutput;Lnet/minecraft/resources/Identifier;Ljava/util/List;)Ljava/util/concurrent/CompletableFuture;
-accessible field net/minecraft/client/resources/model/AtlasManager KNOWN_ATLASES Ljava/util/List;
 
 accessible method net/minecraft/world/item/Items createBlockItemWithCustomItemName (Lnet/minecraft/world/level/block/Block;)Ljava/util/function/Function;
 

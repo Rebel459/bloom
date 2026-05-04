@@ -20,7 +20,7 @@ public class TreeGrowerMixin {
 		)
 	)
 	private static TreeGrower bloom$pineTrees(String name, float secondaryChance, Optional megaTree, Optional secondaryMegaTree, Optional tree, Optional secondaryTree, Optional flowers, Optional secondaryFlowers, Operation<TreeGrower> original) {
-		if (BloomConfig.get.worldgen.pine_trees) return original.call(name, secondaryChance, megaTree, megaTree, tree, secondaryTree, flowers, secondaryFlowers);
+		if (BloomConfig.get().worldgen.pine_trees) return original.call(name, secondaryChance, megaTree, megaTree, tree, secondaryTree, flowers, secondaryFlowers);
 		else return original.call(name, secondaryChance, megaTree, secondaryMegaTree, tree, secondaryTree, flowers, secondaryFlowers);
 	}
 }

@@ -14,7 +14,7 @@ import net.minecraft.world.level.biome.Climate;
 public class BloomBiomePlacement {
 
     public static void init() {
-		if (BloomConfig.get.biomes.warm_river) {
+		if (BloomConfig.get().biomes.warm_river) {
 			BiomePlacement.addSubOverworld(
 				Biomes.RIVER,
 				BloomBiomes.WARM_RIVER,
@@ -24,7 +24,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.arid_shore) {
+		if (BloomConfig.get().biomes.arid_shore) {
 			BiomePlacement.addSubOverworld(
 				Biomes.STONY_SHORE,
 				BloomBiomes.ARID_SHORE,
@@ -34,7 +34,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.tropical_river) {
+		if (BloomConfig.get().biomes.tropical_river) {
 			BiomePlacement.addSubOverworld(
 				Biomes.RIVER,
 				BloomBiomes.TROPICAL_RIVER,
@@ -44,7 +44,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.tropical_beach) {
+		if (BloomConfig.get().biomes.tropical_beach) {
 			BiomePlacement.addSubOverworld(
 				Biomes.BEACH,
 				BloomBiomes.TROPICAL_BEACH,
@@ -54,7 +54,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.cold_river) {
+		if (BloomConfig.get().biomes.cold_river) {
 			BiomePlacement.addSubOverworld(
 				Biomes.RIVER,
 				BloomBiomes.COLD_RIVER,
@@ -64,7 +64,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.cold_beach) {
+		if (BloomConfig.get().biomes.cold_beach) {
 			BiomePlacement.addSubOverworld(
 				Biomes.BEACH,
 				BloomBiomes.COLD_BEACH,
@@ -75,7 +75,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.lukewarm_river) {
+		if (BloomConfig.get().biomes.lukewarm_river) {
 			BiomePlacement.addSubOverworld(
 				Biomes.RIVER,
 				BloomBiomes.LUKEWARM_RIVER,
@@ -85,7 +85,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.lukewarm_beach) {
+		if (BloomConfig.get().biomes.lukewarm_beach) {
 			BiomePlacement.addSubOverworld(
 				Biomes.BEACH,
 				BloomBiomes.LUKEWARM_BEACH,
@@ -95,7 +95,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.windswept_jungle) {
+		if (BloomConfig.get().biomes.windswept_jungle) {
 			BiomeHelper.surfaceBiome(
 				BloomBiomes.WINDSWEPT_JUNGLE,
 				Climate.Parameter.span(Parameters.TEMPERATURE_3, Parameters.TEMPERATURE_4),
@@ -123,7 +123,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.sparse_windswept_jungle) {
+		if (BloomConfig.get().biomes.sparse_windswept_jungle) {
 			BiomePlacement.addSubOverworld(
 				Biomes.SPARSE_JUNGLE,
 				BloomBiomes.SPARSE_WINDSWEPT_JUNGLE,
@@ -135,7 +135,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.fen) {
+		if (BloomConfig.get().biomes.fen) {
 			BiomeHelper.surfaceBiome(
 				BloomBiomes.FEN,
 				Climate.Parameter.span(Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2),
@@ -163,7 +163,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.snowy_shore) {
+		if (BloomConfig.get().biomes.snowy_shore) {
 			BiomePlacement.addSubOverworld(
 				Biomes.STONY_SHORE,
 				BloomBiomes.SNOWY_SHORE,
@@ -172,7 +172,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.pine_taiga) {
+		if (BloomConfig.get().biomes.pine_taiga) {
 			BiomePlacement.addSubOverworld(
 				Biomes.TAIGA,
 				BloomBiomes.PINE_TAIGA,
@@ -181,7 +181,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.snowy_pine_taiga) {
+		if (BloomConfig.get().biomes.snowy_pine_taiga) {
 			BiomePlacement.addSubOverworld(
 				Biomes.TAIGA,
 				BloomBiomes.SNOWY_PINE_TAIGA,
@@ -190,7 +190,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.golden_forest) {
+		if (BloomConfig.get().biomes.golden_forest) {
 			BiomeHelper.surfaceBiome(
 				BloomBiomes.GOLDEN_FOREST,
 				Climate.Parameter.span(Parameters.TEMPERATURE_1, -0.2F),
@@ -201,7 +201,7 @@ public class BloomBiomePlacement {
 				0L
 			);
 		}
-		if (BloomConfig.get.biomes.golden_fields) {
+		if (BloomConfig.get().biomes.golden_fields) {
 			BiomePlacement.addSubOverworld(
 				Biomes.PLAINS,
 				BloomBiomes.GOLDEN_FIELDS,
@@ -221,7 +221,7 @@ public class BloomBiomePlacement {
 				)
 			);
 		}
-		if (BloomConfig.get.biomes.golden_river) {
+		if (BloomConfig.get().biomes.golden_river) {
 			BiomePlacement.addSubOverworld(
 				Biomes.RIVER,
 				BloomBiomes.GOLDEN_RIVER,
