@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bellflower": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bloom:bellflower"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bloom:purple_dye_from_bellflower"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_bellflower"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bloom:purple_dye_from_bellflower"
+    ]
+  }
+}

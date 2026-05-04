@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bloom:block/tuff_lapis_ore"
+    }
+  }
+}

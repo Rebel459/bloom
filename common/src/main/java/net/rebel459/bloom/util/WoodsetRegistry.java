@@ -217,37 +217,31 @@ public class WoodsetRegistry {
     }
 	private SuppliedBlock createBlockWithItem(String blockID, Function<BlockBehaviour.Properties, Block> factory, Supplier<BlockBehaviour.Properties> settings){
 		SuppliedBlock block = BloomBlocks.register(blockID, factory, settings);
-		BloomBlocks.checkDatagen(block);
 		registeredBlocksList.add(block);
 		return block;
 	}
 	private SuppliedBlock createBlockWithItem(String blockID, Function<BlockBehaviour.Properties, Block> factory, Supplier<BlockBehaviour.Properties> settings, BlockEntityType<?> blockEntity){
 		SuppliedBlock block = BloomBlocks.register(blockID, factory, settings, blockEntity);
-		BloomBlocks.checkDatagen(block);
 		registeredBlocksList.add(block);
 		return block;
 	}
 	private SuppliedBlock createBlockWithoutItem(String blockID, Function<BlockBehaviour.Properties, Block> factory, Supplier<BlockBehaviour.Properties> settings){
 		SuppliedBlock block = BloomBlocks.registerWithoutItem(blockID, factory, settings);
-		BloomBlocks.checkDatagen(block);
 		registeredBlocksList.add(block);
 		return block;
 	}
 	private SuppliedBlock createBlockWithoutItem(String blockID, Function<BlockBehaviour.Properties, Block> factory, Supplier<BlockBehaviour.Properties> settings, BlockEntityType<?> blockEntity){
 		SuppliedBlock block = BloomBlocks.registerWithoutItem(blockID, factory, settings, blockEntity);
-		BloomBlocks.checkDatagen(block);
 		registeredBlocksList.add(block);
 		return block;
 	}
     public SuppliedItem createItem(String blockID, Function<Item.Properties, Item> factory, Supplier<Item.Properties> settings){
 		SuppliedItem item = BloomItems.register(blockID, factory, settings);
-		BloomItems.checkDatagen(item);
         registeredItemsList.add(item);
         return item;
     }
 	public SuppliedItem createBlockItem(String blockID, Supplier<Block> block, Supplier<Item.Properties> settings){
 		SuppliedItem item = BloomItems.registerBlockItem(blockID, block, settings);
-		BloomItems.checkDatagen(item);
 		registeredItemsList.add(item);
 		return item;
 	}

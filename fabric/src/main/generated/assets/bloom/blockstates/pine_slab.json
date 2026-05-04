@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bloom:block/pine_slab"
+    },
+    "type=double": {
+      "model": "bloom:block/pine_planks"
+    },
+    "type=top": {
+      "model": "bloom:block/pine_slab_top"
+    }
+  }
+}

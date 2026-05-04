@@ -252,7 +252,7 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 
             public void smeltOre(ItemLike input, ItemLike output, float experience, String material) {
                 String group = material;
-                String type = output.asItem().getName(output.asItem().getDefaultInstance()).getString().toLowerCase();
+                String type = output.asItem().getDescriptionId().toLowerCase();
                 if (type.contains("lazuli")) group = group + "_lazuli";
                 if (type.contains("ingot")) group = group + "_ingot";
                 this.oreSmelting(List.of(input), RecipeCategory.MISC, CookingBookCategory.MISC, output, experience, 200,  group);
