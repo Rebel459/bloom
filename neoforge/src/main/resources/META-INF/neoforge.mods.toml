@@ -36,7 +36,7 @@ modId="cloth_config"
 type="required"
 
 [[dependencies.${mod_id}]]
-modId="biolith"
+modId="lithostitched"
 type="required"
 
 [[accessTransformers]]

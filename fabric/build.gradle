@@ -22,7 +22,7 @@ dependencies {
         exclude(group: "net.fabricmc.fabric-api")
     }
     api("maven.modrinth:unified-api:$unified_version-fabric")
-	api("maven.modrinth:biolith:$biolith_fabric")
+	api("maven.modrinth:lithostitched:$lithostitched_fabric")
 
 	compileOnly("maven.modrinth:legacies-and-legends:$lal_version-fabric")
 	datagenRuntimeOnly("maven.modrinth:legacies-and-legends:$lal_version-fabric")
@@ -30,7 +30,6 @@ dependencies {
 	datagenRuntimeOnly("maven.modrinth:item-tooltips:$tooltips_version-fabric")
 	compileOnly("maven.modrinth:trim-patcher:$patcher_version-fabric")
 	datagenRuntimeOnly("maven.modrinth:trim-patcher:$patcher_version-fabric")
-	compileOnly("maven.modrinth:lithostitched:$lithostitched_fabric")
 	datagenRuntimeOnly("maven.modrinth:lithostitched:$lithostitched_fabric")
 }
 

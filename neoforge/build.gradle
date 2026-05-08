@@ -6,12 +6,11 @@ plugins {
 dependencies {
     api("me.shedaniel.cloth:cloth-config-neoforge:$cloth_version")
     api("maven.modrinth:unified-api:$unified_version-neoforge")
-	api("maven.modrinth:biolith:$biolith_neoforge")
+	api("maven.modrinth:lithostitched:$lithostitched_neoforge")
 
 	compileOnly("maven.modrinth:legacies-and-legends:$lal_version-neoforge")
 	compileOnly("maven.modrinth:item-tooltips:$tooltips_version-neoforge")
 	compileOnly("maven.modrinth:trim-patcher:$patcher_version-neoforge")
-	compileOnly("maven.modrinth:lithostitched:$lithostitched_neoforge")
 }
 
 neoForge {

@@ -18,6 +18,7 @@ import net.rebel459.bloom.util.ClimateCommand;
 import net.rebel459.bloom.worldgen.BloomBiomeModifications;
 import net.rebel459.bloom.worldgen.BloomBiomePlacement;
 import net.rebel459.bloom.worldgen.BloomFeatures;
+import net.rebel459.bloom.worldgen.BloomRegions;
 import net.rebel459.bloom.worldgen.BloomSurfaceRules;
 import net.rebel459.unified.platform.UnifiedHelpers;
 import net.rebel459.unified.platform.UnifiedPlatform;
@@ -32,6 +33,7 @@ public class Bloom {
 		BloomBlocks.init();
 		BloomItems.init();
 		BloomBiomes.init();
+		BloomRegions.init();
 		BloomBiomePlacement.init();
 		BloomBiomeModifications.init();
 		BloomSounds.init();

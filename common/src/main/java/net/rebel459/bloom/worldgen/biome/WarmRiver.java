@@ -83,15 +83,15 @@ public final class WarmRiver extends BloomBiome {
         builder.set(EnvironmentAttributes.WATER_FOG_COLOR, 270131);
     }
 
-    @Override
-    public void addFeatures(BiomeGenerationSettings.Builder features) {
-        OverworldBiomes.globalOverworldGeneration(features);
-        BiomeDefaultFeatures.addDefaultOres(features);
-        BiomeDefaultFeatures.addNearWaterVegetation(features);
-        BiomeDefaultFeatures.addDesertVegetation(features);
-        BiomeDefaultFeatures.addDefaultMushrooms(features);
-        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
-    }
+	@Override
+	public void addFeatures(BiomeGenerationSettings.Builder features) {
+		OverworldBiomes.globalOverworldGeneration(features);
+		BiomeDefaultFeatures.addDefaultOres(features);
+		BiomeDefaultFeatures.addDesertVegetation(features);
+		BiomeDefaultFeatures.addDefaultMushrooms(features);
+		BiomeDefaultFeatures.addNearWaterVegetation(features);
+		features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_RIVER);
+	}
 
     @Override
     public void addSpawns(MobSpawnSettings.Builder spawns) {

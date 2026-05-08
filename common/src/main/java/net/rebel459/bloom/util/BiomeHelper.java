@@ -1,18 +1,25 @@
 package net.rebel459.bloom.util;
 
-import com.terraformersmc.biolith.api.biome.BiomePlacement;
+import com.mojang.datafixers.util.Pair;
+import dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.BiConsumer;
 import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.registries.VanillaRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.rebel459.bloom.Bloom;
 import net.rebel459.bloom.worldgen.BloomFeatures;
 import net.rebel459.unified.platform.HelpersImpl;
 
@@ -74,59 +81,78 @@ public class BiomeHelper {
 	}
 
 	public static void surfaceBiome(
+		String path,
 		ResourceKey<Biome> biome,
 		Climate.Parameter temperature,
 		Climate.Parameter humidity,
 		Climate.Parameter continentalness,
 		Climate.Parameter erosion,
 		Climate.Parameter weirdness,
-		long offset
+		long offset,
+		Pair<RegistryAccess, BiConsumer<Identifier, BiomeInjector>> event
 	) {
-		BiomePlacement.addOverworld(
-			biome,
-			new Climate.ParameterPoint(
-				temperature,
-				humidity,
-				continentalness,
-				erosion,
-				Climate.Parameter.point(0F),
-				weirdness,
-				offset
-			)
-		);
-		BiomePlacement.addOverworld(
-			biome,
-			new Climate.ParameterPoint(
-				temperature,
-				humidity,
-				continentalness,
-				erosion,
-				Climate.Parameter.point(1F),
-				weirdness,
-				offset
+		event.getSecond().accept(
+			Bloom.id(path),
+			BiomeInjector.builder(Level.OVERWORLD).addPoints(
+				new Climate.ParameterList<>(List.of(
+					Pair.of(
+						new Climate.ParameterPoint(
+							temperature,
+							humidity,
+							continentalness,
+							erosion,
+							Climate.Parameter.point(0F),
+							weirdness,
+							offset
+						),
+						event.getFirst().getOrThrow(biome)
+					),
+					Pair.of(
+						new Climate.ParameterPoint(
+							temperature,
+							humidity,
+							continentalness,
+							erosion,
+							Climate.Parameter.point(1F),
+							weirdness,
+							offset
+						),
+						event.getFirst().getOrThrow(biome)
+					)
+				))
 			)
 		);
 	}
 
 	public static void caveBiome(
+		String path,
 		ResourceKey<Biome> biome,
 		Climate.Parameter temperature,
 		Climate.Parameter humidity,
 		Climate.Parameter continentalness,
 		Climate.Parameter erosion,
 		Climate.Parameter depth,
-		Climate.Parameter weirdness, long offset
+		Climate.Parameter weirdness,
+		long offset,
+		Pair<RegistryAccess, BiConsumer<Identifier, BiomeInjector>> event
 	) {
-		BiomePlacement.addOverworld(
-			biome,
-			new Climate.ParameterPoint(
-				temperature,
-				humidity,
-				continentalness,
-				erosion,
-				depth,
-				weirdness,
-				offset
+		event.getSecond().accept(
+			Bloom.id(path),
+			BiomeInjector.builder(Level.OVERWORLD).addPoints(
+				new Climate.ParameterList<>(List.of(
+					Pair.of(
+						new Climate.ParameterPoint(
+							temperature,
+							humidity,
+							continentalness,
+							erosion,
+							depth,
+							weirdness,
+							offset
+						),
+						event.getFirst().getOrThrow(biome)
+					)
+				))
 			)
 		);
 	}

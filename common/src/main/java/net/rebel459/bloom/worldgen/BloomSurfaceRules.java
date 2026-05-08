@@ -1,7 +1,16 @@
 package net.rebel459.bloom.worldgen;
 
+import dev.worldgen.lithostitched.api.event.AddWorldgenModifiersEvent;
+import dev.worldgen.lithostitched.api.util.InjectionType;
+import dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier;
 import java.util.List;
-import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
+import net.minecraft.data.worldgen.SurfaceRuleData;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.dimension.LevelStem;
+import net.minecraft.world.level.levelgen.Noises;
+import net.minecraft.world.level.levelgen.SurfaceRules;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.rebel459.bloom.Bloom;
 import net.rebel459.bloom.config.BloomConfig;
 import net.rebel459.bloom.registry.BloomBiomes;
@@ -11,12 +20,6 @@ import net.rebel459.bloom.util.BiomeRules;
 import net.rebel459.bloom.util.NoiseRules;
 import net.rebel459.bloom.util.Parameters;
 import net.rebel459.bloom.util.SurfaceRuleHelper;
-import net.minecraft.data.worldgen.SurfaceRuleData;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.Noises;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 public final class BloomSurfaceRules {
 
@@ -205,71 +208,75 @@ public final class BloomSurfaceRules {
 	}
 
     public static void init() {
-		SurfaceGeneration.addOverworldSurfaceRules(
-			Bloom.id("surface_rules"),
-			SurfaceRules.sequence(
-				frozenPeaksRule(),
-				SurfaceRuleHelper.depthRule(
-					Blocks.RED_SANDSTONE,
-					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, BiomeRules.Type.SURFACE),
-					16,
-					BloomConfig.get().worldgen.sandstone_depth
-				),
-				SurfaceRuleHelper.depthRule(
-					Blocks.SANDSTONE,
-					SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE, BiomeRules.Type.SURFACE),
-					16,
-					BloomConfig.get().worldgen.sandstone_depth
-				),
-				SurfaceRuleHelper.depthRule(
-					BloomBlocks.DOLERITE.get(),
-					SurfaceRuleHelper.isFreezing(),
-					BloomConfig.get().worldgen.dolerite_depth
-				),
-				SurfaceRuleHelper.depthRule(
-					Blocks.GRANITE,
-					List.of(
-						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_3, Parameters.TEMPERATURE_4),
-						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_0, Parameters.HUMIDITY_2)
-					),
-					BloomConfig.get().worldgen.stone_variant_depth
-				),
-				SurfaceRuleHelper.depthRule(
-					Blocks.DIORITE,
-					List.of(
-						SurfaceRuleHelper.temperature(0.8F, 0.92F),
-						SurfaceRuleHelper.downfall(0.8F, 1F),
-						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_2, Parameters.TEMPERATURE_5),
-						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
-					),
-					BloomConfig.get().worldgen.stone_variant_depth
-				),
-				SurfaceRuleHelper.depthRule(
-					Blocks.ANDESITE,
-					List.of(
-						SurfaceRuleHelper.temperatureBelow(0.6F),
-						SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_2),
-						SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_2, Parameters.HUMIDITY_5)
-					),
-					BloomConfig.get().worldgen.stone_variant_depth
-				),
-				higherStoneRule()
-			)
-        );
-		SurfaceGeneration.addOverworldSurfaceRules(
-			Bloom.id("preliminary_surface_rules"),
-			SurfaceRules.ifTrue(
-				SurfaceRules.abovePreliminarySurface(),
-				SurfaceRules.sequence(
-					aridRiversAndShores(),
-					tropicalRivers(),
-					underwaterMud(),
-					swampMud(),
-					beaches(),
-					gravellyRiversAndBeaches(),
-					coarseDirtStrips()
-				)
-			)
-		);
+		AddWorldgenModifiersEvent.EVENT.register((registry, consumer) -> {
+			consumer.accept(
+				Bloom.id("surface_rules"),
+				WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.APPEND,
+					SurfaceRules.sequence(
+						frozenPeaksRule(),
+						SurfaceRuleHelper.depthRule(
+							Blocks.RED_SANDSTONE,
+							SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_RED_SANDSTONE, BiomeRules.Type.SURFACE),
+							16,
+							BloomConfig.get().worldgen.sandstone_depth
+						),
+						SurfaceRuleHelper.depthRule(
+							Blocks.SANDSTONE,
+							SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_DEPTH_SANDSTONE, BiomeRules.Type.SURFACE),
+							16,
+							BloomConfig.get().worldgen.sandstone_depth
+						),
+						SurfaceRuleHelper.depthRule(
+							BloomBlocks.DOLERITE.get(),
+							SurfaceRuleHelper.isFreezing(),
+							BloomConfig.get().worldgen.dolerite_depth
+						),
+						SurfaceRuleHelper.depthRule(
+							Blocks.GRANITE,
+							List.of(
+								SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_3, Parameters.TEMPERATURE_4),
+								SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_0, Parameters.HUMIDITY_2)
+							),
+							BloomConfig.get().worldgen.stone_variant_depth
+						),
+						SurfaceRuleHelper.depthRule(
+							Blocks.DIORITE,
+							List.of(
+								SurfaceRuleHelper.temperature(0.8F, 0.92F),
+								SurfaceRuleHelper.downfall(0.8F, 1F),
+								SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_2, Parameters.TEMPERATURE_5),
+								SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
+							),
+							BloomConfig.get().worldgen.stone_variant_depth
+						),
+						SurfaceRuleHelper.depthRule(
+							Blocks.ANDESITE,
+							List.of(
+								SurfaceRuleHelper.temperatureBelow(0.6F),
+								SurfaceRuleHelper.noise(NoiseRules.Type.TEMPERATURE, Parameters.TEMPERATURE_0, Parameters.TEMPERATURE_2),
+								SurfaceRuleHelper.noise(NoiseRules.Type.HUMIDITY, Parameters.HUMIDITY_2, Parameters.HUMIDITY_5)
+							),
+							BloomConfig.get().worldgen.stone_variant_depth
+						),
+						higherStoneRule()
+					)
+				));
+			consumer.accept(
+				Bloom.id("surface_rules"),
+				WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.APPEND,
+					SurfaceRules.ifTrue(
+						SurfaceRules.abovePreliminarySurface(),
+						SurfaceRules.sequence(
+							aridRiversAndShores(),
+							tropicalRivers(),
+							underwaterMud(),
+							swampMud(),
+							beaches(),
+							gravellyRiversAndBeaches(),
+							coarseDirtStrips()
+						)
+					)
+				));
+		});
     }
 }

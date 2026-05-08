@@ -74,6 +74,9 @@ public class BloomConfig implements ConfigData {
 	public static class WorldgenConfig {
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
+		public boolean improved_taiga_placement = true;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
 		public boolean pine_trees = true;
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip

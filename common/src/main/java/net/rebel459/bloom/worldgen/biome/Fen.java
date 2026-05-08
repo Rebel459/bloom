@@ -81,20 +81,20 @@ public final class Fen extends BloomBiome {
         builder.set(EnvironmentAttributes.WATER_FOG_END_DISTANCE, BiomeHelper.waterFogMultiplier(0.85F));
     }
 
-    @Override
-    public void addFeatures(BiomeGenerationSettings.Builder features) {
-        BiomeDefaultFeatures.addFossilDecoration(features);
-        OverworldBiomes.globalOverworldGeneration(features);
-        BiomeDefaultFeatures.addDefaultOres(features);
-        BiomeDefaultFeatures.addSwampClayDisk(features);
-        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_NORMAL);
-        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH);
-        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.BROWN_MUSHROOM_SWAMP);
-        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.RED_MUSHROOM_SWAMP);
-        BiomeDefaultFeatures.addFerns(features);
-        BiomeDefaultFeatures.addSwampExtraVegetation(features);
-        features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_SWAMP);
-    }
+	@Override
+	public void addFeatures(BiomeGenerationSettings.Builder features) {
+		BiomeDefaultFeatures.addFossilDecoration(features);
+		OverworldBiomes.globalOverworldGeneration(features);
+		BiomeDefaultFeatures.addDefaultOres(features);
+		BiomeDefaultFeatures.addSwampClayDisk(features);
+		BiomeDefaultFeatures.addFerns(features);
+		features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_NORMAL);
+		features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH);
+		features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.BROWN_MUSHROOM_SWAMP);
+		features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.RED_MUSHROOM_SWAMP);
+		BiomeDefaultFeatures.addSwampExtraVegetation(features);
+		features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_SWAMP);
+	}
 
     @Override
     public void addSpawns(MobSpawnSettings.Builder spawns) {

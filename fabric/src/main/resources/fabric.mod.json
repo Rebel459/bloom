@@ -45,6 +45,6 @@
     "java": ">=25",
     "unified": "*",
     "cloth-config": "*",
-    "biolith": "*"
+    "lithostitched": "*"
   }
 }
