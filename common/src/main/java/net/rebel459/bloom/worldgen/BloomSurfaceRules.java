@@ -163,8 +163,8 @@ public final class BloomSurfaceRules {
 		);
 	}
 
-    public static SurfaceRules.RuleSource swampMud() {
-        return SurfaceRules.sequence(
+	public static SurfaceRules.RuleSource swampMud() {
+		return SurfaceRules.sequence(
 			SurfaceRules.ifTrue(
 				SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_SWAMP_MUD),
 				SurfaceRules.ifTrue(
@@ -184,8 +184,32 @@ public final class BloomSurfaceRules {
 					)
 				)
 			)
-        );
-    }
+		);
+	}
+
+	public static SurfaceRules.RuleSource taigaGravel() {
+		return SurfaceRules.sequence(
+			SurfaceRules.ifTrue(
+				SurfaceRuleHelper.isBiomeTag(BloomBiomeTags.HAS_TAIGA_GRAVEL),
+				SurfaceRules.ifTrue(
+					SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(64), 0)),
+					SurfaceRules.ifTrue(
+						SurfaceRules.yStartCheck(VerticalAnchor.absolute(60), 0),
+						SurfaceRules.sequence(
+							SurfaceRules.ifTrue(
+								SurfaceRules.ON_FLOOR,
+								SurfaceRuleHelper.makeStateRule(Blocks.GRAVEL)
+							),
+							SurfaceRules.ifTrue(
+								SurfaceRules.UNDER_FLOOR,
+								SurfaceRuleHelper.makeStateRule(Blocks.GRAVEL)
+							)
+						)
+					)
+				)
+			)
+		);
+	}
 
 	public static SurfaceRules.RuleSource higherStoneRule() {
 		return SurfaceRuleHelper.configuredRule(
@@ -211,7 +235,7 @@ public final class BloomSurfaceRules {
 		AddWorldgenModifiersEvent.EVENT.register((registry, consumer) -> {
 			consumer.accept(
 				Bloom.id("surface_rules"),
-				WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.APPEND,
+				WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.PREPEND,
 					SurfaceRules.sequence(
 						frozenPeaksRule(),
 						SurfaceRuleHelper.depthRule(
@@ -262,8 +286,8 @@ public final class BloomSurfaceRules {
 					)
 				));
 			consumer.accept(
-				Bloom.id("surface_rules"),
-				WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.APPEND,
+				Bloom.id("preliminary_surface_rules"),
+				WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.PREPEND,
 					SurfaceRules.ifTrue(
 						SurfaceRules.abovePreliminarySurface(),
 						SurfaceRules.sequence(
@@ -271,6 +295,7 @@ public final class BloomSurfaceRules {
 							tropicalRivers(),
 							underwaterMud(),
 							swampMud(),
+							taigaGravel(),
 							beaches(),
 							gravellyRiversAndBeaches(),
 							coarseDirtStrips()

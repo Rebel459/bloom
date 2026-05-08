@@ -67,8 +67,8 @@ public class BiomeHelper {
 	}
 
 	public static void addLessStrictDisks(HelpersImpl.BiomeModifications.Context context) {
-		context.getFeatures().addFeature(BloomFeatures.DISK_SAND, GenerationStep.Decoration.UNDERGROUND_ORES);
 		context.getFeatures().addFeature(BloomFeatures.DISK_CLAY, GenerationStep.Decoration.UNDERGROUND_ORES);
+		context.getFeatures().addFeature(BloomFeatures.DISK_SAND, GenerationStep.Decoration.UNDERGROUND_ORES);
 		context.getFeatures().addFeature(BloomFeatures.DISK_GRAVEL, GenerationStep.Decoration.UNDERGROUND_ORES);
 	}
 

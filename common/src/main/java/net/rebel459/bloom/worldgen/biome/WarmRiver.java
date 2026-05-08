@@ -1,24 +1,19 @@
 package net.rebel459.bloom.worldgen.biome;
 
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Consumer;
-import net.rebel459.bloom.util.BloomBiome;
-import net.rebel459.bloom.Bloom;
-import net.rebel459.bloom.util.BiomeHelper;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.data.worldgen.placement.AquaticPlacements;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.EnvironmentAttributeMap;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
-import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.rebel459.bloom.Bloom;
+import net.rebel459.bloom.util.BiomeHelper;
+import net.rebel459.bloom.util.BloomBiome;
 import org.jetbrains.annotations.NotNull;
 
 public final class WarmRiver extends BloomBiome {

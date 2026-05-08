@@ -80,6 +80,9 @@ public class BloomConfig implements ConfigData {
 		public boolean pine_trees = true;
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
+		public boolean taller_spruce_trees = true;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
 		public boolean stony_cliffs = true;
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip

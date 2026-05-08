@@ -209,17 +209,6 @@ public class BloomBiomePlacement {
 							.climateRange(BiomeInjector.ClimateParameter.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
 					)
 				);
-				consumer.accept(
-					Bloom.id("fen_replaces_beach"),
-					BiomeInjector.builder(Level.OVERWORLD).replacePartially(
-						registry.getOrThrow(Biomes.BEACH),
-						registry.getOrThrow(BloomBiomes.FEN),
-						ParameterBuilder.create()
-							.climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, Parameters.TEMPERATURE_1, Parameters.TEMPERATURE_2)
-							.climateRange(BiomeInjector.ClimateParameter.HUMIDITY, Parameters.HUMIDITY_3, Parameters.HUMIDITY_5)
-							.climateRange(BiomeInjector.ClimateParameter.EROSION, Parameters.EROSION_6, Parameters.EROSION_7)
-					)
-				);
 			}
 			if (BloomConfig.get().biomes.snowy_shore) {
 				consumer.accept(

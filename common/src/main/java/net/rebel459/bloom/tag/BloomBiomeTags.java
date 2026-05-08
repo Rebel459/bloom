@@ -38,6 +38,7 @@ public class BloomBiomeTags {
     public static final TagKey<Biome> HAS_SURFACE_COARSE_DIRT = bind("rules/surface_coarse_dirt");
     public static final TagKey<Biome> HAS_UNDERWATER_MUD = bind("rules/underwater_mud");
     public static final TagKey<Biome> HAS_SWAMP_MUD = bind("rules/swamp_mud");
+	public static final TagKey<Biome> HAS_TAIGA_GRAVEL = bind("rules/taiga_gravel");
 	public static final TagKey<Biome> HAS_STRIP_COARSE_DIRT = bind("rules/strip_coarse_dirt");
     public static final TagKey<Biome> HAS_HIGHER_DEPTH = bind("rules/higher_depth");
 	public static final TagKey<Biome> HAS_HIGHER_STONE = bind("rules/higher_stone");

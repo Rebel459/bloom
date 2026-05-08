@@ -207,6 +207,7 @@
   "pack.bloom.ore_variants_sapphire": "Ore Variants - Sapphire",
   "pack.bloom.pine_trees": "Pine Trees",
   "pack.bloom.stone_variant_crafting": "Stone Variant Crafting",
+  "pack.bloom.taller_spruce_trees": "Taller Spruce Trees",
   "pack.bloom.tradable_yarn": "Tradable Yarn",
   "pack.bloom.wild_crops": "Wild Crops",
   "text.autoconfig.bloom.option.biomes": "Biomes",
@@ -242,6 +243,8 @@
   "text.autoconfig.bloom.option.worldgen": "Worldgen",
   "text.autoconfig.bloom.option.worldgen.dolerite_depth": "Dolerite Depth",
   "text.autoconfig.bloom.option.worldgen.dolerite_depth.@Tooltip": "Whether Dolerite should replace Stone in frozen regions",
+  "text.autoconfig.bloom.option.worldgen.improved_taiga_placement": "Improved Taiga Placement",
+  "text.autoconfig.bloom.option.worldgen.improved_taiga_placement.@Tooltip": "Whether Snowy Taigas should better replace Taigas in cold regions and Old Growth Pine Taiga placement should be modified",
   "text.autoconfig.bloom.option.worldgen.ore_variants": "Ore Variants",
   "text.autoconfig.bloom.option.worldgen.ore_variants.@Tooltip": "Whether ore variants for all base stone variants should be generated",
   "text.autoconfig.bloom.option.worldgen.pine_trees": "Pine Trees",
@@ -252,5 +255,7 @@
   "text.autoconfig.bloom.option.worldgen.stone_variant_depth.@Tooltip": "Whether certain regions should use Andesite, Diorite or Granite in place of Stone as the base underground block",
   "text.autoconfig.bloom.option.worldgen.stony_cliffs": "Stony Cliffs",
   "text.autoconfig.bloom.option.worldgen.stony_cliffs.@Tooltip": "Whether certain biomes should have cliffs made of stone closer to the surface",
+  "text.autoconfig.bloom.option.worldgen.taller_spruce_trees": "Taller Spruce Trees",
+  "text.autoconfig.bloom.option.worldgen.taller_spruce_trees.@Tooltip": "Whether regular Spruce Trees should be taller",
   "text.autoconfig.bloom.title": "Bloom"
 }

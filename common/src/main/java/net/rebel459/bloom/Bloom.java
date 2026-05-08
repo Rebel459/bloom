@@ -52,6 +52,9 @@ public class Bloom {
 		if (BloomConfig.get().worldgen.pine_trees) {
 			UnifiedHelpers.PACKS.add(Bloom.id("pine_trees"), PackType.REQUIRED_DATA);
 		}
+		if (BloomConfig.get().worldgen.taller_spruce_trees) {
+			UnifiedHelpers.PACKS.add(Bloom.id("taller_spruce_trees"), PackType.REQUIRED_DATA);
+		}
 		if (BloomConfig.get().worldgen.ore_variants) {
 			UnifiedHelpers.PACKS.add(Bloom.id("ore_variants"), PackType.REQUIRED_DATA);
 			if (UnifiedPlatform.isModLoaded("legacies_and_legends")) {

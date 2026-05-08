@@ -21,7 +21,7 @@ dependencies {
     api("me.shedaniel.cloth:cloth-config-fabric:$cloth_version") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    api("maven.modrinth:unified-api:$unified_version-fabric")
+    api("maven.modrinth:unified-api:$unified_version.3-fabric")
 	api("maven.modrinth:lithostitched:$lithostitched_fabric")
 
 	compileOnly("maven.modrinth:legacies-and-legends:$lal_version-fabric")

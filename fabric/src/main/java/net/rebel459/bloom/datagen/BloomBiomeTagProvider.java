@@ -171,9 +171,14 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 			.addTag(BloomBiomeTags.HAS_SWAMP_MUD)
 			.addOptionalTag(BiomeTags.IS_JUNGLE);
 
-        this.builder(BloomBiomeTags.HAS_SWAMP_MUD)
+		this.builder(BloomBiomeTags.HAS_SWAMP_MUD)
 			.add(BloomBiomes.FEN)
 			.add(Biomes.SWAMP);
+
+		this.builder(BloomBiomeTags.HAS_TAIGA_GRAVEL)
+			.addTag(BiomeTags.IS_TAIGA)
+			.add(BloomBiomes.COLD_BEACH)
+			.add(BloomBiomes.COLD_RIVER);
 
 		this.builder(BloomBiomeTags.HAS_STRIP_COARSE_DIRT)
 			.add(Biomes.SAVANNA)
