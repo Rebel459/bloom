@@ -21,7 +21,6 @@ public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> ORE_GRAVEL = register("ore_gravel");
 
 	public static final ResourceKey<PlacedFeature> FLOWER_HELLEBORE = register("flower_hellebore");
-	public static final ResourceKey<PlacedFeature> FLOWER_LILY_OF_THE_VALLEY = register("flower_lily_of_the_valley");
 	public static final ResourceKey<PlacedFeature> FLOWER_BROMELIAD = register("flower_bromeliad");
 	public static final ResourceKey<PlacedFeature> FLOWER_PINK_ORCHID = register("flower_pink_orchid");
 	public static final ResourceKey<PlacedFeature> FLOWER_BELLFLOWER = register("flower_bellflower");
@@ -34,6 +33,9 @@ public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> FLOWER_HYACINTH = register("flower_hyacinth");
 	public static final ResourceKey<PlacedFeature> FLOWER_QUEENCUP = register("flower_queencup");
 
+	public static final ResourceKey<PlacedFeature> FLOWER_LILY_OF_THE_VALLEY = register("flower_lily_of_the_valley");
+	public static final ResourceKey<PlacedFeature> FLOWER_ALLIUM = register("flower_allium");
+
     public static final ResourceKey<PlacedFeature> PATCH_SUCCULENT = register("patch_succulent");
     public static final ResourceKey<PlacedFeature> PATCH_REEDS = register("patch_reeds");
 
@@ -45,6 +47,8 @@ public final class BloomFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> CONFIGURED_GOLDEN_BIRCH_TREE = registerConfigured("tree_golden_birch");
 
 	public static final ResourceKey<PlacedFeature> TREES_TAIGA = register("trees_taiga");
+	public static final ResourceKey<PlacedFeature> FERNS_TAIGA = register("ferns_taiga");
+	public static final ResourceKey<PlacedFeature> GRASS_TAIGA = register("grass_taiga");
 
     public static final ResourceKey<PlacedFeature> WINDSWEPT_JUNGLE_TREES = register("trees_windswept_jungle");
     public static final ResourceKey<PlacedFeature> WINDSWEPT_JUNGLE_FLOWERS = register("flowers_windswept_jungle");
@@ -60,6 +64,9 @@ public final class BloomFeatures {
 	public static final ResourceKey<PlacedFeature> GOLDEN_FOREST_WILDFLOWERS = register("wildflowers_golden_forest");
 
 	public static final ResourceKey<PlacedFeature> GOLDEN_FIELDS_TREES = register("trees_golden_fields");
+
+	public static final ResourceKey<PlacedFeature> LAVENDER_FIELDS_TREES = register("trees_lavender_fields");
+	public static final ResourceKey<PlacedFeature> LAVENDER_FIELDS_LAVENDER = register("flower_lavender");
 
 	public static void init() {}
 

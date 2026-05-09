@@ -38,7 +38,7 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		this.music("overworld.lock_and_key", "Zhen - Lock and Key");
 
 		translation.add("pack.bloom.pine_trees", "Pine Trees");
-		translation.add("pack.bloom.taller_spruce_trees", "Taller Spruce Trees");
+		translation.add("pack.bloom.taiga_tweaks", "Taiga Tweaks");
 		translation.add("pack.bloom.ore_variants", "Ore Variants");
 		translation.add("pack.bloom.ore_variants_sapphire", "Ore Variants - Sapphire");
 		translation.add("pack.bloom.stone_variant_crafting", "Stone Variant Crafting");
@@ -54,6 +54,7 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		this.configuredBiome("fen", "Fen");
 		this.configuredBiome("pine_taiga", "Pine Taiga");
 		this.configuredBiome("snowy_pine_taiga", "Snowy Pine Taiga");
+		this.configuredBiome("lavender_fields", "Lavender Fields");
 		this.configuredBiome("windswept_jungle", "Windswept Jungle");
 		this.configuredBiome("sparse_windswept_jungle", "Sparse Windswept Jungle");
 		this.configuredBiome("arid_shore", "Arid Shore");
@@ -68,8 +69,8 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 
 		this.config("worldgen", "Worldgen");
 		this.config("worldgen.improved_taiga_placement", "Improved Taiga Placement", "Whether Snowy Taigas should better replace Taigas in cold regions and Old Growth Pine Taiga placement should be modified");
+		this.config("worldgen.taiga_tweaks", "Taiga Tweaks", "Whether Taigas should use a new grass color and Spruce Trees should be taller");
 		this.config("worldgen.pine_trees", "Pine Trees", "Whether new Pine Trees should be used");
-		this.config("worldgen.taller_spruce_trees", "Taller Spruce Trees", "Whether regular Spruce Trees should be taller");
 		this.config("worldgen.stony_cliffs", "Stony Cliffs", "Whether certain biomes should have cliffs made of stone closer to the surface");
 		this.config("worldgen.ore_variants", "Ore Variants", "Whether ore variants for all base stone variants should be generated");
 		this.config("worldgen.stone_variant_depth", "Stone Variant Depth", "Whether certain regions should use Andesite, Diorite or Granite in place of Stone as the base underground block");

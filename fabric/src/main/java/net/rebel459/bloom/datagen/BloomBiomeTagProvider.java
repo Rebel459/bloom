@@ -41,7 +41,8 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 			.add(BloomBiomes.SNOWY_PINE_TAIGA)
 			.add(BloomBiomes.GOLDEN_FOREST)
 			.add(BloomBiomes.GOLDEN_FIELDS)
-			.add(BloomBiomes.GOLDEN_RIVER);
+			.add(BloomBiomes.GOLDEN_RIVER)
+			.add(BloomBiomes.LAVENDER_FIELDS);
 
 		this.builder(BloomBiomeTags.IS_NON_SNOWY_TAIGA)
 			.add(Biomes.TAIGA)
@@ -108,6 +109,9 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 
 		this.builder(BloomBiomeTags.INTERNAL_GOLDEN_FIELDS_FEATURES)
 			.add(BloomBiomes.GOLDEN_FIELDS);
+
+		this.builder(BloomBiomeTags.INTERNAL_LAVENDER_FIELDS_FEATURES)
+			.add(BloomBiomes.LAVENDER_FIELDS);
 
 		// Effects
         this.builder(BloomBiomeTags.HAS_WARM_COLORS)
@@ -208,6 +212,7 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 			.add(Biomes.SNOWY_BEACH)
 			.add(Biomes.ICE_SPIKES)
 			.add(BloomBiomes.FEN)
+			.add(BloomBiomes.LAVENDER_FIELDS)
 			.addOptionalTag(BiomeTags.IS_JUNGLE)
 			.addOptional(this.getBiome("wilderwild:snowy_old_growth_pine_taiga"));
 
@@ -232,9 +237,6 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 
 		this.builder(BloomBiomeTags.HAS_PINK_ORCHID)
 			.addOptionalTag(BiomeTags.IS_JUNGLE);
-
-		this.builder(BloomBiomeTags.HAS_LILY_OF_THE_VALLEY)
-			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA);
 
 		this.builder(BloomBiomeTags.HAS_HELLEBORE)
 			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA);
@@ -309,6 +311,15 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 			.addOptionalTag(BiomeTags.IS_JUNGLE)
 			.addOptionalTag(ConventionalBiomeTags.IS_PLAINS)
 			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA);
+
+		this.builder(BloomBiomeTags.HAS_LILY_OF_THE_VALLEY)
+			.addTag(BloomBiomeTags.IS_NON_SNOWY_TAIGA);
+
+		this.builder(BloomBiomeTags.HAS_ALLIUM)
+			.add(BloomBiomes.LAVENDER_FIELDS);
+
+		this.builder(BloomBiomeTags.HAS_TAIGA_FOLIAGE)
+			.addTag(BiomeTags.IS_TAIGA);
 
 		// Music
 		this.builder(BloomBiomeTags.HAS_TAIGA_MUSIC)
@@ -404,7 +415,8 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 			.add(BloomBiomes.GOLDEN_RIVER)
 			.add(BloomBiomes.PINE_TAIGA)
 			.add(BloomBiomes.COLD_BEACH)
-			.add(BloomBiomes.COLD_RIVER);
+			.add(BloomBiomes.COLD_RIVER)
+			.add(BloomBiomes.LAVENDER_FIELDS);
 
 		this.builder(ConventionalBiomeTags.IS_COLD_OVERWORLD)
 			.add(BloomBiomes.SNOWY_PINE_TAIGA)
@@ -424,7 +436,8 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 			.add(BloomBiomes.SPARSE_WINDSWEPT_JUNGLE);
 
 		this.builder(ConventionalBiomeTags.IS_PLAINS)
-			.add(BloomBiomes.GOLDEN_FIELDS);
+			.add(BloomBiomes.GOLDEN_FIELDS)
+			.add(BloomBiomes.LAVENDER_FIELDS);
 	}
 
 	private ResourceKey<Biome> getBiome(String id) {

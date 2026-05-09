@@ -38,6 +38,8 @@ public class BiomeHelper {
 
 		public static int COLD_WATER = 2650242;
 
+		public static int TAIGA_GRASS = 6262108;
+
 		public static int FROZEN_WATER = 15960;
 
 		public static int MUSHROOM_WATER = 9079191;

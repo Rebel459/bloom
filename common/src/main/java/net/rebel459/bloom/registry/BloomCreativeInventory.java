@@ -63,7 +63,8 @@ public class BloomCreativeInventory {
 			BloomBlocks.ORANGE_DAISY,
 			BloomBlocks.SCILLA,
 			BloomBlocks.HYACINTH,
-			BloomBlocks.QUEENCUP
+			BloomBlocks.QUEENCUP,
+			BloomBlocks.LAVENDER
 		);
 		UnifiedHelpers.CREATIVE_ENTRIES.insertAfter(
 			CreativeModeTabs.NATURAL_BLOCKS,

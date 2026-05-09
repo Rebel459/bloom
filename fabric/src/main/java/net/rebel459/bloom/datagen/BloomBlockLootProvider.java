@@ -51,6 +51,8 @@ public final class BloomBlockLootProvider extends FabricBlockLootSubProvider {
 		this.dropPottedContents(BloomBlocks.POTTED_HYACINTH.get());
 		this.dropSelf(BloomBlocks.QUEENCUP.get());
 		this.dropPottedContents(BloomBlocks.POTTED_QUEENCUP.get());
+		this.dropSelf(BloomBlocks.LAVENDER.get());
+		this.dropPottedContents(BloomBlocks.POTTED_LAVENDER.get());
 
 		this.dropSelf(BloomBlocks.SUCCULENT.get());
 

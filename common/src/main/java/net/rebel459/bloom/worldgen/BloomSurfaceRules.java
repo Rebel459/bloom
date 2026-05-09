@@ -284,7 +284,8 @@ public final class BloomSurfaceRules {
 						),
 						higherStoneRule()
 					)
-				));
+				)
+			);
 			consumer.accept(
 				Bloom.id("preliminary_surface_rules"),
 				WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.PREPEND,
@@ -301,7 +302,8 @@ public final class BloomSurfaceRules {
 							coarseDirtStrips()
 						)
 					)
-				));
+				)
+			);
 		});
     }
 }

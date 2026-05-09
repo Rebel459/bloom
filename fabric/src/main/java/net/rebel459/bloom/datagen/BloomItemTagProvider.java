@@ -52,7 +52,8 @@ public final class BloomItemTagProvider extends FabricTagsProvider.ItemTagsProvi
 			.add(BloomBlocks.ORANGE_DAISY.asItem())
 			.add(BloomBlocks.HYACINTH.asItem())
 			.add(BloomBlocks.QUEENCUP.asItem())
-			.add(BloomBlocks.WILD_COTTON.asItem());
+			.add(BloomBlocks.WILD_COTTON.asItem())
+			.add(BloomBlocks.LAVENDER.asItem());
 
 		this.valueLookupBuilder(ItemTags.FLOWERS)
 			.add(BloomBlocks.DIANTHUS.asItem())

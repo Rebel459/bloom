@@ -56,6 +56,7 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 				this.oneToOneConversionRecipe(Items.ORANGE_DYE, BloomBlocks.ORANGE_DAISY, "orange_dye");
 				this.oneToOneConversionRecipe(Items.PINK_DYE, BloomBlocks.HYACINTH, "pink_dye");
 				this.oneToOneConversionRecipe(Items.WHITE_DYE, BloomBlocks.QUEENCUP, "white_dye");
+				this.oneToOneConversionRecipe(Items.PURPLE_DYE, BloomBlocks.LAVENDER, "purple_dye");
 
 				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.POLISHED_DOLERITE, BloomBlocks.DOLERITE);
 				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, BloomBlocks.POLISHED_DOLERITE_STAIRS, BloomBlocks.DOLERITE);

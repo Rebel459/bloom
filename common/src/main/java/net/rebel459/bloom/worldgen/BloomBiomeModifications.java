@@ -3,6 +3,7 @@ package net.rebel459.bloom.worldgen;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.Musics;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -33,6 +34,11 @@ public final class BloomBiomeModifications {
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_COLD_COLORS, context -> {
 			context.getEffects().setWaterColor(BiomeHelper.Colors.COLD_WATER);
 		});
+		if (BloomConfig.get().worldgen.taiga_tweaks) {
+			UnifiedHelpers.BIOME_MODIFICATIONS.register(BiomeTags.IS_TAIGA, context -> {
+				context.getEffects().setGrassColor(BiomeHelper.Colors.TAIGA_GRASS);
+			});
+		}
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_FROZEN_COLORS, context -> {
 			context.getEffects().setWaterColor(BiomeHelper.Colors.FROZEN_WATER);
 		});
@@ -54,6 +60,13 @@ public final class BloomBiomeModifications {
 				context.getFeatures().addFeature(BloomFeatures.TREES_TAIGA, GenerationStep.Decoration.VEGETAL_DECORATION);
 			});
 		}
+
+		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_TAIGA_FOLIAGE, context -> {
+			context.getFeatures().removeFeature(VegetationPlacements.PATCH_LARGE_FERN, GenerationStep.Decoration.VEGETAL_DECORATION);
+			context.getFeatures().removeFeature(VegetationPlacements.PATCH_GRASS_TAIGA_2, GenerationStep.Decoration.VEGETAL_DECORATION);
+			context.getFeatures().addFeature(BloomFeatures.FERNS_TAIGA, GenerationStep.Decoration.VEGETAL_DECORATION);
+			context.getFeatures().addFeature(BloomFeatures.GRASS_TAIGA, GenerationStep.Decoration.VEGETAL_DECORATION);
+		});
 
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.NO_DEFAULT_FLOWERS, context -> {
 			context.getFeatures().removeFeature(VegetationPlacements.FLOWER_WARM, GenerationStep.Decoration.VEGETAL_DECORATION);
@@ -88,6 +101,10 @@ public final class BloomBiomeModifications {
 			BiomeHelper.addVegetation(context, BloomFeatures.GOLDEN_FOREST_FLOWERS);
 			BiomeHelper.addVegetation(context, BloomFeatures.GOLDEN_FIELDS_TREES);
 		});
+		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.INTERNAL_LAVENDER_FIELDS_FEATURES, context -> {
+			BiomeHelper.addVegetation(context, BloomFeatures.LAVENDER_FIELDS_TREES);
+			BiomeHelper.addVegetation(context, BloomFeatures.LAVENDER_FIELDS_LAVENDER);
+		});
 
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_STONE_BLOBS, context -> {
 			context.getFeatures().addFeature(BloomFeatures.ORE_STONE, GenerationStep.Decoration.UNDERGROUND_ORES);
@@ -108,9 +125,6 @@ public final class BloomBiomeModifications {
 		});
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_HELLEBORE, context -> {
 			BiomeHelper.addVegetation(context, BloomFeatures.FLOWER_HELLEBORE);
-		});
-		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_LILY_OF_THE_VALLEY, context -> {
-			BiomeHelper.addVegetation(context, BloomFeatures.FLOWER_LILY_OF_THE_VALLEY);
 		});
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_HYDRANGEA, context -> {
 			BiomeHelper.addVegetation(context, BloomFeatures.FLOWER_HYDRANGEA);
@@ -141,6 +155,12 @@ public final class BloomBiomeModifications {
 		});
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_REEDS, context -> {
 			BiomeHelper.addVegetation(context, BloomFeatures.PATCH_REEDS);
+		});
+		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_LILY_OF_THE_VALLEY, context -> {
+			BiomeHelper.addVegetation(context, BloomFeatures.FLOWER_LILY_OF_THE_VALLEY);
+		});
+		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_ALLIUM, context -> {
+			BiomeHelper.addVegetation(context, BloomFeatures.FLOWER_ALLIUM);
 		});
 		UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_TAIGA_MUSIC, context -> {
 			context.getEnvironmentAttributes().set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(Musics.createGameMusic(BloomSounds.MUSIC_BIOME_TAIGA)));

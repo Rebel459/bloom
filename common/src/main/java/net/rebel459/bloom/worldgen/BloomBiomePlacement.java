@@ -4,7 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import dev.worldgen.lithostitched.api.event.AddBiomeInjectorsEvent;
 import dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector;
 import dev.worldgen.lithostitched.api.worldgen.biomeinjector.ParameterBuilder;
-import dev.worldgen.lithostitched.impl.worldgen.biomeinjector.region.Region;
+import java.util.function.BiConsumer;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.Identifier;
@@ -14,9 +14,9 @@ import net.minecraft.world.level.biome.Climate;
 import net.rebel459.bloom.Bloom;
 import net.rebel459.bloom.config.BloomConfig;
 import net.rebel459.bloom.registry.BloomBiomes;
+import net.rebel459.bloom.tag.BloomBiomeTags;
 import net.rebel459.bloom.util.BiomeHelper;
 import net.rebel459.bloom.util.Parameters;
-import java.util.function.BiConsumer;
 
 public class BloomBiomePlacement {
 
@@ -302,6 +302,22 @@ public class BloomBiomePlacement {
 						registry.getOrThrow(BloomBiomes.GOLDEN_RIVER),
 						ParameterBuilder.create()
 							.climateRange(BiomeInjector.ClimateParameter.WEIRDNESS, Parameters.WEIRDNESS_VALLEY, Parameters.WEIRDNESS_LOW_SLICE_VARIANT_ASCENDING)
+					)
+				);
+			}
+			if (BloomConfig.get().biomes.lavender_fields) {
+				consumer.accept(
+					Bloom.id("lavender_fields"),
+					BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+						HolderSet.direct(
+							registry.getOrThrow(Biomes.PLAINS),
+							registry.getOrThrow(Biomes.SUNFLOWER_PLAINS)
+						),
+						registry.getOrThrow(BloomBiomes.LAVENDER_FIELDS),
+						ParameterBuilder.create()
+							.region(BloomRegions.LAVENDER)
+							.climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -0.25F, 0F)
+							.climateRange(BiomeInjector.ClimateParameter.HUMIDITY, -0.55F, -0.2F)
 					)
 				);
 			}

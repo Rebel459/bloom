@@ -40,7 +40,7 @@ import net.rebel459.unified.platform.UnifiedHelpers;
 import net.rebel459.unified.platform.UnifiedPlatform;
 import net.rebel459.unified.platform.UnifiedRegistries;
 import net.rebel459.unified.util.LoaderType;
-import net.rebel459.unified.util.SuppliedBlock;
+import net.rebel459.unified.util.registry.SuppliedBlock;
 
 public final class BloomBlocks {
 	public static List<Block> TRANSLATABLE_BLOCKS = new ArrayList<>();
@@ -190,6 +190,15 @@ public final class BloomBlocks {
 		() -> BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
 	);
 	public static final SuppliedBlock POTTED_QUEENCUP = registerWithoutItem("potted_queencup",
+		properties -> new FlowerPotBlock(QUEENCUP.get(), properties),
+		Blocks::flowerPotProperties
+	);
+
+	public static final SuppliedBlock LAVENDER = register("lavender",
+		properties -> new LargeFlowerBlock(MobEffects.REGENERATION, 7F, properties),
+		() -> BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION)
+	);
+	public static final SuppliedBlock POTTED_LAVENDER = registerWithoutItem("potted_lavender",
 		properties -> new FlowerPotBlock(QUEENCUP.get(), properties),
 		Blocks::flowerPotProperties
 	);

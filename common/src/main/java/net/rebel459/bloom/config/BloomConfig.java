@@ -5,7 +5,6 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.rebel459.bloom.Bloom;
 import org.jetbrains.annotations.Contract;
 
@@ -48,6 +47,8 @@ public class BloomConfig implements ConfigData {
 		@ConfigEntry.Category("config")
 		public boolean snowy_pine_taiga = true;
 		@ConfigEntry.Category("config")
+		public boolean lavender_fields = true;
+		@ConfigEntry.Category("config")
 		public boolean windswept_jungle = true;
 		@ConfigEntry.Category("config")
 		public boolean sparse_windswept_jungle = true;
@@ -77,10 +78,10 @@ public class BloomConfig implements ConfigData {
 		public boolean improved_taiga_placement = true;
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
-		public boolean pine_trees = true;
+		public boolean taiga_tweaks = true;
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
-		public boolean taller_spruce_trees = true;
+		public boolean pine_trees = true;
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
 		public boolean stony_cliffs = true;

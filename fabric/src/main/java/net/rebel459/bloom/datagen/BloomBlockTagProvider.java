@@ -86,6 +86,7 @@ public final class BloomBlockTagProvider extends FabricTagsProvider.BlockTagsPro
 			.add(BloomBlocks.ORANGE_DAISY.get())
 			.add(BloomBlocks.HYACINTH.get())
 			.add(BloomBlocks.QUEENCUP.get())
+			.add(BloomBlocks.LAVENDER.get())
 			.add(BloomBlocks.WILD_COTTON.get());
 
 		this.valueLookupBuilder(BlockTags.FLOWERS)
@@ -106,7 +107,8 @@ public final class BloomBlockTagProvider extends FabricTagsProvider.BlockTagsPro
 			.add(BloomBlocks.POTTED_BROMELIAD.get())
 			.add(BloomBlocks.POTTED_HELLEBORE.get())
 			.add(BloomBlocks.POTTED_HYACINTH.get())
-			.add(BloomBlocks.POTTED_QUEENCUP.get());
+			.add(BloomBlocks.POTTED_QUEENCUP.get())
+			.add(BloomBlocks.POTTED_LAVENDER.get());
 
         this.valueLookupBuilder(BlockTags.LOGS)
 			.addOptionalTag(BloomBlockTags.JACARANDA_LOGS);

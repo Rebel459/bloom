@@ -14,7 +14,11 @@
     "bloom:dolerite_tile_stairs",
     "bloom:dolerite_tile_wall",
     {
-      "id": "bloom:tuff_copper_ore",
+      "id": "bloom:tuff_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:tuff_gold_ore",
       "required": false
     },
     {
@@ -22,7 +26,7 @@
       "required": false
     },
     {
-      "id": "bloom:tuff_lapis_ore",
+      "id": "bloom:tuff_copper_ore",
       "required": false
     },
     {
@@ -34,10 +38,6 @@
       "required": false
     },
     {
-      "id": "bloom:tuff_sapphire_ore",
-      "required": false
-    },
-    {
       "id": "bloom:tuff_emerald_ore",
       "required": false
     },
@@ -46,11 +46,15 @@
       "required": false
     },
     {
-      "id": "bloom:tuff_gold_ore",
+      "id": "bloom:tuff_lapis_ore",
       "required": false
     },
     {
-      "id": "bloom:granite_copper_ore",
+      "id": "bloom:granite_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:granite_gold_ore",
       "required": false
     },
     {
@@ -58,7 +62,7 @@
       "required": false
     },
     {
-      "id": "bloom:granite_lapis_ore",
+      "id": "bloom:granite_copper_ore",
       "required": false
     },
     {
@@ -70,10 +74,6 @@
       "required": false
     },
     {
-      "id": "bloom:granite_sapphire_ore",
-      "required": false
-    },
-    {
       "id": "bloom:granite_emerald_ore",
       "required": false
     },
@@ -82,11 +82,15 @@
       "required": false
     },
     {
-      "id": "bloom:granite_gold_ore",
+      "id": "bloom:granite_lapis_ore",
       "required": false
     },
     {
-      "id": "bloom:andesite_copper_ore",
+      "id": "bloom:andesite_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:andesite_gold_ore",
       "required": false
     },
     {
@@ -94,7 +98,7 @@
       "required": false
     },
     {
-      "id": "bloom:andesite_lapis_ore",
+      "id": "bloom:andesite_copper_ore",
       "required": false
     },
     {
@@ -106,10 +110,6 @@
       "required": false
     },
     {
-      "id": "bloom:andesite_sapphire_ore",
-      "required": false
-    },
-    {
       "id": "bloom:andesite_emerald_ore",
       "required": false
     },
@@ -118,11 +118,15 @@
       "required": false
     },
     {
-      "id": "bloom:andesite_gold_ore",
+      "id": "bloom:andesite_lapis_ore",
       "required": false
     },
     {
-      "id": "bloom:diorite_copper_ore",
+      "id": "bloom:diorite_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:diorite_gold_ore",
       "required": false
     },
     {
@@ -130,7 +134,7 @@
       "required": false
     },
     {
-      "id": "bloom:diorite_lapis_ore",
+      "id": "bloom:diorite_copper_ore",
       "required": false
     },
     {
@@ -142,10 +146,6 @@
       "required": false
     },
     {
-      "id": "bloom:diorite_sapphire_ore",
-      "required": false
-    },
-    {
       "id": "bloom:diorite_emerald_ore",
       "required": false
     },
@@ -154,11 +154,15 @@
       "required": false
     },
     {
-      "id": "bloom:diorite_gold_ore",
+      "id": "bloom:diorite_lapis_ore",
       "required": false
     },
     {
-      "id": "bloom:dolerite_copper_ore",
+      "id": "bloom:dolerite_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:dolerite_gold_ore",
       "required": false
     },
     {
@@ -166,7 +170,7 @@
       "required": false
     },
     {
-      "id": "bloom:dolerite_lapis_ore",
+      "id": "bloom:dolerite_copper_ore",
       "required": false
     },
     {
@@ -178,10 +182,6 @@
       "required": false
     },
     {
-      "id": "bloom:dolerite_sapphire_ore",
-      "required": false
-    },
-    {
       "id": "bloom:dolerite_emerald_ore",
       "required": false
     },
@@ -190,11 +190,15 @@
       "required": false
     },
     {
-      "id": "bloom:dolerite_gold_ore",
+      "id": "bloom:dolerite_lapis_ore",
       "required": false
     },
     {
-      "id": "bloom:sandstone_copper_ore",
+      "id": "bloom:sandstone_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:sandstone_gold_ore",
       "required": false
     },
     {
@@ -202,7 +206,7 @@
       "required": false
     },
     {
-      "id": "bloom:sandstone_lapis_ore",
+      "id": "bloom:sandstone_copper_ore",
       "required": false
     },
     {
@@ -214,10 +218,6 @@
       "required": false
     },
     {
-      "id": "bloom:sandstone_sapphire_ore",
-      "required": false
-    },
-    {
       "id": "bloom:sandstone_emerald_ore",
       "required": false
     },
@@ -226,11 +226,15 @@
       "required": false
     },
     {
-      "id": "bloom:sandstone_gold_ore",
+      "id": "bloom:sandstone_lapis_ore",
       "required": false
     },
     {
-      "id": "bloom:red_sandstone_copper_ore",
+      "id": "bloom:red_sandstone_sapphire_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:red_sandstone_gold_ore",
       "required": false
     },
     {
@@ -238,7 +242,7 @@
       "required": false
     },
     {
-      "id": "bloom:red_sandstone_lapis_ore",
+      "id": "bloom:red_sandstone_copper_ore",
       "required": false
     },
     {
@@ -250,10 +254,6 @@
       "required": false
     },
     {
-      "id": "bloom:red_sandstone_sapphire_ore",
-      "required": false
-    },
-    {
       "id": "bloom:red_sandstone_emerald_ore",
       "required": false
     },
@@ -262,7 +262,7 @@
       "required": false
     },
     {
-      "id": "bloom:red_sandstone_gold_ore",
+      "id": "bloom:red_sandstone_lapis_ore",
       "required": false
     }
   ]

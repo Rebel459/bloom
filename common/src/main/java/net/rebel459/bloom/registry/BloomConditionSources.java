@@ -14,7 +14,7 @@ import java.util.function.BiConsumer;
 
 public class BloomConditionSources {
 
-	private static final UnifiedRegistries.DeferredRegistry MATERIAL_CONDITION = UnifiedRegistries.DeferredRegistry.create(Bloom.MOD_ID, BuiltInRegistries.MATERIAL_CONDITION);
+	private static final UnifiedRegistries.DeferredRegistry<MapCodec<? extends SurfaceRules.ConditionSource>> MATERIAL_CONDITION = UnifiedRegistries.DeferredRegistry.create(Bloom.MOD_ID, BuiltInRegistries.MATERIAL_CONDITION);
 
 	public static void init() {
 		register((name, codec) -> register(MATERIAL_CONDITION, name, codec));
@@ -39,7 +39,7 @@ public class BloomConditionSources {
 		consumer.accept("noise_heightmap_depth", NoiseRules.HeightmapDepth.CODEC.codec());
 	}
 
-	public static <T> void register(UnifiedRegistries.DeferredRegistry registry, String name, T object) {
+	public static <T> void register(UnifiedRegistries.DeferredRegistry<MapCodec<? extends SurfaceRules.ConditionSource>> registry, String name, MapCodec<? extends SurfaceRules.ConditionSource> object) {
 		registry.register(name, () -> object);
 	}
 }

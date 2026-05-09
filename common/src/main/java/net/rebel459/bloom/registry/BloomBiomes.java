@@ -7,6 +7,7 @@ import net.rebel459.bloom.worldgen.biome.Fen;
 import net.rebel459.bloom.worldgen.biome.GoldenFields;
 import net.rebel459.bloom.worldgen.biome.GoldenForest;
 import net.rebel459.bloom.worldgen.biome.GoldenRiver;
+import net.rebel459.bloom.worldgen.biome.LavenderFields;
 import net.rebel459.bloom.worldgen.biome.LukewarmBeach;
 import net.rebel459.bloom.worldgen.biome.LukewarmRiver;
 import net.rebel459.bloom.worldgen.biome.PineTaiga;
@@ -39,6 +40,7 @@ public class BloomBiomes {
 	public static final ResourceKey<Biome> GOLDEN_FOREST = GoldenForest.INSTANCE.getKey();
 	public static final ResourceKey<Biome> GOLDEN_FIELDS = GoldenFields.INSTANCE.getKey();
 	public static final ResourceKey<Biome> GOLDEN_RIVER = GoldenRiver.INSTANCE.getKey();
+	public static final ResourceKey<Biome> LAVENDER_FIELDS = LavenderFields.INSTANCE.getKey();
 
     public static void init() {}
 
@@ -60,6 +62,7 @@ public class BloomBiomes {
 		register(context, GOLDEN_FOREST, GoldenForest.INSTANCE.create(context));
 		register(context, GOLDEN_FIELDS, GoldenFields.INSTANCE.create(context));
 		register(context, GOLDEN_RIVER, GoldenRiver.INSTANCE.create(context));
+		register(context, LAVENDER_FIELDS, LavenderFields.INSTANCE.create(context));
     }
 
     private static void register(BootstrapContext<Biome> entries, ResourceKey<Biome> key, Biome biome) {
