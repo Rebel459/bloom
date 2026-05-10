@@ -3,7 +3,6 @@ package net.rebel459.bloom.client.snow;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.client.renderer.chunk.RenderSectionRegion;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
 import net.minecraft.client.resources.model.sprite.Material;
@@ -11,8 +10,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -24,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class SnowOverlayBlockStateModelPart implements BlockStateModelPart {
-	private static final Identifier SNOW_VERTICAL = Bloom.id("block/snow_vertical");
+	private static final Identifier SNOW_OVERLAY = Bloom.id("block/snow_overlay");
 	private static final Identifier VANILLA_SNOW = Identifier.withDefaultNamespace("block/snow");
 
 	private static final float OFFSET = 0.01F;
@@ -193,7 +190,7 @@ public final class SnowOverlayBlockStateModelPart implements BlockStateModelPart
 			.getAtlasManager()
 			.getAtlasOrThrow(Identifier.withDefaultNamespace("blocks"));
 
-		TextureAtlasSprite verticalSprite = blockAtlas.getSprite(SNOW_VERTICAL);
+		TextureAtlasSprite verticalSprite = blockAtlas.getSprite(SNOW_OVERLAY);
 		TextureAtlasSprite snowSprite = blockAtlas.getSprite(VANILLA_SNOW);
 
 		Material.Baked verticalMaterial = new Material.Baked(verticalSprite, false);
