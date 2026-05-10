@@ -1,15 +1,16 @@
 package net.rebel459.bloom.mixin;
 
+import java.util.List;
+import java.util.Set;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.rebel459.bloom.config.BloomConfig;
+import net.rebel459.unified.platform.UnifiedPlatform;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
-import java.util.List;
-import java.util.Set;
 
 public final class BloomMixinPlugin implements IMixinConfigPlugin {
 
@@ -31,6 +32,11 @@ public final class BloomMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, @NotNull String mixinClassName) {
+		boolean snowOverlay = BloomConfig.get().misc.snowier_snow != BloomConfig.SnowType.NONE;
+		boolean hasSodium = UnifiedPlatform.isModLoaded("sodium");
+		if (mixinClassName.contains("client.snow.sodium")) return snowOverlay && hasSodium;
+		if (mixinClassName.contains("client.snow.vanilla")) return snowOverlay && !hasSodium;
+		if (mixinClassName.contains("client.snow.wilderwild")) return snowOverlay && UnifiedPlatform.isModLoaded("wilderwild");
         return true;
     }
 

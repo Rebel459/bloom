@@ -84,6 +84,7 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		this.config("farming.wild_crops", "Wild Crops", "Whether wild variants of Bloom crops should be added when Farmer's Delight is installed");
 
 		this.config("misc", "Miscellaneous");
+		this.config("misc.snowier_snow", "Snowier Snow", "How snow layers should extend underlays to blocks they are placed on. Can be ALL, LEAVES or NONE.");
 		this.config("misc.stone_variant_crafting", "Stone Variant Crafting", "Whether Andesite, Diorite, Granite & Tuff should be accepted in base stone crafting recipes");
 	}
 

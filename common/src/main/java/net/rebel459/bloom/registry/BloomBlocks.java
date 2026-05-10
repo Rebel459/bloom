@@ -323,10 +323,10 @@ public final class BloomBlocks {
 
 	private static void registerStrippable() {
 		WoodsetRegistry.WOODSETS.forEach(woodset -> {
-			UnifiedHelpers.BLOCK_CONVERSIONS.addStrippable(woodset.getLog().get(), woodset.getStrippedLog().get());
+			UnifiedHelpers.BLOCK_CONVERSIONS.addStrippable(woodset.getLog(), woodset.getStrippedLog());
 
 			if (woodset.getWoodPreset() != WoodsetRegistry.WoodPreset.BAMBOO){
-				UnifiedHelpers.BLOCK_CONVERSIONS.addStrippable(woodset.getWood().get(), woodset.getStrippedWood().get());
+				UnifiedHelpers.BLOCK_CONVERSIONS.addStrippable(woodset.getWood(), woodset.getStrippedWood());
 			}
 		});
 	}

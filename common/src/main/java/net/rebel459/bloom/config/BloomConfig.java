@@ -117,6 +117,16 @@ public class BloomConfig implements ConfigData {
 	public static class MiscConfig {
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
+		@ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
+		public SnowType snowier_snow = SnowType.LEAVES;
+		@ConfigEntry.Category("config")
+		@ConfigEntry.Gui.Tooltip
 		public boolean stone_variant_crafting = true;
+	}
+
+	public enum SnowType {
+		ALL,
+		LEAVES,
+		NONE
 	}
 }

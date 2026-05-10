@@ -1,6 +1,7 @@
 package net.rebel459.bloom.datagen;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.BiFunction;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -9,15 +10,22 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
+import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SnowyBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.bloom.registry.BloomItems;
@@ -158,7 +166,7 @@ public final class BloomModelProvider extends FabricModelProvider {
 
     public void oreModels(StoneOresRegistry ores, BlockModelGenerators generator) {
         ores.getOresMap().forEach((type, ore) -> {
-            STONE_MODELS_MAP.getOrDefault(ores.getBaseStone(), (generators, b) -> {
+            STONE_MODELS_MAP.getOrDefault(ores.getBaseStone().get(), (generators, b) -> {
                 generators.createTrivialCube(ore.get());
                 return true;
             }).apply(generator, ore.get());

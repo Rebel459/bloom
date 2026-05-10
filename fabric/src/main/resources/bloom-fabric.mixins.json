@@ -6,7 +6,9 @@
   "mixins": [
     "server.ServerPlayerFabricMixin"
   ],
-  "client": [],
+  "client": [
+    "client.snow.vanilla.SectionCompilerSnowMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

@@ -241,6 +241,8 @@
   "text.autoconfig.bloom.option.farming.wild_crops": "Wild Crops",
   "text.autoconfig.bloom.option.farming.wild_crops.@Tooltip": "Whether wild variants of Bloom crops should be added when Farmer's Delight is installed",
   "text.autoconfig.bloom.option.misc": "Miscellaneous",
+  "text.autoconfig.bloom.option.misc.snowier_snow": "Snowier Snow",
+  "text.autoconfig.bloom.option.misc.snowier_snow.@Tooltip": "How snow layers should extend underlays to blocks they are placed on. Can be ALL, LEAVES or NONE.",
   "text.autoconfig.bloom.option.misc.stone_variant_crafting": "Stone Variant Crafting",
   "text.autoconfig.bloom.option.misc.stone_variant_crafting.@Tooltip": "Whether Andesite, Diorite, Granite & Tuff should be accepted in base stone crafting recipes",
   "text.autoconfig.bloom.option.worldgen": "Worldgen",

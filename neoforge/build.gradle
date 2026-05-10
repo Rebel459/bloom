@@ -8,9 +8,12 @@ dependencies {
     api("maven.modrinth:unified-api:$unified_version-neoforge")
 	api("maven.modrinth:lithostitched:$lithostitched_neoforge")
 
+	compileOnly("maven.modrinth:sodium:$sodium_version-fabric")
 	compileOnly("maven.modrinth:legacies-and-legends:$lal_version-neoforge")
 	compileOnly("maven.modrinth:item-tooltips:$tooltips_version-neoforge")
 	compileOnly("maven.modrinth:trim-patcher:$patcher_version-neoforge")
+
+	compileOnly("maven.modrinth:wilder-wild:$wilder_version")
 }
 
 neoForge {

@@ -79,11 +79,11 @@ public final class GoldenForest extends BloomBiome {
     @Override
     public void addFeatures(BiomeGenerationSettings.Builder features) {
         OverworldBiomes.globalOverworldGeneration(features);
+		features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_TALL_GRASS);
 		BiomeDefaultFeatures.addBushes(features);
 		BiomeDefaultFeatures.addDefaultOres(features);
 		BiomeDefaultFeatures.addDefaultSoftDisks(features);
 		BiomeDefaultFeatures.addForestGrass(features);
-		features.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_TALL_GRASS);
 		BiomeDefaultFeatures.addDefaultExtraVegetation(features, true);
     }
 
