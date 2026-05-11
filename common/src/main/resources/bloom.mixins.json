@@ -12,7 +12,6 @@
     "client.BedRendererMixin",
     "client.BedRenderStateMixin",
     "client.LevelRendererMixin",
-    "client.snow.snowrealmagic.SnowRealMagicSnowIntegrationMixin",
     "client.snow.sodium.SodiumChunkBuilderMeshingTaskSnowMixin",
     "client.snow.sodium.SodiumLevelSliceSnowMixin",
     "client.snow.sodium.SodiumLightDataAccessInvoker",

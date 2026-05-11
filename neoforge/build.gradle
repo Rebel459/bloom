@@ -13,8 +13,8 @@ dependencies {
 	compileOnly("maven.modrinth:item-tooltips:$tooltips_version-neoforge")
 	compileOnly("maven.modrinth:trim-patcher:$patcher_version-neoforge")
 
-	compileOnly("maven.modrinth:snow-real-magic:$snow_version")
 	compileOnly("maven.modrinth:wilder-wild:$wilder_version")
+	compileOnly("maven.modrinth:frozenlib:$frozenlib_version")
 }
 
 neoForge {

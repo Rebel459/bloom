@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -66,6 +67,34 @@ public abstract class SodiumChunkBuilderMeshingTaskSnowMixin {
 			Vec3 visualOffset = blockState.hasOffsetFunction()
 				? blockState.getOffset(blockPos)
 				: Vec3.ZERO;
+
+			BlockStateModel overlayOnlyModel = new SnowOverlayBlockStateModel(
+				model,
+				slice,
+				blockPos,
+				fakeSnowLayerState,
+				false,
+				visualOffset
+			);
+
+			SodiumSnowOverlayLightingContext.push(blockPos, fakeSnowLayerState);
+
+			try {
+				original.call(renderer, overlayOnlyModel, fakeSnowLayerState, blockPos, modelOffset);
+			} finally {
+				SodiumSnowOverlayLightingContext.pop();
+			}
+
+			return;
+		}
+
+		int snowloggedLayers = SnowOverlayHelper.getSnowloggedLayers(blockState);
+		if (snowloggedLayers > 0) {
+			original.call(renderer, model, blockState, blockPos, modelOffset);
+
+			BlockState fakeSnowLayerState = Blocks.SNOW.defaultBlockState().setValue(SnowLayerBlock.LAYERS, snowloggedLayers);
+
+			Vec3 visualOffset = fakeSnowLayerState.hasOffsetFunction() ? blockState.getOffset(blockPos) : Vec3.ZERO;
 
 			BlockStateModel overlayOnlyModel = new SnowOverlayBlockStateModel(
 				model,

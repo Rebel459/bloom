@@ -24,6 +24,10 @@ public class SnowOverlayHelper {
 		return state.is(Blocks.SNOW) || state.is(Blocks.SNOW_BLOCK);
 	}
 
+	public static int getSnowloggedLayers(BlockState state) {
+		return 0;
+	}
+
 	public static BlockAndTintGetter fakeBlockStateView(BlockAndTintGetter original, BlockPos fakePos, BlockState fakeState) {
 		return new BlockAndTintGetter() {
 			@Override

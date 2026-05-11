@@ -69,6 +69,29 @@ public abstract class SectionCompilerSnowMixin {
 			return;
 		}
 
+		int snowloggedLayers = SnowOverlayHelper.getSnowloggedLayers(blockState);
+		if (snowloggedLayers > 0) {
+			original.call(instance, output, x, y, z, level, pos, blockState, model, seed);
+
+			BlockState fakeSnowLayerState = Blocks.SNOW.defaultBlockState().setValue(SnowLayerBlock.LAYERS, snowloggedLayers);
+
+			BlockAndTintGetter fakeLevel = SnowOverlayHelper.fakeBlockStateView(level, pos, fakeSnowLayerState);
+
+			Vec3 visualOffset = fakeSnowLayerState.hasOffsetFunction() ? blockState.getOffset(pos) : Vec3.ZERO;
+
+			BlockStateModel overlayOnlyModel = new SnowOverlayBlockStateModel(
+				model,
+				region,
+				pos,
+				fakeSnowLayerState,
+				false,
+				visualOffset
+			);
+
+			original.call(instance, output, x, y, z, fakeLevel, pos, fakeSnowLayerState, overlayOnlyModel, seed);
+			return;
+		}
+
 		Vec3 visualOffset = blockState.hasOffsetFunction() ? blockState.getOffset(pos) : Vec3.ZERO;
 
 		original.call(instance, output, x, y, z, level, pos, blockState, new SnowOverlayBlockStateModel(model, region, pos, blockState, true, visualOffset), seed);

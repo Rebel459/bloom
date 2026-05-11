@@ -18,6 +18,7 @@ import net.minecraft.world.phys.Vec3;
 import net.rebel459.bloom.client.snow.SnowOverlayBlockStateModel;
 import net.rebel459.bloom.client.snow.SnowOverlayBlockStateModelPart;
 import net.rebel459.bloom.client.snow.SnowOverlayHelper;
+import net.rebel459.bloom.client.snow.SodiumSnowOverlayLightingContext;
 import net.rebel459.bloom.config.BloomConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -55,6 +56,29 @@ public abstract class SectionCompilerSnowMixin {
 			BlockAndTintGetter fakeLevel = SnowOverlayHelper.fakeBlockStateView(level, pos, fakeSnowLayerState);
 
 			Vec3 visualOffset = blockState.hasOffsetFunction() ? blockState.getOffset(pos) : Vec3.ZERO;
+
+			BlockStateModel overlayOnlyModel = new SnowOverlayBlockStateModel(
+				model,
+				region,
+				pos,
+				fakeSnowLayerState,
+				false,
+				visualOffset
+			);
+
+			original.call(instance, output, x, y, z, fakeLevel, pos, fakeSnowLayerState, overlayOnlyModel, seed);
+			return;
+		}
+
+		int snowloggedLayers = SnowOverlayHelper.getSnowloggedLayers(blockState);
+		if (snowloggedLayers > 0) {
+			original.call(instance, output, x, y, z, level, pos, blockState, model, seed);
+
+			BlockState fakeSnowLayerState = Blocks.SNOW.defaultBlockState().setValue(SnowLayerBlock.LAYERS, snowloggedLayers);
+
+			BlockAndTintGetter fakeLevel = SnowOverlayHelper.fakeBlockStateView(level, pos, fakeSnowLayerState);
+
+			Vec3 visualOffset = fakeSnowLayerState.hasOffsetFunction() ? blockState.getOffset(pos) : Vec3.ZERO;
 
 			BlockStateModel overlayOnlyModel = new SnowOverlayBlockStateModel(
 				model,

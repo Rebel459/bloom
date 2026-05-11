@@ -20,4 +20,9 @@ public class WilderWildSnowIntegrationMixin {
 	private static void isOverlaySource(BlockState state, CallbackInfoReturnable<Boolean> cir) {
 		cir.setReturnValue(cir.getReturnValue() || (state.hasProperty(WWBlockStateProperties.SNOW_LAYERS) && state.getValue(WWBlockStateProperties.SNOW_LAYERS) > 0));
 	}
+
+	@Inject(method = "getSnowloggedLayers", at = @At("RETURN"), cancellable = true)
+	private static void getSnowloggedLayers(BlockState state, CallbackInfoReturnable<Integer> cir) {
+		if (state.hasProperty(WWBlockStateProperties.SNOW_LAYERS)) cir.setReturnValue(Math.max(state.getValue(WWBlockStateProperties.SNOW_LAYERS), cir.getReturnValue()));
+	}
 }

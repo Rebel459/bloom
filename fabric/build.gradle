@@ -33,7 +33,6 @@ dependencies {
 	datagenRuntimeOnly("maven.modrinth:trim-patcher:$patcher_version-fabric")
 	datagenRuntimeOnly("maven.modrinth:lithostitched:$lithostitched_fabric")
 
-	compileOnly("maven.modrinth:snow-real-magic:$snow_version")
 	compileOnly("maven.modrinth:wilder-wild:$wilder_version")
 	compileOnly("maven.modrinth:frozenlib:$frozenlib_version")
 }
