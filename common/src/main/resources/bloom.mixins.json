@@ -12,13 +12,13 @@
     "client.BedRendererMixin",
     "client.BedRenderStateMixin",
     "client.LevelRendererMixin",
-    "client.snow.vanilla.SectionCompilerSnowMixin",
+    "client.snow.snowrealmagic.SnowRealMagicSnowIntegrationMixin",
     "client.snow.sodium.SodiumChunkBuilderMeshingTaskSnowMixin",
     "client.snow.sodium.SodiumLevelSliceSnowMixin",
     "client.snow.sodium.SodiumLightDataAccessInvoker",
     "client.snow.sodium.SodiumLightDataCacheSnowMixin",
     "client.snow.sodium.SodiumSmoothLightPipelineSnowMixin",
-    "client.snow.wilderwild.WWSnowOverlayHelperSnowMixin"
+    "client.snow.wilderwild.WilderWildSnowIntegrationMixin"
   ],
   "mixins": [
     "entity.LivingEntityMixin",

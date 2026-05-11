@@ -34,8 +34,9 @@ public final class BloomMixinPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, @NotNull String mixinClassName) {
 		boolean snowOverlay = BloomConfig.get().misc.snowier_snow != BloomConfig.SnowType.NONE;
 		boolean hasSodium = UnifiedPlatform.isModLoaded("sodium");
-		if (mixinClassName.contains("client.snow.sodium")) return snowOverlay && hasSodium;
 		if (mixinClassName.contains("client.snow.vanilla")) return snowOverlay && !hasSodium;
+		if (mixinClassName.contains("client.snow.sodium")) return snowOverlay && hasSodium;
+		if (mixinClassName.contains("client.snow.snowrealmagic")) return snowOverlay && UnifiedPlatform.isModLoaded("snowrealmagic");
 		if (mixinClassName.contains("client.snow.wilderwild")) return snowOverlay && UnifiedPlatform.isModLoaded("wilderwild");
         return true;
     }

@@ -9,15 +9,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SnowOverlayHelper.class)
-public class WWSnowOverlayHelperSnowMixin {
+public class WilderWildSnowIntegrationMixin {
 
 	@Inject(method = "isValidState", at = @At("RETURN"), cancellable = true)
-	private static void snowloggedValidState(BlockState state, CallbackInfoReturnable<Boolean> cir) {
+	private static void isValidState(BlockState state, CallbackInfoReturnable<Boolean> cir) {
 		cir.setReturnValue(cir.getReturnValue() || (state.hasProperty(WWBlockStateProperties.SNOW_LAYERS) && state.getValue(WWBlockStateProperties.SNOW_LAYERS) > 0));
 	}
 
 	@Inject(method = "isOverlaySource", at = @At("RETURN"), cancellable = true)
-	private static void snowloggedOverlaySource(BlockState state, CallbackInfoReturnable<Boolean> cir) {
+	private static void isOverlaySource(BlockState state, CallbackInfoReturnable<Boolean> cir) {
 		cir.setReturnValue(cir.getReturnValue() || (state.hasProperty(WWBlockStateProperties.SNOW_LAYERS) && state.getValue(WWBlockStateProperties.SNOW_LAYERS) > 0));
 	}
 }

@@ -118,7 +118,7 @@ public class BloomConfig implements ConfigData {
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
 		@ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
-		public SnowType snowier_snow = SnowType.LEAVES;
+		public SnowType snowier_snow = SnowType.ALL;
 		@ConfigEntry.Category("config")
 		@ConfigEntry.Gui.Tooltip
 		public boolean stone_variant_crafting = true;
