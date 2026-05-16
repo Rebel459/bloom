@@ -5,6 +5,7 @@ import dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
+import dev.worldgen.lithostitched.api.worldgen.biomeinjector.ParameterBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
@@ -82,79 +83,33 @@ public class BiomeHelper {
 		context.getFeatures().addFeature(feature, GenerationStep.Decoration.VEGETAL_DECORATION);
 	}
 
-	public static void surfaceBiome(
-		String path,
-		ResourceKey<Biome> biome,
-		Climate.Parameter temperature,
-		Climate.Parameter humidity,
-		Climate.Parameter continentalness,
-		Climate.Parameter erosion,
-		Climate.Parameter weirdness,
-		long offset,
-		Pair<RegistryAccess, BiConsumer<Identifier, BiomeInjector>> event
-	) {
+	public static void surfaceBiome(String path, ResourceKey<Biome> biome, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter weirdness, Pair<RegistryAccess, BiConsumer<Identifier, BiomeInjector>> event) {
 		event.getSecond().accept(
 			Bloom.id(path),
-			BiomeInjector.builder(Level.OVERWORLD).addPoints(
-				new Climate.ParameterList<>(List.of(
-					Pair.of(
-						new Climate.ParameterPoint(
-							temperature,
-							humidity,
-							continentalness,
-							erosion,
-							Climate.Parameter.point(0F),
-							weirdness,
-							offset
-						),
-						event.getFirst().getOrThrow(biome)
-					),
-					Pair.of(
-						new Climate.ParameterPoint(
-							temperature,
-							humidity,
-							continentalness,
-							erosion,
-							Climate.Parameter.point(1F),
-							weirdness,
-							offset
-						),
-						event.getFirst().getOrThrow(biome)
-					)
-				))
+			BiomeInjector.builder(Level.OVERWORLD).forcePlacement(
+				event.getFirst().getOrThrow(biome),
+				ParameterBuilder.create()
+					.climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, temperature.min(), temperature.max())
+					.climateRange(BiomeInjector.ClimateParameter.HUMIDITY, humidity.min(), humidity.max())
+					.climateRange(BiomeInjector.ClimateParameter.CONTINENTALNESS, continentalness.min(), continentalness.max())
+					.climateRange(BiomeInjector.ClimateParameter.EROSION, erosion.min(), erosion.max())
+					.climateRange(BiomeInjector.ClimateParameter.WEIRDNESS, weirdness.min(), weirdness.max())
 			)
 		);
 	}
 
-	public static void caveBiome(
-		String path,
-		ResourceKey<Biome> biome,
-		Climate.Parameter temperature,
-		Climate.Parameter humidity,
-		Climate.Parameter continentalness,
-		Climate.Parameter erosion,
-		Climate.Parameter depth,
-		Climate.Parameter weirdness,
-		long offset,
-		Pair<RegistryAccess, BiConsumer<Identifier, BiomeInjector>> event
-	) {
+	public static void caveBiome(String path, ResourceKey<Biome> biome, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter depth, Climate.Parameter weirdness, Pair<RegistryAccess, BiConsumer<Identifier, BiomeInjector>> event) {
 		event.getSecond().accept(
 			Bloom.id(path),
-			BiomeInjector.builder(Level.OVERWORLD).addPoints(
-				new Climate.ParameterList<>(List.of(
-					Pair.of(
-						new Climate.ParameterPoint(
-							temperature,
-							humidity,
-							continentalness,
-							erosion,
-							depth,
-							weirdness,
-							offset
-						),
-						event.getFirst().getOrThrow(biome)
-					)
-				))
+			BiomeInjector.builder(Level.OVERWORLD).forcePlacement(
+				event.getFirst().getOrThrow(biome),
+				ParameterBuilder.create()
+					.climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, temperature.min(), temperature.max())
+					.climateRange(BiomeInjector.ClimateParameter.HUMIDITY, humidity.min(), humidity.max())
+					.climateRange(BiomeInjector.ClimateParameter.CONTINENTALNESS, continentalness.min(), continentalness.max())
+					.climateRange(BiomeInjector.ClimateParameter.EROSION, erosion.min(), erosion.max())
+					.climateRange(BiomeInjector.ClimateParameter.DEPTH, depth.min(), depth.max())
+					.climateRange(BiomeInjector.ClimateParameter.WEIRDNESS, weirdness.min(), weirdness.max())
 			)
 		);
 	}

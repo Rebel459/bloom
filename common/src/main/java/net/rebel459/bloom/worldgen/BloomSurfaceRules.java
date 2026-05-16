@@ -5,9 +5,9 @@ import dev.worldgen.lithostitched.api.util.InjectionType;
 import dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier;
 import java.util.List;
 import net.minecraft.data.worldgen.SurfaceRuleData;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -235,7 +235,7 @@ public final class BloomSurfaceRules {
 		AddWorldgenModifiersEvent.EVENT.register((registry, consumer) -> {
 			consumer.accept(
 				Bloom.id("surface_rules"),
-				WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.PREPEND,
+				WorldgenModifier.builder().addSurfaceRule(Level.OVERWORLD, InjectionType.PREPEND,
 					SurfaceRules.sequence(
 						frozenPeaksRule(),
 						SurfaceRuleHelper.depthRule(
@@ -288,7 +288,7 @@ public final class BloomSurfaceRules {
 			);
 			consumer.accept(
 				Bloom.id("preliminary_surface_rules"),
-				WorldgenModifier.builder().addSurfaceRule(LevelStem.OVERWORLD, InjectionType.PREPEND,
+				WorldgenModifier.builder().addSurfaceRule(Level.OVERWORLD, InjectionType.PREPEND,
 					SurfaceRules.ifTrue(
 						SurfaceRules.abovePreliminarySurface(),
 						SurfaceRules.sequence(
