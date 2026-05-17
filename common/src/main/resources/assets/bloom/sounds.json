@@ -96,8 +96,7 @@
     "sounds": [
       {
         "name": "music.game",
-        "type": "event",
-        "weight": 27
+        "type": "event"
       },
       {
         "name": "bloom:music/overworld/lock_and_key",
@@ -110,8 +109,7 @@
     "sounds": [
       {
         "name": "music.overworld.old_growth_taiga",
-        "type": "event",
-        "weight": 51
+        "type": "event"
       },
       {
         "name": "bloom:music/overworld/lock_and_key",
@@ -125,8 +123,7 @@
     "sounds": [
       {
         "name": "music.overworld.swamp",
-        "type": "event",
-        "weight": 3
+        "type": "event"
       },
       {
         "name": "bloom:music/overworld/lock_and_key",
