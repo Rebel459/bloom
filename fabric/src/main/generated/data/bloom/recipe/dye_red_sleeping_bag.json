@@ -17,10 +17,10 @@
       "bloom:orange_sleeping_bag",
       "bloom:pink_sleeping_bag",
       "bloom:purple_sleeping_bag",
-      "bloom:red_sleeping_bag",
       "bloom:yellow_sleeping_bag",
       "bloom:white_sleeping_bag"
-    ]
+    ],
+    "minecraft:red_dye"
   ],
   "result": {
     "id": "bloom:red_sleeping_bag"

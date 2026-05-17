@@ -10,7 +10,6 @@
       "bloom:cyan_sleeping_bag",
       "bloom:gray_sleeping_bag",
       "bloom:green_sleeping_bag",
-      "bloom:light_blue_sleeping_bag",
       "bloom:light_gray_sleeping_bag",
       "bloom:lime_sleeping_bag",
       "bloom:magenta_sleeping_bag",
@@ -20,7 +19,8 @@
       "bloom:red_sleeping_bag",
       "bloom:yellow_sleeping_bag",
       "bloom:white_sleeping_bag"
-    ]
+    ],
+    "minecraft:light_blue_dye"
   ],
   "result": {
     "id": "bloom:light_blue_sleeping_bag"

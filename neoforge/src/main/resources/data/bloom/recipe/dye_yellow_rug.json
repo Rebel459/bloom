@@ -19,7 +19,8 @@
       "bloom:purple_rug",
       "bloom:red_rug",
       "bloom:white_rug"
-    ]
+    ],
+    "minecraft:yellow_dye"
   ],
   "result": {
     "id": "bloom:yellow_rug"

@@ -18,9 +18,9 @@
       "bloom:pink_sleeping_bag",
       "bloom:purple_sleeping_bag",
       "bloom:red_sleeping_bag",
-      "bloom:yellow_sleeping_bag",
       "bloom:white_sleeping_bag"
-    ]
+    ],
+    "minecraft:yellow_dye"
   ],
   "result": {
     "id": "bloom:yellow_sleeping_bag"

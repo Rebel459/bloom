@@ -195,7 +195,7 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 						.unlockedBy("has_sleeping_bag_material", this.has(BloomItemTags.SLEEPING_BAG_MATERIALS))
 						.group("sleeping_bag")
 						.save(exporter);
-					Stream<Triple<ItemLike, ItemLike, ItemLike>> stream = list.stream().filter(sleepingBagTriple -> !sleepingBagTriple.getLeft().equals(sleepingBag.asItem()));
+					Stream<Triple<ItemLike, ItemLike, ItemLike>> stream = list.stream().filter(sleepingBagTriple -> !sleepingBagTriple.getLeft().asItem().equals(sleepingBag.asItem()));
 					List<Triple<ItemLike, ItemLike, ItemLike>> streamList = stream.toList();
 					List<ItemLike> sleepingBagList = new ArrayList<>();
 					for (Triple<ItemLike, ItemLike, ItemLike> sleepingBagTriple : streamList) {
@@ -203,6 +203,7 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 					}
 					this.shapeless(RecipeCategory.DECORATIONS, sleepingBag)
 						.requires(Ingredient.of(sleepingBagList.stream()))
+						.requires(Ingredient.of(triple.getRight()))
 						.unlockedBy("has_dye", this.has(dye))
 						.group("sleeping_bag_dye")
 						.save(this.output, "dye_" + getItemName(sleepingBag));
@@ -221,7 +222,7 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 						.unlockedBy("has_dye", this.has(dye))
 						.group("rug")
 						.save(exporter);
-					Stream<Pair<ItemLike, ItemLike>> stream = list.stream().filter(rugPair -> !rugPair.first.equals(rug.asItem()));
+					Stream<Pair<ItemLike, ItemLike>> stream = list.stream().filter(rugPair -> !rugPair.first.asItem().equals(rug.asItem()));
 					List<Pair<ItemLike, ItemLike>> streamList = stream.toList();
 					List<ItemLike> rugList = new ArrayList<>();
 					for (Pair<ItemLike, ItemLike> rugPair : streamList) {
@@ -229,6 +230,7 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 					}
 					this.shapeless(RecipeCategory.DECORATIONS, rug)
 						.requires(Ingredient.of(rugList.stream()))
+						.requires(Ingredient.of(pair.second))
 						.unlockedBy("has_dye", this.has(dye))
 						.group("rug_dye")
 						.save(this.output, "dye_" + getItemName(rug));

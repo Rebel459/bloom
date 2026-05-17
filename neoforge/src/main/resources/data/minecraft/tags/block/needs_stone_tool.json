@@ -1,18 +1,18 @@
 {
   "values": [
-    "bloom:tuff_copper_ore",
     "bloom:tuff_iron_ore",
-    "bloom:granite_copper_ore",
+    "bloom:tuff_copper_ore",
     "bloom:granite_iron_ore",
-    "bloom:andesite_copper_ore",
+    "bloom:granite_copper_ore",
     "bloom:andesite_iron_ore",
-    "bloom:diorite_copper_ore",
+    "bloom:andesite_copper_ore",
     "bloom:diorite_iron_ore",
-    "bloom:dolerite_copper_ore",
+    "bloom:diorite_copper_ore",
     "bloom:dolerite_iron_ore",
-    "bloom:sandstone_copper_ore",
+    "bloom:dolerite_copper_ore",
     "bloom:sandstone_iron_ore",
-    "bloom:red_sandstone_copper_ore",
-    "bloom:red_sandstone_iron_ore"
+    "bloom:sandstone_copper_ore",
+    "bloom:red_sandstone_iron_ore",
+    "bloom:red_sandstone_copper_ore"
   ]
 }

@@ -13,14 +13,14 @@
       "bloom:light_blue_sleeping_bag",
       "bloom:light_gray_sleeping_bag",
       "bloom:lime_sleeping_bag",
-      "bloom:magenta_sleeping_bag",
       "bloom:orange_sleeping_bag",
       "bloom:pink_sleeping_bag",
       "bloom:purple_sleeping_bag",
       "bloom:red_sleeping_bag",
       "bloom:yellow_sleeping_bag",
       "bloom:white_sleeping_bag"
-    ]
+    ],
+    "minecraft:magenta_dye"
   ],
   "result": {
     "id": "bloom:magenta_sleeping_bag"

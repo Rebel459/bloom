@@ -148,6 +148,7 @@ public class BloomBiomePlacement {
 					Climate.Parameter.span(Parameters.CONTINENTALNESS_COAST, Parameters.CONTINENTALNESS_MAX),
 					Climate.Parameter.span(Parameters.EROSION_5, Parameters.EROSION_6),
 					Climate.Parameter.span(Parameters.WEIRDNESS_MID_SLICE_VARIANT_ASCENDING, Parameters.WEIRDNESS_MAX),
+					0L,
 					event
 				);
 				BiomeHelper.surfaceBiome(
@@ -158,6 +159,7 @@ public class BloomBiomePlacement {
 					Climate.Parameter.span(Parameters.CONTINENTALNESS_COAST, Parameters.CONTINENTALNESS_MAX),
 					Climate.Parameter.span(Parameters.EROSION_5, Parameters.EROSION_6),
 					Climate.Parameter.span(Parameters.WEIRDNESS_HIGH_SLICE_NORMAL_ASCENDING, Parameters.WEIRDNESS_HIGH_SLICE_NORMAL_DESCENDING),
+					0L,
 					event
 				);
 				consumer.accept(
@@ -194,6 +196,7 @@ public class BloomBiomePlacement {
 					Climate.Parameter.span(Parameters.CONTINENTALNESS_COAST, Parameters.CONTINENTALNESS_MAX),
 					Climate.Parameter.span(Parameters.EROSION_6, Parameters.EROSION_7),
 					Climate.Parameter.span(Parameters.WEIRDNESS_MID_SLICE_NORMAL_DESCENDING, Parameters.WEIRDNESS_HIGH_SLICE_VARIANT_ASCENDING),
+					0L,
 					event
 				);
 				consumer.accept(
@@ -260,6 +263,7 @@ public class BloomBiomePlacement {
 					Climate.Parameter.span(Parameters.CONTINENTALNESS_COAST, Parameters.CONTINENTALNESS_MAX),
 					Climate.Parameter.span(0F, Parameters.EROSION_5),
 					Climate.Parameter.span(Parameters.WEIRDNESS_MID_SLICE_NORMAL_ASCENDING, Parameters.WEIRDNESS_MAX),
+					0L,
 					event
 				);
 			}
