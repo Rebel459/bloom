@@ -1,0 +1,9 @@
+{
+  "name": {
+    "translate": "album.bloom.bloom"
+  },
+  "icon": "bloom:icon.png",
+  "tracks": [
+    "music/overworld/lock_and_key"
+  ]
+}

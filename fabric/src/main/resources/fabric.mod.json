@@ -17,7 +17,7 @@
     "sources": "https://github.com/Rebel459/bloom"
   },
   "license": "${license}",
-  "icon": "assets/icon.png",
+  "icon": "assets/bloom/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [

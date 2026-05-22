@@ -35,6 +35,8 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 			autoName(translation, items);
 		}
 
+		translation.add("album.bloom.bloom", "Bloom");
+
 		this.music("overworld.lock_and_key", "Zhen - Lock and Key");
 
 		translation.add("pack.bloom.pine_trees", "Pine Trees");
