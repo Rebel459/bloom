@@ -2,8 +2,6 @@ package net.rebel459.bloom.mixin;
 
 import java.util.List;
 import java.util.Set;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.rebel459.bloom.config.BloomConfig;
 import net.rebel459.unified.platform.UnifiedPlatform;
 import org.jetbrains.annotations.NotNull;
@@ -14,15 +12,8 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class BloomMixinPlugin implements IMixinConfigPlugin {
 
-	private static boolean registeredConfig = false;
-
 	@Override
-    public void onLoad(String mixinPackage) {
-		if (!registeredConfig) {
-			AutoConfig.register(BloomConfig.class, GsonConfigSerializer::new);
-			registeredConfig = true;
-		}
-	}
+    public void onLoad(String mixinPackage) {}
 
     @Override
     @Nullable

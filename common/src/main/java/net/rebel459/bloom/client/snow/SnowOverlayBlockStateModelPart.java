@@ -16,7 +16,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.rebel459.bloom.Bloom;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
-
 import java.util.ArrayList;
 import java.util.List;
 

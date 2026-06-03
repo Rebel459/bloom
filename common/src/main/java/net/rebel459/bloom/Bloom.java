@@ -26,7 +26,14 @@ import net.rebel459.unified.util.CreativeModeTabs;
 import net.rebel459.unified.util.PackType;
 
 public class Bloom {
+
+	public static boolean registeredConfig = false;
+
 	public static final String MOD_ID = "bloom";
+
+	private static boolean addWildCrops() {
+		return UnifiedPlatform.isModLoaded("farmersdelight") && BloomConfig.get().farming.wild_crops;
+	}
 
 	public static void initRegistries() {
 		BloomBlockStateProperties.init();
@@ -39,6 +46,12 @@ public class Bloom {
 		BloomSounds.init();
 		BloomConditionSources.init();
 		BloomParticleTypes.init();
+
+		if (addWildCrops() && BloomConfig.get().farming.cotton) {
+			UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_WILD_COTTON, context -> {
+				BiomeHelper.addVegetation(context, BloomFeatures.PATCH_WILD_COTTON);
+			});
+		}
 	}
 
 	public static void init() {
@@ -67,15 +80,10 @@ public class Bloom {
 		if (BloomConfig.get().farming.tradable_yarn) {
 			UnifiedHelpers.PACKS.add(Bloom.id("tradable_yarn"), PackType.REQUIRED_DATA);
 		}
-		if (UnifiedPlatform.isModLoaded("farmersdelight")) {
-			if (BloomConfig.get().farming.wild_crops) {
-				UnifiedHelpers.PACKS.add(Bloom.id("wild_crops"), PackType.REQUIRED_DATA);
-				if (BloomConfig.get().farming.cotton) {
-					UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_WILD_COTTON, context -> {
-						BiomeHelper.addVegetation(context, BloomFeatures.PATCH_WILD_COTTON);
-					});
-					UnifiedHelpers.CREATIVE_ENTRIES.insertBefore(CreativeModeTabs.NATURAL_BLOCKS, Items.WHEAT_SEEDS, BloomBlocks.WILD_COTTON);
-				}
+		if (addWildCrops()) {
+			UnifiedHelpers.PACKS.add(Bloom.id("wild_crops"), PackType.REQUIRED_DATA);
+			if (BloomConfig.get().farming.cotton) {
+				UnifiedHelpers.CREATIVE_ENTRIES.insertBefore(CreativeModeTabs.NATURAL_BLOCKS, Items.WHEAT_SEEDS, BloomBlocks.WILD_COTTON);
 			}
 		}
 	}

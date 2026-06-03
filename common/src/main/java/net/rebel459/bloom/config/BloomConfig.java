@@ -5,6 +5,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.rebel459.bloom.Bloom;
 import org.jetbrains.annotations.Contract;
 
@@ -18,6 +19,10 @@ public class BloomConfig implements ConfigData {
     }
 
     public static BloomConfig get() {
+		if (!Bloom.registeredConfig) {
+			AutoConfig.register(BloomConfig.class, GsonConfigSerializer::new);
+			Bloom.registeredConfig = true;
+		}
 		return AutoConfig.getConfigHolder(BloomConfig.class).getConfig();
 	}
 

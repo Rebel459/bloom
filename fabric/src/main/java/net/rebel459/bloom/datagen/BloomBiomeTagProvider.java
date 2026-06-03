@@ -388,8 +388,7 @@ public final class BloomBiomeTagProvider extends FabricTagsProvider<Biome> {
 			.add(BloomBiomes.SNOWY_PINE_TAIGA);
 
 		this.builder(BiomeTags.HAS_VILLAGE_TAIGA)
-			.add(BloomBiomes.PINE_TAIGA)
-			.add(BloomBiomes.SNOWY_PINE_TAIGA);
+			.add(BloomBiomes.PINE_TAIGA);
 
 		this.builder(BiomeTags.HAS_MINESHAFT)
 			.addTag(BloomBiomeTags.BLOOM_BIOMES);

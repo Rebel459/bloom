@@ -127,5 +127,11 @@ public final class BloomItemTagProvider extends FabricTagsProvider.ItemTagsProvi
 
 		this.valueLookupBuilder(ItemTags.WOODEN_TRAPDOORS)
 			.add(woodset.getTrapDoor().asItem());
+
+		this.valueLookupBuilder(ItemTags.BOATS)
+			.add(woodset.getBoatItem().asItem());
+
+		this.valueLookupBuilder(ItemTags.CHEST_BOATS)
+			.add(woodset.getChestBoatItem().asItem());
 	}
 }

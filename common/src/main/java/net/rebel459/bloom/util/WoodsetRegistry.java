@@ -472,10 +472,10 @@ public class WoodsetRegistry {
         return createBlockWithItem(this.getName() + "_button", settings -> new ButtonBlock(this.getBlockSetType(), 30, settings), () -> BlockBehaviour.Properties.ofFullCopy(getBase()).sound(getBlockSetType().soundType()).mapColor(getTopColor()));
     }
     private SuppliedBlock createDoor(){
-        return createBlockWithItem(this.getName() + "_door", settings -> new DoorBlock(this.getBlockSetType(), settings), () -> BlockBehaviour.Properties.ofFullCopy(getBase()).sound(getBlockSetType().soundType()).mapColor(getTopColor()));
+        return createBlockWithItem(this.getName() + "_door", settings -> new DoorBlock(this.getBlockSetType(), settings), () -> BlockBehaviour.Properties.ofFullCopy(getBase()).sound(getBlockSetType().soundType()).mapColor(getTopColor()).noOcclusion());
     }
     private SuppliedBlock createTrapDoor(){
-        return createBlockWithItem(this.getName() + "_trapdoor", settings -> new TrapDoorBlock(this.getBlockSetType(), settings), () -> BlockBehaviour.Properties.ofFullCopy(getBase()).sound(getBlockSetType().soundType()).mapColor(getTopColor()));
+        return createBlockWithItem(this.getName() + "_trapdoor", settings -> new TrapDoorBlock(this.getBlockSetType(), settings), () -> BlockBehaviour.Properties.ofFullCopy(getBase()).sound(getBlockSetType().soundType()).mapColor(getTopColor()).noOcclusion());
     }
     private SuppliedBlock createSign(){
         return createBlockWithoutItem(this.getName() + "_sign", settings -> new StandingSignBlock(
@@ -519,10 +519,10 @@ public class WoodsetRegistry {
     }
 
     private Supplier<EntityType<Boat>> createBoatEntity(){
-        return register(this.getName() + "_" + woodsetSettings.getBoatName(), EntityType.Builder.of(EntityType.boatFactory(boatItem), MobCategory.MISC).noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+        return register(this.getName() + "_" + woodsetSettings.getBoatName(), EntityType.Builder.of(EntityType.boatFactory(() -> boatItem.get()), MobCategory.MISC).noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
     }
     private Supplier<EntityType<ChestBoat>> createChestBoatEntity(){
-        return register(this.getName() + "_chest_" + woodsetSettings.getBoatName(), EntityType.Builder.of(EntityType.chestBoatFactory(chestBoatItem), MobCategory.MISC).noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+        return register(this.getName() + "_chest_" + woodsetSettings.getBoatName(), EntityType.Builder.of(EntityType.chestBoatFactory(() -> chestBoatItem.get()), MobCategory.MISC).noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
     }
     private SuppliedItem createBoatItem(){
         return createItem(this.getName() + "_" + woodsetSettings.getBoatName(), settings -> new BoatItem(boat.get(), settings), () -> new Item.Properties().stacksTo(1));
