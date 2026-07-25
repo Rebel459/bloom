@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "bloom:golden_birch_planks"
+  ],
+  "result": {
+    "id": "bloom:golden_birch_button"
+  }
+}

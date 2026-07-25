@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.bloom.tag.BloomBlockTags;
 import net.rebel459.bloom.util.StoneOresRegistry;
-import net.rebel459.bloom.util.WoodsetRegistry;
+import net.rebel459.unified.util.builder.WoodSet;
 
 public final class BloomBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
@@ -116,14 +116,9 @@ public final class BloomBlockTagProvider extends FabricTagsProvider.BlockTagsPro
         this.valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
 			.addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
 
-        this.valueLookupBuilder(BlockTags.SAPLINGS)
-			.add(BloomBlocks.JACARANDA_SAPLING.get())
-			.add(BloomBlocks.GOLDEN_BIRCH_SAPLING.get())
-			.add(BloomBlocks.PINE_SAPLING.get());
-
-		tagWoodset(BloomBlocks.JACARANDA, BloomBlockTags.JACARANDA_LOGS);
-		tagWoodset(BloomBlocks.GOLDEN_BIRCH, BloomBlockTags.GOLDEN_BIRCH_LOGS);
-		tagWoodset(BloomBlocks.PINE, BloomBlockTags.PINE_LOGS);
+		tagWoodSet(BloomBlocks.JACARANDA, BloomBlockTags.JACARANDA_LOGS);
+		tagWoodSet(BloomBlocks.GOLDEN_BIRCH, BloomBlockTags.GOLDEN_BIRCH_LOGS);
+		tagWoodSet(BloomBlocks.PINE, BloomBlockTags.PINE_LOGS);
 
 		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
 			.add(BloomBlocks.DOLERITE.get())
@@ -186,26 +181,32 @@ public final class BloomBlockTagProvider extends FabricTagsProvider.BlockTagsPro
 		StoneOresRegistry.ALL_REGISTRIES.forEach(this::tagOres);
 	}
 
-	public void tagWoodset(WoodsetRegistry woodset, TagKey<Block> tag) {
+	public void tagWoodSet(WoodSet woodSet, TagKey<Block> tag) {
 
 		this.valueLookupBuilder(BlockTags.STANDING_SIGNS)
-			.add(woodset.getSign().get());
+			.add(woodSet.getSign().get());
 
 		this.valueLookupBuilder(BlockTags.WALL_SIGNS)
-			.add(woodset.getWallSign().get());
+			.add(woodSet.getWallSign().get());
 
 		this.valueLookupBuilder(BlockTags.CEILING_HANGING_SIGNS)
-			.add(woodset.getHangingSign().get());
+			.add(woodSet.getHangingSign().get());
 
 		this.valueLookupBuilder(BlockTags.WALL_HANGING_SIGNS)
-			.add(woodset.getWallHangingSign().get());
+			.add(woodSet.getWallHangingSign().get());
 
 		this.valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
-			.add(woodset.getLog().get());
+			.add(woodSet.getLog().get());
 
-		this.valueLookupBuilder(tag)
-			.add(woodset.getLog().get(), woodset.getStrippedLog().get())
-			.add(woodset.getWood().get(), woodset.getStrippedWood().get());
+		if (woodSet.hasWood()) {
+			this.valueLookupBuilder(tag)
+				.add(woodSet.getLog().get(), woodSet.getStrippedLog().get())
+				.add(woodSet.getWood().get(), woodSet.getStrippedWood().get());
+		}
+		else  {
+			this.valueLookupBuilder(tag)
+				.add(woodSet.getLog().get(), woodSet.getStrippedLog().get());
+		}
 
 		this.valueLookupBuilder(BlockTags.LOGS)
 			.addOptionalTag(tag);
@@ -213,51 +214,55 @@ public final class BloomBlockTagProvider extends FabricTagsProvider.BlockTagsPro
 		this.valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
 			.addOptionalTag(tag);
 
-		this.valueLookupBuilder(BloomBlockTags.JACARANDA_LOGS)
-			.add(woodset.getLog().get(), woodset.getStrippedLog().get())
-			.add(woodset.getWood().get(), woodset.getStrippedWood().get());
-
 		this.valueLookupBuilder(BlockTags.LOGS)
 			.addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
 
 		this.valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
 			.addOptionalTag(BloomBlockTags.JACARANDA_LOGS);
 
-		this.valueLookupBuilder(BlockTags.LEAVES)
-			.add(woodset.getLeaves().get());
+		if (woodSet.hasLeaves()) {
+			this.valueLookupBuilder(BlockTags.LEAVES)
+				.add(woodSet.getLeaves().get());
+		}
 
 		this.valueLookupBuilder(BlockTags.PLANKS)
-			.add(woodset.getPlanks().get());
+			.add(woodSet.getPlanks().get());
 
 		this.valueLookupBuilder(BlockTags.SIGNS)
-			.add(woodset.getSign().get());
+			.add(woodSet.getSign().get());
 
 		this.valueLookupBuilder(BlockTags.ALL_HANGING_SIGNS)
-			.add(woodset.getHangingSign().get());
+			.add(woodSet.getHangingSign().get());
 
 		this.valueLookupBuilder(BlockTags.WOODEN_BUTTONS)
-			.add(woodset.getButton().get());
+			.add(woodSet.getButton().get());
 
 		this.valueLookupBuilder(BlockTags.WOODEN_DOORS)
-			.add(woodset.getDoor().get());
+			.add(woodSet.getDoor().get());
 
 		this.valueLookupBuilder(BlockTags.WOODEN_FENCES)
-			.add(woodset.getFence().get());
+			.add(woodSet.getFence().get());
 
 		this.valueLookupBuilder(BlockTags.FENCE_GATES)
-			.add(woodset.getFenceGate().get());
+			.add(woodSet.getFenceGate().get());
 
 		this.valueLookupBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
-			.add(woodset.getPressurePlate().get());
+			.add(woodSet.getPressurePlate().get());
 
 		this.valueLookupBuilder(BlockTags.WOODEN_SLABS)
-			.add(woodset.getSlab().get());
+			.add(woodSet.getSlab().get());
 
 		this.valueLookupBuilder(BlockTags.WOODEN_STAIRS)
-			.add(woodset.getStairs().get());
+			.add(woodSet.getStairs().get());
 
 		this.valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
-			.add(woodset.getTrapDoor().get());
+			.add(woodSet.getTrapdoor().get());
+
+		this.valueLookupBuilder(BlockTags.SAPLINGS)
+			.add(woodSet.getSapling().get());
+
+		this.valueLookupBuilder(BlockTags.FLOWER_POTS)
+			.add(woodSet.getPottedSapling().get());
 	}
 
     public void tagOres(StoneOresRegistry ores) {

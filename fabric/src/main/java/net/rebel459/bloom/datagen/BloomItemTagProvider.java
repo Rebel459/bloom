@@ -10,7 +10,7 @@ import net.minecraft.world.item.Item;
 import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.bloom.registry.BloomItems;
 import net.rebel459.bloom.tag.BloomItemTags;
-import net.rebel459.bloom.util.WoodsetRegistry;
+import net.rebel459.unified.util.builder.WoodSet;
 
 public final class BloomItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
@@ -63,9 +63,6 @@ public final class BloomItemTagProvider extends FabricTagsProvider.ItemTagsProvi
 			.add(BloomBlocks.HELLEBORE.asItem())
 			.add(BloomBlocks.HYDRANGEA.asItem());
 
-		this.valueLookupBuilder(ItemTags.SAPLINGS)
-			.add(BloomBlocks.JACARANDA_SAPLING.asItem());
-
 		this.valueLookupBuilder(ItemTags.STONE_TOOL_MATERIALS)
 			.add(BloomBlocks.DOLERITE.asItem());
 
@@ -75,16 +72,18 @@ public final class BloomItemTagProvider extends FabricTagsProvider.ItemTagsProvi
 		this.valueLookupBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
 			.add(BloomItems.COTTON_SEEDS.get());
 
-		tagWoodset(BloomBlocks.JACARANDA, BloomItemTags.JACARANDA_LOGS);
-		tagWoodset(BloomBlocks.GOLDEN_BIRCH, BloomItemTags.GOLDEN_BIRCH_LOGS);
-		tagWoodset(BloomBlocks.PINE, BloomItemTags.PINE_LOGS);
+		tagWoodSet(BloomBlocks.JACARANDA, BloomItemTags.JACARANDA_LOGS);
+		tagWoodSet(BloomBlocks.GOLDEN_BIRCH, BloomItemTags.GOLDEN_BIRCH_LOGS);
+		tagWoodSet(BloomBlocks.PINE, BloomItemTags.PINE_LOGS);
 	}
 
-	public void tagWoodset(WoodsetRegistry woodset, TagKey<Item> tag) {
+	public void tagWoodSet(WoodSet woodSet, TagKey<Item> tag) {
 
-		this.valueLookupBuilder(tag)
-			.add(woodset.getLog().asItem(), woodset.getStrippedLog().asItem())
-			.add(woodset.getWood().asItem(), woodset.getStrippedWood().asItem());
+		if (woodSet.hasWood()) {
+			this.valueLookupBuilder(tag)
+				.add(woodSet.getLog().asItem(), woodSet.getStrippedLog().asItem())
+				.add(woodSet.getWood().asItem(), woodSet.getStrippedWood().asItem());
+		}
 
 		this.valueLookupBuilder(ItemTags.LOGS)
 			.addOptionalTag(tag);
@@ -92,46 +91,55 @@ public final class BloomItemTagProvider extends FabricTagsProvider.ItemTagsProvi
 		this.valueLookupBuilder(ItemTags.LOGS_THAT_BURN)
 			.addOptionalTag(tag);
 
-		this.valueLookupBuilder(ItemTags.LEAVES)
-			.add(woodset.getLeaves().asItem());
+		if (woodSet.hasLeaves()) {
+			this.valueLookupBuilder(ItemTags.LEAVES)
+				.add(woodSet.getLeaves().asItem());
+		}
 
 		this.valueLookupBuilder(ItemTags.PLANKS)
-			.add(woodset.getPlanks().asItem());
+			.add(woodSet.getPlanks().asItem());
 
 		this.valueLookupBuilder(ItemTags.SIGNS)
-			.add(woodset.getSignItem().get());
+			.add(woodSet.getSignItem().get());
 
 		this.valueLookupBuilder(ItemTags.HANGING_SIGNS)
-			.add(woodset.getWallHangingSign().asItem());
+			.add(woodSet.getWallHangingSign().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_BUTTONS)
-			.add(woodset.getButton().asItem());
+			.add(woodSet.getButton().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_DOORS)
-			.add(woodset.getDoor().asItem());
+			.add(woodSet.getDoor().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_FENCES)
-			.add(woodset.getFence().asItem());
+			.add(woodSet.getFence().asItem());
 
 		this.valueLookupBuilder(ItemTags.FENCE_GATES)
-			.add(woodset.getFenceGate().asItem());
+			.add(woodSet.getFenceGate().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_PRESSURE_PLATES)
-			.add(woodset.getPressurePlate().asItem());
+			.add(woodSet.getPressurePlate().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_SLABS)
-			.add(woodset.getSlab().asItem());
+			.add(woodSet.getSlab().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_STAIRS)
-			.add(woodset.getStairs().asItem());
+			.add(woodSet.getStairs().asItem());
 
 		this.valueLookupBuilder(ItemTags.WOODEN_TRAPDOORS)
-			.add(woodset.getTrapDoor().asItem());
+			.add(woodSet.getTrapdoor().asItem());
 
-		this.valueLookupBuilder(ItemTags.BOATS)
-			.add(woodset.getBoatItem().asItem());
+		if (woodSet.hasBoats()) {
+			this.valueLookupBuilder(ItemTags.BOATS)
+				.add(woodSet.getBoatItem().asItem());
 
-		this.valueLookupBuilder(ItemTags.CHEST_BOATS)
-			.add(woodset.getChestBoatItem().asItem());
+			this.valueLookupBuilder(ItemTags.CHEST_BOATS)
+				.add(woodSet.getChestBoatItem().asItem());
+		}
+
+		if (woodSet.hasSapling()) {
+			this.valueLookupBuilder(ItemTags.SAPLINGS)
+				.add(woodSet.getSapling().asItem());
+		}
 	}
 }

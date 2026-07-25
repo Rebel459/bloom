@@ -2,9 +2,8 @@ package net.rebel459.bloom.registry;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
-import net.rebel459.bloom.util.StoneOresRegistry;
-import net.rebel459.bloom.util.WoodsetRegistry;
 import net.minecraft.world.item.Items;
+import net.rebel459.bloom.util.StoneOresRegistry;
 import net.rebel459.unified.platform.UnifiedHelpers;
 import net.rebel459.unified.util.CreativeModeTabs;
 
@@ -90,21 +89,6 @@ public class BloomCreativeInventory {
 		addOres(BloomBlocks.RED_SANDSTONE_ORES);
 		addOres(BloomBlocks.SANDSTONE_ORES);
 		UnifiedHelpers.CREATIVE_ENTRIES.insertBefore(CreativeModeTabs.INGREDIENTS, Items.STRING, BloomItems.COTTON, BloomItems.YARN);
-
-		WoodsetRegistry.addToBuildingTab(Items.CHERRY_BUTTON, BloomBlocks.JACARANDA);
-		WoodsetRegistry.addToNaturalTab(Items.CHERRY_SAPLING, BloomBlocks.JACARANDA, BloomBlocks.JACARANDA_SAPLING);
-		WoodsetRegistry.addToFunctionalTab(Items.CHERRY_HANGING_SIGN, BloomBlocks.JACARANDA);
-		WoodsetRegistry.addToUtilitiesTab(Items.CHERRY_CHEST_BOAT, BloomBlocks.JACARANDA);
-
-		WoodsetRegistry.addToBuildingTab(Items.BIRCH_BUTTON, BloomBlocks.GOLDEN_BIRCH);
-		WoodsetRegistry.addToNaturalTab(Items.BIRCH_SAPLING, BloomBlocks.GOLDEN_BIRCH, BloomBlocks.GOLDEN_BIRCH_SAPLING);
-		WoodsetRegistry.addToFunctionalTab(Items.BIRCH_HANGING_SIGN, BloomBlocks.GOLDEN_BIRCH);
-		WoodsetRegistry.addToUtilitiesTab(Items.BIRCH_CHEST_BOAT, BloomBlocks.GOLDEN_BIRCH);
-
-		WoodsetRegistry.addToBuildingTab(Items.SPRUCE_BUTTON, BloomBlocks.PINE);
-		WoodsetRegistry.addToNaturalTab(Items.SPRUCE_SAPLING, BloomBlocks.PINE, BloomBlocks.PINE_SAPLING);
-		WoodsetRegistry.addToFunctionalTab(Items.SPRUCE_HANGING_SIGN, BloomBlocks.PINE);
-		WoodsetRegistry.addToUtilitiesTab(Items.SPRUCE_CHEST_BOAT, BloomBlocks.PINE);
     }
 
     public static void addOres(StoneOresRegistry ores) {

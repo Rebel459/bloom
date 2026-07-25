@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "bloom:jacaranda_planks"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "bloom:jacaranda_pressure_plate"
+  }
+}

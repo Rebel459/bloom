@@ -1,12 +1,17 @@
 package net.rebel459.bloom.registry;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
@@ -18,6 +23,7 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.TallFlowerBlock;
+import net.minecraft.world.level.block.UntintedParticleLeavesBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.WoolCarpetBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -30,16 +36,18 @@ import net.rebel459.bloom.block.AridVegetationBlock;
 import net.rebel459.bloom.block.HalfSubmergedBlock;
 import net.rebel459.bloom.block.LargeFlowerBlock;
 import net.rebel459.bloom.block.SleepingBagBlock;
+import net.rebel459.bloom.block.UntintedParticleExtendedLeavesBlock;
 import net.rebel459.bloom.block.WideFlowerBlock;
 import net.rebel459.bloom.block.WildCropBlock;
 import net.rebel459.bloom.sound.BloomBlockSounds;
 import net.rebel459.bloom.util.StoneOresRegistry;
-import net.rebel459.bloom.util.WoodsetRegistry;
 import net.rebel459.bloom.worldgen.sapling.BloomTreeGrowers;
 import net.rebel459.unified.platform.UnifiedHelpers;
 import net.rebel459.unified.platform.UnifiedPlatform;
 import net.rebel459.unified.platform.UnifiedRegistries;
 import net.rebel459.unified.util.LoaderType;
+import net.rebel459.unified.util.builder.WoodPreset;
+import net.rebel459.unified.util.builder.WoodSet;
 import net.rebel459.unified.util.registry.SuppliedBlock;
 
 public final class BloomBlocks {
@@ -48,6 +56,16 @@ public final class BloomBlocks {
 	public static List<Block> LARGE_FLOWERS = new ArrayList<>();
 
 	private static final UnifiedRegistries.Blocks BLOCKS = UnifiedRegistries.Blocks.create(Bloom.MOD_ID);
+	private static final UnifiedRegistries.Blocks.Builders BLOCK_BUILDERS = BLOCKS.builders();
+
+	public static Set<WoodSet> getWoodSets() {
+		Set<WoodSet> woodSets = new HashSet<>();
+		for (WoodSet woodSet : WoodSet.WOOD_SETS) {
+			if (!woodSet.getId().getNamespace().equals(Bloom.MOD_ID)) continue;
+			woodSets.add(woodSet);
+		}
+		return woodSets;
+	};
 
 	// Cotton
 
@@ -274,37 +292,23 @@ public final class BloomBlocks {
 			.forceSolidOn()
 	);
 
-	public static final WoodsetRegistry JACARANDA = new WoodsetRegistry(Bloom.id("jacaranda"), MapColor.COLOR_PURPLE, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.FANCY));
-	public static final SuppliedBlock JACARANDA_SAPLING = register("jacaranda_sapling",
-		properties -> new SaplingBlock(BloomTreeGrowers.JACARANDA, properties),
-		() -> BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)
-	);
-	public static final SuppliedBlock POTTED_JACARANDA_SAPLING = registerWithoutItem("potted_jacaranda_sapling",
-		properties -> new FlowerPotBlock(JACARANDA_SAPLING.get(), properties),
-		Blocks::flowerPotProperties
-	);
+	public static final WoodSet JACARANDA = BLOCK_BUILDERS.woodSet("jacaranda", WoodPreset.CHERRY, MapColor.COLOR_PURPLE, MapColor.COLOR_BROWN)
+		.createLeaves(properties -> new UntintedParticleLeavesBlock(0.1F, BloomParticleTypes.JACARANDA_LEAVES.get(), properties), MapColor.COLOR_PURPLE)
+		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.JACARANDA, properties), MapColor.COLOR_PURPLE)
+		.creativeInventoryPlacement(() -> Items.CHERRY_BUTTON, () -> Items.CHERRY_SAPLING, () -> Items.CHERRY_SHELF, () -> Items.CHERRY_HANGING_SIGN, () -> Items.CHERRY_CHEST_BOAT)
+		.build();
 
-	public static final WoodsetRegistry GOLDEN_BIRCH = new WoodsetRegistry(Bloom.id("golden_birch"), MapColor.COLOR_YELLOW, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.DEFAULT));
-	public static final SuppliedBlock GOLDEN_BIRCH_SAPLING = register("golden_birch_sapling",
-		properties -> new SaplingBlock(BloomTreeGrowers.GOLDEN_BIRCH, properties),
-		() -> BlockBehaviour.Properties.ofFullCopy(Blocks.BIRCH_SAPLING)
-			.mapColor(MapColor.COLOR_YELLOW)
-	);
-	public static final SuppliedBlock POTTED_GOLDEN_BIRCH_SAPLING = registerWithoutItem("potted_golden_birch_sapling",
-		properties -> new FlowerPotBlock(GOLDEN_BIRCH_SAPLING.get(), properties),
-		Blocks::flowerPotProperties
-	);
+	public static final WoodSet GOLDEN_BIRCH = BLOCK_BUILDERS.woodSet("golden_birch", WoodPreset.DEFAULT, MapColor.COLOR_YELLOW, MapColor.COLOR_BROWN)
+		.createLeaves(properties -> new UntintedParticleExtendedLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 13807429), properties), MapColor.COLOR_YELLOW)
+		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.GOLDEN_BIRCH, properties), MapColor.COLOR_YELLOW)
+		.creativeInventoryPlacement(() -> Items.BIRCH_BUTTON, () -> Items.BIRCH_SAPLING, () -> Items.BIRCH_SHELF, () -> Items.BIRCH_HANGING_SIGN, () -> Items.BIRCH_CHEST_BOAT)
+		.build();
 
-	public static final WoodsetRegistry PINE = new WoodsetRegistry(Bloom.id("pine"), MapColor.COLOR_BROWN, MapColor.COLOR_BROWN, new WoodsetRegistry.Settings.Builder().woodPreset(WoodsetRegistry.WoodPreset.DEFAULT));
-	public static final SuppliedBlock PINE_SAPLING = register("pine_sapling",
-		properties -> new SaplingBlock(BloomTreeGrowers.PINE, properties),
-		() -> BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SAPLING)
-			.mapColor(MapColor.COLOR_GREEN)
-	);
-	public static final SuppliedBlock POTTED_PINE_SAPLING = registerWithoutItem("potted_pine_sapling",
-		properties -> new FlowerPotBlock(PINE_SAPLING.get(), properties),
-		Blocks::flowerPotProperties
-	);
+	public static final WoodSet PINE = BLOCK_BUILDERS.woodSet("pine", WoodPreset.DEFAULT, MapColor.COLOR_BROWN, MapColor.COLOR_BROWN)
+		.createLeaves(properties -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 5468745), properties), MapColor.COLOR_YELLOW)
+		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.PINE, properties), MapColor.COLOR_BROWN)
+		.creativeInventoryPlacement(() -> Items.SPRUCE_BUTTON, () -> Items.SPRUCE_SAPLING, () -> Items.SPRUCE_SHELF, () -> Items.SPRUCE_HANGING_SIGN, () -> Items.SPRUCE_CHEST_BOAT)
+		.build();
 
 	public static final StoneOresRegistry TUFF_ORES = new StoneOresRegistry(() -> Blocks.TUFF, true).build();
     public static final StoneOresRegistry GRANITE_ORES = new StoneOresRegistry(() -> Blocks.GRANITE, false).build();
@@ -315,20 +319,8 @@ public final class BloomBlocks {
     public static final StoneOresRegistry RED_SANDSTONE_ORES = new StoneOresRegistry(() -> Blocks.RED_SANDSTONE, false).build();
 
 	public static void registerBlockProperties() {
-		registerStrippable();
 		registerComposting();
 		registerFlammability();
-		registerFuels();
-	}
-
-	private static void registerStrippable() {
-		WoodsetRegistry.WOODSETS.forEach(woodset -> {
-			UnifiedHelpers.BLOCK_CONVERSIONS.addStrippable(woodset.getLog(), woodset.getStrippedLog());
-
-			if (woodset.getWoodPreset() != WoodsetRegistry.WoodPreset.BAMBOO){
-				UnifiedHelpers.BLOCK_CONVERSIONS.addStrippable(woodset.getWood(), woodset.getStrippedWood());
-			}
-		});
 	}
 
 	private static void registerComposting() {
@@ -360,74 +352,7 @@ public final class BloomBlocks {
 		fire.setFlammable(ORANGE_DAISY.get(), 60, 100);
 		fire.setFlammable(SCILLA.get(), 60, 100);
 		fire.setFlammable(SUCCULENT.get(), 60, 100);
-
-		WoodsetRegistry.WOODSETS.forEach(woodset -> {
-			if (woodset.getWoodsetSettings().getWoodPreset() != WoodsetRegistry.WoodPreset.NETHER) {
-				addFlammable(woodset.getLog(), 5, 5);
-				addFlammable(woodset.getStrippedLog(), 5, 5);
-
-				if (woodset.getWoodPreset() != WoodsetRegistry.WoodPreset.BAMBOO) {
-					addFlammable(woodset.getWood(), 5, 5);
-					addFlammable(woodset.getStrippedWood(), 5, 5);
-				}
-				if (woodset.getWoodsetSettings().hasMosaic()) {
-					addFlammable(woodset.getMosaic(), 5, 20);
-					addFlammable(woodset.getMosaicStairs(), 5, 20);
-					addFlammable(woodset.getMosaicSlab(), 5, 20);
-				}
-				if (woodset.isOverworldTreeWood()) {
-					addFlammable(woodset.getLeaves(), 30, 60);
-				}
-
-				addFlammable(woodset.getPlanks(), 5, 20);
-				addFlammable(woodset.getSlab(), 5, 20);
-				addFlammable(woodset.getStairs(), 5, 20);
-				addFlammable(woodset.getFence(), 5, 20);
-				addFlammable(woodset.getFenceGate(), 5, 20);
-
-				addFlammable(woodset.getSign(), 5, 20);
-				addFlammable(woodset.getWallSign(), 5, 20);
-
-				addFlammable(woodset.getHangingSign(), 5, 20);
-				addFlammable(woodset.getWallHangingSign(), 5, 20);
-				addFlammable(woodset.getShelf(), 30, 20);
-			}
-		});
     }
-
-	private static void addFlammable(SuppliedBlock block, int burn, int spread){
-		((FireBlock) Blocks.FIRE).setFlammable(block.get(), burn, spread);
-	}
-
-	private static void registerFuels() {
-		WoodsetRegistry.WOODSETS.forEach(woodset -> {
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getLog(), 300);
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getStrippedLog(), 300);
-			if (woodset.getWoodsetSettings().getWoodPreset() == WoodsetRegistry.WoodPreset.BAMBOO){
-				UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getMosaic(), 300);
-				UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getMosaicSlab(), 150);
-				UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getMosaicStairs(), 300);
-			}
-			else{
-				UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getWood(), 300);
-				UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getStrippedWood(), 300);
-			}
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getPressurePlate(), 300);
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getButton(), 100);
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getTrapDoor(), 300);
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getDoor(), 300);
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getFence(), 300);
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getFenceGate(), 300);
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getSignItem(), 300);
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getHangingSignItem(), 800);
-			UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getShelf(), 300);
-
-			if (woodset.getWoodsetSettings().hasBoats()){
-				UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getBoatItem(), 1200);
-				UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(woodset.getChestBoatItem(), 1200);
-			}
-		});
-	}
 
 	public static void init() {}
 

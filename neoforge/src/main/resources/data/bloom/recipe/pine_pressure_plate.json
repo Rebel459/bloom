@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "bloom:pine_planks"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "bloom:pine_pressure_plate"
+  }
+}

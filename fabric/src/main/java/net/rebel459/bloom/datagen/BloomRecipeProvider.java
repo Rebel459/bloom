@@ -25,7 +25,7 @@ import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.bloom.registry.BloomItems;
 import net.rebel459.bloom.tag.BloomItemTags;
 import net.rebel459.bloom.util.StoneOresRegistry;
-import net.rebel459.bloom.util.WoodsetRegistry;
+import net.rebel459.unified.util.builder.WoodSet;
 import org.apache.commons.lang3.tuple.Triple;
 import org.jetbrains.annotations.Contract;
 
@@ -173,9 +173,9 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
 					)
 				);
 
-				generateWoodsetRecipes(BloomBlocks.JACARANDA, this, exporter, BloomItemTags.JACARANDA_LOGS);
-				generateWoodsetRecipes(BloomBlocks.GOLDEN_BIRCH, this, exporter, BloomItemTags.GOLDEN_BIRCH_LOGS);
-				generateWoodsetRecipes(BloomBlocks.PINE, this, exporter, BloomItemTags.PINE_LOGS);
+				generateWoodSetRecipes(BloomBlocks.JACARANDA, this, exporter, BloomItemTags.JACARANDA_LOGS);
+				generateWoodSetRecipes(BloomBlocks.GOLDEN_BIRCH, this, exporter, BloomItemTags.GOLDEN_BIRCH_LOGS);
+				generateWoodSetRecipes(BloomBlocks.PINE, this, exporter, BloomItemTags.PINE_LOGS);
 
 				for (StoneOresRegistry registry : StoneOresRegistry.ALL_REGISTRIES) {
 					oreRecipes(registry);
@@ -299,32 +299,38 @@ public final class BloomRecipeProvider extends FabricRecipeProvider {
         };
     }
 
-	private void generateWoodsetRecipes(WoodsetRegistry woodset, RecipeProvider recipeGenerator, RecipeOutput exporter, TagKey<Item> logs){
-		recipeGenerator.planksFromLog(woodset.getPlanks(), logs, 4);
-		recipeGenerator.stairBuilder(woodset.getStairs(), Ingredient.of(woodset.getPlanks())).unlockedBy(woodset.hasPlanks(), recipeGenerator.has(woodset.getPlanks())).save(exporter);
-		recipeGenerator.slab(RecipeCategory.BUILDING_BLOCKS, woodset.getSlab(), woodset.getPlanks());
-		recipeGenerator.generateRecipes(woodset.getBlockFamily(), FeatureFlagSet.of());
-		if (woodset.notBambooVariant()){
-			recipeGenerator.woodFromLogs(woodset.getWood(), woodset.getLog());
-			recipeGenerator.woodFromLogs(woodset.getStrippedWood(), woodset.getStrippedLog());
+	private void generateWoodSetRecipes(WoodSet woodSet, RecipeProvider recipeGenerator, RecipeOutput exporter, TagKey<Item> logs){
+		String hasPlanks = RecipeProvider.getHasName(woodSet.getPlanks().get());
+		recipeGenerator.planksFromLog(woodSet.getPlanks(), logs, 4);
+		recipeGenerator.stairBuilder(woodSet.getStairs(), Ingredient.of(woodSet.getPlanks())).unlockedBy(hasPlanks, recipeGenerator.has(woodSet.getPlanks())).save(exporter);
+		recipeGenerator.slab(RecipeCategory.BUILDING_BLOCKS, woodSet.getSlab(), woodSet.getPlanks());
+		recipeGenerator.generateRecipes(woodSet.getBlockFamily(), FeatureFlagSet.of());
+		if (woodSet.hasWood()){
+			recipeGenerator.woodFromLogs(woodSet.getWood(), woodSet.getLog());
+			recipeGenerator.woodFromLogs(woodSet.getStrippedWood(), woodSet.getStrippedLog());
 		}
-		if (woodset.getWoodsetSettings().hasMosaic()){
-			recipeGenerator.mosaicBuilder(RecipeCategory.BUILDING_BLOCKS, woodset.getMosaic(), woodset.getSlab());
-			recipeGenerator.stairBuilder(woodset.getMosaicStairs(), Ingredient.of(woodset.getPlanks())).unlockedBy(woodset.hasPlanks(), recipeGenerator.has(woodset.getMosaic())).save(exporter);
-			recipeGenerator.slab(RecipeCategory.BUILDING_BLOCKS, woodset.getMosaicStairs(), woodset.getPlanks());
+		if (woodSet.hasMosaic()){
+			recipeGenerator.mosaicBuilder(RecipeCategory.BUILDING_BLOCKS, woodSet.getMosaic(), woodSet.getSlab());
+			recipeGenerator.stairBuilder(woodSet.getMosaicStairs(), Ingredient.of(woodSet.getPlanks())).unlockedBy(hasPlanks, recipeGenerator.has(woodSet.getMosaic())).save(exporter);
+			recipeGenerator.slab(RecipeCategory.BUILDING_BLOCKS, woodSet.getMosaicStairs(), woodSet.getPlanks());
 		}
-		recipeGenerator.fenceBuilder(woodset.getFence(), Ingredient.of(woodset.getPlanks())).unlockedBy(woodset.hasPlanks(), recipeGenerator.has(woodset.getPlanks())).save(exporter);
-		recipeGenerator.fenceGateBuilder(woodset.getFenceGate(), Ingredient.of(woodset.getPlanks())).unlockedBy(woodset.hasPlanks(), recipeGenerator.has(woodset.getPlanks())).save(exporter);
-		recipeGenerator.doorBuilder(woodset.getDoor(), Ingredient.of(woodset.getPlanks())).unlockedBy(woodset.hasPlanks(), recipeGenerator.has(woodset.getPlanks())).save(exporter);
-		recipeGenerator.trapdoorBuilder(woodset.getTrapDoor(), Ingredient.of(woodset.getPlanks())).unlockedBy(woodset.hasPlanks(), recipeGenerator.has(woodset.getPlanks())).save(exporter);
+		recipeGenerator.fenceBuilder(woodSet.getFence(), Ingredient.of(woodSet.getPlanks())).unlockedBy(hasPlanks, recipeGenerator.has(woodSet.getPlanks())).save(exporter);
+		recipeGenerator.fenceGateBuilder(woodSet.getFenceGate(), Ingredient.of(woodSet.getPlanks())).unlockedBy(hasPlanks, recipeGenerator.has(woodSet.getPlanks())).save(exporter);
+		recipeGenerator.doorBuilder(woodSet.getDoor(), Ingredient.of(woodSet.getPlanks())).unlockedBy(hasPlanks, recipeGenerator.has(woodSet.getPlanks())).save(exporter);
+		recipeGenerator.trapdoorBuilder(woodSet.getTrapdoor(), Ingredient.of(woodSet.getPlanks())).unlockedBy(hasPlanks, recipeGenerator.has(woodSet.getPlanks())).save(exporter);
 
-		recipeGenerator.signBuilder(woodset.getSignItem(), Ingredient.of(woodset.getPlanks())).unlockedBy(woodset.hasPlanks(), recipeGenerator.has(woodset.getPlanks())).save(exporter);
-		recipeGenerator.hangingSign(woodset.getHangingSignItem(), woodset.getStrippedLog());
+		recipeGenerator.buttonBuilder(woodSet.getButton(), Ingredient.of(woodSet.getPlanks())).unlockedBy(hasPlanks, recipeGenerator.has(woodSet.getPlanks())).save(exporter);
+		recipeGenerator.pressurePlateBuilder(RecipeCategory.REDSTONE, woodSet.getPressurePlate(), Ingredient.of(woodSet.getPlanks())).unlockedBy(hasPlanks, recipeGenerator.has(woodSet.getPlanks())).save(exporter);
 
-		recipeGenerator.woodenBoat(woodset.getBoatItem(), woodset.getPlanks());
-		recipeGenerator.chestBoat(woodset.getChestBoatItem(), woodset.getBoatItem());
+		recipeGenerator.signBuilder(woodSet.getSignItem(), Ingredient.of(woodSet.getPlanks())).unlockedBy(hasPlanks, recipeGenerator.has(woodSet.getPlanks())).save(exporter);
+		recipeGenerator.hangingSign(woodSet.getHangingSignItem(), woodSet.getStrippedLog());
 
-		recipeGenerator.shelf(woodset.getShelf(), woodset.getStrippedLog());
+		if (woodSet.hasBoats()) {
+			recipeGenerator.woodenBoat(woodSet.getBoatItem(), woodSet.getPlanks());
+			recipeGenerator.chestBoat(woodSet.getChestBoatItem(), woodSet.getBoatItem());
+		}
+
+		recipeGenerator.shelf(woodSet.getShelf(), woodSet.getStrippedLog());
 	}
 
     @Override

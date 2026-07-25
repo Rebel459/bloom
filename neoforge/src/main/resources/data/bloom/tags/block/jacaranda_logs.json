@@ -3,18 +3,6 @@
     "bloom:jacaranda_log",
     "bloom:stripped_jacaranda_log",
     "bloom:jacaranda_wood",
-    "bloom:stripped_jacaranda_wood",
-    "bloom:jacaranda_log",
-    "bloom:stripped_jacaranda_log",
-    "bloom:jacaranda_wood",
-    "bloom:stripped_jacaranda_wood",
-    "bloom:golden_birch_log",
-    "bloom:stripped_golden_birch_log",
-    "bloom:golden_birch_wood",
-    "bloom:stripped_golden_birch_wood",
-    "bloom:pine_log",
-    "bloom:stripped_pine_log",
-    "bloom:pine_wood",
-    "bloom:stripped_pine_wood"
+    "bloom:stripped_jacaranda_wood"
   ]
 }

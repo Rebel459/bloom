@@ -1,7 +1,6 @@
 package net.rebel459.bloom.datagen;
 
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.BiFunction;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,27 +9,20 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
-import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.data.models.model.TexturedModel;
-import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SnowyBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.bloom.registry.BloomItems;
 import net.rebel459.bloom.util.StoneOresRegistry;
-import net.rebel459.bloom.util.WoodsetRegistry;
+import net.rebel459.unified.util.builder.WoodSet;
 
 @Environment(EnvType.CLIENT)
 public final class BloomModelProvider extends FabricModelProvider {
@@ -75,12 +67,9 @@ public final class BloomModelProvider extends FabricModelProvider {
         generator.createDoublePlantWithDefaultItem(BloomBlocks.REEDS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 		this.createSinglePlant(BloomBlocks.SUCCULENT.get(), BlockModelGenerators.PlantType.NOT_TINTED, generator);
 
-		WoodsetRegistry.WOODSETS.forEach(woodset -> {
-			fullWoodset(woodset, generator);
+		BloomBlocks.getWoodSets().forEach(woodSet -> {
+			fullWoodSet(woodSet, generator);
 		});
-		generator.createPlantWithDefaultItem(BloomBlocks.JACARANDA_SAPLING.get(), BloomBlocks.POTTED_JACARANDA_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-		generator.createPlantWithDefaultItem(BloomBlocks.GOLDEN_BIRCH_SAPLING.get(), BloomBlocks.POTTED_GOLDEN_BIRCH_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-		generator.createPlantWithDefaultItem(BloomBlocks.PINE_SAPLING.get(), BloomBlocks.POTTED_PINE_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
 		generator.createTrivialCube(BloomBlocks.DOLERITE.get());
 
@@ -134,29 +123,33 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.createParticleOnlyBlock(BloomBlocks.BLACK_SLEEPING_BAG.get(), Blocks.BLACK_WOOL);
 	}
 
-	private void fullWoodset(WoodsetRegistry woodset, BlockModelGenerators generator){
-		BlockModelGenerators.BlockFamilyProvider pool = generator.family(woodset.getPlanks().get());
-		pool.generateFor(woodset.getBlockFamily());
+	private void fullWoodSet(WoodSet woodSet, BlockModelGenerators generator){
+		BlockModelGenerators.BlockFamilyProvider pool = generator.family(woodSet.getPlanks().get());
+		pool.generateFor(woodSet.getBlockFamily());
 
-		if (woodset.isOverworldTreeWood()){
-			generator.createTrivialBlock(woodset.getLeaves().get(), TexturedModel.LEAVES);
+		if (woodSet.hasLeaves()){
+			generator.createTrivialBlock(woodSet.getLeaves().get(), TexturedModel.LEAVES);
 		}
 
-		if (woodset.notBambooVariant()){
-			generator.woodProvider(woodset.getLog().get()).logWithHorizontal(woodset.getLog().get()).wood(woodset.getWood().get());
-			generator.woodProvider(woodset.getStrippedLog().get()).logWithHorizontal(woodset.getStrippedLog().get()).wood(woodset.getStrippedWood().get());
+		if (woodSet.hasWood()){
+			generator.woodProvider(woodSet.getLog().get()).logWithHorizontal(woodSet.getLog().get()).wood(woodSet.getWood().get());
+			generator.woodProvider(woodSet.getStrippedLog().get()).logWithHorizontal(woodSet.getStrippedLog().get()).wood(woodSet.getStrippedWood().get());
 		}
-		if (woodset.getWoodsetSettings().hasMosaic()){
-			generator.woodProvider(woodset.getLog().get()).logUVLocked(woodset.getLog().get());
-			generator.woodProvider(woodset.getStrippedLog().get()).logUVLocked(woodset.getStrippedLog().get());
+		if (woodSet.hasMosaic()){
+			generator.woodProvider(woodSet.getLog().get()).logUVLocked(woodSet.getLog().get());
+			generator.woodProvider(woodSet.getStrippedLog().get()).logUVLocked(woodSet.getStrippedLog().get());
 		}
 
-		generator.createHangingSign(woodset.getStrippedLog().get(), woodset.getHangingSign().get(), woodset.getWallHangingSign().get());
+		generator.createHangingSign(woodSet.getStrippedLog().get(), woodSet.getHangingSign().get(), woodSet.getWallHangingSign().get());
 
-		generator.registerSimpleFlatItemModel(woodset.getBoatItem().get());
-		generator.registerSimpleFlatItemModel(woodset.getChestBoatItem().get());
+		if (woodSet.hasLeaves()) {
+			generator.registerSimpleFlatItemModel(woodSet.getBoatItem().get());
+			generator.registerSimpleFlatItemModel(woodSet.getChestBoatItem().get());
+		}
 
-		generator.createShelf(woodset.getShelf().get(), woodset.getStrippedLog().get());
+		generator.createShelf(woodSet.getShelf().get(), woodSet.getStrippedLog().get());
+
+		if (woodSet.hasSapling()) generator.createPlantWithDefaultItem(woodSet.getSapling().get(), woodSet.getPottedSapling().get(), BlockModelGenerators.PlantType.NOT_TINTED);
 	}
 
 	public void rug(Block block, BlockModelGenerators generator) {
