@@ -35,6 +35,13 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 			autoName(translation, items);
 		}
 
+		translation.add("entity.bloom.golden_birch_boat", "Golden Birch Boat");
+		translation.add("entity.bloom.golden_birch_chest_boat", "Golden Birch Chest Boat");
+		translation.add("entity.bloom.jacaranda_birch_boat", "Jacaranda Boat");
+		translation.add("entity.bloom.jacaranda_birch_chest_boat", "Jacaranda Chest Boat");
+		translation.add("entity.bloom.pine_birch_boat", "Pine Boat");
+		translation.add("entity.bloom.pine_birch_chest_boat", "Pine Chest Boat");
+
 		translation.add("album.bloom.bloom", "Bloom");
 
 		this.music("overworld.lock_and_key", "Zhen - Lock and Key");
