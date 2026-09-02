@@ -370,10 +370,6 @@ public final class BloomBlocks {
 		return BLOCKS.registerWithoutItem(path, block, properties);
 	}
 
-	public static <T extends Block> SuppliedBlock registerWithoutItem(String path, Function<BlockBehaviour.Properties, T> block, Supplier<BlockBehaviour.Properties> properties, BlockEntityType<?> blockEntity) {
-		return BLOCKS.registerWithoutItem(path, block, properties, blockEntity);
-	}
-
 	public static <T extends Block> SuppliedBlock register(String path, Function<BlockBehaviour.Properties, T> block, Supplier<BlockBehaviour.Properties> properties) {
 		return register(path, block, properties, false);
 	}

@@ -69,12 +69,6 @@ public final class BloomItems {
 		return item;
 	}
 
-	public static <T extends Item> SuppliedItem registerBlockItem(String name, Supplier<Block> block, Supplier<Item.Properties> properties) {
-		SuppliedItem item = ITEMS.registerBlockItem(name, block, properties);
-		checkDatagen(item);
-		return item;
-	}
-
 	public static void checkDatagen(SuppliedItem suppliedItem) {
 		checkDatagen(suppliedItem, false);
 	}
