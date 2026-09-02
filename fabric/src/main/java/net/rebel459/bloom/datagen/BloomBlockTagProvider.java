@@ -282,7 +282,7 @@ public final class BloomBlockTagProvider extends FabricTagsProvider.BlockTagsPro
             if (Objects.equals(name, "gold")) addTags(block.get(), BlockTags.GOLD_ORES, BlockTags.NEEDS_IRON_TOOL);
             if (Objects.equals(name, "diamond")) addTags(block.get(), BlockTags.DIAMOND_ORES, BlockTags.NEEDS_IRON_TOOL);
             if (Objects.equals(name, "emerald")) addTags(block.get(), BlockTags.EMERALD_ORES, BlockTags.NEEDS_IRON_TOOL);
-            if (Objects.equals(name, "lapis")) addTags(block.get(), BlockTags.LAPIS_ORES, BlockTags.NEEDS_IRON_TOOL);
+            if (Objects.equals(name, "lapis")) addTags(block.get(), BlockTags.LAPIS_ORES, BlockTags.NEEDS_STONE_TOOL);
             if (Objects.equals(name, "sapphire")) addOptionalTags(block.get(), BloomBlockTags.SAPPHIRE_ORES, BlockTags.NEEDS_IRON_TOOL);
         });
     }

@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.rebel459.bloom.Bloom;
@@ -107,6 +108,7 @@ public class BloomLanguageProvider extends FabricLanguageProvider {
 		translationBuilder.add(block, autoNameInner(BuiltInRegistries.BLOCK.getKey(block).getPath()));
 	}
 	private void autoName(TranslationBuilder translationBuilder, ItemLike item) {
+		if (item instanceof SignItem) return; // Temporary
 		translationBuilder.add(item.asItem(), autoNameInner(BuiltInRegistries.ITEM.getKey(item.asItem()).getPath()));
 	}
 	private void autoName(TranslationBuilder translationBuilder, EntityType<?> entityType) {

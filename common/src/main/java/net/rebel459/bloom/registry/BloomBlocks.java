@@ -45,6 +45,7 @@ import net.rebel459.bloom.worldgen.sapling.BloomTreeGrowers;
 import net.rebel459.unified.platform.UnifiedHelpers;
 import net.rebel459.unified.platform.UnifiedPlatform;
 import net.rebel459.unified.platform.UnifiedRegistries;
+import net.rebel459.unified.registry.UnifiedDataComponents;
 import net.rebel459.unified.util.LoaderType;
 import net.rebel459.unified.util.builder.WoodPreset;
 import net.rebel459.unified.util.builder.WoodSet;
@@ -293,20 +294,20 @@ public final class BloomBlocks {
 	);
 
 	public static final WoodSet JACARANDA = BLOCK_BUILDERS.woodSet("jacaranda", WoodPreset.CHERRY, MapColor.COLOR_PURPLE, MapColor.COLOR_BROWN)
-		.createLeaves(properties -> new UntintedParticleLeavesBlock(0.1F, BloomParticleTypes.JACARANDA_LEAVES.get(), properties), MapColor.COLOR_PURPLE)
-		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.JACARANDA, properties), MapColor.COLOR_PURPLE)
+		.createLeaves(properties -> new UntintedParticleLeavesBlock(0.1F, BloomParticleTypes.JACARANDA_LEAVES.get(), properties), MapColor.COLOR_PURPLE, () -> Items.CHERRY_LEAVES)
+		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.JACARANDA, properties), MapColor.COLOR_PURPLE, () -> Items.CHERRY_SAPLING)
 		.creativeInventoryPlacement(() -> Items.CHERRY_BUTTON, () -> Items.CHERRY_SAPLING, () -> Items.CHERRY_SHELF, () -> Items.CHERRY_HANGING_SIGN, () -> Items.CHERRY_CHEST_BOAT)
 		.build();
 
 	public static final WoodSet GOLDEN_BIRCH = BLOCK_BUILDERS.woodSet("golden_birch", WoodPreset.DEFAULT, MapColor.COLOR_YELLOW, MapColor.COLOR_BROWN)
-		.createLeaves(properties -> new UntintedParticleExtendedLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 13807429), properties), MapColor.COLOR_YELLOW)
-		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.GOLDEN_BIRCH, properties), MapColor.COLOR_YELLOW)
+		.createLeaves(properties -> new UntintedParticleExtendedLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 13807429), properties), MapColor.COLOR_YELLOW, () -> Items.BIRCH_LEAVES)
+		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.GOLDEN_BIRCH, properties), MapColor.COLOR_YELLOW, () -> Items.BIRCH_SAPLING)
 		.creativeInventoryPlacement(() -> Items.BIRCH_BUTTON, () -> Items.BIRCH_SAPLING, () -> Items.BIRCH_SHELF, () -> Items.BIRCH_HANGING_SIGN, () -> Items.BIRCH_CHEST_BOAT)
 		.build();
 
 	public static final WoodSet PINE = BLOCK_BUILDERS.woodSet("pine", WoodPreset.DEFAULT, MapColor.COLOR_BROWN, MapColor.COLOR_BROWN)
-		.createLeaves(properties -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 5468745), properties), MapColor.COLOR_YELLOW)
-		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.PINE, properties), MapColor.COLOR_BROWN)
+		.createLeaves(properties -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 5468745), properties), MapColor.COLOR_YELLOW, () -> Items.SPRUCE_LEAVES)
+		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.PINE, properties), MapColor.COLOR_BROWN, () -> Items.SPRUCE_SAPLING)
 		.creativeInventoryPlacement(() -> Items.SPRUCE_BUTTON, () -> Items.SPRUCE_SAPLING, () -> Items.SPRUCE_SHELF, () -> Items.SPRUCE_HANGING_SIGN, () -> Items.SPRUCE_CHEST_BOAT)
 		.build();
 
@@ -321,6 +322,11 @@ public final class BloomBlocks {
 	public static void registerBlockProperties() {
 		registerComposting();
 		registerFlammability();
+
+		// Temporary
+		UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(JACARANDA.getSlab(), 150);
+		UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(GOLDEN_BIRCH.getSlab(), 150);
+		UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(PINE.getSlab(), 150);
 	}
 
 	private static void registerComposting() {
