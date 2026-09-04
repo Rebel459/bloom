@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
-import net.rebel459.bloom.registry.BloomBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -19,8 +18,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.RedStoneOreBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.unified.platform.UnifiedPlatform;
-import net.rebel459.unified.util.SuppliedBlock;
+import net.rebel459.unified.util.registry.SuppliedBlock;
 
 public class StoneOresRegistry {
 	public static List<StoneOresRegistry> ALL_REGISTRIES = new ArrayList<>();
@@ -91,9 +92,11 @@ public class StoneOresRegistry {
 				type,
 				() -> {
 					final Block block = baseStone.get();
-					return BlockBehaviour.Properties.ofFullCopy(block)
+					BlockBehaviour.Properties properties = BlockBehaviour.Properties.ofFullCopy(block)
 						.strength(block.defaultDestroyTime() + getStrengthIncrease())
 						.explosionResistance(getExplosionResistance());
+					if (type == OreType.REDSTONE) properties.randomTicks().lightLevel((state) -> state.getValue(BlockStateProperties.LIT) ? 9 : 0);
+					return properties;
 				}
 			);
 			String path;
