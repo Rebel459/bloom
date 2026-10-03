@@ -12,7 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.ChatFormatting;
-import net.rebel459.unified.platform.UnifiedEvents;
+import net.rebel459.unified.api.core.UnifiedEvents;
 
 public class ClimateCommand {
 

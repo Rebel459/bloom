@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "type": "insert_before",
+      "items": "bloom:wild_cotton",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:wheat_seeds"
+    }
+  ],
+  "load_requirements": {
+    "type": "unified:mods_loaded",
+    "mods": [
+      "farmersdelight"
+    ]
+  }
+}

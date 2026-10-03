@@ -22,7 +22,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.rebel459.bloom.Bloom;
 import net.rebel459.bloom.worldgen.BloomFeatures;
-import net.rebel459.unified.platform.HelpersImpl;
+import net.rebel459.unified.api.helper.BiomeModificationContext;
 
 public class BiomeHelper {
 
@@ -69,17 +69,17 @@ public class BiomeHelper {
 		return 96F * multiplier;
 	}
 
-	public static void addLessStrictDisks(HelpersImpl.BiomeModifications.Context context) {
+	public static void addLessStrictDisks(BiomeModificationContext context) {
 		context.getFeatures().addFeature(BloomFeatures.DISK_CLAY, GenerationStep.Decoration.UNDERGROUND_ORES);
 		context.getFeatures().addFeature(BloomFeatures.DISK_SAND, GenerationStep.Decoration.UNDERGROUND_ORES);
 		context.getFeatures().addFeature(BloomFeatures.DISK_GRAVEL, GenerationStep.Decoration.UNDERGROUND_ORES);
 	}
 
-	public static void addUnderground(HelpersImpl.BiomeModifications.Context context, ResourceKey<PlacedFeature> feature) {
+	public static void addUnderground(BiomeModificationContext context, ResourceKey<PlacedFeature> feature) {
 		context.getFeatures().addFeature(feature, GenerationStep.Decoration.UNDERGROUND_DECORATION);
 	}
 
-	public static void addVegetation(HelpersImpl.BiomeModifications.Context context, ResourceKey<PlacedFeature> feature) {
+	public static void addVegetation(BiomeModificationContext context, ResourceKey<PlacedFeature> feature) {
 		context.getFeatures().addFeature(feature, GenerationStep.Decoration.VEGETAL_DECORATION);
 	}
 

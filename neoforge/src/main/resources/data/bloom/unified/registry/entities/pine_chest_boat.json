@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:chest_boat",
+  "drop_item": "bloom:pine_chest_boat",
+  "properties": {}
+}

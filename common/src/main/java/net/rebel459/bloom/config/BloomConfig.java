@@ -19,9 +19,9 @@ public class BloomConfig implements ConfigData {
     }
 
     public static BloomConfig get() {
-		if (!Bloom.registeredConfig) {
+		if (!BloomConfigStatus.registeredConfig) {
 			AutoConfig.register(BloomConfig.class, GsonConfigSerializer::new);
-			Bloom.registeredConfig = true;
+			BloomConfigStatus.registeredConfig = true;
 		}
 		return AutoConfig.getConfigHolder(BloomConfig.class).getConfig();
 	}

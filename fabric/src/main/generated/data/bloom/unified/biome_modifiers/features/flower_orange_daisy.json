@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_orange_daisy",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_orange_daisy",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

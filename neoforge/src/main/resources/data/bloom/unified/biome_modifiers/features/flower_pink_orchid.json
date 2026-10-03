@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_pink_orchid",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_pink_orchid",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "effects": {
+    "water_color": 9079191
+  },
+  "targets": "#bloom:effects/mushroom_colors"
+}

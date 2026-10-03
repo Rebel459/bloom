@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:sapling",
+  "properties": {
+    "copy_from": "minecraft:oak_sapling",
+    "map_color": "color_brown"
+  },
+  "tree": "bloom:pine"
+}

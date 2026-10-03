@@ -1,0 +1,73 @@
+{
+  "entries": [
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:golden_birch_planks",
+        "bloom:golden_birch_stairs",
+        "bloom:golden_birch_slab",
+        "bloom:golden_birch_fence",
+        "bloom:golden_birch_fence_gate",
+        "bloom:golden_birch_door",
+        "bloom:golden_birch_trapdoor",
+        "bloom:golden_birch_pressure_plate",
+        "bloom:golden_birch_button"
+      ],
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:birch_button"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:golden_birch_log",
+        "bloom:golden_birch_wood",
+        "bloom:stripped_golden_birch_log",
+        "bloom:stripped_golden_birch_wood"
+      ],
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:birch_button"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:golden_birch_log",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:birch_sapling"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:golden_birch_leaves",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:birch_leaves"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:golden_birch_sapling",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:birch_sapling"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:golden_birch_shelf",
+      "tab": "minecraft:functional_blocks",
+      "target": "minecraft:birch_shelf"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:golden_birch_sign",
+        "bloom:golden_birch_hanging_sign"
+      ],
+      "tab": "minecraft:functional_blocks",
+      "target": "minecraft:birch_hanging_sign"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:golden_birch_boat",
+        "bloom:golden_birch_chest_boat"
+      ],
+      "tab": "minecraft:tools_and_utilities",
+      "target": "minecraft:birch_chest_boat"
+    }
+  ]
+}

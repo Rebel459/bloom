@@ -36,5 +36,7 @@ public final class BloomTreeGrowers {
 		Optional.empty()
 	);
 
+	public static void init() {}
+
 	private BloomTreeGrowers() {}
 }

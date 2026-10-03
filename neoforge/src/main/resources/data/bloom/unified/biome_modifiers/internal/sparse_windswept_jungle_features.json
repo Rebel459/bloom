@@ -1,0 +1,15 @@
+{
+  "targets": "#bloom:internal/sparse_windswept_jungle_features",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:trees_sparse_windswept_jungle",
+        "step": "vegetal_decoration"
+      },
+      {
+        "feature": "bloom:flowers_windswept_jungle",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

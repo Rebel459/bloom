@@ -1,0 +1,15 @@
+{
+  "targets": "#bloom:internal/lavender_fields_features",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:trees_lavender_fields",
+        "step": "vegetal_decoration"
+      },
+      {
+        "feature": "bloom:flower_lavender",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

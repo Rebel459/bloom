@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/ore_stone",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:ore_stone",
+        "step": "underground_ores"
+      }
+    ]
+  }
+}

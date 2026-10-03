@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "converted_block": "bloom:stripped_pine_log",
+      "original_block": "bloom:pine_log",
+      "predicate": "unified:is_axe",
+      "use_context": [
+        {
+          "type": "unified:play_sound",
+          "sound": "minecraft:item.axe.strip"
+        }
+      ]
+    }
+  ]
+}

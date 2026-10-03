@@ -1,14 +1,10 @@
 package net.rebel459.bloom.sound;
 
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.rebel459.bloom.Bloom;
-import net.rebel459.unified.platform.UnifiedRegistries;
-import net.rebel459.unified.util.registry.Supplied;
-import java.util.function.Supplier;
+import net.rebel459.unified.api.core.Supplied;
+import net.rebel459.unified.api.core.UnifiedRegistries;
 
 public class BloomSounds {
 
@@ -20,11 +16,11 @@ public class BloomSounds {
 	public static final Supplied<SoundEvent> DOLERITE_HIT = SOUNDS.register("block.dolerite.hit");
 	public static final Supplied<SoundEvent> DOLERITE_FALL = SOUNDS.register("block.dolerite.fall");
 
-	public static final Holder<SoundEvent> MUSIC_BIOME_FEN = SOUNDS.registerForHolder("music.overworld.fen");
-	public static final Holder<SoundEvent> MUSIC_BIOME_TAIGA = SOUNDS.registerForHolder("music.overworld.taiga");
-	public static final Holder<SoundEvent> MUSIC_BIOME_OLD_GROWTH_TAIGA = SOUNDS.registerForHolder("music.overworld.old_growth_taiga");
-	public static final Holder<SoundEvent> MUSIC_BIOME_WINDSWEPT_JUNGLE = SOUNDS.registerForHolder("music.overworld.windswept_jungle");
-	public static final Holder<SoundEvent> MUSIC_BIOME_GOLDEN_FOREST = SOUNDS.registerForHolder("music.overworld.golden_forest");
+	public static final Holder<SoundEvent> MUSIC_BIOME_FEN = SOUNDS.register("music.overworld.fen").holder();
+	public static final Holder<SoundEvent> MUSIC_BIOME_TAIGA = SOUNDS.register("music.overworld.taiga").holder();
+	public static final Holder<SoundEvent> MUSIC_BIOME_OLD_GROWTH_TAIGA = SOUNDS.register("music.overworld.old_growth_taiga").holder();
+	public static final Holder<SoundEvent> MUSIC_BIOME_WINDSWEPT_JUNGLE = SOUNDS.register("music.overworld.windswept_jungle").holder();
+	public static final Holder<SoundEvent> MUSIC_BIOME_GOLDEN_FOREST = SOUNDS.register("music.overworld.golden_forest").holder();
 
 	public static void init() {}
 }

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:untinted_particle_leaves",
+  "leaf_particle": {
+    "type": "bloom:jacaranda_leaves"
+  },
+  "leaf_particle_chance": 0.1,
+  "properties": {
+    "destroy_time": 0.2,
+    "explosion_resistance": 0.2,
+    "flammability": {
+      "burn_odds": 60,
+      "ignite_odds": 30
+    },
+    "map_color": "color_purple",
+    "occlusion": false,
+    "push_reaction": "destroy",
+    "random_ticks": true,
+    "redstone_conductor": "minecraft:never",
+    "sound_type": {
+      "break_sound": "minecraft:block.cherry_leaves.break",
+      "fall_sound": "minecraft:block.cherry_leaves.fall",
+      "hit_sound": "minecraft:block.cherry_leaves.hit",
+      "place_sound": "minecraft:block.cherry_leaves.place",
+      "step_sound": "minecraft:block.cherry_leaves.step"
+    },
+    "suffocating": "minecraft:never",
+    "valid_spawn": "minecraft:ocelot_or_parrot",
+    "view_blocking": "minecraft:never"
+  }
+}

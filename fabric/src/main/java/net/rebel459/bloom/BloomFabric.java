@@ -1,28 +1,29 @@
 package net.rebel459.bloom;
 
 import net.fabricmc.api.ModInitializer;
+import net.rebel459.bloom.datagen.BloomBiomeTagProvider;
+import net.rebel459.bloom.datagen.BloomBlockTagProvider;
+import net.rebel459.bloom.datagen.BloomItemTagProvider;
 import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.bloom.registry.BloomItems;
-import net.rebel459.unified.platform.UnifiedPlatform;
-import net.rebel459.unified.util.builder.WoodSet;
-import net.rebel459.unified.util.registry.SuppliedBlock;
-import net.rebel459.unified.util.registry.SuppliedItem;
+import net.rebel459.unified.api.builder.WoodSet;
+import net.rebel459.unified.api.core.SuppliedBlock;
+import net.rebel459.unified.api.core.SuppliedItem;
+import net.rebel459.unified.api.core.UnifiedPlatform;
+import net.rebel459.unified.fabric.FabricUnifiedInitializer;
 
 public class BloomFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
         Bloom.initRegistries();
-		if (UnifiedPlatform.isDevelopmentEnvironment()) {
-			for (WoodSet woodSet : BloomBlocks.getWoodSets()) {
-				for (SuppliedBlock block : woodSet.getRegisteredBlocks()) {
-					BloomBlocks.checkDatagen(block);
-				}
-				for (SuppliedItem item : woodSet.getRegisteredItems()) {
-					BloomItems.checkDatagen(item);
-				}
-			}
-		}
-        Bloom.init();
+		FabricUnifiedInitializer.register(this::onInitializeCommon);
     }
+
+	private void onInitializeCommon() {
+		Bloom.init();
+		BloomBlockTagProvider.init();
+		BloomItemTagProvider.init();
+		BloomBiomeTagProvider.init();
+	}
 }

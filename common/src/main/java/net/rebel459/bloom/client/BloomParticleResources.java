@@ -3,7 +3,7 @@ package net.rebel459.bloom.client;
 import net.minecraft.client.particle.FallingLeavesParticle;
 import net.minecraft.client.particle.ParticleResources;
 import net.rebel459.bloom.registry.BloomParticleTypes;
-import net.rebel459.unified.platform.client.UnifiedClientHelpers;
+import net.rebel459.unified.api.client.core.UnifiedClientHelpers;
 
 public final class BloomParticleResources extends ParticleResources {
 

@@ -1,9 +1,10 @@
 package net.rebel459.bloom;
 
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.rebel459.bloom.config.BloomConfig;
 import net.rebel459.bloom.registry.BloomBiomes;
+import net.rebel459.bloom.registry.BloomBlockCodecs;
 import net.rebel459.bloom.registry.BloomBlockStateProperties;
 import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.bloom.registry.BloomConditionSources;
@@ -13,30 +14,29 @@ import net.rebel459.bloom.registry.BloomLootTables;
 import net.rebel459.bloom.registry.BloomParticleTypes;
 import net.rebel459.bloom.sound.BloomSounds;
 import net.rebel459.bloom.tag.BloomBiomeTags;
-import net.rebel459.bloom.util.BiomeHelper;
+import net.rebel459.bloom.util.BloomData;
 import net.rebel459.bloom.util.ClimateCommand;
 import net.rebel459.bloom.worldgen.BloomBiomeModifications;
 import net.rebel459.bloom.worldgen.BloomBiomePlacement;
 import net.rebel459.bloom.worldgen.BloomFeatures;
 import net.rebel459.bloom.worldgen.BloomRegions;
+import net.rebel459.bloom.worldgen.sapling.BloomTreeGrowers;
 import net.rebel459.bloom.worldgen.BloomSurfaceRules;
-import net.rebel459.unified.platform.UnifiedHelpers;
-import net.rebel459.unified.platform.UnifiedPlatform;
-import net.rebel459.unified.util.CreativeModeTabs;
-import net.rebel459.unified.util.PackType;
+import net.rebel459.unified.api.core.UnifiedData;
+import net.rebel459.unified.api.core.UnifiedHelpers;
+import net.rebel459.unified.api.core.UnifiedPlatform;
 
 public class Bloom {
 
-	public static boolean registeredConfig = false;
-
 	public static final String MOD_ID = "bloom";
 
-	private static boolean addWildCrops() {
-		return UnifiedPlatform.isModLoaded("farmersdelight") && BloomConfig.get().farming.wild_crops;
-	}
+	public static final UnifiedData DATA = UnifiedData.create(Bloom.MOD_ID).autoName().build();
 
 	public static void initRegistries() {
+		BloomData.init();
 		BloomBlockStateProperties.init();
+		BloomBlockCodecs.init();
+		BloomTreeGrowers.init();
 		BloomBlocks.init();
 		BloomItems.init();
 		BloomBiomes.init();
@@ -47,11 +47,7 @@ public class Bloom {
 		BloomConditionSources.init();
 		BloomParticleTypes.init();
 
-		if (addWildCrops() && BloomConfig.get().farming.cotton) {
-			UnifiedHelpers.BIOME_MODIFICATIONS.register(BloomBiomeTags.HAS_WILD_COTTON, context -> {
-				BiomeHelper.addVegetation(context, BloomFeatures.PATCH_WILD_COTTON);
-			});
-		}
+		BloomData.FARMERS_DELIGHT_AND_WILD_COTTON.helpers().biomeModifiers().create("has_wild_cotton", provider -> provider.getOrThrow(BloomBiomeTags.HAS_WILD_COTTON)).addFeature(BloomFeatures.PATCH_WILD_COTTON, GenerationStep.Decoration.VEGETAL_DECORATION);
 	}
 
 	public static void init() {
@@ -63,28 +59,25 @@ public class Bloom {
 		ClimateCommand.init();
 
 		if (BloomConfig.get().worldgen.pine_trees) {
-			UnifiedHelpers.PACKS.add(Bloom.id("pine_trees"), PackType.REQUIRED_DATA);
+			UnifiedHelpers.DATA_PACKS.addRequired(Bloom.id("pine_trees"));
 		}
 		if (BloomConfig.get().worldgen.taiga_tweaks) {
-			UnifiedHelpers.PACKS.add(Bloom.id("taiga_tweaks"), PackType.REQUIRED_DATA);
+			UnifiedHelpers.DATA_PACKS.addRequired(Bloom.id("taiga_tweaks"));
 		}
 		if (BloomConfig.get().worldgen.ore_variants) {
-			UnifiedHelpers.PACKS.add(Bloom.id("ore_variants"), PackType.REQUIRED_DATA);
+			UnifiedHelpers.DATA_PACKS.addRequired(Bloom.id("ore_variants"));
 			if (UnifiedPlatform.isModLoaded("legacies_and_legends")) {
-				UnifiedHelpers.PACKS.add(Bloom.id("ore_variants_sapphire"), PackType.REQUIRED_DATA);
+				UnifiedHelpers.DATA_PACKS.addRequired(Bloom.id("ore_variants_sapphire"));
 			}
 		}
 		if (BloomConfig.get().misc.stone_variant_crafting) {
-			UnifiedHelpers.PACKS.add(Bloom.id("stone_variant_crafting"), PackType.REQUIRED_DATA);
+			UnifiedHelpers.DATA_PACKS.addRequired(Bloom.id("stone_variant_crafting"));
 		}
 		if (BloomConfig.get().farming.tradable_yarn) {
-			UnifiedHelpers.PACKS.add(Bloom.id("tradable_yarn"), PackType.REQUIRED_DATA);
+			UnifiedHelpers.DATA_PACKS.addRequired(Bloom.id("tradable_yarn"));
 		}
-		if (addWildCrops()) {
-			UnifiedHelpers.PACKS.add(Bloom.id("wild_crops"), PackType.REQUIRED_DATA);
-			if (BloomConfig.get().farming.cotton) {
-				UnifiedHelpers.CREATIVE_ENTRIES.insertBefore(CreativeModeTabs.NATURAL_BLOCKS, Items.WHEAT_SEEDS, BloomBlocks.WILD_COTTON);
-			}
+		if (UnifiedPlatform.isModLoaded("farmersdelight") && BloomConfig.get().farming.wild_crops) {
+			UnifiedHelpers.DATA_PACKS.addRequired(Bloom.id("wild_crops"));
 		}
 	}
 

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:fence",
+  "properties": {
+    "copy_from": "bloom:pine_planks",
+    "solid": true
+  }
+}

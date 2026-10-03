@@ -21,14 +21,15 @@ dependencies {
     api("me.shedaniel.cloth:cloth-config-fabric:$cloth_version") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    api("maven.modrinth:unified-api:$unified_version-fabric")
+    //api("maven.modrinth:unified-api:$unified_version-fabric")
+    api(name: 'unified-api', version: '26.1-1.0-beta-1+fabric', ext: 'jar')
 	api("maven.modrinth:lithostitched:$lithostitched_fabric")
 
 	compileOnly("maven.modrinth:sodium:$sodium_version-fabric")
 	compileOnly("maven.modrinth:legacies-and-legends:$lal_version-fabric")
-	datagenRuntimeOnly("maven.modrinth:legacies-and-legends:$lal_version-fabric")
+	//datagenRuntimeOnly("maven.modrinth:legacies-and-legends:$lal_version-fabric")
 	compileOnly("maven.modrinth:item-tooltips:$tooltips_version-fabric")
-	datagenRuntimeOnly("maven.modrinth:item-tooltips:$tooltips_version-fabric")
+	//datagenRuntimeOnly("maven.modrinth:item-tooltips:$tooltips_version-fabric")
 	compileOnly("maven.modrinth:trim-patcher:$patcher_version-fabric")
 	datagenRuntimeOnly("maven.modrinth:trim-patcher:$patcher_version-fabric")
 	datagenRuntimeOnly("maven.modrinth:lithostitched:$lithostitched_fabric")

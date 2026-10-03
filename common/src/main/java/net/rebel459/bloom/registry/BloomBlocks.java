@@ -18,14 +18,13 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.TallFlowerBlock;
-import net.minecraft.world.level.block.UntintedParticleLeavesBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.WoolCarpetBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BedPart;
@@ -36,20 +35,25 @@ import net.rebel459.bloom.block.AridVegetationBlock;
 import net.rebel459.bloom.block.HalfSubmergedBlock;
 import net.rebel459.bloom.block.LargeFlowerBlock;
 import net.rebel459.bloom.block.SleepingBagBlock;
-import net.rebel459.bloom.block.UntintedParticleExtendedLeavesBlock;
 import net.rebel459.bloom.block.WideFlowerBlock;
 import net.rebel459.bloom.block.WildCropBlock;
 import net.rebel459.bloom.sound.BloomBlockSounds;
+import net.rebel459.bloom.tag.BloomBlockTags;
+import net.rebel459.bloom.tag.BloomItemTags;
 import net.rebel459.bloom.util.StoneOresRegistry;
 import net.rebel459.bloom.worldgen.sapling.BloomTreeGrowers;
-import net.rebel459.unified.platform.UnifiedHelpers;
-import net.rebel459.unified.platform.UnifiedPlatform;
-import net.rebel459.unified.platform.UnifiedRegistries;
-import net.rebel459.unified.registry.UnifiedDataComponents;
-import net.rebel459.unified.util.LoaderType;
-import net.rebel459.unified.util.builder.WoodPreset;
-import net.rebel459.unified.util.builder.WoodSet;
-import net.rebel459.unified.util.registry.SuppliedBlock;
+import net.rebel459.unified.api.asset.BlockAssets;
+import net.rebel459.unified.api.builder.WoodPreset;
+import net.rebel459.unified.api.builder.WoodSet;
+import net.rebel459.unified.api.core.SuppliedBlock;
+import net.rebel459.unified.api.core.UnifiedData;
+import net.rebel459.unified.api.core.UnifiedHelpers;
+import net.rebel459.unified.api.core.UnifiedPlatform;
+import net.rebel459.unified.api.core.UnifiedRegistries;
+import net.rebel459.unified.api.platform.ModLoader;
+import net.rebel459.unified.api.registry.UnifiedDataComponents;
+import net.rebel459.unified.api.registry.VanillaBlockCodecs;
+import net.rebel459.unified.impl.util.BlockItemTagId;
 
 public final class BloomBlocks {
 	public static List<Block> TRANSLATABLE_BLOCKS = new ArrayList<>();
@@ -57,16 +61,7 @@ public final class BloomBlocks {
 	public static List<Block> LARGE_FLOWERS = new ArrayList<>();
 
 	private static final UnifiedRegistries.Blocks BLOCKS = UnifiedRegistries.Blocks.create(Bloom.MOD_ID);
-	private static final UnifiedRegistries.Blocks.Builders BLOCK_BUILDERS = BLOCKS.builders();
-
-	public static Set<WoodSet> getWoodSets() {
-		Set<WoodSet> woodSets = new HashSet<>();
-		for (WoodSet woodSet : WoodSet.WOOD_SETS) {
-			if (!woodSet.getId().getNamespace().equals(Bloom.MOD_ID)) continue;
-			woodSets.add(woodSet);
-		}
-		return woodSets;
-	};
+	private static final UnifiedData.Sets SETS = Bloom.DATA.sets();
 
 	// Cotton
 
@@ -293,21 +288,39 @@ public final class BloomBlocks {
 			.forceSolidOn()
 	);
 
-	public static final WoodSet JACARANDA = BLOCK_BUILDERS.woodSet("jacaranda", WoodPreset.CHERRY, MapColor.COLOR_PURPLE, MapColor.COLOR_BROWN)
-		.createLeaves(properties -> new UntintedParticleLeavesBlock(0.1F, BloomParticleTypes.JACARANDA_LEAVES.get(), properties), MapColor.COLOR_PURPLE, () -> Items.CHERRY_LEAVES)
-		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.JACARANDA, properties), MapColor.COLOR_PURPLE, () -> Items.CHERRY_SAPLING)
+	public static final WoodSet JACARANDA = SETS.woodSet("jacaranda", WoodPreset.CHERRY, new BlockItemTagId(BloomBlockTags.JACARANDA_LOGS, BloomItemTags.JACARANDA_LOGS), MapColor.COLOR_PURPLE, MapColor.COLOR_BROWN)
+		.createLeaves(WoodSet.Leaves.base(
+			VanillaBlockCodecs.UNTINTED_PARTICLE_LEAVES.create(() -> new VanillaBlockCodecs.ParticleLeaves(0.1F, BloomParticleTypes.JACARANDA_LEAVES.get())),
+			MapColor.COLOR_PURPLE,
+			BlockAssets.LEAVES,
+			(block, provider) -> provider.createLeavesDrops(block, block, 0.05F, 0.0625F, 0.083333336F, 0.1F),
+			() -> Items.CHERRY_LEAVES
+		))
+		.createSapling(VanillaBlockCodecs.SAPLING.create(() -> BloomTreeGrowers.JACARANDA), MapColor.COLOR_PURPLE, BlockAssets.PlantType.NOT_TINTED, () -> Items.CHERRY_SAPLING)
 		.creativeInventoryPlacement(() -> Items.CHERRY_BUTTON, () -> Items.CHERRY_SAPLING, () -> Items.CHERRY_SHELF, () -> Items.CHERRY_HANGING_SIGN, () -> Items.CHERRY_CHEST_BOAT)
 		.build();
 
-	public static final WoodSet GOLDEN_BIRCH = BLOCK_BUILDERS.woodSet("golden_birch", WoodPreset.DEFAULT, MapColor.COLOR_YELLOW, MapColor.COLOR_BROWN)
-		.createLeaves(properties -> new UntintedParticleExtendedLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 13807429), properties), MapColor.COLOR_YELLOW, () -> Items.BIRCH_LEAVES)
-		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.GOLDEN_BIRCH, properties), MapColor.COLOR_YELLOW, () -> Items.BIRCH_SAPLING)
+	public static final WoodSet GOLDEN_BIRCH = SETS.woodSet("golden_birch", WoodPreset.DEFAULT, new BlockItemTagId(BloomBlockTags.GOLDEN_BIRCH_LOGS, BloomItemTags.GOLDEN_BIRCH_LOGS), MapColor.COLOR_YELLOW, MapColor.COLOR_BROWN)
+		.createLeaves(WoodSet.Leaves.base(
+			BloomBlockCodecs.UNTINTED_PARTICLE_EXTENDED_LEAVES.create(() -> new VanillaBlockCodecs.ParticleLeaves(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 13807429))),
+			MapColor.COLOR_YELLOW,
+			BlockAssets.LEAVES,
+			(block, provider) -> provider.createLeavesDrops(block, block, 0.05F, 0.0625F, 0.083333336F, 0.1F),
+			() -> Items.BIRCH_LEAVES
+		))
+		.createSapling(VanillaBlockCodecs.SAPLING.create(() -> BloomTreeGrowers.GOLDEN_BIRCH), MapColor.COLOR_YELLOW, BlockAssets.PlantType.NOT_TINTED, () -> Items.BIRCH_SAPLING)
 		.creativeInventoryPlacement(() -> Items.BIRCH_BUTTON, () -> Items.BIRCH_SAPLING, () -> Items.BIRCH_SHELF, () -> Items.BIRCH_HANGING_SIGN, () -> Items.BIRCH_CHEST_BOAT)
 		.build();
 
-	public static final WoodSet PINE = BLOCK_BUILDERS.woodSet("pine", WoodPreset.DEFAULT, MapColor.COLOR_BROWN, MapColor.COLOR_BROWN)
-		.createLeaves(properties -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 5468745), properties), MapColor.COLOR_YELLOW, () -> Items.SPRUCE_LEAVES)
-		.createSapling(properties -> new SaplingBlock(BloomTreeGrowers.PINE, properties), MapColor.COLOR_BROWN, () -> Items.SPRUCE_SAPLING)
+	public static final WoodSet PINE = SETS.woodSet("pine", WoodPreset.DEFAULT, new BlockItemTagId(BloomBlockTags.PINE_LOGS, BloomItemTags.PINE_LOGS), MapColor.COLOR_BROWN, MapColor.COLOR_BROWN)
+		.createLeaves(WoodSet.Leaves.base(
+			VanillaBlockCodecs.UNTINTED_PARTICLE_LEAVES.create(() -> new VanillaBlockCodecs.ParticleLeaves(0.1F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 5468745))),
+			MapColor.COLOR_GREEN,
+			BlockAssets.LEAVES,
+			(block, provider) -> provider.createLeavesDrops(block, block, 0.05F, 0.0625F, 0.083333336F, 0.1F),
+			() -> Items.SPRUCE_LEAVES
+		))
+		.createSapling(VanillaBlockCodecs.SAPLING.create(() -> BloomTreeGrowers.PINE), MapColor.COLOR_BROWN, BlockAssets.PlantType.NOT_TINTED, () -> Items.SPRUCE_SAPLING)
 		.creativeInventoryPlacement(() -> Items.SPRUCE_BUTTON, () -> Items.SPRUCE_SAPLING, () -> Items.SPRUCE_SHELF, () -> Items.SPRUCE_HANGING_SIGN, () -> Items.SPRUCE_CHEST_BOAT)
 		.build();
 
@@ -322,27 +335,22 @@ public final class BloomBlocks {
 	public static void registerBlockProperties() {
 		registerComposting();
 		registerFlammability();
-
-		// Temporary
-		UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(JACARANDA.getSlab(), 150);
-		UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(GOLDEN_BIRCH.getSlab(), 150);
-		UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(PINE.getSlab(), 150);
 	}
 
 	private static void registerComposting() {
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(HELLEBORE, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(BROMELIAD, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(PINK_ORCHID, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(BELLFLOWER, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(HYDRANGEA, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(CALLA_LILY, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(DIANTHUS, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(GOLDENROD, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(ORANGE_DAISY, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(SCILLA, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(SUCCULENT, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(BloomItems.COTTON, 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.addCompost(BloomItems.COTTON_SEEDS, 0.3F);
+		UnifiedHelpers.DATA_COMPONENTS.add(HELLEBORE, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(BROMELIAD, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(PINK_ORCHID, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(BELLFLOWER, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(HYDRANGEA, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(CALLA_LILY, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(DIANTHUS, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(GOLDENROD, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(ORANGE_DAISY, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(SCILLA, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(SUCCULENT, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(BloomItems.COTTON, UnifiedDataComponents.COMPOST.get(), 0.65F);
+		UnifiedHelpers.DATA_COMPONENTS.add(BloomItems.COTTON_SEEDS, UnifiedDataComponents.COMPOST.get(), 0.3F);
 	}
 
 	private static void registerFlammability() {
@@ -378,7 +386,7 @@ public final class BloomBlocks {
 		checkDatagen(registered, skipNameGen);
 		return registered;
 	}
-	public static <T extends Block> SuppliedBlock register(String path, Function<BlockBehaviour.Properties, T> block, Supplier<BlockBehaviour.Properties> properties, BlockEntityType<?> blockEntity) {
+	public static <T extends Block, Y extends BlockEntity> SuppliedBlock register(String path, Function<BlockBehaviour.Properties, T> block, Supplier<BlockBehaviour.Properties> properties, Supplier<BlockEntityType<Y>> blockEntity) {
 		final SuppliedBlock registered = BLOCKS.register(path, block, properties, blockEntity);
 		checkDatagen(registered);
 		return registered;
@@ -398,7 +406,7 @@ public final class BloomBlocks {
 				.noOcclusion()
 				.ignitedByLava()
 				.pushReaction(PushReaction.DESTROY),
-			BlockEntityType.BED
+			() -> BlockEntityType.BED
 		);
 		checkDatagen(block, skipNameGen);
 		return block;
@@ -416,7 +424,7 @@ public final class BloomBlocks {
 		checkDatagen(suppliedBlock, false);
 	}
 	public static void checkDatagen(SuppliedBlock suppliedBlock, boolean skipNameGen) {
-		if (UnifiedPlatform.getLoader() == LoaderType.FABRIC) {
+		if (UnifiedPlatform.getModLoader() == ModLoader.FABRIC) {
 			Block block = suppliedBlock.get();
 			if (!skipNameGen) TRANSLATABLE_BLOCKS.add(block);
 			if (block instanceof FlowerBlock || block instanceof WideFlowerBlock || block instanceof LargeFlowerBlock) SMALL_FLOWERS.add(block);

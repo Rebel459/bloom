@@ -1,15 +1,15 @@
 {
   "values": [
     {
-      "id": "#minecraft:is_savanna",
-      "required": false
-    },
-    {
       "id": "wilderwild:arid_forest",
       "required": false
     },
     {
       "id": "wilderwild:parched_forest",
+      "required": false
+    },
+    {
+      "id": "#minecraft:is_savanna",
       "required": false
     }
   ]

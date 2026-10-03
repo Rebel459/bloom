@@ -1,0 +1,73 @@
+{
+  "entries": [
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:pine_planks",
+        "bloom:pine_stairs",
+        "bloom:pine_slab",
+        "bloom:pine_fence",
+        "bloom:pine_fence_gate",
+        "bloom:pine_door",
+        "bloom:pine_trapdoor",
+        "bloom:pine_pressure_plate",
+        "bloom:pine_button"
+      ],
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:spruce_button"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:pine_log",
+        "bloom:pine_wood",
+        "bloom:stripped_pine_log",
+        "bloom:stripped_pine_wood"
+      ],
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:spruce_button"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:pine_log",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:spruce_sapling"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:pine_leaves",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:spruce_leaves"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:pine_sapling",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:spruce_sapling"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:pine_shelf",
+      "tab": "minecraft:functional_blocks",
+      "target": "minecraft:spruce_shelf"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:pine_sign",
+        "bloom:pine_hanging_sign"
+      ],
+      "tab": "minecraft:functional_blocks",
+      "target": "minecraft:spruce_hanging_sign"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:pine_boat",
+        "bloom:pine_chest_boat"
+      ],
+      "tab": "minecraft:tools_and_utilities",
+      "target": "minecraft:spruce_chest_boat"
+    }
+  ]
+}

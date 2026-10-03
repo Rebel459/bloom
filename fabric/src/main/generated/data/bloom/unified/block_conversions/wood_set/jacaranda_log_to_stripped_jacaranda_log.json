@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "converted_block": "bloom:stripped_jacaranda_log",
+      "original_block": "bloom:jacaranda_log",
+      "predicate": "unified:is_axe",
+      "use_context": [
+        {
+          "type": "unified:play_sound",
+          "sound": "minecraft:item.axe.strip"
+        }
+      ]
+    }
+  ]
+}

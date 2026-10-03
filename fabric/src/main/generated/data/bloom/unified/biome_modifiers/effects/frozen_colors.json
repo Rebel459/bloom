@@ -1,0 +1,6 @@
+{
+  "effects": {
+    "water_color": 15960
+  },
+  "targets": "#bloom:effects/frozen_colors"
+}

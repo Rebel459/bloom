@@ -7,11 +7,11 @@
     "bloom:fen",
     "bloom:lavender_fields",
     {
-      "id": "#minecraft:is_jungle",
+      "id": "wilderwild:snowy_old_growth_pine_taiga",
       "required": false
     },
     {
-      "id": "wilderwild:snowy_old_growth_pine_taiga",
+      "id": "#minecraft:is_jungle",
       "required": false
     }
   ]

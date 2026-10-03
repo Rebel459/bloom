@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "converted_block": "bloom:stripped_pine_wood",
+      "original_block": "bloom:pine_wood",
+      "predicate": "unified:is_axe",
+      "use_context": [
+        {
+          "type": "unified:play_sound",
+          "sound": "minecraft:item.axe.strip"
+        }
+      ]
+    }
+  ]
+}

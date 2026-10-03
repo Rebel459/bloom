@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_calla_lily",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_calla_lily",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

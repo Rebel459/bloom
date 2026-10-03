@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:fence_gate",
+  "properties": {
+    "copy_from": "bloom:pine_planks",
+    "solid": true
+  },
+  "wood_type": "bloom:pine"
+}

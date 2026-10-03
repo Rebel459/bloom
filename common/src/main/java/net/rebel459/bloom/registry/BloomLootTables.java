@@ -12,7 +12,7 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.rebel459.bloom.config.BloomConfig;
-import net.rebel459.unified.platform.UnifiedEvents;
+import net.rebel459.unified.api.core.UnifiedEvents;
 import org.jetbrains.annotations.NotNull;
 
 public final class BloomLootTables {

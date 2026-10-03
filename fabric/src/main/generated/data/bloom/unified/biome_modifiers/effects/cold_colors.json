@@ -1,0 +1,6 @@
+{
+  "effects": {
+    "water_color": 2650242
+  },
+  "targets": "#bloom:effects/cold_colors"
+}

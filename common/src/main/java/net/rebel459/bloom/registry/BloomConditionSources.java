@@ -6,10 +6,9 @@ import net.rebel459.bloom.util.ClimateRules;
 import net.rebel459.bloom.util.BiomeRules;
 import net.rebel459.bloom.util.NoiseRules;
 import net.rebel459.bloom.util.SurfaceRuleHelper;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.rebel459.unified.platform.UnifiedRegistries;
+import net.rebel459.unified.api.core.UnifiedRegistries;
 import java.util.function.BiConsumer;
 
 public class BloomConditionSources {

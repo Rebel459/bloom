@@ -1,11 +1,11 @@
 {
   "values": [
     {
-      "id": "#minecraft:is_jungle",
+      "id": "wilderwild:rainforest",
       "required": false
     },
     {
-      "id": "wilderwild:rainforest",
+      "id": "#minecraft:is_jungle",
       "required": false
     }
   ]

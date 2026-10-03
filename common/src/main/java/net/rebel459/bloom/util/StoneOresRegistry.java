@@ -20,8 +20,8 @@ import net.minecraft.world.level.block.RedStoneOreBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.rebel459.bloom.registry.BloomBlocks;
-import net.rebel459.unified.platform.UnifiedPlatform;
-import net.rebel459.unified.util.registry.SuppliedBlock;
+import net.rebel459.unified.api.core.SuppliedBlock;
+import net.rebel459.unified.api.core.UnifiedPlatform;
 
 public class StoneOresRegistry {
 	public static List<StoneOresRegistry> ALL_REGISTRIES = new ArrayList<>();

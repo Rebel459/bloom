@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "bloom:item/pine_sapling"
+    "model": "bloom:block/pine_sapling"
   }
 }

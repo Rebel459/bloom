@@ -5,7 +5,7 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.rebel459.bloom.Bloom;
-import net.rebel459.unified.platform.UnifiedRegistries;
+import net.rebel459.unified.api.core.UnifiedRegistries;
 
 public final class BloomParticleTypes {
 

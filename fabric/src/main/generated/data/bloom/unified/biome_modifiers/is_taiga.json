@@ -1,0 +1,6 @@
+{
+  "effects": {
+    "grass_color": 6262108
+  },
+  "targets": "#minecraft:is_taiga"
+}

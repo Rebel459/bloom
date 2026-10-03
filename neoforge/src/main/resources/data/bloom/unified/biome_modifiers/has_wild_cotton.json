@@ -1,0 +1,24 @@
+{
+  "load_requirements": {
+    "type": "unified:all_of",
+    "predicates": [
+      {
+        "type": "unified:mods_loaded",
+        "mods": [
+          "farmersdelight"
+        ]
+      },
+      "bloom:wild_crops_enabled",
+      "bloom:cotton_enabled"
+    ]
+  },
+  "targets": "#bloom:features/patch_wild_cotton",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:patch_wild_cotton",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

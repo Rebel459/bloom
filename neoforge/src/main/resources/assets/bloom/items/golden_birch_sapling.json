@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "bloom:item/golden_birch_sapling"
+    "model": "bloom:block/golden_birch_sapling"
   }
 }

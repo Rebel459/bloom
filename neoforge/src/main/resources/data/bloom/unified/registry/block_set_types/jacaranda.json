@@ -1,0 +1,17 @@
+{
+  "button_click_off": "minecraft:block.cherry_wood_button.click_off",
+  "button_click_on": "minecraft:block.cherry_wood_button.click_on",
+  "door_close": "minecraft:block.cherry_wood_door.close",
+  "door_open": "minecraft:block.cherry_wood_door.open",
+  "pressure_plate_click_off": "minecraft:block.cherry_wood_pressure_plate.click_off",
+  "pressure_plate_click_on": "minecraft:block.cherry_wood_pressure_plate.click_on",
+  "sound_type": {
+    "break_sound": "minecraft:block.cherry_wood.break",
+    "fall_sound": "minecraft:block.cherry_wood.fall",
+    "hit_sound": "minecraft:block.cherry_wood.hit",
+    "place_sound": "minecraft:block.cherry_wood.place",
+    "step_sound": "minecraft:block.cherry_wood.step"
+  },
+  "trapdoor_close": "minecraft:block.cherry_wood_trapdoor.close",
+  "trapdoor_open": "minecraft:block.cherry_wood_trapdoor.open"
+}

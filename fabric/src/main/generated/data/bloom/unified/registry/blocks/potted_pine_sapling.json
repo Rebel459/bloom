@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:flower_pot",
+  "potted": "bloom:pine_sapling",
+  "properties": {
+    "destroy_time": 0.0,
+    "explosion_resistance": 0.0,
+    "occlusion": false,
+    "push_reaction": "destroy"
+  }
+}

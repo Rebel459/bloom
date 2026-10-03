@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "converted_block": "bloom:stripped_golden_birch_wood",
+      "original_block": "bloom:golden_birch_wood",
+      "predicate": "unified:is_axe",
+      "use_context": [
+        {
+          "type": "unified:play_sound",
+          "sound": "minecraft:item.axe.strip"
+        }
+      ]
+    }
+  ]
+}

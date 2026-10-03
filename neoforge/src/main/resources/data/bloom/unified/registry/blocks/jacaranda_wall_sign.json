@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:wall_sign",
+  "block_entity": "minecraft:sign",
+  "properties": {
+    "copy_from": "bloom:jacaranda_sign",
+    "loot_table": "bloom:blocks/jacaranda_sign"
+  },
+  "wood_type": "bloom:jacaranda"
+}

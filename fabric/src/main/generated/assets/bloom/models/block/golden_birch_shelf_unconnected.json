@@ -2,6 +2,6 @@
   "parent": "minecraft:block/template_shelf_unconnected",
   "textures": {
     "all": "bloom:block/golden_birch_shelf",
-    "particle": "bloom:block/stripped_golden_birch_log"
+    "particle": "bloom:block/golden_birch_planks"
   }
 }

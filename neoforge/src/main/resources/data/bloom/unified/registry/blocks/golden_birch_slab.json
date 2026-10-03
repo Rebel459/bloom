@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:slab",
+  "properties": {
+    "copy_from": "bloom:golden_birch_planks"
+  }
+}

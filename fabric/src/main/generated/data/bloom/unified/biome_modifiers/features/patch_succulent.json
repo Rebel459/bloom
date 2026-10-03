@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/patch_succulent",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:patch_succulent",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

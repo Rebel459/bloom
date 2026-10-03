@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_scilla",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_scilla",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

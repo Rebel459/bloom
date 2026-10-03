@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stairs",
+  "base_block": "bloom:pine_planks",
+  "properties": {
+    "copy_from": "bloom:pine_planks"
+  }
+}

@@ -3,7 +3,7 @@ package net.rebel459.bloom.mixin;
 import java.util.List;
 import java.util.Set;
 import net.rebel459.bloom.config.BloomConfig;
-import net.rebel459.unified.platform.UnifiedPlatform;
+import net.rebel459.unified.api.core.UnifiedPlatform;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.tree.ClassNode;

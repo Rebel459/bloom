@@ -1,0 +1,6 @@
+{
+  "effects": {
+    "water_color": 2001635
+  },
+  "targets": "#bloom:effects/tropical_colors"
+}

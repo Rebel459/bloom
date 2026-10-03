@@ -1,5 +1,7 @@
 {
   "values": [
+    "minecraft:farmland",
+    "minecraft:clay",
     {
       "id": "#minecraft:sand",
       "required": false
@@ -7,8 +9,6 @@
     {
       "id": "#minecraft:dirt",
       "required": false
-    },
-    "minecraft:farmland",
-    "minecraft:clay"
+    }
   ]
 }

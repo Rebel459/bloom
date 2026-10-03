@@ -1,7 +1,7 @@
 {
   "values": [
-    "bloom:jacaranda_log",
-    "bloom:golden_birch_log",
-    "bloom:pine_log"
+    "#bloom:jacaranda_logs",
+    "#bloom:golden_birch_logs",
+    "#bloom:pine_logs"
   ]
 }

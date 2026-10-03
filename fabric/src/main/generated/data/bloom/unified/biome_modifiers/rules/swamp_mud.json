@@ -1,0 +1,29 @@
+{
+  "targets": "#bloom:rules/swamp_mud",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:disk_clay",
+        "step": "underground_ores"
+      },
+      {
+        "feature": "bloom:disk_gravel",
+        "step": "underground_ores"
+      }
+    ],
+    "remove_features": [
+      {
+        "feature": "minecraft:disk_clay",
+        "step": "underground_ores"
+      },
+      {
+        "feature": "minecraft:disk_sand",
+        "step": "underground_ores"
+      },
+      {
+        "feature": "minecraft:disk_gravel",
+        "step": "underground_ores"
+      }
+    ]
+  }
+}

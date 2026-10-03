@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_hellebore",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_hellebore",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

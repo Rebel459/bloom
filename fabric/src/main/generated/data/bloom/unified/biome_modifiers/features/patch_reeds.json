@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/patch_reeds",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:patch_reeds",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

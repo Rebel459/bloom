@@ -5,7 +5,8 @@ plugins {
 
 dependencies {
     api("me.shedaniel.cloth:cloth-config-neoforge:$cloth_version")
-    api("maven.modrinth:unified-api:$unified_version-neoforge")
+    //api("maven.modrinth:unified-api:$unified_version-neoforge")
+    api(name: 'unified-api', version: '26.1-1.0-beta-1+neoforge', ext: 'jar')
 	api("maven.modrinth:lithostitched:$lithostitched_neoforge")
 
 	compileOnly("maven.modrinth:sodium:$sodium_version-fabric")

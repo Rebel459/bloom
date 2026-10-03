@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/no_badlands_grass",
+  "worldgen": {
+    "remove_features": [
+      {
+        "feature": "minecraft:patch_grass_badlands",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

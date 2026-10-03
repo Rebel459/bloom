@@ -1,0 +1,73 @@
+{
+  "entries": [
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:jacaranda_planks",
+        "bloom:jacaranda_stairs",
+        "bloom:jacaranda_slab",
+        "bloom:jacaranda_fence",
+        "bloom:jacaranda_fence_gate",
+        "bloom:jacaranda_door",
+        "bloom:jacaranda_trapdoor",
+        "bloom:jacaranda_pressure_plate",
+        "bloom:jacaranda_button"
+      ],
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:cherry_button"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:jacaranda_log",
+        "bloom:jacaranda_wood",
+        "bloom:stripped_jacaranda_log",
+        "bloom:stripped_jacaranda_wood"
+      ],
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:cherry_button"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:jacaranda_log",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:cherry_sapling"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:jacaranda_leaves",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:cherry_leaves"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:jacaranda_sapling",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:cherry_sapling"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:jacaranda_shelf",
+      "tab": "minecraft:functional_blocks",
+      "target": "minecraft:cherry_shelf"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:jacaranda_sign",
+        "bloom:jacaranda_hanging_sign"
+      ],
+      "tab": "minecraft:functional_blocks",
+      "target": "minecraft:cherry_hanging_sign"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "bloom:jacaranda_boat",
+        "bloom:jacaranda_chest_boat"
+      ],
+      "tab": "minecraft:tools_and_utilities",
+      "target": "minecraft:cherry_chest_boat"
+    }
+  ]
+}

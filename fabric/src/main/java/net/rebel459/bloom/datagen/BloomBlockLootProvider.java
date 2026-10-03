@@ -21,7 +21,6 @@ import net.rebel459.bloom.block.SleepingBagBlock;
 import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.bloom.registry.BloomItems;
 import net.rebel459.bloom.util.StoneOresRegistry;
-import net.rebel459.unified.util.builder.WoodSet;
 
 public final class BloomBlockLootProvider extends FabricBlockLootSubProvider {
 
@@ -61,8 +60,6 @@ public final class BloomBlockLootProvider extends FabricBlockLootSubProvider {
 		this.tallFoliageDrops(BloomBlocks.REEDS.get());
 
 		this.cropDrops(BloomBlocks.COTTON.get(), 7, BloomItems.COTTON.get(), BloomItems.COTTON_SEEDS.get());
-
-		BloomBlocks.getWoodSets().forEach(this::woodDrops);
 
 		this.sleepingBagDrops(BloomBlocks.WHITE_SLEEPING_BAG.get());
 		this.sleepingBagDrops(BloomBlocks.ORANGE_SLEEPING_BAG.get());
@@ -141,36 +138,4 @@ public final class BloomBlockLootProvider extends FabricBlockLootSubProvider {
         if (Objects.equals(material, "sapphire")) id = "legacies_and_legends";
         return BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(id, "deepslate_" + material + "_ore"));
     }
-
-	public void woodDrops(WoodSet woodSet){
-		this.dropSelf(woodSet.getPlanks().get());
-		this.dropSelf(woodSet.getStairs().get());
-		this.add(woodSet.getSlab().get(), this::createSlabItemTable);
-		this.dropSelf(woodSet.getFence().get());
-		this.dropSelf(woodSet.getFenceGate().get());
-		this.dropSelf(woodSet.getButton().get());
-		this.dropSelf(woodSet.getPressurePlate().get());
-		this.dropSelf(woodSet.getLog().get());
-
-		if (woodSet.hasMosaic()) {
-			this.dropSelf(woodSet.getMosaic().get());
-			this.dropSelf(woodSet.getMosaicStairs().get());
-			this.add(woodSet.getMosaicSlab().get(), this::createSlabItemTable);
-		}
-		if (woodSet.hasWood()) {
-			this.dropSelf(woodSet.getWood().get());
-			this.dropSelf(woodSet.getStrippedWood().get());
-		}
-		this.dropSelf(woodSet.getStrippedLog().get());
-
-		this.dropSelf(woodSet.getTrapdoor().get());
-		this.add(woodSet.getDoor().get(), this::createDoorTable);
-		this.dropSelf(woodSet.getSign().get());
-		this.dropSelf(woodSet.getHangingSign().get());
-
-		this.dropSelf(woodSet.getShelf().get());
-
-		if (woodSet.hasLeaves()) this.add(woodSet.getLeaves().get(), block -> this.createLeavesDrops(block, woodSet.getSapling().get(), NORMAL_LEAVES_SAPLING_CHANCES));
-		if (woodSet.hasSapling()) this.dropSelf(woodSet.getSapling().get());
-	}
 }

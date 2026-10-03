@@ -1,0 +1,15 @@
+{
+  "targets": "#bloom:internal/golden_fields_features",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flowers_golden_forest",
+        "step": "vegetal_decoration"
+      },
+      {
+        "feature": "bloom:trees_golden_fields",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

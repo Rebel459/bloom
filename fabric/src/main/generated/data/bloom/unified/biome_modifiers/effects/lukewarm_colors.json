@@ -1,0 +1,8 @@
+{
+  "effects": {
+    "foliage_color": 9743914,
+    "grass_color": 12561493,
+    "water_color": 2197679
+  },
+  "targets": "#bloom:effects/lukewarm_colors"
+}

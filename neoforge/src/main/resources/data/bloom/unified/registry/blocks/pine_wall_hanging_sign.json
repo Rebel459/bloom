@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:wall_hanging_sign",
+  "block_entity": "minecraft:hanging_sign",
+  "properties": {
+    "copy_from": "bloom:pine_hanging_sign",
+    "loot_table": "bloom:blocks/pine_hanging_sign"
+  },
+  "wood_type": "bloom:pine"
+}

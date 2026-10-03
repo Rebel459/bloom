@@ -2,7 +2,7 @@ package net.rebel459.bloom.client;
 
 import net.rebel459.bloom.Bloom;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.rebel459.unified.platform.client.UnifiedClientHelpers;
+import net.rebel459.unified.api.client.core.UnifiedClientHelpers;
 
 public final class BloomModelLayers {
 	public static final ModelLayerLocation SLEEPING_BAG_HEAD = new ModelLayerLocation(Bloom.id("sleeping_bag"), "head");

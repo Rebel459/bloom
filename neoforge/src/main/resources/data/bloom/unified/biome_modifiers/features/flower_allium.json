@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_allium",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_allium",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

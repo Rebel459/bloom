@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:trapdoor",
+  "block_set_type": "bloom:golden_birch",
+  "properties": {
+    "copy_from": "bloom:golden_birch_planks",
+    "destroy_time": 3.0,
+    "explosion_resistance": 3.0,
+    "occlusion": false,
+    "valid_spawn": "minecraft:never"
+  }
+}

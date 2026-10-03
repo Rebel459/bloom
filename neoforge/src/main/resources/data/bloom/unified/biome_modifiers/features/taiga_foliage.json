@@ -1,0 +1,25 @@
+{
+  "targets": "#bloom:features/taiga_foliage",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:ferns_taiga",
+        "step": "vegetal_decoration"
+      },
+      {
+        "feature": "bloom:grass_taiga",
+        "step": "vegetal_decoration"
+      }
+    ],
+    "remove_features": [
+      {
+        "feature": "minecraft:patch_large_fern",
+        "step": "vegetal_decoration"
+      },
+      {
+        "feature": "minecraft:patch_grass_taiga_2",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

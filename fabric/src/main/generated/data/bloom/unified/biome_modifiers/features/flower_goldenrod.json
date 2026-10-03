@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_goldenrod",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_goldenrod",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

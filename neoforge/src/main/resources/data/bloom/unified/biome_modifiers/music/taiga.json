@@ -1,0 +1,14 @@
+{
+  "attributes": {
+    "set": {
+      "minecraft:audio/background_music": {
+        "default": {
+          "max_delay": 24000,
+          "min_delay": 12000,
+          "sound": "bloom:music.overworld.taiga"
+        }
+      }
+    }
+  },
+  "targets": "#bloom:music/taiga"
+}

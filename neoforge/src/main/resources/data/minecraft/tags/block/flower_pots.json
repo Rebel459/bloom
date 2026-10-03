@@ -1,5 +1,8 @@
 {
   "values": [
+    "bloom:potted_jacaranda_sapling",
+    "bloom:potted_golden_birch_sapling",
+    "bloom:potted_pine_sapling",
     "bloom:potted_dianthus",
     "bloom:potted_goldenrod",
     "bloom:potted_calla_lily",
@@ -10,9 +13,6 @@
     "bloom:potted_hellebore",
     "bloom:potted_hyacinth",
     "bloom:potted_queencup",
-    "bloom:potted_lavender",
-    "bloom:potted_jacaranda_sapling",
-    "bloom:potted_golden_birch_sapling",
-    "bloom:potted_pine_sapling"
+    "bloom:potted_lavender"
   ]
 }

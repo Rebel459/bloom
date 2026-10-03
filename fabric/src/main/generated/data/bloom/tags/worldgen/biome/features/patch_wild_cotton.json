@@ -1,5 +1,6 @@
 {
   "values": [
+    "#bloom:is_non_snowy_taiga",
     {
       "id": "#minecraft:is_forest",
       "required": false
@@ -11,7 +12,6 @@
     {
       "id": "#c:is_plains",
       "required": false
-    },
-    "#bloom:is_non_snowy_taiga"
+    }
   ]
 }

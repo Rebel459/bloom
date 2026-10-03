@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_hyacinth",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_hyacinth",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.rebel459.bloom.registry.BloomBlocks;
 import net.rebel459.bloom.registry.BloomItems;
 import net.rebel459.bloom.util.StoneOresRegistry;
-import net.rebel459.unified.util.builder.WoodSet;
 
 @Environment(EnvType.CLIENT)
 public final class BloomModelProvider extends FabricModelProvider {
@@ -66,10 +65,6 @@ public final class BloomModelProvider extends FabricModelProvider {
         generator.createDoublePlantWithDefaultItem(BloomBlocks.HYDRANGEA.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         generator.createDoublePlantWithDefaultItem(BloomBlocks.REEDS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 		this.createSinglePlant(BloomBlocks.SUCCULENT.get(), BlockModelGenerators.PlantType.NOT_TINTED, generator);
-
-		BloomBlocks.getWoodSets().forEach(woodSet -> {
-			fullWoodSet(woodSet, generator);
-		});
 
 		generator.createTrivialCube(BloomBlocks.DOLERITE.get());
 
@@ -121,35 +116,6 @@ public final class BloomModelProvider extends FabricModelProvider {
 		generator.createParticleOnlyBlock(BloomBlocks.GREEN_SLEEPING_BAG.get(), Blocks.GREEN_WOOL);
 		generator.createParticleOnlyBlock(BloomBlocks.RED_SLEEPING_BAG.get(), Blocks.RED_WOOL);
 		generator.createParticleOnlyBlock(BloomBlocks.BLACK_SLEEPING_BAG.get(), Blocks.BLACK_WOOL);
-	}
-
-	private void fullWoodSet(WoodSet woodSet, BlockModelGenerators generator){
-		BlockModelGenerators.BlockFamilyProvider pool = generator.family(woodSet.getPlanks().get());
-		pool.generateFor(woodSet.getBlockFamily());
-
-		if (woodSet.hasLeaves()){
-			generator.createTrivialBlock(woodSet.getLeaves().get(), TexturedModel.LEAVES);
-		}
-
-		if (woodSet.hasWood()){
-			generator.woodProvider(woodSet.getLog().get()).logWithHorizontal(woodSet.getLog().get()).wood(woodSet.getWood().get());
-			generator.woodProvider(woodSet.getStrippedLog().get()).logWithHorizontal(woodSet.getStrippedLog().get()).wood(woodSet.getStrippedWood().get());
-		}
-		if (woodSet.hasMosaic()){
-			generator.woodProvider(woodSet.getLog().get()).logUVLocked(woodSet.getLog().get());
-			generator.woodProvider(woodSet.getStrippedLog().get()).logUVLocked(woodSet.getStrippedLog().get());
-		}
-
-		generator.createHangingSign(woodSet.getStrippedLog().get(), woodSet.getHangingSign().get(), woodSet.getWallHangingSign().get());
-
-		if (woodSet.hasLeaves()) {
-			generator.registerSimpleFlatItemModel(woodSet.getBoatItem().get());
-			generator.registerSimpleFlatItemModel(woodSet.getChestBoatItem().get());
-		}
-
-		generator.createShelf(woodSet.getShelf().get(), woodSet.getStrippedLog().get());
-
-		if (woodSet.hasSapling()) generator.createPlantWithDefaultItem(woodSet.getSapling().get(), woodSet.getPottedSapling().get(), BlockModelGenerators.PlantType.NOT_TINTED);
 	}
 
 	public void rug(Block block, BlockModelGenerators generator) {

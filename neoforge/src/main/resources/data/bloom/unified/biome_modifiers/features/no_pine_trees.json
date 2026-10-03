@@ -1,0 +1,18 @@
+{
+  "load_requirements": "bloom:pine_trees_enabled",
+  "targets": "#bloom:features/no_pine_trees",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:trees_taiga",
+        "step": "vegetal_decoration"
+      }
+    ],
+    "remove_features": [
+      {
+        "feature": "minecraft:trees_taiga",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

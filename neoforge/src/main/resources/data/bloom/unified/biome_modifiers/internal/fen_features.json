@@ -1,0 +1,19 @@
+{
+  "targets": "#bloom:internal/fen_features",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flowers_fen",
+        "step": "vegetal_decoration"
+      },
+      {
+        "feature": "bloom:trees_fen",
+        "step": "vegetal_decoration"
+      },
+      {
+        "feature": "bloom:wildflowers_fen",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

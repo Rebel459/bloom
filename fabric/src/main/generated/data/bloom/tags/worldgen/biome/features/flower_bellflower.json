@@ -1,9 +1,5 @@
 {
   "values": [
-    {
-      "id": "#minecraft:is_jungle",
-      "required": false
-    },
     "minecraft:dark_forest",
     "minecraft:flower_forest",
     {
@@ -16,6 +12,10 @@
     },
     {
       "id": "wilderwild:old_growth_dark_forest",
+      "required": false
+    },
+    {
+      "id": "#minecraft:is_jungle",
       "required": false
     }
   ]

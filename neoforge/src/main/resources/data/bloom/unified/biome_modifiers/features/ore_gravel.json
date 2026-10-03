@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/ore_gravel",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:ore_gravel",
+        "step": "underground_ores"
+      }
+    ]
+  }
+}

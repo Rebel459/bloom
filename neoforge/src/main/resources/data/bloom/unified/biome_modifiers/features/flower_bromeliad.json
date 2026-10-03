@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_bromeliad",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_bromeliad",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

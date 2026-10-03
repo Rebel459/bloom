@@ -1,0 +1,15 @@
+{
+  "targets": "#bloom:features/no_default_flowers",
+  "worldgen": {
+    "remove_features": [
+      {
+        "feature": "minecraft:flower_warm",
+        "step": "vegetal_decoration"
+      },
+      {
+        "feature": "minecraft:flower_default",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

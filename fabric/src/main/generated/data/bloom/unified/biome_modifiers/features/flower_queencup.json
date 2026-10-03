@@ -1,0 +1,11 @@
+{
+  "targets": "#bloom:features/flower_queencup",
+  "worldgen": {
+    "add_features": [
+      {
+        "feature": "bloom:flower_queencup",
+        "step": "vegetal_decoration"
+      }
+    ]
+  }
+}

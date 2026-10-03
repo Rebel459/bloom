@@ -1,0 +1,19 @@
+{
+  "block_set_type": "bloom:jacaranda",
+  "fence_gate_close": "minecraft:block.cherry_wood_fence_gate.close",
+  "fence_gate_open": "minecraft:block.cherry_wood_fence_gate.open",
+  "hanging_sign_sound_type": {
+    "break_sound": "minecraft:block.cherry_wood_hanging_sign.break",
+    "fall_sound": "minecraft:block.cherry_wood_hanging_sign.fall",
+    "hit_sound": "minecraft:block.cherry_wood_hanging_sign.hit",
+    "place_sound": "minecraft:block.cherry_wood_hanging_sign.place",
+    "step_sound": "minecraft:block.cherry_wood_hanging_sign.step"
+  },
+  "sound_type": {
+    "break_sound": "minecraft:block.cherry_wood.break",
+    "fall_sound": "minecraft:block.cherry_wood.fall",
+    "hit_sound": "minecraft:block.cherry_wood.hit",
+    "place_sound": "minecraft:block.cherry_wood.place",
+    "step_sound": "minecraft:block.cherry_wood.step"
+  }
+}
