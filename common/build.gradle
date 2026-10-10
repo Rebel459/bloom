@@ -20,8 +20,8 @@ dependencies {
     implementation "org.ow2.asm:asm-tree:9.9.1"
 
     compileOnly("me.shedaniel.cloth:cloth-config-neoforge:$cloth_version")
-	//compileOnly("maven.modrinth:unified-api:$unified_version-fabric")
-	compileOnly(name: 'unified-api', version: '26.1-1.0-beta-1+fabric', ext: 'jar')
+	compileOnly("maven.modrinth:unified-api:$unified_version-fabric")
+	//compileOnly(name: 'unified-api', version: '26.1-1.0-beta-1+fabric', ext: 'jar')
 	compileOnly("maven.modrinth:lithostitched:$lithostitched_fabric")
 
 	compileOnly("maven.modrinth:sodium:$sodium_version-fabric")

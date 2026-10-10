@@ -15,7 +15,7 @@
     "occlusion": false,
     "push_reaction": "destroy",
     "random_ticks": true,
-    "redstone_conductor": "minecraft:never",
+    "redstone_conductor": "unified:never",
     "sound_type": {
       "break_sound": "minecraft:block.cherry_leaves.break",
       "fall_sound": "minecraft:block.cherry_leaves.fall",
@@ -23,8 +23,8 @@
       "place_sound": "minecraft:block.cherry_leaves.place",
       "step_sound": "minecraft:block.cherry_leaves.step"
     },
-    "suffocating": "minecraft:never",
+    "suffocating": "unified:never",
     "valid_spawn": "minecraft:ocelot_or_parrot",
-    "view_blocking": "minecraft:never"
+    "view_blocking": "unified:never"
   }
 }

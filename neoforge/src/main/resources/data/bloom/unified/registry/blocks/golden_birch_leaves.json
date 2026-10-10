@@ -16,7 +16,7 @@
     "occlusion": false,
     "push_reaction": "destroy",
     "random_ticks": true,
-    "redstone_conductor": "minecraft:never",
+    "redstone_conductor": "unified:never",
     "sound_type": {
       "break_sound": "minecraft:block.grass.break",
       "fall_sound": "minecraft:block.grass.fall",
@@ -24,8 +24,8 @@
       "place_sound": "minecraft:block.grass.place",
       "step_sound": "minecraft:block.grass.step"
     },
-    "suffocating": "minecraft:never",
+    "suffocating": "unified:never",
     "valid_spawn": "minecraft:ocelot_or_parrot",
-    "view_blocking": "minecraft:never"
+    "view_blocking": "unified:never"
   }
 }

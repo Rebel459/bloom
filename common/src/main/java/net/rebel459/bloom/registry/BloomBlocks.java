@@ -12,6 +12,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
@@ -43,13 +44,14 @@ import net.rebel459.bloom.tag.BloomItemTags;
 import net.rebel459.bloom.util.StoneOresRegistry;
 import net.rebel459.bloom.worldgen.sapling.BloomTreeGrowers;
 import net.rebel459.unified.api.asset.BlockAssets;
-import net.rebel459.unified.api.builder.WoodPreset;
-import net.rebel459.unified.api.builder.WoodSet;
 import net.rebel459.unified.api.core.SuppliedBlock;
 import net.rebel459.unified.api.core.UnifiedData;
+import net.rebel459.unified.api.core.UnifiedEvents;
 import net.rebel459.unified.api.core.UnifiedHelpers;
 import net.rebel459.unified.api.core.UnifiedPlatform;
 import net.rebel459.unified.api.core.UnifiedRegistries;
+import net.rebel459.unified.api.data.set.WoodPreset;
+import net.rebel459.unified.api.data.set.WoodSet;
 import net.rebel459.unified.api.platform.ModLoader;
 import net.rebel459.unified.api.registry.UnifiedDataComponents;
 import net.rebel459.unified.api.registry.VanillaBlockCodecs;
@@ -338,19 +340,27 @@ public final class BloomBlocks {
 	}
 
 	private static void registerComposting() {
-		UnifiedHelpers.DATA_COMPONENTS.add(HELLEBORE, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(BROMELIAD, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(PINK_ORCHID, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(BELLFLOWER, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(HYDRANGEA, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(CALLA_LILY, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(DIANTHUS, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(GOLDENROD, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(ORANGE_DAISY, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(SCILLA, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(SUCCULENT, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(BloomItems.COTTON, UnifiedDataComponents.COMPOST.get(), 0.65F);
-		UnifiedHelpers.DATA_COMPONENTS.add(BloomItems.COTTON_SEEDS, UnifiedDataComponents.COMPOST.get(), 0.3F);
+		setCompost(HELLEBORE, 0.65F);
+		setCompost(BROMELIAD, 0.65F);
+		setCompost(PINK_ORCHID, 0.65F);
+		setCompost(BELLFLOWER, 0.65F);
+		setCompost(HYDRANGEA, 0.65F);
+		setCompost(CALLA_LILY, 0.65F);
+		setCompost(DIANTHUS, 0.65F);
+		setCompost(GOLDENROD, 0.65F);
+		setCompost(ORANGE_DAISY, 0.65F);
+		setCompost(SCILLA, 0.65F);
+		setCompost(SUCCULENT, 0.65F);
+		setCompost(BloomItems.COTTON, 0.65F);
+		setCompost(BloomItems.COTTON_SEEDS, 0.3F);
+	}
+
+	private static void setCompost(ItemLike itemLike, float chance) {
+		UnifiedEvents.DefaultDataComponents.modify((item, builder, _) -> {
+			if (itemLike.asItem() == item) {
+				builder.set(UnifiedDataComponents.COMPOST.get(), chance);
+			}
+		});
 	}
 
 	private static void registerFlammability() {

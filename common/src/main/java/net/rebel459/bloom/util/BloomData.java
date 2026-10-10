@@ -15,7 +15,7 @@ public class BloomData {
 
 	public static final UnifiedData FARMERS_DELIGHT = UnifiedData.create(Bloom.MOD_ID).autoName().requirement(UnifiedLoadRequirementCodecs.MODS_LOADED.create(() -> List.of("farmersdelight"))).build();
 
-	public static final UnifiedData FARMERS_DELIGHT_AND_WILD_COTTON = UnifiedData.create(Bloom.MOD_ID).autoName().requirement(ExtensibleCodecs.LOAD_REQUIREMENT.allOf.create(() -> List.of(
+	public static final UnifiedData FARMERS_DELIGHT_AND_WILD_COTTON = UnifiedData.create(Bloom.MOD_ID).autoName().requirement(ExtensibleCodecs.LOAD_REQUIREMENT.allOf().create(() -> List.of(
 		UnifiedLoadRequirementCodecs.MODS_LOADED.create(() -> List.of("farmersdelight")),
 		WILD_CROPS_ENABLED.create(),
 		COTTON_ENABLED.create()

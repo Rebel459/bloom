@@ -1,5 +1,5 @@
 {
-  "load_requirements": "bloom:pine_trees_enabled",
+  "load_requirement": "bloom:pine_trees_enabled",
   "targets": "#bloom:features/no_pine_trees",
   "worldgen": {
     "add_features": [

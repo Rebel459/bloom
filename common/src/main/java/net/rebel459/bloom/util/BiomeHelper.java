@@ -22,7 +22,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.rebel459.bloom.Bloom;
 import net.rebel459.bloom.worldgen.BloomFeatures;
-import net.rebel459.unified.api.helper.BiomeModificationContext;
+import net.rebel459.unified.api.event.BiomeModificationContext;
 
 public class BiomeHelper {
 

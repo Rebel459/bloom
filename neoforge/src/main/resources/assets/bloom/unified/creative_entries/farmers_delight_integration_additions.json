@@ -7,7 +7,7 @@
       "target": "minecraft:wheat_seeds"
     }
   ],
-  "load_requirements": {
+  "load_requirement": {
     "type": "unified:mods_loaded",
     "mods": [
       "farmersdelight"
