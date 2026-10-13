@@ -14,7 +14,7 @@
     "bloom:dolerite_tile_stairs",
     "bloom:dolerite_tile_wall",
     {
-      "id": "bloom:tuff_coal_ore",
+      "id": "bloom:tuff_iron_ore",
       "required": false
     },
     {
@@ -22,11 +22,7 @@
       "required": false
     },
     {
-      "id": "bloom:tuff_lapis_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:tuff_copper_ore",
+      "id": "bloom:tuff_coal_ore",
       "required": false
     },
     {
@@ -34,7 +30,7 @@
       "required": false
     },
     {
-      "id": "bloom:tuff_iron_ore",
+      "id": "bloom:tuff_lapis_ore",
       "required": false
     },
     {
@@ -42,27 +38,11 @@
       "required": false
     },
     {
+      "id": "bloom:tuff_copper_ore",
+      "required": false
+    },
+    {
       "id": "bloom:tuff_emerald_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:granite_coal_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:granite_gold_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:granite_lapis_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:granite_copper_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:granite_diamond_ore",
       "required": false
     },
     {
@@ -70,7 +50,27 @@
       "required": false
     },
     {
+      "id": "bloom:granite_gold_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:granite_coal_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:granite_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:granite_lapis_ore",
+      "required": false
+    },
+    {
       "id": "bloom:granite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:granite_copper_ore",
       "required": false
     },
     {
@@ -78,7 +78,7 @@
       "required": false
     },
     {
-      "id": "bloom:andesite_coal_ore",
+      "id": "bloom:andesite_iron_ore",
       "required": false
     },
     {
@@ -86,11 +86,7 @@
       "required": false
     },
     {
-      "id": "bloom:andesite_lapis_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:andesite_copper_ore",
+      "id": "bloom:andesite_coal_ore",
       "required": false
     },
     {
@@ -98,7 +94,7 @@
       "required": false
     },
     {
-      "id": "bloom:andesite_iron_ore",
+      "id": "bloom:andesite_lapis_ore",
       "required": false
     },
     {
@@ -106,27 +102,11 @@
       "required": false
     },
     {
+      "id": "bloom:andesite_copper_ore",
+      "required": false
+    },
+    {
       "id": "bloom:andesite_emerald_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:diorite_coal_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:diorite_gold_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:diorite_lapis_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:diorite_copper_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:diorite_diamond_ore",
       "required": false
     },
     {
@@ -134,7 +114,27 @@
       "required": false
     },
     {
+      "id": "bloom:diorite_gold_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:diorite_coal_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:diorite_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:diorite_lapis_ore",
+      "required": false
+    },
+    {
       "id": "bloom:diorite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:diorite_copper_ore",
       "required": false
     },
     {
@@ -142,7 +142,7 @@
       "required": false
     },
     {
-      "id": "bloom:dolerite_coal_ore",
+      "id": "bloom:dolerite_iron_ore",
       "required": false
     },
     {
@@ -150,11 +150,7 @@
       "required": false
     },
     {
-      "id": "bloom:dolerite_lapis_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:dolerite_copper_ore",
+      "id": "bloom:dolerite_coal_ore",
       "required": false
     },
     {
@@ -162,7 +158,7 @@
       "required": false
     },
     {
-      "id": "bloom:dolerite_iron_ore",
+      "id": "bloom:dolerite_lapis_ore",
       "required": false
     },
     {
@@ -170,27 +166,11 @@
       "required": false
     },
     {
+      "id": "bloom:dolerite_copper_ore",
+      "required": false
+    },
+    {
       "id": "bloom:dolerite_emerald_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:sandstone_coal_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:sandstone_gold_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:sandstone_lapis_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:sandstone_copper_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:sandstone_diamond_ore",
       "required": false
     },
     {
@@ -198,7 +178,27 @@
       "required": false
     },
     {
+      "id": "bloom:sandstone_gold_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:sandstone_coal_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:sandstone_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:sandstone_lapis_ore",
+      "required": false
+    },
+    {
       "id": "bloom:sandstone_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:sandstone_copper_ore",
       "required": false
     },
     {
@@ -206,7 +206,7 @@
       "required": false
     },
     {
-      "id": "bloom:red_sandstone_coal_ore",
+      "id": "bloom:red_sandstone_iron_ore",
       "required": false
     },
     {
@@ -214,11 +214,7 @@
       "required": false
     },
     {
-      "id": "bloom:red_sandstone_lapis_ore",
-      "required": false
-    },
-    {
-      "id": "bloom:red_sandstone_copper_ore",
+      "id": "bloom:red_sandstone_coal_ore",
       "required": false
     },
     {
@@ -226,11 +222,15 @@
       "required": false
     },
     {
-      "id": "bloom:red_sandstone_iron_ore",
+      "id": "bloom:red_sandstone_lapis_ore",
       "required": false
     },
     {
       "id": "bloom:red_sandstone_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "bloom:red_sandstone_copper_ore",
       "required": false
     },
     {

@@ -295,7 +295,7 @@ public final class BloomBlocks {
 			VanillaBlockCodecs.UNTINTED_PARTICLE_LEAVES.create(() -> new VanillaBlockCodecs.ParticleLeaves(0.1F, BloomParticleTypes.JACARANDA_LEAVES.get())),
 			MapColor.COLOR_PURPLE,
 			BlockAssets.LEAVES,
-			(block, provider) -> provider.createLeavesDrops(block, block, 0.05F, 0.0625F, 0.083333336F, 0.1F),
+			(block, sapling, provider) -> provider.createLeavesDrops(block, sapling, 0.05F, 0.0625F, 0.083333336F, 0.1F),
 			() -> Items.CHERRY_LEAVES
 		))
 		.createSapling(VanillaBlockCodecs.SAPLING.create(() -> BloomTreeGrowers.JACARANDA), MapColor.COLOR_PURPLE, BlockAssets.PlantType.NOT_TINTED, () -> Items.CHERRY_SAPLING)
@@ -307,7 +307,7 @@ public final class BloomBlocks {
 			BloomBlockCodecs.UNTINTED_PARTICLE_EXTENDED_LEAVES.create(() -> new VanillaBlockCodecs.ParticleLeaves(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 13807429))),
 			MapColor.COLOR_YELLOW,
 			BlockAssets.LEAVES,
-			(block, provider) -> provider.createLeavesDrops(block, block, 0.05F, 0.0625F, 0.083333336F, 0.1F),
+			(block, sapling, provider) -> provider.createLeavesDrops(block, sapling, 0.05F, 0.0625F, 0.083333336F, 0.1F),
 			() -> Items.BIRCH_LEAVES
 		))
 		.createSapling(VanillaBlockCodecs.SAPLING.create(() -> BloomTreeGrowers.GOLDEN_BIRCH), MapColor.COLOR_YELLOW, BlockAssets.PlantType.NOT_TINTED, () -> Items.BIRCH_SAPLING)
@@ -319,7 +319,7 @@ public final class BloomBlocks {
 			VanillaBlockCodecs.UNTINTED_PARTICLE_LEAVES.create(() -> new VanillaBlockCodecs.ParticleLeaves(0.1F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 5468745))),
 			MapColor.COLOR_GREEN,
 			BlockAssets.LEAVES,
-			(block, provider) -> provider.createLeavesDrops(block, block, 0.05F, 0.0625F, 0.083333336F, 0.1F),
+			(block, sapling, provider) -> provider.createLeavesDrops(block, sapling, 0.05F, 0.0625F, 0.083333336F, 0.1F),
 			() -> Items.SPRUCE_LEAVES
 		))
 		.createSapling(VanillaBlockCodecs.SAPLING.create(() -> BloomTreeGrowers.PINE), MapColor.COLOR_BROWN, BlockAssets.PlantType.NOT_TINTED, () -> Items.SPRUCE_SAPLING)
