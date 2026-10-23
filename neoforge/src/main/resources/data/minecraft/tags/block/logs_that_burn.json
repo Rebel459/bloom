@@ -1,8 +1,7 @@
 {
   "values": [
-    {
-      "id": "#bloom:jacaranda_logs",
-      "required": false
-    }
+    "#bloom:jacaranda_logs",
+    "#bloom:golden_birch_logs",
+    "#bloom:pine_logs"
   ]
 }

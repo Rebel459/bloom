@@ -106,12 +106,6 @@ public final class BloomBlockTagProvider {
 			.add(BloomBlocks.POTTED_QUEENCUP.key())
 			.add(BloomBlocks.POTTED_LAVENDER.key());
 
-		TAGS.create(BlockTags.LOGS)
-			.addOptional(BloomBlockTags.JACARANDA_LOGS);
-
-		TAGS.create(BlockTags.LOGS_THAT_BURN)
-			.addOptional(BloomBlockTags.JACARANDA_LOGS);
-
 		TAGS.create(BlockTags.MINEABLE_WITH_PICKAXE)
 			.add(BloomBlocks.DOLERITE.key())
 			.add(BloomBlocks.POLISHED_DOLERITE.key())

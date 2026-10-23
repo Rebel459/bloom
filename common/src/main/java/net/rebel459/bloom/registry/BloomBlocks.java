@@ -1,10 +1,8 @@
 package net.rebel459.bloom.registry;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import net.minecraft.core.particles.ColorParticleOption;
@@ -47,7 +45,6 @@ import net.rebel459.unified.api.asset.BlockAssets;
 import net.rebel459.unified.api.core.SuppliedBlock;
 import net.rebel459.unified.api.core.UnifiedData;
 import net.rebel459.unified.api.core.UnifiedEvents;
-import net.rebel459.unified.api.core.UnifiedHelpers;
 import net.rebel459.unified.api.core.UnifiedPlatform;
 import net.rebel459.unified.api.core.UnifiedRegistries;
 import net.rebel459.unified.api.data.set.WoodPreset;
@@ -55,7 +52,7 @@ import net.rebel459.unified.api.data.set.WoodSet;
 import net.rebel459.unified.api.platform.ModLoader;
 import net.rebel459.unified.api.registry.UnifiedDataComponents;
 import net.rebel459.unified.api.registry.VanillaBlockCodecs;
-import net.rebel459.unified.impl.util.BlockItemTagId;
+import net.rebel459.unified.api.util.BlockItemTagId;
 
 public final class BloomBlocks {
 	public static List<Block> TRANSLATABLE_BLOCKS = new ArrayList<>();

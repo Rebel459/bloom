@@ -142,6 +142,18 @@
     },
     {
       "type": "insert_after",
+      "items": "bloom:tuff_redstone_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:redstone_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:tuff_diamond_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:diamond_ore"
+    },
+    {
+      "type": "insert_after",
       "items": "bloom:tuff_iron_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:iron_ore"
@@ -154,27 +166,9 @@
     },
     {
       "type": "insert_after",
-      "items": "bloom:tuff_coal_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:coal_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:tuff_diamond_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:diamond_ore"
-    },
-    {
-      "type": "insert_after",
       "items": "bloom:tuff_lapis_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:lapis_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:tuff_redstone_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:redstone_ore"
     },
     {
       "type": "insert_after",
@@ -184,9 +178,27 @@
     },
     {
       "type": "insert_after",
+      "items": "bloom:tuff_coal_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:coal_ore"
+    },
+    {
+      "type": "insert_after",
       "items": "bloom:tuff_emerald_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:emerald_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:dolerite_redstone_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:redstone_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:dolerite_diamond_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:diamond_ore"
     },
     {
       "type": "insert_after",
@@ -202,27 +214,9 @@
     },
     {
       "type": "insert_after",
-      "items": "bloom:dolerite_coal_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:coal_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:dolerite_diamond_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:diamond_ore"
-    },
-    {
-      "type": "insert_after",
       "items": "bloom:dolerite_lapis_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:lapis_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:dolerite_redstone_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:redstone_ore"
     },
     {
       "type": "insert_after",
@@ -232,9 +226,27 @@
     },
     {
       "type": "insert_after",
+      "items": "bloom:dolerite_coal_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:coal_ore"
+    },
+    {
+      "type": "insert_after",
       "items": "bloom:dolerite_emerald_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:emerald_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:granite_redstone_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:redstone_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:granite_diamond_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:diamond_ore"
     },
     {
       "type": "insert_after",
@@ -250,27 +262,9 @@
     },
     {
       "type": "insert_after",
-      "items": "bloom:granite_coal_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:coal_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:granite_diamond_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:diamond_ore"
-    },
-    {
-      "type": "insert_after",
       "items": "bloom:granite_lapis_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:lapis_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:granite_redstone_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:redstone_ore"
     },
     {
       "type": "insert_after",
@@ -280,9 +274,27 @@
     },
     {
       "type": "insert_after",
+      "items": "bloom:granite_coal_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:coal_ore"
+    },
+    {
+      "type": "insert_after",
       "items": "bloom:granite_emerald_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:emerald_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:diorite_redstone_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:redstone_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:diorite_diamond_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:diamond_ore"
     },
     {
       "type": "insert_after",
@@ -298,27 +310,9 @@
     },
     {
       "type": "insert_after",
-      "items": "bloom:diorite_coal_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:coal_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:diorite_diamond_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:diamond_ore"
-    },
-    {
-      "type": "insert_after",
       "items": "bloom:diorite_lapis_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:lapis_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:diorite_redstone_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:redstone_ore"
     },
     {
       "type": "insert_after",
@@ -328,9 +322,27 @@
     },
     {
       "type": "insert_after",
+      "items": "bloom:diorite_coal_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:coal_ore"
+    },
+    {
+      "type": "insert_after",
       "items": "bloom:diorite_emerald_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:emerald_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:andesite_redstone_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:redstone_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:andesite_diamond_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:diamond_ore"
     },
     {
       "type": "insert_after",
@@ -346,27 +358,9 @@
     },
     {
       "type": "insert_after",
-      "items": "bloom:andesite_coal_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:coal_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:andesite_diamond_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:diamond_ore"
-    },
-    {
-      "type": "insert_after",
       "items": "bloom:andesite_lapis_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:lapis_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:andesite_redstone_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:redstone_ore"
     },
     {
       "type": "insert_after",
@@ -376,9 +370,27 @@
     },
     {
       "type": "insert_after",
+      "items": "bloom:andesite_coal_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:coal_ore"
+    },
+    {
+      "type": "insert_after",
       "items": "bloom:andesite_emerald_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:emerald_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:red_sandstone_redstone_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:redstone_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:red_sandstone_diamond_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:diamond_ore"
     },
     {
       "type": "insert_after",
@@ -394,27 +406,9 @@
     },
     {
       "type": "insert_after",
-      "items": "bloom:red_sandstone_coal_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:coal_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:red_sandstone_diamond_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:diamond_ore"
-    },
-    {
-      "type": "insert_after",
       "items": "bloom:red_sandstone_lapis_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:lapis_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:red_sandstone_redstone_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:redstone_ore"
     },
     {
       "type": "insert_after",
@@ -424,9 +418,27 @@
     },
     {
       "type": "insert_after",
+      "items": "bloom:red_sandstone_coal_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:coal_ore"
+    },
+    {
+      "type": "insert_after",
       "items": "bloom:red_sandstone_emerald_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:emerald_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:sandstone_redstone_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:redstone_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:sandstone_diamond_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:diamond_ore"
     },
     {
       "type": "insert_after",
@@ -442,33 +454,21 @@
     },
     {
       "type": "insert_after",
-      "items": "bloom:sandstone_coal_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:coal_ore"
-    },
-    {
-      "type": "insert_after",
-      "items": "bloom:sandstone_diamond_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:diamond_ore"
-    },
-    {
-      "type": "insert_after",
       "items": "bloom:sandstone_lapis_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:lapis_ore"
     },
     {
       "type": "insert_after",
-      "items": "bloom:sandstone_redstone_ore",
-      "tab": "minecraft:natural_blocks",
-      "target": "minecraft:redstone_ore"
-    },
-    {
-      "type": "insert_after",
       "items": "bloom:sandstone_copper_ore",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:copper_ore"
+    },
+    {
+      "type": "insert_after",
+      "items": "bloom:sandstone_coal_ore",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:coal_ore"
     },
     {
       "type": "insert_after",
